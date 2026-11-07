@@ -225,6 +225,15 @@
         "Instagram": "FAILED: Meta API error: {'debug_info': {'retriable': False, 'type': 'ProcessingFailedError', 'message': 'Request processing failed'}}",
         "Facebook": "https://www.facebook.com/reel/2388726818326814"
       }
+    },
+    {
+      "title": "The Loneliest Whale in the World",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/58cS2AuYNLU",
+        "Instagram": "https://www.instagram.com/reel/DfcD0VGgVzQ/",
+        "Facebook": "https://www.facebook.com/reel/1576277314528631"
+      }
     }
   ]
 }
