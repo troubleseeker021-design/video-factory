@@ -321,9 +321,23 @@
         }
       },
       "stats_at": "2026-11-07T17:39:57"
+    },
+    {
+      "title": "The Animal That Forged Real Iron Armor",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "FAILED: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})",
+        "Facebook": "https://www.facebook.com/reel/2515061085566147",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-07T17:51:10",
+      "theme": "animals",
+      "hook": "Two miles beneath the sea, an animal built itself real iron armor.",
+      "series": "Animal Oddities #1",
+      "file_id": "BAACAgEAAxkDAAM4au9lEv6yw1W-d7srNYFn9R5j4b0AAhwHAAIQJHhHIUzSqEEaxXY9BA"
     }
   ],
-  "last_slot": "2026-11-07 07:37",
+  "last_slot": "2026-11-07 11:37",
   "stats_day": "2026-11-07",
   "stats_problems": {
     "YouTube": "('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})"
