@@ -216,6 +216,15 @@
         "Instagram": "FAILED: Meta API error: {'debug_info': {'retriable': False, 'type': 'ProcessingFailedError', 'message': 'Request processing failed'}}",
         "Facebook": "https://www.facebook.com/reel/28799171276422048"
       }
+    },
+    {
+      "title": "Nature Invented Gears Millions of Years Before Us",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/s0yUREOocHM",
+        "Instagram": "FAILED: Meta API error: {'debug_info': {'retriable': False, 'type': 'ProcessingFailedError', 'message': 'Request processing failed'}}",
+        "Facebook": "https://www.facebook.com/reel/2388726818326814"
+      }
     }
   ]
 }
