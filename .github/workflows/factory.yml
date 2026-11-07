@@ -5,7 +5,7 @@ name: factory
 #  - every 15 minutes it checks Telegram for your Approve / Reject taps and posts approved videos
 on:
   schedule:
-    - cron: "23 12,17,22 * * *"   # make videos (about 6 AM, 11 AM, 4 PM Edmonton time)
+    - cron: "37 0,14,18 * * *"    # make videos: starts ~7:37 AM, 11:37 AM, 5:37 PM Edmonton (winter) -> posts ~8 AM, 12 PM, 6 PM
     - cron: "*/15 * * * *"        # check Telegram for approvals
   workflow_dispatch:
     inputs:
