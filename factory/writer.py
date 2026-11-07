@@ -12,6 +12,12 @@ from .common import DATA, log, read_json, write_json
 
 BANK = os.path.join(DATA, "script_bank.json")
 USED = os.path.join(DATA, "used_scripts.json")
+# Every video belongs to a numbered series - gives viewers a reason to follow and binge.
+SERIES = {"space": "Space Secrets", "ocean": "Ocean Mysteries", "nature": "Nature's Weirdest",
+          "history": "Lost History", "body": "Body Facts", "science": "Science Shocks",
+          "animals": "Animal Oddities"}
+QUESTIONS = ["Did you already know this?", "Which part surprised you most?",
+             "Would you want to see this in person?", "What should we cover next?"]
 GEMINI_MODELS = ["gemini-2.5-flash", "gemini-flash-latest", "gemini-2.0-flash"]
 
 PROMPT = """You write viral, 100% factually accurate YouTube Shorts / TikTok / Reels scripts for a
@@ -36,9 +42,11 @@ Structure (proven by viral-shorts research):
 - "wiki": 2 exact English Wikipedia article titles about the subject (used to find real photos).
 - "visuals": one short stock-footage search phrase for EACH spoken line (hook, each body sentence, cta), same order.
 - "emojis": one fitting emoji for EACH spoken line, same order.
-
+- "question": one short, fun question to ask viewers in the comments about this topic
+  (makes people comment, e.g. "Would you swim near this?"), max 12 words, no hashtags.
+{insights}
 Reply with JSON only:
-{{"title":"","hook":"","body":["",""],"cta":"","caption":"","hashtags":[],"keywords":[],"theme":"","wiki":[],"visuals":[],"emojis":[]}}"""
+{{"title":"","hook":"","body":["",""],"cta":"","caption":"","hashtags":[],"keywords":[],"theme":"","wiki":[],"visuals":[],"emojis":[],"question":""}}"""
 
 
 def _slug(text):
@@ -49,7 +57,8 @@ def _gemini(cfg, recent_titles):
     key = cfg.get("gemini_api_key", "").strip()
     if not key:
         return None
-    prompt = PROMPT.format(niche=cfg.get("niche", "facts"), recent="; ".join(recent_titles[-40:]) or "none")
+    prompt = PROMPT.format(niche=cfg.get("niche", "facts"), recent="; ".join(recent_titles[-40:]) or "none",
+                           insights=cfg.get("_insights", ""))
     body = json.dumps({
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {"temperature": 1.0, "responseMimeType": "application/json"},
@@ -91,7 +100,14 @@ def next_script(cfg):
     script.setdefault("id", _slug(script["title"]))
     if script["id"] in used_ids and script["source"] != "bank":
         script["id"] += f"-{random.randint(100, 999)}"
-    used.append({"id": script["id"], "title": script["title"]})
+    theme = script.get("theme") if script.get("theme") in SERIES else "science"
+    script["theme"] = theme
+    number = 1 + sum(1 for u in used if u.get("theme") == theme)
+    script["series"] = SERIES[theme]
+    script["series_tag"] = f"{SERIES[theme]} #{number}"
+    if not script.get("question"):
+        script["question"] = random.choice(QUESTIONS)
+    used.append({"id": script["id"], "title": script["title"], "theme": theme})
     write_json(USED, used)
     return script
 

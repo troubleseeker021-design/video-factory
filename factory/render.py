@@ -362,6 +362,7 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
     chunks = _chunks(words)
     cap_cache, stat_cache = {}, {}
     channel = cfg.get("channel_name", "")
+    series_tag = script.get("series_tag", "")
 
     # ---- sound design timeline ----
     ev = [(0.0, "impact", 0.9), (0.05, "whoosh", 0.5)]
@@ -524,6 +525,8 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
             d.rectangle([0, 0, int(W * t / duration), 14], fill=accent + (255,))
             if channel and sc["kind"] != "hook":
                 d.text((W / 2, 34), channel, font=F_SMALL, fill=(255, 255, 255, 150), anchor="ma")
+            if series_tag and sc["kind"] != "hook":
+                d.text((W / 2, 74), series_tag.upper(), font=F_SMALL, fill=accent + (230,), anchor="ma")
             frame.alpha_composite(hud)
 
             rgb = frame.convert("RGB")

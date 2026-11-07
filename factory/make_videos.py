@@ -17,18 +17,28 @@ from .diary import note
 def build_post_pack(script, cfg):
     tags = " ".join(script.get("hashtags", []))
     credits = ("\n\nImage credits:\n" + "\n".join(script["_credits"])) if script.get("_credits") else ""
+    series = script.get("series_tag", "")
+    q = script.get("question", "")
+    ask = f"\n\n👇 {q}" if q else ""
+    yt_title = script["title"]
+    if series and len(yt_title) + len(series) + 3 <= 90:
+        yt_title = f"{yt_title} | {series}"
     return {
         "title": script["title"],
         "created": dt.datetime.now().isoformat(timespec="seconds"),
         "source": script.get("source"),
+        "theme": script.get("theme", ""),
+        "hook": script.get("hook", ""),
+        "series": series,
+        "question": q,
         "youtube": {
-            "title": (script["title"][:90] + " #shorts"),
-            "description": f"{script['caption']}\n\n{tags} #shorts" + credits,
+            "title": (yt_title[:90] + " #shorts"),
+            "description": f"{script['caption']}{ask}\n\n{tags} #shorts" + credits,
             "tags": [h.lstrip("#") for h in script.get("hashtags", [])] + ["shorts", "facts"],
         },
         "tiktok": f"{script['caption']} {tags} #fyp #facts",
-        "instagram": f"{script['caption']}\n.\n.\n{tags} #reels #facts #didyouknow",
-        "facebook": f"{script['caption']} {tags}",
+        "instagram": (f"{series} 🔎 " if series else "") + f"{script['caption']}{ask}\n.\n.\n{tags} #reels #facts #didyouknow",
+        "facebook": (f"{series} 🔎 " if series else "") + f"{script['caption']}{ask}\n\n{tags}",
         "script": writer.spoken_text(script),
         "status": "review",
     }

@@ -52,6 +52,11 @@ def make():
     cfg = load_config()
     count = int(os.environ.get("VIDEOS_PER_RUN") or cfg.get("videos_per_run", 1))
     st = _state()
+    try:
+        from . import growth
+        cfg["_insights"] = growth.insights(st)
+    except Exception as e:
+        log(f"(insights skipped: {e})")
     diary.status("working")
     note("manager", f"Team, time to make {count} new video{'s' if count > 1 else ''}.", kind="start")
     for _ in range(count):
@@ -94,17 +99,27 @@ def make():
 
 # ------------------------------------------------------------------ publish
 def _youtube(path, post):
-    tok = os.environ.get("YOUTUBE_TOKEN_JSON", "").strip()
-    if not tok:
-        return None
     from . import youtube_upload
-    # GitHub secrets pasted with a stray line break or space would break the JSON - clean them
-    data = json.loads(tok, strict=False)
-    data = {k: ("".join(v.split()) if isinstance(v, str) else v) for k, v in data.items()}
-    with open(youtube_upload.TOKEN, "w") as f:
-        json.dump(data, f)
+    if not youtube_upload.prepare_token():
+        return None
     privacy = os.environ.get("YOUTUBE_PRIVACY") or load_config().get("youtube_privacy", "public")
-    return youtube_upload.upload(path, post, privacy)
+    url = youtube_upload.upload(path, post, privacy)
+    q = post.get("question")
+    if q:  # a question from the channel under the video gets people commenting
+        try:
+            youtube_upload.comment(youtube_upload.video_id(url), f"🤔 {q} Tell us below 👇")
+        except Exception as e:
+            log(f"  (YouTube comment skipped: {str(e)[:120]})")
+    return url
+
+
+def _record(item, status, results):
+    """One history line per video - the growth team reads these to learn what works."""
+    p = item["post"]
+    return {"title": p.get("title"), "status": status, "links": results,
+            "created": p.get("created") or dt.datetime.utcnow().isoformat(timespec="seconds"),
+            "theme": p.get("theme", ""), "hook": p.get("hook", ""), "series": p.get("series", ""),
+            "file_id": item.get("file_id")}
 
 
 def publish(item, local_path=None):
@@ -151,6 +166,7 @@ def _dispatch_make():
 HELP = ("🤖 Video Factory commands\n"
         "/make - make a new video now (arrives in ~10 min)\n"
         "/status - videos waiting for approval\n"
+        "/report - how your videos are doing (views, best video, followers)\n"
         "Tap ✅ under a video to post it, ❌ to throw it away.")
 
 
@@ -169,7 +185,7 @@ def _auto_post(st, short, local_path=None):
     tg.send_message(CHAT, f"🤖 Autopilot posted: {item['post'].get('title')}\n\n" + "\n".join(lines) +
                     "\n\n📱 TikTok caption 👇")
     tg.send_message(CHAT, item["post"].get("tiktok", ""))
-    st["history"].append({"title": item["post"].get("title"), "status": "auto-posted", "links": results})
+    st["history"].append(_record(item, "auto-posted", results))
     write_json(STATE_PATH, st)
 
 
@@ -190,7 +206,7 @@ def _retry_approved(st):
         st["pending"].pop(short)
         lines = [f"{k}: {v}" for k, v in results.items()] or ["No platforms connected yet."]
         tg.send_message(CHAT, f"🚀 (retry worked) {item['post'].get('title')}\n\n" + "\n".join(lines))
-        st["history"].append({"title": item["post"].get("title"), "status": "posted", "links": results})
+        st["history"].append(_record(item, "posted", results))
         write_json(STATE_PATH, st)
 
 
@@ -218,6 +234,9 @@ def poll(inline_make=False):
                         ok = _dispatch_make()
                     tg.send_message(CHAT, "🏭 Making a new video... it'll arrive here in about 10 minutes." if ok
                                     else "Couldn't start the factory - check the workflow permissions (guide part 2).")
+                elif text.startswith("/report"):
+                    st["report_now"] = True
+                    tg.send_message(CHAT, "📊 Gathering your numbers... the report arrives in about 15 minutes.")
                 elif text.startswith("/status"):
                     titles = [f"• {p['post'].get('title')}" for p in st["pending"].values()]
                     tg.send_message(CHAT, f"⏳ Waiting for approval: {len(titles)}\n" + "\n".join(titles[:20]))
@@ -263,7 +282,7 @@ def poll(inline_make=False):
                                 "Facebook": item["post"].get("facebook", "")}
                     for p in manual:
                         tg.send_message(CHAT, f"— {p} —\n{captions[p]}")
-                    st["history"].append({"title": item["post"].get("title"), "status": "posted", "links": results})
+                    st["history"].append(_record(item, "posted", results))
             st["history"] = st["history"][-300:]
         finally:
             write_json(STATE_PATH, st)
@@ -306,6 +325,7 @@ def tick():
     if not slot and not asked:
         write_json(STATE_PATH, st)
         log("No video due right now.")
+        _growth_jobs(cfg)
         return
     if slot:
         st["last_slot"] = slot  # mark first, so a later tick never makes a duplicate
@@ -314,5 +334,54 @@ def tick():
     make()
 
 
+def _growth_now(job):
+    """Manual run from GitHub (Run workflow > task: stats / weekly / report)."""
+    from . import growth
+    st = _state()
+    privacy = os.environ.get("YOUTUBE_PRIVACY") or load_config().get("youtube_privacy", "public")
+    growth.collect_stats(st)
+    if job == "weekly":
+        growth.compilation(st, CHAT, privacy)
+    elif job == "report":
+        growth.weekly_report(st, CHAT)
+    write_json(STATE_PATH, st)
+    diary.flush()
+
+
+def _growth_jobs(cfg):
+    """Daily stats, Sunday long video and Sunday report - run in quiet ticks only."""
+    from zoneinfo import ZoneInfo
+    from . import growth
+    now = dt.datetime.now(ZoneInfo(cfg.get("timezone", "America/Edmonton")))
+    today, week = now.strftime("%Y-%m-%d"), now.strftime("%G-W%V")
+    st = _state()
+    jobs = []
+    if st.get("stats_day") != today and now.hour >= 5:
+        jobs.append(("stats_day", today, lambda: growth.collect_stats(st)))
+    if now.weekday() == 6 and now.hour >= 14 and st.get("compile_week") != week and cfg.get("weekly_video", True):
+        privacy = os.environ.get("YOUTUBE_PRIVACY") or cfg.get("youtube_privacy", "public")
+        jobs.append(("compile_week", week, lambda: growth.compilation(st, CHAT, privacy)))
+    if st.get("report_now"):
+        st.pop("report_now")
+        if st.get("stats_day") == today:  # numbers not fresh yet today? get them first
+            jobs.append(("stats_at_report", today, lambda: growth.collect_stats(st)))
+        sunday_evening = now.weekday() == 6 and now.hour >= 19
+        jobs.append(("report_week" if sunday_evening else "last_report", week if sunday_evening else today,
+                     lambda: growth.weekly_report(st, CHAT)))
+    elif now.weekday() == 6 and now.hour >= 19 and st.get("report_week") != week:
+        jobs.append(("report_week", week, lambda: growth.weekly_report(st, CHAT)))
+    for key, value, fn in jobs:
+        st[key] = value  # mark first, so a failing job is not retried every 15 minutes
+        write_json(STATE_PATH, st)
+        try:
+            fn()
+        except Exception:
+            log(f"{key} job failed:\n{traceback.format_exc()}")
+        write_json(STATE_PATH, st)
+    if jobs:
+        diary.flush()
+
+
 if __name__ == "__main__":
-    {"make": make, "poll": poll, "tick": tick}[sys.argv[1]]()
+    {"make": make, "poll": poll, "tick": tick, "stats": lambda: _growth_now("stats"),
+     "weekly": lambda: _growth_now("weekly"), "report": lambda: _growth_now("report")}[sys.argv[1]]()
