@@ -200,7 +200,7 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-07T16:58:07"
+      "stats_at": "2026-11-07T17:22:13"
     },
     {
       "title": "The Deepest Hole Ever Dug",
@@ -219,7 +219,7 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-07T16:58:07"
+      "stats_at": "2026-11-07T17:22:13"
     },
     {
       "title": "There's a Giant Alcohol Cloud in Space",
@@ -239,7 +239,7 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-07T16:58:07"
+      "stats_at": "2026-11-07T17:22:13"
     },
     {
       "title": "The Bird That Uses Quantum Physics to Fly",
@@ -255,7 +255,7 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-07T16:58:07"
+      "stats_at": "2026-11-07T17:22:13"
     },
     {
       "title": "Nature Invented Gears Millions of Years Before Us",
@@ -271,7 +271,7 @@
           "comments": 1
         }
       },
-      "stats_at": "2026-11-07T16:58:07"
+      "stats_at": "2026-11-07T17:22:13"
     },
     {
       "title": "The Loneliest Whale in the World",
@@ -291,7 +291,7 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-07T16:58:07"
+      "stats_at": "2026-11-07T17:22:13"
     },
     {
       "title": "The Rocks That Breathe Oxygen in Total Darkness",
@@ -320,12 +320,16 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-07T16:58:07"
+      "stats_at": "2026-11-07T17:22:13"
     }
   ],
   "last_slot": "2026-11-07 07:37",
   "stats_day": "2026-11-07",
   "stats_problems": {
-    "YouTube": "<HttpError 403 when requesting https://youtube.googleapis.com/youtube/v3/videos?part=statistics&id=5SLElKenTVg%2Cs0yUREOocHM%2C58cS2AuYNLU%2C-WmcpbIW0ss%2CKS7dr"
+    "YouTube": "('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})"
+  },
+  "followers": {
+    "Instagram": 0,
+    "Facebook": 0
   }
 }
