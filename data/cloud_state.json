@@ -189,7 +189,18 @@
       "links": {
         "Instagram": "https://www.instagram.com/reel/DfbqssHGYWp/",
         "Facebook": "https://www.facebook.com/reel/4650302395204922"
-      }
+      },
+      "stats": {
+        "Instagram": {
+          "likes": 3,
+          "comments": 0
+        },
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-07T16:58:07"
     },
     {
       "title": "The Deepest Hole Ever Dug",
@@ -197,7 +208,18 @@
       "links": {
         "Instagram": "https://www.instagram.com/reel/DfbvPThndBh/",
         "Facebook": "https://www.facebook.com/reel/2147568706153963"
-      }
+      },
+      "stats": {
+        "Instagram": {
+          "likes": 1,
+          "comments": 0
+        },
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-07T16:58:07"
     },
     {
       "title": "There's a Giant Alcohol Cloud in Space",
@@ -206,7 +228,18 @@
         "YouTube": "FAILED: Invalid control character at: line 1 column 253 (char 252)",
         "Instagram": "https://www.instagram.com/reel/DfbzVfHFxqn/",
         "Facebook": "https://www.facebook.com/reel/4593824717559354"
-      }
+      },
+      "stats": {
+        "Instagram": {
+          "likes": 1,
+          "comments": 0
+        },
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-07T16:58:07"
     },
     {
       "title": "The Bird That Uses Quantum Physics to Fly",
@@ -215,7 +248,14 @@
         "YouTube": "https://youtube.com/shorts/5SLElKenTVg",
         "Instagram": "FAILED: Meta API error: {'debug_info': {'retriable': False, 'type': 'ProcessingFailedError', 'message': 'Request processing failed'}}",
         "Facebook": "https://www.facebook.com/reel/28799171276422048"
-      }
+      },
+      "stats": {
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-07T16:58:07"
     },
     {
       "title": "Nature Invented Gears Millions of Years Before Us",
@@ -224,7 +264,14 @@
         "YouTube": "https://youtube.com/shorts/s0yUREOocHM",
         "Instagram": "FAILED: Meta API error: {'debug_info': {'retriable': False, 'type': 'ProcessingFailedError', 'message': 'Request processing failed'}}",
         "Facebook": "https://www.facebook.com/reel/2388726818326814"
-      }
+      },
+      "stats": {
+        "Facebook": {
+          "likes": 0,
+          "comments": 1
+        }
+      },
+      "stats_at": "2026-11-07T16:58:07"
     },
     {
       "title": "The Loneliest Whale in the World",
@@ -233,7 +280,18 @@
         "YouTube": "https://youtube.com/shorts/58cS2AuYNLU",
         "Instagram": "https://www.instagram.com/reel/DfcD0VGgVzQ/",
         "Facebook": "https://www.facebook.com/reel/1576277314528631"
-      }
+      },
+      "stats": {
+        "Instagram": {
+          "likes": 2,
+          "comments": 0
+        },
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-07T16:58:07"
     },
     {
       "title": "The Rocks That Breathe Oxygen in Total Darkness",
@@ -251,8 +309,23 @@
         "YouTube": "https://youtube.com/shorts/KS7drrMFXKo",
         "Facebook": "https://www.facebook.com/reel/2073874069943924",
         "Instagram": "https://www.instagram.com/reel/Dfcn6IjE0pl/"
-      }
+      },
+      "stats": {
+        "Instagram": {
+          "likes": 0,
+          "comments": 0
+        },
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-07T16:58:07"
     }
   ],
-  "last_slot": "2026-11-07 07:37"
+  "last_slot": "2026-11-07 07:37",
+  "stats_day": "2026-11-07",
+  "stats_problems": {
+    "YouTube": "<HttpError 403 when requesting https://youtube.googleapis.com/youtube/v3/videos?part=statistics&id=5SLElKenTVg%2Cs0yUREOocHM%2C58cS2AuYNLU%2C-WmcpbIW0ss%2CKS7dr"
+  }
 }
