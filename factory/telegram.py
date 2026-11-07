@@ -11,19 +11,19 @@ def _token():
     return os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
 
 
-def call(method, files=None, timeout=180, **params):
+def call(method, files=None, http_timeout=180, **params):
     if files is None:  # text-only calls are safe to repeat
         from .common import retry
-        return retry(lambda: _call(method, None, timeout, **params), tries=4, wait=5, what=f"Telegram {method}")
-    return _call(method, files, timeout, **params)
+        return retry(lambda: _call(method, None, http_timeout, **params), tries=4, wait=5, what=f"Telegram {method}")
+    return _call(method, files, http_timeout, **params)
 
 
-def _call(method, files=None, timeout=180, **params):
+def _call(method, files=None, http_timeout=180, **params):
     url = f"{API}/bot{_token()}/{method}"
     for k, v in list(params.items()):
         if isinstance(v, (dict, list)):
             params[k] = json.dumps(v)
-    r = requests.post(url, data=params, files=files, timeout=(30, timeout))
+    r = requests.post(url, data=params, files=files, timeout=(30, http_timeout))
     data = r.json()
     if not data.get("ok"):
         raise RuntimeError(f"Telegram {method} failed: {data.get('description')}")
@@ -43,7 +43,7 @@ def send_video(chat_id, path, caption, buttons=None):
         params["reply_markup"] = {"inline_keyboard": buttons}
     with open(path, "rb") as f:
         # Telegram can take several minutes to process a video before it answers
-        return call("sendVideo", files={"video": ("video.mp4", f, "video/mp4")}, timeout=900, **params)
+        return call("sendVideo", files={"video": ("video.mp4", f, "video/mp4")}, http_timeout=900, **params)
 
 
 def get_updates(offset):
