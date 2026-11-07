@@ -23,7 +23,7 @@ def _check(r):
     return data
 
 
-def _instagram_once(video_path, caption, ig_user_id, token):
+def instagram_reel(video_path, caption, ig_user_id, token):
     size = os.path.getsize(video_path)
     c = _check(requests.post(f"{G}/{ig_user_id}/media", data={
         "media_type": "REELS", "upload_type": "resumable", "caption": caption[:2200],
@@ -59,17 +59,3 @@ def facebook_reel(video_path, description, page_id, token):
     url = f"https://www.facebook.com/reel/{vid}"
     log(f"  posted to Facebook: {url}")
     return url
-
-
-def instagram_reel(video_path, caption, ig_user_id, token, tries=3):
-    """Instagram sometimes fails to process a video on its side ("ProcessingFailedError").
-    A fresh upload usually works, so try up to 3 times before giving up."""
-    last = None
-    for i in range(tries):
-        try:
-            return _instagram_once(video_path, caption, ig_user_id, token)
-        except Exception as e:
-            last = e
-            log(f"  Instagram attempt {i + 1}/{tries} failed: {str(e)[:160]}")
-            time.sleep(20 * (i + 1))
-    raise last
