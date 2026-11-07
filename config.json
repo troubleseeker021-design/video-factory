@@ -3,8 +3,9 @@
 
   "channel_name": "@HiddenFactsHQ",
   "niche": "mind-blowing facts about science, space, history, animals and the human body",
-  "videos_per_run": 3,
+  "videos_per_run": 1,
   "auto_post": true,
+  "auto_post_help": "true = post every video automatically (no Approve tap). false = wait for your Approve in Telegram.",
 
   "voice": "en-US-AndrewMultilingualNeural",
   "voice_options_help": "Curious storyteller voices: en-US-AndrewMultilingualNeural (default), en-US-BrianMultilingualNeural, en-US-ChristopherNeural, en-US-GuyNeural, en-US-AriaNeural, en-US-JennyNeural, en-GB-RyanNeural, en-AU-WilliamNeural",
@@ -13,7 +14,7 @@
   "photo_3d": true,
 
   "gemini_api_key": "",
-  "gemini_help": "OPTIONAL. Free key from https://aistudio.google.com/apikey. With it, AI writes brand-new scripts forever. Without it, the factory uses the built-in script bank.",
+  "gemini_help": "Leave empty here. Your key is stored safely in GitHub Secrets (GEMINI_API_KEY).",
 
   "pexels_api_key": "",
   "pexels_help": "OPTIONAL. Free key from https://www.pexels.com/api/. With it, videos use real stock footage. Without it, animated backgrounds are used.",
@@ -27,5 +28,5 @@
 
   "youtube_upload_enabled": false,
   "youtube_privacy": "private",
-  "youtube_help": "Set to true after you follow 'Step 4' in START HERE.txt. 'private' lets you double-check on YouTube first. Change to 'public' when you trust it."
+  "youtube_help": "Not used in the cloud version yet."
 }
