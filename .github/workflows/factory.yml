@@ -1,16 +1,16 @@
 name: factory
 
 # Your 24/7 Faceless Video Factory.
-#  - 3 times a day it makes a new video and sends it to your Telegram for approval
-#  - every 15 minutes it checks Telegram for your Approve / Reject taps and posts approved videos
+#  Every 15 minutes a "tick" runs: it reads your Telegram commands and, at 7:37 AM, 11:37 AM
+#  and 5:37 PM Edmonton time, makes a new video (a missed time is caught up to 3 hours late).
+#  Ticks come from GitHub's own timer below AND from the backup timer at cron-job.org.
 on:
   schedule:
-    - cron: "37 0,14,18 * * *"    # make videos: starts ~7:37 AM, 11:37 AM, 5:37 PM Edmonton (winter) -> posts ~8 AM, 12 PM, 6 PM
-    - cron: "*/15 * * * *"        # check Telegram for approvals
+    - cron: "*/15 * * * *"
   workflow_dispatch:
     inputs:
       task:
-        description: "make or poll"
+        description: "make, poll or tick"
         default: "make"
         required: true
 
@@ -47,8 +47,7 @@ jobs:
         id: task
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then echo "t=${{ github.event.inputs.task }}" >> $GITHUB_OUTPUT;
-          elif [ "${{ github.event.schedule }}" = "*/15 * * * *" ]; then echo "t=poll" >> $GITHUB_OUTPUT;
-          else echo "t=make" >> $GITHUB_OUTPUT; fi
+          else echo "t=tick" >> $GITHUB_OUTPUT; fi
 
       - name: Run factory (${{ steps.task.outputs.t }})
         env:
