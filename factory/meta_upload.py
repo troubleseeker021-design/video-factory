@@ -23,7 +23,7 @@ def _check(r):
     return data
 
 
-def instagram_reel(video_path, caption, ig_user_id, token):
+def _instagram_once(video_path, caption, ig_user_id, token):
     size = os.path.getsize(video_path)
     c = _check(requests.post(f"{G}/{ig_user_id}/media", data={
         "media_type": "REELS", "upload_type": "resumable", "caption": caption[:2200],
@@ -59,3 +59,58 @@ def facebook_reel(video_path, description, page_id, token):
     url = f"https://www.facebook.com/reel/{vid}"
     log(f"  posted to Facebook: {url}")
     return url
+
+
+def _wait_and_publish(cid, ig_user_id, token):
+    for _ in range(60):
+        st = _check(requests.get(f"{G}/{cid}", params={"fields": "status_code,status", "access_token": token}, timeout=30))
+        if st.get("status_code") == "FINISHED":
+            break
+        if st.get("status_code") == "ERROR":
+            raise RuntimeError(f"Instagram processing failed: {st.get('status')}")
+        time.sleep(5)
+    pub = _check(requests.post(f"{G}/{ig_user_id}/media_publish", data={"creation_id": cid, "access_token": token}, timeout=60))
+    link = _check(requests.get(f"{G}/{pub['id']}", params={"fields": "permalink", "access_token": token}, timeout=30))
+    url = link.get("permalink", f"instagram media {pub['id']}")
+    log(f"  posted to Instagram: {url}")
+    return url
+
+
+def facebook_video_source(fb_url, token):
+    """The public MP4 link of a video already posted to the Facebook Page (Meta's own CDN)."""
+    vid = fb_url.rstrip("/").split("/")[-1]
+    for _ in range(36):  # Facebook needs a little time to process the reel
+        d = requests.get(f"{G}/{vid}", params={"fields": "source", "access_token": token}, timeout=30).json()
+        if d.get("source"):
+            return d["source"]
+        time.sleep(5)
+    raise RuntimeError("Facebook video link not ready")
+
+
+def _instagram_from_url(video_url, caption, ig_user_id, token):
+    c = _check(requests.post(f"{G}/{ig_user_id}/media", data={
+        "media_type": "REELS", "video_url": video_url, "caption": caption[:2200],
+        "share_to_feed": "true", "access_token": token}, timeout=60))
+    return _wait_and_publish(c["id"], ig_user_id, token)
+
+
+def instagram_reel(video_path, caption, ig_user_id, token, tries=2, fallback_url=None):
+    """Upload a Reel. Instagram's direct upload sometimes fails with "ProcessingFailedError";
+    then we hand Instagram the same video from Facebook's servers instead (fallback_url)."""
+    last = None
+    for i in range(tries):
+        try:
+            return _instagram_once(video_path, caption, ig_user_id, token)
+        except Exception as e:
+            last = e
+            log(f"  Instagram direct upload {i + 1}/{tries} failed: {str(e)[:160]}")
+            time.sleep(15)
+    if fallback_url:
+        try:
+            url = fallback_url() if callable(fallback_url) else fallback_url
+            log("  trying Instagram via the Facebook copy of the video")
+            return _instagram_from_url(url, caption, ig_user_id, token)
+        except Exception as e:
+            log(f"  Instagram via Facebook copy failed: {str(e)[:160]}")
+            last = e
+    raise last
