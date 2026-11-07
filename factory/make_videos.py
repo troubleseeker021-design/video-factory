@@ -11,6 +11,7 @@ import traceback
 
 from .common import REVIEW, load_config, log, write_json
 from . import writer, voice, music, media, render
+from .diary import note
 
 
 def build_post_pack(script, cfg):
@@ -40,6 +41,7 @@ def make_one(cfg, no_voice=False):
     work = os.path.join(REVIEW, vid_id)
     os.makedirs(work, exist_ok=True)
     log(f"Making: {script['title']}  [{script.get('source')}]")
+    note("writer", f"Found a great topic: \"{script['title']}\"", hook=script.get("hook"))
     seed = random.randint(0, 10_000_000)
     text = writer.spoken_text(script)
     try:
@@ -49,11 +51,20 @@ def make_one(cfg, no_voice=False):
         else:
             wav, vdur, words = voice.narrate(text, cfg, work)
             duration = vdur + 0.8
+            note("narrator", f"Recorded the voice-over: {len(words)} words, {vdur:.0f} seconds")
         mus = music.pick_music(duration, seed, work)
+        note("composer", "Composed an original music track for it")
         scenes = render.plan_scenes(script, words, duration, random.Random(seed))
         media.plan(script, scenes, cfg, seed)
+        srcs = [sc["media"].get("credit", "") for sc in scenes if sc.get("media")]
+        clips = sum(1 for sc in scenes if sc.get("media") and sc["media"]["type"] == "clip")
+        note("researcher", f"Found {len(srcs) - clips} photos and {clips} video clips "
+                           f"({', '.join(sorted({c.split(' · ')[-1].replace('Video: ', '') for c in srcs if c})) or 'own graphics'})")
+        note("sound", "Prepared whooshes, pops, ticks and a bell")
+        note("editor", f"Editing {len(scenes)} scenes with captions and 3D graphics...")
         render.render(script, scenes, words, duration, wav, mus, os.path.join(work, "video.mp4"), cfg, seed,
                       cover_path=os.path.join(work, "cover.jpg"), workdir=work)
+        note("editor", f"Finished! {duration:.0f}-second video rendered", kind="done")
         credits = sorted({sc["media"]["credit"] for sc in scenes if sc.get("media") and sc["media"].get("credit")})
         script["_credits"] = credits
         write_json(os.path.join(work, "post.json"), build_post_pack(script, cfg))
@@ -64,6 +75,7 @@ def make_one(cfg, no_voice=False):
         return vid_id
     except Exception:
         log("  FAILED:\n" + traceback.format_exc())
+        note("editor", "Something broke while making this one - starting over", kind="error")
         shutil.rmtree(work, ignore_errors=True)
         return None
 

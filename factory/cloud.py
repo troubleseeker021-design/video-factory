@@ -17,6 +17,8 @@ import traceback
 import requests
 
 from . import telegram as tg
+from . import diary
+from .diary import note
 from .common import DATA, REVIEW, load_config, log, read_json, write_json
 
 STATE_PATH = os.path.join(DATA, "cloud_state.json")
@@ -50,6 +52,8 @@ def make():
     cfg = load_config()
     count = int(os.environ.get("VIDEOS_PER_RUN") or cfg.get("videos_per_run", 1))
     st = _state()
+    diary.status("working")
+    note("manager", f"Team, time to make {count} new video{'s' if count > 1 else ''}.", kind="start")
     for _ in range(count):
         vid = None
         for attempt in range(2):  # one automatic second try with a different topic
@@ -78,9 +82,14 @@ def make():
                                 "message_id": msg["message_id"], "created": dt.datetime.utcnow().isoformat()}
         write_json(STATE_PATH, st)
         log(f"Sent to Telegram: {post.get('title')}")
+        diary.status("working", post.get("title", ""))
+        note("manager", "Sent the finished video to the boss on Telegram")
         if cfg.get("auto_post"):
             _auto_post(st, short, os.path.join(d, "video.mp4"))
         shutil.rmtree(d, ignore_errors=True)  # the video now lives safely in your Telegram chat
+    diary.status("idle")
+    note("manager", "Great work everyone. Coffee break until the next video!", kind="idle")
+    diary.flush()
 
 
 # ------------------------------------------------------------------ publish
@@ -116,14 +125,17 @@ def publish(item, local_path=None):
             if str(results.get("Facebook", "")).startswith("http") else None)
          if "Instagram" in _platforms() else None),
     ]
+    note("publisher", f"Uploading \"{post.get('title', '')}\" to {', '.join(_platforms()) or 'no platforms'}...")
     for name, fn in jobs:
         try:
             url = fn()
             if url:
                 results[name] = url
+                note("publisher", f"Posted on {name}!", kind="done", platform=name, link=url)
         except Exception as e:
             log(f"{name} upload failed:\n{traceback.format_exc()}")
             results[name] = f"FAILED: {str(e)[:200]}"
+            note("publisher", f"{name} said no this time: {str(e)[:80]}", kind="error", platform=name)
     os.remove(path)
     return results
 
@@ -252,6 +264,8 @@ def poll():
         finally:
             write_json(STATE_PATH, st)
     write_json(STATE_PATH, st)
+    if updates:
+        diary.flush()
     log(f"Processed {len(updates)} Telegram update(s). Pending approvals: {len(st['pending'])}")
 
 
