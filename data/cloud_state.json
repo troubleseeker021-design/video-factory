@@ -1,5 +1,5 @@
 {
-  "offset": 41248572,
+  "offset": 41248573,
   "pending": {
     "eef0e5718a": {
       "vid": "20261107-043603-point-nemo",
@@ -335,6 +335,20 @@
       "hook": "Two miles beneath the sea, an animal built itself real iron armor.",
       "series": "Animal Oddities #1",
       "file_id": "BAACAgEAAxkDAAM4au9lEv6yw1W-d7srNYFn9R5j4b0AAhwHAAIQJHhHIUzSqEEaxXY9BA"
+    },
+    {
+      "title": "A Man Knocked Down a Wall and Found a City",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "FAILED: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})",
+        "Facebook": "https://www.facebook.com/reel/29294215413595530",
+        "Instagram": "https://www.instagram.com/reel/DfdV67gDizH/"
+      },
+      "created": "2026-11-07T23:17:13",
+      "theme": "history",
+      "hook": "A man knocked down a wall in his house... and found an entire underground city.",
+      "series": "Lost History #1",
+      "file_id": "BAACAgEAAxkDAAM9au-xfAmsl6PvZCMHkfShGXDUv1oAAgWZAALw-oBHiVm-9AABDZ8-PQQ"
     }
   ],
   "last_slot": "2026-11-07 11:37",
