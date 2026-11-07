@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       task:
-        description: "make, poll or tick"
+        description: "make, poll, tick, stats, weekly or report"
         default: "make"
         required: true
 
@@ -25,7 +25,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
 
