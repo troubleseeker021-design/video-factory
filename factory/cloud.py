@@ -51,7 +51,11 @@ def make():
     count = int(os.environ.get("VIDEOS_PER_RUN") or cfg.get("videos_per_run", 1))
     st = _state()
     for _ in range(count):
-        vid = make_videos.make_one(cfg)
+        vid = None
+        for attempt in range(2):  # one automatic second try with a different topic
+            vid = make_videos.make_one(cfg)
+            if vid:
+                break
         if not vid:
             tg.send_message(CHAT, "⚠️ A video failed to render. Check the GitHub Actions log.")
             continue
@@ -63,7 +67,13 @@ def make():
                f"Approve to post to: {where}")
         buttons = [[{"text": "✅ Approve & post", "callback_data": f"ok:{short}"},
                     {"text": "❌ Reject", "callback_data": f"no:{short}"}]]
-        msg = tg.send_video(CHAT, os.path.join(d, "video.mp4"), cap, buttons)
+        try:
+            msg = tg.send_video(CHAT, os.path.join(d, "video.mp4"), cap, buttons)
+        except Exception as e:
+            log(f"Sending to Telegram failed: {e}")
+            tg.send_message(CHAT, f"⚠️ '{post.get('title', vid)}' may have arrived without working buttons "
+                                  "(Telegram was slow). Ignore that copy - send /make for a new one.")
+            continue
         st["pending"][short] = {"vid": vid, "post": post, "file_id": msg["video"]["file_id"],
                                 "message_id": msg["message_id"], "created": dt.datetime.utcnow().isoformat()}
         write_json(STATE_PATH, st)
@@ -121,8 +131,30 @@ HELP = ("🤖 Video Factory commands\n"
         "Tap ✅ under a video to post it, ❌ to throw it away.")
 
 
+def _retry_approved(st):
+    """Approved videos whose posting failed earlier get another try (up to 6 tries, ~1.5 h)."""
+    for short, item in list(st["pending"].items()):
+        if not item.get("approved"):
+            continue
+        try:
+            results = publish(item)
+        except Exception as e:
+            item["tries"] = item.get("tries", 0) + 1
+            if item["tries"] >= 6:
+                st["pending"].pop(short)
+                tg.send_message(CHAT, f"❌ Gave up posting '{item['post'].get('title')}' after 6 tries: {str(e)[:150]}")
+            write_json(STATE_PATH, st)
+            continue
+        st["pending"].pop(short)
+        lines = [f"{k}: {v}" for k, v in results.items()] or ["No platforms connected yet."]
+        tg.send_message(CHAT, f"🚀 (retry worked) {item['post'].get('title')}\n\n" + "\n".join(lines))
+        st["history"].append({"title": item["post"].get("title"), "status": "posted", "links": results})
+        write_json(STATE_PATH, st)
+
+
 def poll():
     st = _state()
+    _retry_approved(st)
     updates = tg.get_updates(st.get("offset", 0))
     for u in updates:
         st["offset"] = u["update_id"] + 1
@@ -162,7 +194,16 @@ def poll():
                     st["history"].append({"title": item["post"].get("title"), "status": "rejected"})
                 else:
                     tg.answer_callback(cb["id"], "Posting... 🚀")
-                    results = publish(item)
+                    try:
+                        results = publish(item)
+                    except Exception as e:
+                        item["approved"] = True
+                        item["tries"] = item.get("tries", 0) + 1
+                        st["pending"][short] = item  # keep it so the next check retries
+                        tg.send_message(CHAT, f"⏳ Couldn't post '{item['post'].get('title')}' yet ({str(e)[:120]}). "
+                                              "I'll retry automatically in 15 minutes.")
+                        log("publish failed:\n" + traceback.format_exc())
+                        continue
                     lines = [f"{k}: {v}" for k, v in results.items()] or ["No platforms connected yet."]
                     manual = [p for p in ("TikTok", "YouTube", "Instagram", "Facebook")
                               if p == "TikTok" or p not in results or str(results[p]).startswith("FAILED")]

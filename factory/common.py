@@ -73,3 +73,19 @@ def write_json(path, obj):
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(obj, f, indent=2, ensure_ascii=False)
     os.replace(tmp, path)
+
+
+def retry(fn, tries=3, wait=5, what="step"):
+    """Run fn(); on any error wait and try again (wait doubles each time)."""
+    import time
+    last = None
+    for i in range(tries):
+        try:
+            return fn()
+        except Exception as e:
+            last = e
+            if i < tries - 1:
+                log(f"  {what} failed ({e}); retrying in {wait}s ({i + 2}/{tries})")
+                time.sleep(wait)
+                wait *= 2
+    raise last

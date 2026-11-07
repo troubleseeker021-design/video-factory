@@ -6,7 +6,7 @@ import os
 import subprocess
 import wave
 
-from .common import ffmpeg_exe, log
+from .common import ffmpeg_exe, log, retry
 
 
 def _split_sentence(text, start, end):
@@ -59,7 +59,8 @@ def narrate(text, cfg, workdir):
     words, last_err = None, None
     for v in dict.fromkeys(voices):
         try:
-            words = asyncio.run(_tts(text, v, cfg.get("voice_speed", "+4%"), cfg.get("voice_pitch", "-2Hz"), mp3))
+            words = retry(lambda: asyncio.run(_tts(text, v, cfg.get("voice_speed", "+4%"), cfg.get("voice_pitch", "-2Hz"), mp3)),
+                          tries=3, wait=10, what=f"voice '{v}'")
             if os.path.getsize(mp3) > 1000:
                 break
         except Exception as e:

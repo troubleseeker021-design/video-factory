@@ -58,7 +58,7 @@ def _gemini(cfg, recent_titles):
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
         try:
             req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
-            with urllib.request.urlopen(req, timeout=60) as r:
+            with urllib.request.urlopen(req, timeout=180) as r:
                 resp = json.loads(r.read())
             text = resp["candidates"][0]["content"]["parts"][0]["text"]
             text = text.strip().removeprefix("```json").removesuffix("```").strip()
@@ -66,7 +66,7 @@ def _gemini(cfg, recent_titles):
             if s.get("hook") and s.get("body"):
                 s["source"] = f"gemini:{model}"
                 return s
-        except (urllib.error.URLError, KeyError, ValueError, IndexError) as e:
+        except Exception as e:  # timeouts, network hiccups, bad replies -> try next model, then the script bank
             log(f"Gemini ({model}) failed: {e}")
     return None
 

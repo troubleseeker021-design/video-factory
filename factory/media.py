@@ -14,7 +14,7 @@ import re
 import urllib.parse
 import urllib.request
 
-from .common import ASSETS, log
+from .common import ASSETS, log, retry
 
 UA = "FacelessVideoFactory/2.0 (personal hobby project; python urllib)"
 CACHE = os.path.join(ASSETS, "footage", "_cache")
@@ -23,6 +23,10 @@ BAD_NAME = re.compile(r"map|diagram|logo|icon|flag|chart|graph|locator|range|dis
 
 
 def _get_json(url, headers=None):
+    return retry(lambda: _get_json_once(url, headers), tries=3, wait=3, what="image search")
+
+
+def _get_json_once(url, headers=None):
     req = urllib.request.Request(url, headers={"User-Agent": UA, **(headers or {})})
     with urllib.request.urlopen(req, timeout=25) as r:
         return json.loads(r.read())
