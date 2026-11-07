@@ -4,6 +4,7 @@
   "channel_name": "@HiddenFactsHQ",
   "niche": "mind-blowing facts about science, space, history, animals and the human body",
   "videos_per_run": 3,
+  "auto_post": true,
 
   "voice": "en-US-AndrewMultilingualNeural",
   "voice_options_help": "Curious storyteller voices: en-US-AndrewMultilingualNeural (default), en-US-BrianMultilingualNeural, en-US-ChristopherNeural, en-US-GuyNeural, en-US-AriaNeural, en-US-JennyNeural, en-GB-RyanNeural, en-AU-WilliamNeural",
