@@ -1,5 +1,5 @@
 {
-  "offset": 41248569,
+  "offset": 41248571,
   "pending": {
     "eef0e5718a": {
       "vid": "20261107-043603-point-nemo",
@@ -234,6 +234,16 @@
         "Instagram": "https://www.instagram.com/reel/DfcD0VGgVzQ/",
         "Facebook": "https://www.facebook.com/reel/1576277314528631"
       }
+    },
+    {
+      "title": "The Rocks That Breathe Oxygen in Total Darkness",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/-WmcpbIW0ss",
+        "Facebook": "FAILED: Meta API error: {'message': 'Cannot call API for app 2940747562966108 on behalf of user 122104341225535201', 'type': 'OAuthException', 'code': 200, 'fbtrace_id': 'A1jtOCwyfe548JETjzJkxBS'}",
+        "Instagram": "FAILED: Meta API error: {'message': 'Cannot call API for app 2940747562966108 on behalf of user 122104341225535201', 'type': 'OAuthException', 'code': 200, 'fbtrace_id': 'Avgx7On2aH8cpHNrOOeLb__'}"
+      }
     }
-  ]
+  ],
+  "last_slot": "2026-11-07 07:37"
 }
