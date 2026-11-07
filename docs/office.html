@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hidden Facts HQ · Live Office</title>
+<link rel="icon" href="favicon.png">
+<style>
+:root{--bg:#0b0d1f;--panel:#141833;--line:#262b55;--text:#e8eaf6;--mute:#9aa0c8;--yel:#ffd60a;--ok:#2ecc71;--bad:#ff5c5c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,Segoe UI,sans-serif}
+header{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--line)}
+header img{width:36px;height:36px;border-radius:50%}
+header b{font-size:18px;letter-spacing:.4px}header b span{color:var(--yel)}
+header .live{margin-left:auto;font-size:13px;color:var(--mute);display:flex;align-items:center;gap:8px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--mute)}.dot.on{background:var(--ok);box-shadow:0 0 8px var(--ok)}
+.wrap{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;padding:16px;max-width:1400px;margin:0 auto}
+.stage{align-self:start;background:#1a1d36;border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative}
+canvas{display:block;width:100%;height:auto;image-rendering:pixelated}
+.side{display:flex;flex-direction:column;gap:14px;min-width:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
+.card h3{margin:0 0 8px;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--mute)}
+.status{font-size:17px;font-weight:700}.status small{display:block;font-weight:400;color:var(--mute);font-size:13px;margin-top:4px}
+.feed{max-height:330px;overflow:auto;display:flex;flex-direction:column;gap:8px}
+.ev{display:flex;gap:8px;font-size:13.5px}.ev .who{font-weight:700;white-space:nowrap}.ev time{color:var(--mute);font-size:12px;white-space:nowrap}
+.ev.error .txt{color:var(--bad)}.ev.done .txt{color:#b9f5cf}
+.vid{padding:8px 0;border-top:1px solid var(--line);font-size:13.5px}.vid:first-child{border-top:0}
+.vid .t{font-weight:600}.badges{display:flex;gap:6px;margin-top:4px;flex-wrap:wrap}
+.badge{font-size:12px;padding:2px 8px;border-radius:999px;background:#1f2550;color:var(--text);text-decoration:none}
+.badge.ok{background:#14361f;color:#8ff0b0}.badge.bad{background:#3a1518;color:#ff9b9b}
+button{background:#1f2550;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:7px 12px;font-weight:600;cursor:pointer}
+button:hover{border-color:var(--yel)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12.5px;color:var(--mute);margin-top:8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+@media(max-width:900px){.wrap{grid-template-columns:1fr;padding:10px}.feed{max-height:240px}}
+</style>
+</head>
+<body>
+<header><img src="logo.png" alt=""><b>HIDDEN FACTS <span>HQ</span> · LIVE OFFICE</b>
+<div class="live"><span class="dot" id="dot"></span><span id="liveTxt">connecting…</span></div></header>
+<div class="wrap">
+  <div class="stage"><canvas id="c" width="960" height="600"></canvas></div>
+  <div class="side">
+    <div class="card"><h3>Right now</h3><div class="status" id="status">Loading the office…<small></small></div>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button id="replay">▶ Replay last video</button></div>
+      <div class="legend" id="legend"></div></div>
+    <div class="card"><h3>Office chat</h3><div class="feed" id="feed"></div></div>
+    <div class="card"><h3>Latest videos</h3><div id="videos"><span style="color:var(--mute)">Loading…</span></div></div>
+  </div>
+</div>
+<script>
+const REPO = "troubleseeker021-design/video-factory";
+const LIVE = () => `https://raw.githubusercontent.com/${REPO}/live/live.json?t=${Date.now()}`;
+const STATE = () => `https://raw.githubusercontent.com/${REPO}/main/data/cloud_state.json?t=${Date.now()}`;
+const RUNS_UTC = [[0,37],[14,37],[18,37]]; // when the factory starts (UTC)
+const DEMO = new URLSearchParams(location.search).has("demo");
+
+// ---------------- office layout (logical 960x600) ----------------
+const W=960,H=600, HALL=312;
+const ROOMS=[
+ {name:"Manager",x:0,y:0,w:220,h:210,floor:"#3b3350"},
+ {name:"Writers' Room",x:220,y:0,w:250,h:210,floor:"#3d4a3a"},
+ {name:"Recording Booth",x:470,y:0,w:190,h:210,floor:"#4a3434"},
+ {name:"Music Room",x:660,y:0,w:300,h:210,floor:"#34394f"},
+ {name:"Research Library",x:0,y:410,w:300,h:190,floor:"#4a4030"},
+ {name:"Edit Bay",x:300,y:410,w:300,h:190,floor:"#2f3f4a"},
+ {name:"Publishing",x:600,y:410,w:210,h:190,floor:"#3a3048"},
+ {name:"Break Room",x:810,y:410,w:150,h:190,floor:"#4b3b2c"},
+];
+const AG={
+ manager:{name:"Max",role:"Manager",desk:[110,118],shirt:"#ffd60a",hair:"#2b1d14",skin:"#f1c27d"},
+ writer:{name:"Wren",role:"Writer",desk:[345,118],shirt:"#4cc9f0",hair:"#7a4b22",skin:"#e0ac69"},
+ narrator:{name:"Nova",role:"Narrator",desk:[565,118],shirt:"#f72585",hair:"#111",skin:"#c68642"},
+ composer:{name:"Cole",role:"Composer",desk:[740,118],shirt:"#b5179e",hair:"#d8b04a",skin:"#f1c27d"},
+ sound:{name:"Sami",role:"Sound",desk:[880,118],shirt:"#7209b7",hair:"#3a2a1a",skin:"#8d5524"},
+ researcher:{name:"Remy",role:"Researcher",desk:[150,512],shirt:"#2ecc71",hair:"#555",skin:"#e0ac69"},
+ editor:{name:"Eddie",role:"Editor",desk:[450,512],shirt:"#ff7b00",hair:"#1b1b1b",skin:"#f1c27d"},
+ publisher:{name:"Piper",role:"Publisher",desk:[705,512],shirt:"#00b4d8",hair:"#9c2f2f",skin:"#ffdbac"},
+};
+const ORDER=["manager","writer","narrator","composer","researcher","sound","editor","publisher"];
+const COFFEE=[885,470];
+const cv=document.getElementById("c"),g=cv.getContext("2d");
+
+// characters
+const chars={};
+for(const [k,a] of Object.entries(AG)){chars[k]={k,...a,x:a.desk[0],y:a.desk[1]+22,path:[],bubble:null,bubbleUntil:0,typing:false,dir:1,step:0,busyUntil:0};}
+
+function pathTo(c,tx,ty){
+  const pts=[];
+  // leave room vertically to the hallway, walk along it, then enter the other room
+  pts.push([c.x,HALL]);pts.push([tx,HALL]);pts.push([tx,ty]);
+  c.path=pts;
+}
+function goHome(c){const d=AG[c.k].desk;pathTo(c,d[0],d[1]+22);}
+function say(c,text,ms=5200){c.bubble=text;c.bubbleUntil=performance.now()+ms;}
+
+// ---------------- drawing ----------------
+function rect(x,y,w,h,col){g.fillStyle=col;g.fillRect(x,y,w,h);}
+function drawFloor(){
+  rect(0,0,W,H,"#22263f");
+  // hallway tiles
+  for(let x=0;x<W;x+=24)for(let y=210;y<410;y+=24){rect(x,y,24,24,((x+y)/24)%2?"#2a2f4f":"#272c4a");}
+  for(const r of ROOMS){
+    for(let x=r.x;x<r.x+r.w;x+=20)for(let y=r.y;y<r.y+r.h;y+=20){rect(x,y,20,20,((x+y)/20)%2?r.floor:shade(r.floor,-8));}
+    // walls with a door gap facing the hallway
+    g.fillStyle="#11132a";
+    const top=r.y<HALL, wy=top?r.y+r.h-6:r.y, dx=r.x+r.w/2;
+    g.fillRect(r.x,wy,dx-34-r.x,6);g.fillRect(dx+34,wy,r.x+r.w-dx-34,6);
+    g.fillRect(r.x,r.y,6,r.h);g.fillRect(r.x+r.w-6,r.y,6,r.h);
+    g.fillRect(r.x,top?r.y:r.y+r.h-6,r.w,6);
+    // room label
+    g.fillStyle="rgba(0,0,0,.45)";const lw=g.measureText(r.name).width+16;
+    g.font="bold 12px system-ui";g.fillRect(r.x+10,r.y+(top?10:r.h-30),g.measureText(r.name).width+14,20);
+    g.fillStyle="#e8eaf6";g.fillText(r.name,r.x+17,r.y+(top?24:r.h-16));
+  }
+  // plants in hallway
+  for(const px of [40,250,520,780,930]){rect(px-8,232,16,14,"#6b4a2b");g.fillStyle="#2ecc71";g.beginPath();g.arc(px,226,13,0,7);g.fill();}
+  // big wall screen in hallway
+  rect(380,222,200,40,"#0b0d1f");g.fillStyle="#ffd60a";g.font="bold 13px system-ui";g.fillText("HIDDEN FACTS HQ",425,247);
+}
+function shade(hex,amt){const n=parseInt(hex.slice(1),16);let r=(n>>16)+amt,gg=((n>>8)&255)+amt,b=(n&255)+amt;
+  r=Math.max(0,Math.min(255,r));gg=Math.max(0,Math.min(255,gg));b=Math.max(0,Math.min(255,b));return "#"+((r<<16)|(gg<<8)|b).toString(16).padStart(6,"0");}
+function drawFurniture(t){
+  for(const [k,a] of Object.entries(AG)){
+    const [x,y]=a.desk;
+    rect(x-34,y-14,68,22,"#6b4a2b");rect(x-34,y+8,68,4,"#4a321c");          // desk
+    const glow=(chars[k].typing&&Math.floor(t/300)%2)?"#6fd3ff":"#3da5d9";
+    rect(x-14,y-30,28,18,"#0b0d1f");rect(x-12,y-28,24,14,glow);rect(x-3,y-12,6,4,"#222"); // monitor
+    rect(x-8,y+26,16,10,"#30364f"); // chair
+  }
+  // manager: plant & window
+  rect(18,30,50,30,"#7fb3d5");rect(18,44,50,2,"#fff");
+  // writers: bookshelf
+  for(let i=0;i<4;i++){rect(240+i*24,26,20,46,"#5a3d22");for(let j=0;j<3;j++)rect(242+i*24,30+j*14,16,10,["#e63946","#4cc9f0","#ffd60a"][(i+j)%3]);}
+  // recording booth: mic + foam
+  for(let i=0;i<5;i++)rect(486+i*34,24,26,26,"#5c3b3b");
+  rect(612,96,4,40,"#aaa");g.fillStyle="#ddd";g.beginPath();g.arc(614,94,8,0,7);g.fill();
+  // music: keyboard + speakers
+  rect(690,40,90,18,"#111");for(let i=0;i<10;i++)rect(692+i*9,42,7,14,"#fff");
+  rect(900,30,30,44,"#222");g.fillStyle="#555";g.beginPath();g.arc(915,58,9,0,7);g.fill();
+  // library shelves
+  for(let i=0;i<6;i++){rect(20+i*44,440,38,40,"#5a3d22");for(let j=0;j<2;j++)rect(23+i*44,444+j*18,32,12,["#2a9d8f","#e9c46a","#f4a261","#e76f51"][(i+j)%4]);}
+  // edit bay: big screens
+  rect(330,430,240,40,"#0b0d1f");for(let i=0;i<3;i++)rect(336+i*80,436,72,28,Math.floor(t/500+i)%2?"#1d3557":"#457b9d");
+  // publishing: platform screens
+  const P=[["#ff0000","YT"],["#e1306c","IG"],["#1877f2","FB"]];
+  P.forEach(([c,l],i)=>{rect(622+i*62,432,54,34,"#0b0d1f");rect(625+i*62,435,48,28,c);g.fillStyle="#fff";g.font="bold 13px system-ui";g.fillText(l,640+i*62,454);});
+  // break room: coffee machine + sofa
+  rect(870,440,34,40,"#2b2b2b");rect(876,452,22,10,"#c0392b");rect(830,540,110,30,"#8e44ad");rect(830,530,110,12,"#9b59b6");
+}
+function drawChar(c,t){
+  const moving=c.path.length>0, bob=moving?Math.sin(t/90)*2:0, x=Math.round(c.x), y=Math.round(c.y+bob);
+  g.fillStyle="rgba(0,0,0,.3)";g.beginPath();g.ellipse(x,c.y+16,11,4,0,0,7);g.fill();
+  const leg=moving?Math.sin(t/90)*3:0;
+  rect(x-6,y+6,5,10+leg,"#2b2d42");rect(x+1,y+6,5,10-leg,"#2b2d42");          // legs
+  rect(x-8,y-10,16,17,c.shirt);                                               // body
+  rect(x-11,y-8,4,12,c.skin);rect(x+7,y-8,4,12,c.skin);                         // arms
+  g.fillStyle=c.skin;g.beginPath();g.arc(x,y-18,8,0,7);g.fill();                // head
+  g.fillStyle=c.hair;g.beginPath();g.arc(x,y-21,8,Math.PI,0);g.fill();          // hair
+  rect(x-3+(c.dir>0?1:-1),y-19,2,2,"#111");rect(x+2+(c.dir>0?1:-1),y-19,2,2,"#111"); // eyes
+  g.font="bold 11px system-ui";const nw=g.measureText(c.name).width+8;
+  g.fillStyle="rgba(0,0,0,.55)";g.fillRect(x-nw/2,y+18,nw,14);g.fillStyle="#fff";g.fillText(c.name,x-nw/2+4,y+29);
+}
+function wrap(text,max){const words=text.split(" ");const lines=[];let cur="";
+  for(const w of words){const test=cur?cur+" "+w:w;if(g.measureText(test).width>max&&cur){lines.push(cur);cur=w;}else cur=test;}
+  if(cur)lines.push(cur);return lines.slice(0,4);}
+function drawBubble(c,t){
+  if(!c.bubble||t>c.bubbleUntil)return;
+  g.font="13px system-ui";const lines=wrap(c.bubble,190);const w=Math.max(...lines.map(l=>g.measureText(l).width))+18,h=lines.length*17+12;
+  let bx=Math.min(Math.max(c.x-w/2,4),W-w-4), by=c.y-44-h; if(by<4)by=c.y+36;
+  g.fillStyle="#fff";g.strokeStyle="#11132a";g.lineWidth=2;
+  g.beginPath();g.roundRect(bx,by,w,h,8);g.fill();g.stroke();
+  g.fillStyle="#11132a";lines.forEach((l,i)=>g.fillText(l,bx+9,by+20+i*17));
+}
+function update(dt){
+  for(const c of Object.values(chars)){
+    if(!c.path.length)continue;
+    const [tx,ty]=c.path[0],dx=tx-c.x,dy=ty-c.y,d=Math.hypot(dx,dy),sp=110*dt;
+    if(Math.abs(dx)>0.5)c.dir=Math.sign(dx);
+    if(d<=sp){c.x=tx;c.y=ty;c.path.shift();}else{c.x+=dx/d*sp;c.y+=dy/d*sp;}
+  }
+}
+let last=performance.now();
+function frame(t){const dt=Math.min(.05,(t-last)/1000);last=t;update(dt);
+  drawFloor();drawFurniture(t);
+  const list=Object.values(chars).sort((a,b)=>a.y-b.y);list.forEach(c=>drawChar(c,t));list.forEach(c=>drawBubble(c,t));
+  requestAnimationFrame(frame);}
+requestAnimationFrame(frame);
+
+// ---------------- idle life ----------------
+const IDLE=["☕ Coffee time!","Anyone seen my stapler?","Next video is going to be huge","Reading about black holes…","Did you know octopuses have 3 hearts?","Stretching my legs 🚶","Brainstorming hooks…"];
+setInterval(()=>{
+  if(queue.length||performance.now()<playingUntil)return;
+  const ks=Object.keys(chars),c=chars[ks[Math.floor(Math.random()*ks.length)]];
+  if(c.path.length)return;
+  if(Math.random()<.5){pathTo(c,COFFEE[0]-20+Math.random()*30,COFFEE[1]+40);say(c,IDLE[Math.floor(Math.random()*IDLE.length)],4000);
+    setTimeout(()=>goHome(c),9000);}
+  else{say(c,IDLE[Math.floor(Math.random()*IDLE.length)],3500);c.typing=true;setTimeout(()=>c.typing=false,3500);}
+},7000);
+
+// ---------------- events → animation ----------------
+const queue=[];let playingUntil=0,lastAgent=null;
+function playNext(){
+  if(!queue.length){setTimeout(playNext,800);return;}
+  const ev=queue.shift(),c=chars[ev.agent]||chars.manager;
+  // the previous worker walks over to hand off the job
+  if(lastAgent&&lastAgent!==c.k&&chars[lastAgent]){const p=chars[lastAgent];
+    pathTo(p,AG[c.k].desk[0]+40,AG[c.k].desk[1]+24);say(p,`Over to you, ${c.name}!`,3000);setTimeout(()=>goHome(p),5200);}
+  lastAgent=c.k;
+  goHome(c);c.typing=true;
+  setTimeout(()=>{say(c,ev.text+(ev.kind==="error"?" 😬":ev.kind==="done"?" ✅":""),5600);},1200);
+  setTimeout(()=>{c.typing=false;},6500);
+  playingUntil=performance.now()+7000;
+  setTimeout(playNext,ev.agent==="manager"&&ev.kind==="idle"?4500:6500);
+}
+setTimeout(playNext,1500);
+
+// ---------------- data ----------------
+let lastT="",allEvents=[],lastFetchOk=false;
+const fmt=t=>new Date(t).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"});
+function renderFeed(){
+  const f=document.getElementById("feed");
+  f.innerHTML=allEvents.slice(-40).reverse().map(e=>{const a=AG[e.agent]||AG.manager;
+    return `<div class="ev ${e.kind||""}"><time>${fmt(e.t)}</time><div><span class="who" style="color:${a.shirt}">${a.name}</span> <span class="txt">${esc(e.text)}</span>${e.link?` <a href="${esc(e.link)}" target="_blank" style="color:var(--yel)">open</a>`:""}</div></div>`;}).join("")||'<span style="color:var(--mute)">No activity yet. The team starts at the next scheduled video.</span>';
+}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));}
+function nextRun(){const now=new Date();let best=null;
+  for(let d=0;d<2;d++)for(const [h,m] of RUNS_UTC){const x=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()+d,h,m));if(x>now&&(!best||x<best))best=x;}
+  return best;}
+function renderStatus(st){
+  const el=document.getElementById("status"),n=nextRun(),mins=Math.round((n-new Date())/60000);
+  const when=mins<60?`${mins} min`:`${Math.floor(mins/60)} h ${mins%60} min`;
+  if(st&&st.state==="working")el.innerHTML=`🎬 Making a video${st.title?`: “${esc(st.title)}”`:"…"}<small>Next scheduled run at ${n.toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}</small>`;
+  else el.innerHTML=`☕ Team on a break<small>Next video starts in ${when} (${n.toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})})</small>`;
+}
+async function pullLive(first){
+  try{
+    let data;
+    if(DEMO)data=demoData();else{const r=await fetch(LIVE(),{cache:"no-store"});if(!r.ok)throw 0;data=await r.json();}
+    lastFetchOk=true;
+    const evs=data.events||[];
+    if(first){ // replay the most recent run so visitors see the story
+      const startIdx=evs.map(e=>e.kind).lastIndexOf("start");
+      queue.push(...evs.slice(startIdx>=0?startIdx:Math.max(0,evs.length-8)));
+    }else queue.push(...evs.filter(e=>e.t>lastT));
+    if(evs.length)lastT=evs[evs.length-1].t;
+    allEvents=evs;renderFeed();renderStatus(data.status);
+    setLive(true,data.updated);
+  }catch(e){setLive(false);if(first){allEvents=[];renderFeed();renderStatus(null);}}
+}
+function setLive(ok,updated){document.getElementById("dot").className="dot"+(ok?" on":"");
+  document.getElementById("liveTxt").textContent=ok?`live · updated ${updated?fmt(updated):"just now"}`:"waiting for the first video run…";}
+async function pullVideos(){
+  try{
+    let st;if(DEMO)st=demoState();else{const r=await fetch(STATE(),{cache:"no-store"});st=await r.json();}
+    const hist=(st.history||[]).filter(h=>h.links).slice(-8).reverse();
+    document.getElementById("videos").innerHTML=hist.map(h=>`<div class="vid"><div class="t">${esc(h.title||"")}</div><div class="badges">${
+      Object.entries(h.links).map(([p,u])=>String(u).startsWith("http")?`<a class="badge ok" target="_blank" href="${esc(u)}">✅ ${p}</a>`:`<span class="badge bad" title="${esc(u)}">❌ ${p}</span>`).join("")}</div></div>`).join("")||'<span style="color:var(--mute)">No videos yet.</span>';
+  }catch(e){document.getElementById("videos").innerHTML='<span style="color:var(--mute)">Could not load videos right now.</span>';}
+}
+document.getElementById("replay").onclick=()=>{const startIdx=allEvents.map(e=>e.kind).lastIndexOf("start");
+  queue.length=0;lastAgent=null;queue.push(...allEvents.slice(startIdx>=0?startIdx:Math.max(0,allEvents.length-8)));};
+document.getElementById("legend").innerHTML=ORDER.map(k=>`<span><i style="background:${AG[k].shirt}"></i>${AG[k].name} · ${AG[k].role}</span>`).join("");
+pullLive(true);pullVideos();
+setInterval(()=>pullLive(false),20000);setInterval(pullVideos,120000);setInterval(()=>renderStatus(null),60000);
+
+// demo data (open office.html?demo to preview)
+function demoData(){const b=Date.now()-60000*8,e=(m,a,t,k,x)=>({t:new Date(b+m*30000).toISOString(),agent:a,text:t,kind:k||"work",...(x||{})});
+  return {updated:new Date().toISOString(),status:{state:"working",title:"The Wow! Signal Was Never Explained"},events:[
+  e(0,"manager","Team, time to make 1 new video.","start"),
+  e(1,"writer","Found a great topic: \"The Wow! Signal Was Never Explained\""),
+  e(2,"narrator","Recorded the voice-over: 98 words, 41 seconds"),
+  e(3,"composer","Composed an original music track for it"),
+  e(4,"researcher","Found 5 photos and 4 video clips (NASA, Wikimedia Commons)"),
+  e(5,"sound","Prepared whooshes, pops, ticks and a bell"),
+  e(6,"editor","Editing 14 scenes with captions and 3D graphics..."),
+  e(9,"editor","Finished! 42-second video rendered","done"),
+  e(10,"manager","Sent the finished video to the boss on Telegram"),
+  e(11,"publisher","Uploading \"The Wow! Signal Was Never Explained\" to YouTube, Instagram, Facebook..."),
+  e(12,"publisher","Posted on YouTube!","done",{link:"https://youtube.com"}),
+  e(13,"publisher","Posted on Facebook!","done",{link:"https://facebook.com"}),
+  e(14,"publisher","Posted on Instagram!","done",{link:"https://instagram.com"}),
+  e(15,"manager","Great work everyone. Coffee break until the next video!","idle")]};}
+function demoState(){return {history:[{title:"The Wow! Signal Was Never Explained",links:{YouTube:"https://youtube.com",Instagram:"https://instagram.com",Facebook:"https://facebook.com"}}]};}
+</script>
+</body>
+</html>
