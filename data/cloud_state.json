@@ -349,9 +349,23 @@
       "hook": "A man knocked down a wall in his house... and found an entire underground city.",
       "series": "Lost History #1",
       "file_id": "BAACAgEAAxkDAAM9au-xfAmsl6PvZCMHkfShGXDUv1oAAgWZAALw-oBHiVm-9AABDZ8-PQQ"
+    },
+    {
+      "title": "The Boiling River of the Amazon",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "FAILED: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})",
+        "Facebook": "https://www.facebook.com/reel/1519509663613026",
+        "Instagram": "https://www.instagram.com/reel/DfdZY2WghpW/"
+      },
+      "created": "2026-11-07T23:47:23",
+      "theme": "nature",
+      "hook": "Deep in the Amazon, there's a river that can cook animals alive.",
+      "series": "Nature's Weirdest #1",
+      "file_id": "BAACAgEAAxkDAANAau-4j5S00Xa__vI99FO7HUa1_MkAAhCZAALw-oBHpy4iT2juPD89BA"
     }
   ],
-  "last_slot": "2026-11-07 11:37",
+  "last_slot": "2026-11-07 17:37",
   "stats_day": "2026-11-07",
   "stats_problems": {
     "YouTube": "('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})"
