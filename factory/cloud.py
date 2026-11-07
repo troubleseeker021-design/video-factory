@@ -48,8 +48,7 @@ def make():
         sys.exit("TELEGRAM_CHAT_ID secret is missing - see CLOUD SETUP GUIDE.txt part 3.")
     from . import make_videos
     cfg = load_config()
-    count = int(os.environ.get("VIDEOS_PER_RUN") or cfg.get("videos_per_run", 2))
-    "auto_post": true,
+    count = int(os.environ.get("VIDEOS_PER_RUN") or cfg.get("videos_per_run", 1))
     st = _state()
     for _ in range(count):
         vid = None
@@ -191,62 +190,3 @@ def poll():
                     continue
                 if chat != CHAT:
                     continue  # ignore strangers
-                if text.startswith("/make"):
-                    ok = _dispatch_make()
-                    tg.send_message(CHAT, "🏭 Making a new video... it'll arrive here in about 10 minutes." if ok
-                                    else "Couldn't start the factory - check the workflow permissions (guide part 2).")
-                elif text.startswith("/status"):
-                    titles = [f"• {p['post'].get('title')}" for p in st["pending"].values()]
-                    tg.send_message(CHAT, f"⏳ Waiting for approval: {len(titles)}\n" + "\n".join(titles[:20]))
-                else:
-                    tg.send_message(CHAT, HELP)
-            elif "callback_query" in u:
-                cb = u["callback_query"]
-                chat = str(cb["message"]["chat"]["id"])
-                if chat != CHAT:
-                    continue
-                action, _, short = cb.get("data", "").partition(":")
-                item = st["pending"].pop(short, None)
-                tg.clear_buttons(CHAT, cb["message"]["message_id"])
-                if not item:
-                    tg.answer_callback(cb["id"], "Already handled.")
-                    continue
-                if action == "no":
-                    tg.answer_callback(cb["id"], "Rejected 🗑️")
-                    tg.send_message(CHAT, f"🗑️ Rejected: {item['post'].get('title')}")
-                    st["history"].append({"title": item["post"].get("title"), "status": "rejected"})
-                else:
-                    tg.answer_callback(cb["id"], "Posting... 🚀")
-                    try:
-                        results = publish(item)
-                    except Exception as e:
-                        item["approved"] = True
-                        item["tries"] = item.get("tries", 0) + 1
-                        st["pending"][short] = item  # keep it so the next check retries
-                        tg.send_message(CHAT, f"⏳ Couldn't post '{item['post'].get('title')}' yet ({str(e)[:120]}). "
-                                              "I'll retry automatically in 15 minutes.")
-                        log("publish failed:\n" + traceback.format_exc())
-                        continue
-                    lines = [f"{k}: {v}" for k, v in results.items()] or ["No platforms connected yet."]
-                    manual = [p for p in ("TikTok", "YouTube", "Instagram", "Facebook")
-                              if p == "TikTok" or p not in results or str(results[p]).startswith("FAILED")]
-                    tg.send_message(CHAT, f"🚀 {item['post'].get('title')}\n\n" + "\n".join(lines) +
-                                    f"\n\n📱 Post manually to: {', '.join(manual)}.\n"
-                                    "Save the video above, then copy the caption for each app from the messages below 👇")
-                    yt = item["post"].get("youtube", {})
-                    captions = {"TikTok": item["post"].get("tiktok", ""),
-                                "YouTube": f"{yt.get('title', '')}\n\n{yt.get('description', '')}",
-                                "Instagram": item["post"].get("instagram", ""),
-                                "Facebook": item["post"].get("facebook", "")}
-                    for p in manual:
-                        tg.send_message(CHAT, f"— {p} —\n{captions[p]}")
-                    st["history"].append({"title": item["post"].get("title"), "status": "posted", "links": results})
-            st["history"] = st["history"][-300:]
-        finally:
-            write_json(STATE_PATH, st)
-    write_json(STATE_PATH, st)
-    log(f"Processed {len(updates)} Telegram update(s). Pending approvals: {len(st['pending'])}")
-
-
-if __name__ == "__main__":
-    {"make": make, "poll": poll}[sys.argv[1]]()
