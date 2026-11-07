@@ -57,7 +57,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           CHANNEL_NAME: ${{ vars.CHANNEL_NAME }}
-          YOUTUBE_TOKEN_JSON: ${{ secrets.YOUTUBE_TOKEN_JSON }}
+          YOUTUBE_TOKEN_JSON: ${{ secrets.YT_REFRESH_TOKEN != '' && format('{{"token":"x","expiry":"2000-01-01T00:00:00Z","refresh_token":"{0}","client_id":"{1}","client_secret":"{2}","token_uri":"https://oauth2.googleapis.com/token","scopes":["https://www.googleapis.com/auth/youtube.upload"]}}', secrets.YT_REFRESH_TOKEN, secrets.YT_CLIENT_ID, secrets.YT_CLIENT_SECRET) || '' }}
           YOUTUBE_PRIVACY: ${{ vars.YOUTUBE_PRIVACY }}
           META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
           META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
