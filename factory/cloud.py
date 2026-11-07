@@ -89,8 +89,11 @@ def _youtube(path, post):
     if not tok:
         return None
     from . import youtube_upload
+    # GitHub secrets pasted with a stray line break or space would break the JSON - clean them
+    data = json.loads(tok, strict=False)
+    data = {k: ("".join(v.split()) if isinstance(v, str) else v) for k, v in data.items()}
     with open(youtube_upload.TOKEN, "w") as f:
-        f.write(tok)
+        json.dump(data, f)
     privacy = os.environ.get("YOUTUBE_PRIVACY") or load_config().get("youtube_privacy", "public")
     return youtube_upload.upload(path, post, privacy)
 
