@@ -194,7 +194,7 @@ def _retry_approved(st):
         write_json(STATE_PATH, st)
 
 
-def poll():
+def poll(inline_make=False):
     st = _state()
     _retry_approved(st)
     updates = tg.get_updates(st.get("offset", 0))
@@ -211,7 +211,11 @@ def poll():
                 if chat != CHAT:
                     continue  # ignore strangers
                 if text.startswith("/make"):
-                    ok = _dispatch_make()
+                    if inline_make:  # called from tick: make it in this same run
+                        st["make_now"] = True
+                        ok = True
+                    else:
+                        ok = _dispatch_make()
                     tg.send_message(CHAT, "🏭 Making a new video... it'll arrive here in about 10 minutes." if ok
                                     else "Couldn't start the factory - check the workflow permissions (guide part 2).")
                 elif text.startswith("/status"):
@@ -269,5 +273,46 @@ def poll():
     log(f"Processed {len(updates)} Telegram update(s). Pending approvals: {len(st['pending'])}")
 
 
+# ------------------------------------------------------------------ tick
+DEFAULT_TIMES = ["07:37", "11:37", "17:37"]  # Edmonton time; videos arrive ~20 min later
+
+
+def _due_slot(cfg, st, now=None):
+    """Return the scheduled slot (e.g. '2026-11-07 07:37') that still needs a video, or None.
+    A missed slot is caught up to 3 hours late; each slot is made only once."""
+    from zoneinfo import ZoneInfo
+    tz = ZoneInfo(cfg.get("timezone", "America/Edmonton"))
+    now = now or dt.datetime.now(tz)
+    due = None
+    for day in (now.date() - dt.timedelta(days=1), now.date()):
+        for hm in cfg.get("make_times", DEFAULT_TIMES):
+            h, m = map(int, hm.split(":"))
+            t = dt.datetime(day.year, day.month, day.day, h, m, tzinfo=tz)
+            if t <= now <= t + dt.timedelta(hours=3):
+                due = t.strftime("%Y-%m-%d %H:%M")
+    if due and due != st.get("last_slot"):
+        return due
+    return None
+
+
+def tick():
+    """Run every 15 minutes (by GitHub's timer and/or the backup timer):
+    reads Telegram, then makes a video if one of today's slots is due."""
+    poll(inline_make=True)
+    cfg = load_config()
+    st = _state()
+    slot = _due_slot(cfg, st)
+    asked = st.pop("make_now", False)
+    if not slot and not asked:
+        write_json(STATE_PATH, st)
+        log("No video due right now.")
+        return
+    if slot:
+        st["last_slot"] = slot  # mark first, so a later tick never makes a duplicate
+    write_json(STATE_PATH, st)
+    log(f"Making a video now ({'slot ' + slot if slot else 'asked for with /make'}).")
+    make()
+
+
 if __name__ == "__main__":
-    {"make": make, "poll": poll}[sys.argv[1]]()
+    {"make": make, "poll": poll, "tick": tick}[sys.argv[1]]()
