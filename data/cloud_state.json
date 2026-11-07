@@ -207,6 +207,15 @@
         "Instagram": "https://www.instagram.com/reel/DfbzVfHFxqn/",
         "Facebook": "https://www.facebook.com/reel/4593824717559354"
       }
+    },
+    {
+      "title": "The Bird That Uses Quantum Physics to Fly",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/5SLElKenTVg",
+        "Instagram": "FAILED: Meta API error: {'debug_info': {'retriable': False, 'type': 'ProcessingFailedError', 'message': 'Request processing failed'}}",
+        "Facebook": "https://www.facebook.com/reel/28799171276422048"
+      }
     }
   ]
 }
