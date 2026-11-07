@@ -164,9 +164,18 @@ def poll():
                     tg.answer_callback(cb["id"], "Posting... 🚀")
                     results = publish(item)
                     lines = [f"{k}: {v}" for k, v in results.items()] or ["No platforms connected yet."]
+                    manual = [p for p in ("TikTok", "YouTube", "Instagram", "Facebook")
+                              if p == "TikTok" or p not in results or str(results[p]).startswith("FAILED")]
                     tg.send_message(CHAT, f"🚀 {item['post'].get('title')}\n\n" + "\n".join(lines) +
-                                    "\n\n📱 TikTok: save the video above and post it with this caption 👇")
-                    tg.send_message(CHAT, item["post"].get("tiktok", ""))
+                                    f"\n\n📱 Post manually to: {', '.join(manual)}.\n"
+                                    "Save the video above, then copy the caption for each app from the messages below 👇")
+                    yt = item["post"].get("youtube", {})
+                    captions = {"TikTok": item["post"].get("tiktok", ""),
+                                "YouTube": f"{yt.get('title', '')}\n\n{yt.get('description', '')}",
+                                "Instagram": item["post"].get("instagram", ""),
+                                "Facebook": item["post"].get("facebook", "")}
+                    for p in manual:
+                        tg.send_message(CHAT, f"— {p} —\n{captions[p]}")
                     st["history"].append({"title": item["post"].get("title"), "status": "posted", "links": results})
             st["history"] = st["history"][-300:]
         finally:
