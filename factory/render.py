@@ -390,8 +390,8 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
     else:
         args += ["-i", music_path, "-i", sfx_path, "-filter_complex",
                  f"[1:a]volume=0.7,{fade}[m];[2:a]volume=0.9[s];[m][s]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95[a]"]
-    args += ["-map", "0:v", "-map", "[a]", "-t", f"{duration:.2f}", "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-maxrate", "2800k", "-bufsize", "5600k",
-             "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out_path]
+    args += ["-map", "0:v", "-map", "[a]", "-t", f"{duration:.2f}", "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-maxrate", "2000k", "-bufsize", "4000k", "-profile:v", "high", "-level", "4.1", "-g", "60", "-r", str(FPS),
+             "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k", "-ar", "48000", "-ac", "2", "-movflags", "+faststart", out_path]
     proc = subprocess.Popen(args, stdin=subprocess.PIPE)
 
     providers = {}

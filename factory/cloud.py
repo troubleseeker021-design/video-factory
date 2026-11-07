@@ -77,10 +77,10 @@ def make():
         st["pending"][short] = {"vid": vid, "post": post, "file_id": msg["video"]["file_id"],
                                 "message_id": msg["message_id"], "created": dt.datetime.utcnow().isoformat()}
         write_json(STATE_PATH, st)
-        shutil.rmtree(d, ignore_errors=True)  # the video now lives safely in your Telegram chat
         log(f"Sent to Telegram: {post.get('title')}")
         if cfg.get("auto_post"):
-            _auto_post(st, short)
+            _auto_post(st, short, os.path.join(d, "video.mp4"))
+        shutil.rmtree(d, ignore_errors=True)  # the video now lives safely in your Telegram chat
 
 
 # ------------------------------------------------------------------ publish
@@ -98,10 +98,13 @@ def _youtube(path, post):
     return youtube_upload.upload(path, post, privacy)
 
 
-def publish(item):
+def publish(item, local_path=None):
     from . import meta_upload
     path = os.path.join(REVIEW, "approved.mp4")
-    tg.download(item["file_id"], path)
+    if local_path and os.path.exists(local_path):
+        shutil.copy(local_path, path)  # use the original file (no 20 MB Telegram download limit)
+    else:
+        tg.download(item["file_id"], path)
     post, results = item["post"], {}
     jobs = [
         ("YouTube", lambda: _youtube(path, post)),
@@ -136,12 +139,11 @@ HELP = ("🤖 Video Factory commands\n"
         "Tap ✅ under a video to post it, ❌ to throw it away.")
 
 
-def _auto_post(st, short):
+def _auto_post(st, short, local_path=None):
     """Autopilot: post right away without waiting for a tap (config.json "auto_post": true)."""
     item = st["pending"].pop(short)
     try:
-        tg.clear_buttons(CHAT, item["message_id"])
-        results = publish(item)
+        results = publish(item, local_path)
     except Exception as e:
         item["approved"], item["tries"] = True, 1
         st["pending"][short] = item
