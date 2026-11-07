@@ -1,0 +1,157 @@
+=====================================================================
+   FACELESS VIDEO FACTORY  -  START HERE
+=====================================================================
+
+NEW: RUN IT 24/7 IN THE CLOUD (PC OFF, APPROVE FROM YOUR PHONE)
+  -> open  CLOUD SETUP GUIDE.txt
+
+WHAT THIS IS
+------------
+A mini "factory" of AI agents that runs on your own PC, for free:
+
+  1. Writer       picks or writes a fact script        (factory/writer.py)
+  2. Narrator     turns it into an AI voice-over       (factory/voice.py)
+  3. Composer     makes original background music      (factory/music.py)
+  4. Designer     makes the moving background          (factory/visuals.py)
+  5. Editor       adds the title, word-by-word captions,
+                  progress bar and exports a 1080x1920 video
+                                                       (factory/render.py)
+  7. Sound FX     whooshes, pops, dings, impacts and ticks timed to
+                  every cut                            (factory/sfx.py)
+  8. Researcher   finds real photos for each scene from Wikipedia
+                  (free, no key) or Pexels footage     (factory/media.py)
+  6. Publisher    after YOU approve, uploads to YouTube and gives you
+                  ready-to-paste captions for TikTok, Instagram and
+                  Facebook                             (factory/dashboard.py)
+
+Every finished video waits for your approval. Nothing is posted
+without your click.
+
+
+---------------------------------------------------------------------
+STEP 1 - INSTALL (one time, about 5 minutes)
+---------------------------------------------------------------------
+  1. Double-click  SETUP.bat
+     - If Python isn't installed, the download page opens. Install it.
+       IMPORTANT: on the first installer screen, tick
+       "Add python.exe to PATH". Then double-click SETUP.bat again.
+  2. Wait until it says "Setup complete!"
+
+---------------------------------------------------------------------
+STEP 2 - PERSONALIZE (2 minutes)
+---------------------------------------------------------------------
+  Right-click config.json > Open with > Notepad. Change:
+    "channel_name": "@YourChannel"   ->  your real handle
+  Save. (Keep the quotes and commas exactly as they are.)
+
+---------------------------------------------------------------------
+STEP 3 - MAKE AND APPROVE VIDEOS
+---------------------------------------------------------------------
+  1. Double-click  MAKE_VIDEOS.bat
+     It makes 3 videos (about 1 minute each), then opens your
+     review page in the browser.
+  2. On the review page, watch each video:
+       Approve  -> moves it to "Approved"
+       Reject   -> it's set aside and never posted
+  3. In the "Approved" tab, each video has buttons:
+       Show video file      opens the folder holding the video
+       Open TikTok          opens TikTok's upload page. Drag the video in,
+                            click "Copy" on the TikTok caption, paste, post.
+       Open Instagram +     opens Meta Business Suite. One upload posts to
+       Facebook             BOTH Instagram and Facebook (and can schedule).
+       Mark ... posted      ticks it off. When all are ticked, the video
+                            moves to "Posted".
+
+  Want to review later? Just double-click REVIEW.bat any time.
+
+---------------------------------------------------------------------
+STEP 4 - YOUTUBE AUTO-UPLOAD (optional, about 15 minutes, one time)
+---------------------------------------------------------------------
+  After this, clicking Approve uploads the Short to YouTube by itself.
+
+  1. Go to https://console.cloud.google.com and sign in with the Google
+     account that owns your YouTube channel.
+  2. Create a project (any name, e.g. "Video Factory").
+  3. Search "YouTube Data API v3" > Enable.
+  4. Go to "Google Auth Platform" (or "OAuth consent screen"):
+     - User type: External. Fill in the app name and your email.
+     - Under "Audience" / "Test users", add your own Gmail address.
+  5. Go to Clients (or Credentials) > Create client > "Desktop app".
+     Download the JSON file.
+  6. Rename that file to  client_secret.json  and put it in the
+     "data" folder inside this factory.
+  7. Double-click YOUTUBE_SIGNIN.bat, then sign in and allow access.
+     (Google warns "app not verified". That's normal, because it's your
+     own app. Click Continue.)
+  8. In config.json set   "youtube_upload_enabled": true
+
+  Note: Google makes uploads from new personal API projects PRIVATE
+  until the project passes a free YouTube audit. Until then, open
+  YouTube Studio and switch each approved Short to Public, which takes
+  one click. You can apply for the audit at
+  https://support.google.com/youtube/contact/yt_api_form
+
+---------------------------------------------------------------------
+STEP 5 - AUTOPILOT (make videos every day automatically)
+---------------------------------------------------------------------
+  Double-click AUTOPILOT_ON.bat
+  Every day at 9:00 AM (while your PC is on) the factory makes new
+  videos. You just open REVIEW.bat and approve.
+  To stop: AUTOPILOT_OFF.bat
+
+---------------------------------------------------------------------
+FREE UPGRADES (strongly recommended once you're comfortable)
+---------------------------------------------------------------------
+  A) UNLIMITED NEW SCRIPTS - free Google Gemini key
+     The factory ships with 61 ready-made scripts (30 rare curiosity topics + 31 classic facts). For endless fresh scripts:
+       https://aistudio.google.com/apikey  > Create API key
+     Paste it into config.json:  "gemini_api_key": "PASTE-HERE"
+
+  B) REAL STOCK FOOTAGE - free Pexels key
+       https://www.pexels.com/api/  > sign up > copy your key
+     Paste into config.json:  "pexels_api_key": "PASTE-HERE"
+     Videos then use real footage that matches the topic (octopus
+     clips for octopus facts, and so on).
+
+  C) YOUR OWN MUSIC / FOOTAGE
+     Put .mp3 files in  assets\music    (e.g. from the free YouTube
+     Audio Library) and .mp4 clips in  assets\footage  and the
+     factory uses them automatically.
+
+  D) DIFFERENT VOICE / COLORS / NICHE
+     config.json: "voice", "caption_style", and "niche" (the niche is
+     used by Gemini when it writes new scripts).
+
+---------------------------------------------------------------------
+HOW TO ACTUALLY MAKE MONEY (read this)
+---------------------------------------------------------------------
+  - Consistency wins: post 1-3 videos a day on every platform for at
+    least 60-90 days before judging results.
+  - Platforms demonetize "mass-produced / repetitive" content. Keep
+    variety: rotate topics, use the Gemini + Pexels upgrades, and
+    reject weak videos. Quality over quantity.
+  - Turn on each platform's "AI-generated content" label when posting
+    (TikTok has a toggle, and YouTube is marked automatically by this
+    factory). Being honest protects your account.
+  - Monetization programs and their requirements change often, so check
+    the current rules for the YouTube Partner Program, TikTok Creator
+    Rewards and Facebook/Instagram monetization.
+  - Fastest early money is often not ad revenue: affiliate links in
+    your bio (books, gadgets related to your niche) can pay sooner.
+
+---------------------------------------------------------------------
+IF SOMETHING GOES WRONG
+---------------------------------------------------------------------
+  - Look at output\logs\factory.log for the error message.
+  - "python is not recognized": reinstall Python and tick
+    "Add python.exe to PATH".
+  - Voice fails: check your internet connection (the free AI voice
+    needs internet).
+  - Ask Claude! Paste the error and it will help you fix it.
+
+FOLDERS
+  output\review     new videos waiting for you
+  output\approved   approved, waiting to be posted
+  output\posted     done
+  output\rejected   videos you rejected
+=====================================================================

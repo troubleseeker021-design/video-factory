@@ -1,0 +1,30 @@
+{
+  "_help": "Settings for your Faceless Video Factory. Edit with Notepad. Keep the quotes and commas.",
+
+  "channel_name": "@YourChannel",
+  "niche": "mind-blowing facts about science, space, history, animals and the human body",
+  "videos_per_run": 3,
+
+  "voice": "en-US-AndrewMultilingualNeural",
+  "voice_options_help": "Curious storyteller voices: en-US-AndrewMultilingualNeural (default), en-US-BrianMultilingualNeural, en-US-ChristopherNeural, en-US-GuyNeural, en-US-AriaNeural, en-US-JennyNeural, en-GB-RyanNeural, en-AU-WilliamNeural",
+  "voice_speed": "+4%",
+  "voice_pitch": "-2Hz",
+  "photo_3d": true,
+
+  "gemini_api_key": "",
+  "gemini_help": "OPTIONAL. Free key from https://aistudio.google.com/apikey. With it, AI writes brand-new scripts forever. Without it, the factory uses the built-in script bank.",
+
+  "pexels_api_key": "",
+  "pexels_help": "OPTIONAL. Free key from https://www.pexels.com/api/. With it, videos use real stock footage. Without it, animated backgrounds are used.",
+
+  "use_wikipedia_images": true,
+  "wikipedia_help": "Real photos from Wikipedia/Wikimedia Commons (free, no key). Only public-domain, CC0 and CC BY photos are used, with the credit shown on screen.",
+
+  "music_volume": 0.16,
+  "caption_style": "yellow",
+  "caption_style_help": "yellow, white, green or pink. This is the color of the highlighted word.",
+
+  "youtube_upload_enabled": false,
+  "youtube_privacy": "private",
+  "youtube_help": "Set to true after you follow 'Step 4' in START HERE.txt. 'private' lets you double-check on YouTube first. Change to 'public' when you trust it."
+}

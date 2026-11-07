@@ -1,0 +1,161 @@
+=====================================================================
+   CLOUD SETUP GUIDE - run the factory 24/7 for free, PC off
+=====================================================================
+
+HOW IT WORKS
+  GitHub (free) runs the factory on its computers. 3 times a day it makes
+  a new video and sends it to YOUR TELEGRAM with two buttons:
+
+        [ ✅ Approve & post ]   [ ❌ Reject ]
+
+  Tap Approve and within ~15 minutes it's posted to YouTube, Instagram
+  and Facebook. For TikTok, you get the video + caption ready to post.
+  Your PC can be off the whole time.
+
+  Bot commands you can send:  /make  (new video now)   /status
+
+  Total cost: $0. Time to set up: about 30-45 minutes, one time.
+  Parts 1-3 get the factory running. Parts 4-6 are optional upgrades.
+
+
+---------------------------------------------------------------------
+PART 1 - PUT THE FACTORY ON GITHUB  (10 min)
+---------------------------------------------------------------------
+  1. Go to https://github.com/signup and create a free account.
+  2. Click the "+" (top right) > "New repository".
+       Name: video-factory
+       Choose PUBLIC. A public repository gets unlimited free run
+       time, and your keys stay hidden in "Secrets", which nobody can
+       read. (A private one only gets 2,000 free minutes a month,
+       which isn't enough for checking approvals every 15 minutes.)
+     Click "Create repository".
+  3. On the new page, click the link "uploading an existing file".
+  4. Open the folder  Videos\FacelessFactory-GitHub-Upload  (a clean copy
+     made for this). Press Ctrl+A to select EVERYTHING inside it, and drag
+     it into the GitHub page.
+  5. Wait for the upload to finish, then click "Commit changes".
+  6. Now add the "timer" file that makes it run 24/7:
+     - In your repository click "Add file" > "Create new file".
+     - In the name box type exactly:   .github/workflows/factory.yml
+       (typing the "/" creates the folders automatically)
+     - Open  GITHUB_WORKFLOW_factory.yml  from the upload folder with
+       Notepad, press Ctrl+A, Ctrl+C, and paste it into the big box on GitHub.
+     - Click "Commit changes".
+
+---------------------------------------------------------------------
+PART 2 - ALLOW THE FACTORY TO SAVE ITS PROGRESS  (1 min)
+---------------------------------------------------------------------
+  In your repository: Settings > Actions > General
+  Scroll to "Workflow permissions" > choose "Read and write permissions"
+  > Save.
+
+---------------------------------------------------------------------
+PART 3 - CREATE YOUR TELEGRAM BOT  (5 min)
+---------------------------------------------------------------------
+  1. Install Telegram on your phone (free) if you don't have it.
+  2. In Telegram, search for  @BotFather  (blue check mark) > Start.
+  3. Send:  /newbot
+     Give it a name (e.g. "My Video Factory") and a username ending in
+     "bot" (e.g. "myvideofactory123_bot").
+  4. BotFather replies with a TOKEN that looks like 1234567:ABC-xyz...
+     Keep it private.
+  5. On GitHub: Settings > Secrets and variables > Actions >
+     "New repository secret"
+         Name:   TELEGRAM_BOT_TOKEN
+         Secret: (paste the token)
+     > Add secret.
+  6. In Telegram, open your new bot and send it:  hi
+  7. On GitHub: click the "Actions" tab > "factory" (left side) >
+     "Run workflow" > type  poll  in the box > "Run workflow".
+     Within about a minute, your bot replies: "Your chat ID is: 12345..."
+  8. Add another secret:
+         Name:   TELEGRAM_CHAT_ID
+         Secret: (that number)
+  9. TEST: Actions > factory > Run workflow > type  make  > Run.
+     After about 10 minutes your first video arrives in Telegram.
+
+  From now on it runs by itself every day.
+
+---------------------------------------------------------------------
+PART 4 - FREE UPGRADES (strongly recommended)  (5 min)
+---------------------------------------------------------------------
+  Add these the same way (Settings > Secrets and variables > Actions):
+
+  Secret GEMINI_API_KEY : free key from https://aistudio.google.com/apikey
+       The AI then writes brand-new, rarely covered topics every day,
+       using the viral script formula (after the 30 built-in curiosity
+       scripts run out).
+  Secret PEXELS_API_KEY : free key from https://www.pexels.com/api/
+       Adds real stock video clips to the real photos.
+
+  Then click the "Variables" tab (next to Secrets) > New variable:
+  Variable CHANNEL_NAME    = @yourhandle      (shown in the videos)
+  Variable VIDEOS_PER_RUN  = 1               (videos per run, 3 runs a day)
+
+---------------------------------------------------------------------
+PART 5 - AUTO-POST TO YOUTUBE  (15 min, done once on your PC)
+---------------------------------------------------------------------
+  1. Follow "STEP 1" and "STEP 4" in START HERE.txt on your PC (install,
+     then create client_secret.json and run YOUTUBE_SIGNIN.bat).
+  2. IMPORTANT: in Google Cloud > "Google Auth Platform" > "Audience",
+     click "PUBLISH APP" (status "In production"). If you skip this,
+     Google expires your sign-in after 7 days.
+  3. Open  data\youtube_token.json  in Notepad, select all, copy.
+  4. GitHub secret:  YOUTUBE_TOKEN_JSON  = (paste everything)
+  5. Optional variable:  YOUTUBE_PRIVACY = public
+     Note: until your Google project passes YouTube's free API audit,
+     YouTube keeps API uploads private. Apply here:
+     https://support.google.com/youtube/contact/yt_api_form
+     Until then, flip each Short to Public in YouTube Studio, which
+     takes one tap in the YouTube Studio app.
+
+---------------------------------------------------------------------
+PART 6 - AUTO-POST TO INSTAGRAM + FACEBOOK  (20 min)
+---------------------------------------------------------------------
+  You need:
+    - an Instagram PROFESSIONAL account (Business or Creator, free
+      to switch in Instagram settings)
+    - a Facebook PAGE, linked to that Instagram account
+      (Instagram > Settings > Accounts Center, or in the Page's settings)
+
+  1. Go to https://developers.facebook.com > log in > "My Apps" >
+     "Create App". Pick the use case for managing your Page and
+     Instagram content (wording changes often; choose the option
+     that mentions Pages / Instagram API with Facebook Login).
+  2. Open https://developers.facebook.com/tools/explorer
+     - Select your app (top right).
+     - "Add a permission" and tick:
+         pages_show_list, pages_read_engagement, pages_manage_posts,
+         instagram_basic, instagram_content_publish, business_management
+     - Click "Generate Access Token" and allow everything for your Page
+       and Instagram account. Copy the token.
+  3. In your app: App settings > Basic > copy the App ID and App Secret.
+  4. On your PC, double-click META_SETUP.bat and paste the three values.
+     It prints  META_PAGE_ID, META_PAGE_TOKEN, IG_USER_ID.
+  5. Add those 3 as GitHub secrets (same names).
+
+  Your app can stay in "Development" mode, because it only posts to your
+  own accounts.
+
+---------------------------------------------------------------------
+PART 7 - TIKTOK
+---------------------------------------------------------------------
+  TikTok only allows automatic public posting for apps that pass its
+  developer review (it needs a website and a privacy policy). Until then,
+  after you approve a video the bot sends you its TikTok caption:
+    long-press the video in Telegram > Save > open TikTok > + >
+    pick the video > paste the caption > Post.   (about 20 seconds)
+  Tip: turn on TikTok's "AI-generated content" label when posting.
+
+---------------------------------------------------------------------
+GOOD TO KNOW
+---------------------------------------------------------------------
+  - Schedule: videos are made at about 6 AM, 11 AM and 4 PM (Edmonton
+    time). Change the times in .github/workflows/factory.yml (line with
+    "23 12,17,22"; these are UTC hours).
+  - Approvals are checked every 15 minutes (GitHub sometimes runs a few
+    minutes late).
+  - Something wrong? Actions tab > click the red run > read the log, or
+    paste it to Claude.
+  - Pause everything: Actions > factory > "..." > Disable workflow.
+=====================================================================
