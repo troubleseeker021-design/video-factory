@@ -414,7 +414,7 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
                 if si not in providers:
                     try:
                         if m["type"] == "clip":
-                            providers[si] = ClipBG(m["path"], W, H, sc["dur"], FPS)
+                            providers[si] = ClipBG(m["path"], W, H, sc["dur"], FPS, m.get("fit", "full"), m.get("start", 0))
                         else:
                             prov = None
                             if use3d and (si % 2 == 0 or sc["kind"] == "hook"):
@@ -429,7 +429,7 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
             if m:
                 bgp = providers[si]
                 frame = bgp.frame(lt, sc["dur"]).convert("RGBA")
-                card = getattr(bgp, "card_box", None) if isinstance(bgp, PhotoBG) and not bgp.tall else None
+                card = getattr(bgp, "card_box", None)
             else:
                 frame = proc_bg.frame(t, hue_shift=si * 0.7).convert("RGBA")
                 card = None

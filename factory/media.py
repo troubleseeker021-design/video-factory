@@ -1,6 +1,8 @@
 """Agent 8 - The Researcher (images & footage).
 Finds real visuals for each scene:
-  - Pexels stock videos/photos (free key, no credit needed)
+  - Pixabay stock video clips (free key: PIXABAY_API_KEY)
+  - NASA Image & Video Library clips for space topics (public domain, no key)
+  - Pexels stock videos/photos (free key, if you have one)
   - Wikipedia / Wikimedia Commons photos (no key needed; only public-domain,
     CC0 and CC BY images are used, and the credit is shown on screen)
   - your own clips in assets/footage
@@ -32,14 +34,25 @@ def _get_json_once(url, headers=None):
         return json.loads(r.read())
 
 
-def _download(url, ext, headers=None):
+def _download(url, ext, headers=None, max_mb=80):
     os.makedirs(CACHE, exist_ok=True)
     path = os.path.join(CACHE, hashlib.md5(url.encode()).hexdigest()[:16] + ext)
     if os.path.exists(path) and os.path.getsize(path) > 1000:
         return path
     req = urllib.request.Request(url, headers={"User-Agent": UA, **(headers or {})})
-    with urllib.request.urlopen(req, timeout=90) as r, open(path, "wb") as f:
-        f.write(r.read())
+    size = 0
+    with urllib.request.urlopen(req, timeout=120) as r, open(path + ".part", "wb") as f:
+        while True:
+            chunk = r.read(1 << 20)
+            if not chunk:
+                break
+            size += len(chunk)
+            if size > max_mb * (1 << 20):
+                f.close()
+                os.remove(path + ".part")
+                raise RuntimeError(f"file larger than {max_mb} MB, skipped")
+            f.write(chunk)
+    os.replace(path + ".part", path)
     return path
 
 
@@ -119,6 +132,67 @@ def pexels_photo(query, key):
         return None
 
 
+# ---------------- Pixabay (free stock videos) ----------------
+def pixabay_video(query, key, used):
+    q = urllib.parse.urlencode({"key": key, "q": query[:90], "per_page": 20, "safesearch": "true"})
+    try:
+        hits = _get_json(f"https://pixabay.com/api/videos/?{q}").get("hits", [])
+    except Exception as e:
+        log(f"  pixabay search failed for '{query}': {e}")
+        return None
+    random.shuffle(hits)
+    for h in hits:
+        if h.get("id") in used:
+            continue
+        vids = h.get("videos", {})
+        for size in ("medium", "large", "small"):
+            v = vids.get(size) or {}
+            if v.get("url") and (v.get("height") or 0) >= 540:
+                try:
+                    path = _download(v["url"], ".mp4")
+                except Exception as e:
+                    log(f"  pixabay download failed: {e}")
+                    break
+                used.add(h.get("id"))
+                portrait = (v.get("height") or 0) > (v.get("width") or 1)
+                return {"type": "clip", "path": path, "credit": "Video: Pixabay",
+                        "fit": "full" if portrait else "card"}
+    return None
+
+
+# ---------------- NASA Image & Video Library (public domain) ----------------
+def nasa_video(query, used):
+    q = urllib.parse.urlencode({"q": query[:90], "media_type": "video"})
+    try:
+        items = _get_json(f"https://images-api.nasa.gov/search?{q}").get("collection", {}).get("items", [])
+    except Exception as e:
+        log(f"  NASA search failed for '{query}': {e}")
+        return None
+    items = items[:12]
+    random.shuffle(items)
+    for it in items:
+        href = it.get("href")
+        nid = (it.get("data") or [{}])[0].get("nasa_id")
+        if not href or nid in used:
+            continue
+        try:
+            assets = _get_json(href)
+        except Exception:
+            continue
+        mp4 = [a for a in assets if isinstance(a, str) and a.lower().endswith(".mp4")]
+        pick = next((a for tag in ("~mobile", "~small", "~medium") for a in mp4 if tag in a), None)
+        if not pick:
+            continue
+        try:
+            path = _download(pick.replace("http://", "https://"), ".mp4")
+        except Exception as e:
+            log(f"  NASA download failed: {e}")
+            continue
+        used.add(nid)
+        return {"type": "clip", "path": path, "credit": "Video: NASA", "fit": "card", "start": 6}
+    return None
+
+
 # ---------------- per-scene plan ----------------
 def plan(script, scenes, cfg, seed):
     """Attach real visuals to scenes (sets scene["media"]). Hook gets the strongest image."""
@@ -149,25 +223,47 @@ def plan(script, scenes, cfg, seed):
                 uniq.append(p)
         pics = uniq
 
-    for k in targets:
-        sc = scenes[k]
-        if pics and (not key or k == 0 or k % 2 == 0):
+    pixabay_key = (os.environ.get("PIXABAY_API_KEY") or cfg.get("pixabay_api_key", "")).strip()
+    space = script.get("theme") == "space"
+    used = set()
+    queries = [*script.get("wiki", []), *keywords]
+
+    def clip_for(k):
+        i = scenes[k]["i"]
+        q = visuals[i] if i < len(visuals) and visuals[i] else keywords[k % len(keywords)]
+        order = []
+        if space:
+            order.append(lambda: nasa_video(queries[k % len(queries)], used))
+        if pixabay_key:
+            order.append(lambda: pixabay_video(q, pixabay_key, used))
+        if key:
+            order.append(lambda: ({"type": "clip", "path": c, "credit": ""} if (c := pexels_video(q, key)) else None))
+        for fn in order:
+            try:
+                m = fn()
+            except Exception as e:
+                log(f"  clip search failed: {e}")
+                m = None
+            if m:
+                return m
+        return None
+
+    def photo_for():
+        while pics:
             pic = pics.pop(0)
             try:
-                sc["media"] = {"type": "photo", "path": _download(pic["url"], ".jpg"), "credit": pic["credit"]}
-                continue
+                return {"type": "photo", "path": _download(pic["url"], ".jpg"), "credit": pic["credit"]}
             except Exception as e:
                 log(f"  image download failed: {e}")
-        if key:
-            i = sc["i"]
-            q = visuals[i] if i < len(visuals) and visuals[i] else keywords[k % len(keywords)]
-            clip = pexels_video(q, key)
-            if clip:
-                sc["media"] = {"type": "clip", "path": clip, "credit": ""}
-                continue
-            ph = pexels_photo(q, key)
-            if ph:
-                sc["media"] = {"type": "photo", "path": ph, "credit": ""}
+        return None
+
+    for n_t, k in enumerate(targets):
+        # alternate moving clips and real photos; each falls back to the other
+        first, second = (clip_for, photo_for) if n_t % 2 == 0 else (photo_for, clip_for)
+        m = first(k) if first is clip_for else first()
+        if not m:
+            m = second(k) if second is clip_for else second()
+        scenes[k]["media"] = m
     found = sum(1 for sc in scenes if sc["media"])
     log(f"  media: {found}/{n} scenes with real photos/footage, the rest use 3D graphics")
     return scenes

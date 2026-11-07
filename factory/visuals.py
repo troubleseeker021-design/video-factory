@@ -133,15 +133,27 @@ class PhotoBG:
 
 
 class ClipBG:
-    """Reads a video clip (looped) as 1080x1920 frames, sequentially."""
+    """Reads a video clip (looped) as 1080x1920 frames, sequentially.
+    fit="full": fills the screen. fit="card": landscape clip shown as a framed card over a
+    blurred copy of itself (keeps wide footage sharp instead of cropping and enlarging it)."""
 
-    def __init__(self, path, W, H, dur, fps):
+    def __init__(self, path, W, H, dur, fps, fit="full", start=0):
         self.W, self.H = W, H
         self.size = W * H * 3
-        vf = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps},eq=brightness=-0.05:saturation=1.12"
-        self.proc = subprocess.Popen([ffmpeg_exe(), "-loglevel", "error", "-stream_loop", "-1", "-i", path,
-                                      "-t", f"{dur + 0.5:.2f}", "-vf", vf, "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
-                                     stdout=subprocess.PIPE)
+        if fit == "card":
+            cw = 1000
+            vf = (f"split[a][b];[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},"
+                  f"boxblur=24:2,eq=brightness=-0.18[bg];[b]scale={cw}:-2,eq=saturation=1.1[fg];"
+                  f"[bg][fg]overlay=(W-w)/2:640-h/2,fps={fps}")
+            ch = int(cw * 9 / 16)
+            self.card_box = (int((W - cw) / 2), 640 - ch // 2, int((W + cw) / 2), 640 + ch // 2)
+        else:
+            vf = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps},eq=brightness=-0.05:saturation=1.12"
+        ss = ["-ss", str(start)] if start else []
+        self.proc = subprocess.Popen([ffmpeg_exe(), "-loglevel", "error", "-stream_loop", "-1", *ss, "-i", path,
+                                      "-t", f"{dur + 0.5:.2f}", "-filter_complex" if fit == "card" else "-vf", vf,
+                                      "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
+                                     stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
         self.last = Image.new("RGB", (W, H), (0, 0, 0))
 
     def frame(self, t, dur):
