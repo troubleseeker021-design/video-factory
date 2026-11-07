@@ -64,9 +64,9 @@ def make():
         short = _short(vid)
         where = ", ".join(_platforms()) or "no platforms connected yet (you'll get the captions to post manually)"
         cap = (f"🎬 {post.get('title', vid)}\n\n{post.get('script', '')[:600]}\n\n"
-               f"Approve to post to: {where}")
-        buttons = [[{"text": "✅ Approve & post", "callback_data": f"ok:{short}"},
-                    {"text": "❌ Reject", "callback_data": f"no:{short}"}]]
+               + ("🤖 Autopilot: posting now to: " if cfg.get("auto_post") else "Approve to post to: ") + where)
+        buttons = None if cfg.get("auto_post") else [[{"text": "✅ Approve & post", "callback_data": f"ok:{short}"},
+                                                      {"text": "❌ Reject", "callback_data": f"no:{short}"}]]
         try:
             msg = tg.send_video(CHAT, os.path.join(d, "video.mp4"), cap, buttons)
         except Exception as e:
@@ -78,7 +78,9 @@ def make():
                                 "message_id": msg["message_id"], "created": dt.datetime.utcnow().isoformat()}
         write_json(STATE_PATH, st)
         shutil.rmtree(d, ignore_errors=True)  # the video now lives safely in your Telegram chat
-        log(f"Sent to Telegram for approval: {post.get('title')}")
+        log(f"Sent to Telegram: {post.get('title')}")
+        if cfg.get("auto_post"):
+            _auto_post(st, short)
 
 
 # ------------------------------------------------------------------ publish
@@ -129,6 +131,26 @@ HELP = ("🤖 Video Factory commands\n"
         "/make - make a new video now (arrives in ~10 min)\n"
         "/status - videos waiting for approval\n"
         "Tap ✅ under a video to post it, ❌ to throw it away.")
+
+
+def _auto_post(st, short):
+    """Autopilot: post right away without waiting for a tap (config.json "auto_post": true)."""
+    item = st["pending"].pop(short)
+    try:
+        tg.clear_buttons(CHAT, item["message_id"])
+        results = publish(item)
+    except Exception as e:
+        item["approved"], item["tries"] = True, 1
+        st["pending"][short] = item
+        tg.send_message(CHAT, f"⏳ Autopilot couldn't post '{item['post'].get('title')}' yet ({str(e)[:120]}). Retrying in 15 min.")
+        write_json(STATE_PATH, st)
+        return
+    lines = [f"{k}: {v}" for k, v in results.items()] or ["No platforms connected yet."]
+    tg.send_message(CHAT, f"🤖 Autopilot posted: {item['post'].get('title')}\n\n" + "\n".join(lines) +
+                    "\n\n📱 TikTok caption 👇")
+    tg.send_message(CHAT, item["post"].get("tiktok", ""))
+    st["history"].append({"title": item["post"].get("title"), "status": "auto-posted", "links": results})
+    write_json(STATE_PATH, st)
 
 
 def _retry_approved(st):
