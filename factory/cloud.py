@@ -48,7 +48,8 @@ def make():
         sys.exit("TELEGRAM_CHAT_ID secret is missing - see CLOUD SETUP GUIDE.txt part 3.")
     from . import make_videos
     cfg = load_config()
-    count = int(os.environ.get("VIDEOS_PER_RUN") or cfg.get("videos_per_run", 1))
+    count = int(os.environ.get("VIDEOS_PER_RUN") or cfg.get("videos_per_run", 2))
+    "auto_post": true,
     st = _state()
     for _ in range(count):
         vid = None
