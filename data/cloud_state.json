@@ -1,304 +1,332 @@
 {
- "offset": 41248576,
- "pending": {},
- "history": [
-  {
-   "title": "The Animal That Survived Outer Space",
-   "status": "posted",
-   "links": {
-    "Instagram": "https://www.instagram.com/reel/DfbqssHGYWp/",
-    "Facebook": "https://www.facebook.com/reel/4650302395204922"
-   },
-   "stats": {
-    "Instagram": {
-     "likes": 3,
-     "comments": 0
+  "offset": 41248576,
+  "pending": {},
+  "history": [
+    {
+      "title": "The Animal That Survived Outer Space",
+      "status": "posted",
+      "links": {
+        "Instagram": "https://www.instagram.com/reel/DfbqssHGYWp/",
+        "Facebook": "https://www.facebook.com/reel/4650302395204922"
+      },
+      "stats": {
+        "Instagram": {
+          "likes": 3,
+          "comments": 0
+        },
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-08T00:48:33"
     },
-    "Facebook": {
-     "likes": 0,
-     "comments": 0
-    }
-   },
-   "stats_at": "2026-11-08T00:48:33"
-  },
-  {
-   "title": "The Deepest Hole Ever Dug",
-   "status": "auto-posted",
-   "links": {
-    "Instagram": "https://www.instagram.com/reel/DfbvPThndBh/",
-    "Facebook": "https://www.facebook.com/reel/2147568706153963"
-   },
-   "stats": {
-    "Instagram": {
-     "likes": 1,
-     "comments": 0
+    {
+      "title": "The Deepest Hole Ever Dug",
+      "status": "auto-posted",
+      "links": {
+        "Instagram": "https://www.instagram.com/reel/DfbvPThndBh/",
+        "Facebook": "https://www.facebook.com/reel/2147568706153963"
+      },
+      "stats": {
+        "Instagram": {
+          "likes": 1,
+          "comments": 0
+        },
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-08T00:48:33"
     },
-    "Facebook": {
-     "likes": 0,
-     "comments": 0
-    }
-   },
-   "stats_at": "2026-11-08T00:48:33"
-  },
-  {
-   "title": "There's a Giant Alcohol Cloud in Space",
-   "status": "auto-posted",
-   "links": {
-    "YouTube": "FAILED: Invalid control character at: line 1 column 253 (char 252)",
-    "Instagram": "https://www.instagram.com/reel/DfbzVfHFxqn/",
-    "Facebook": "https://www.facebook.com/reel/4593824717559354"
-   },
-   "stats": {
-    "Instagram": {
-     "likes": 1,
-     "comments": 0
+    {
+      "title": "There's a Giant Alcohol Cloud in Space",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "FAILED: Invalid control character at: line 1 column 253 (char 252)",
+        "Instagram": "https://www.instagram.com/reel/DfbzVfHFxqn/",
+        "Facebook": "https://www.facebook.com/reel/4593824717559354"
+      },
+      "stats": {
+        "Instagram": {
+          "likes": 1,
+          "comments": 0
+        },
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-08T00:48:33"
     },
-    "Facebook": {
-     "likes": 0,
-     "comments": 0
-    }
-   },
-   "stats_at": "2026-11-08T00:48:33"
-  },
-  {
-   "title": "The Bird That Uses Quantum Physics to Fly",
-   "status": "auto-posted",
-   "links": {
-    "YouTube": "https://youtube.com/shorts/5SLElKenTVg",
-    "Instagram": "FAILED: Meta API error: {'debug_info': {'retriable': False, 'type': 'ProcessingFailedError', 'message': 'Request processing failed'}}",
-    "Facebook": "https://www.facebook.com/reel/28799171276422048"
-   },
-   "stats": {
-    "Facebook": {
-     "likes": 0,
-     "comments": 0
+    {
+      "title": "The Bird That Uses Quantum Physics to Fly",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/5SLElKenTVg",
+        "Instagram": "FAILED: Meta API error: {'debug_info': {'retriable': False, 'type': 'ProcessingFailedError', 'message': 'Request processing failed'}}",
+        "Facebook": "https://www.facebook.com/reel/28799171276422048"
+      },
+      "stats": {
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        },
+        "YouTube": {
+          "views": 55,
+          "likes": 2,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-08T00:48:33"
     },
-    "YouTube": {
-     "views": 55,
-     "likes": 2,
-     "comments": 0
-    }
-   },
-   "stats_at": "2026-11-08T00:48:33"
-  },
-  {
-   "title": "Nature Invented Gears Millions of Years Before Us",
-   "status": "auto-posted",
-   "links": {
-    "YouTube": "https://youtube.com/shorts/s0yUREOocHM",
-    "Instagram": "FAILED: Meta API error: {'debug_info': {'retriable': False, 'type': 'ProcessingFailedError', 'message': 'Request processing failed'}}",
-    "Facebook": "https://www.facebook.com/reel/2388726818326814"
-   },
-   "stats": {
-    "Facebook": {
-     "likes": 0,
-     "comments": 1
+    {
+      "title": "Nature Invented Gears Millions of Years Before Us",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/s0yUREOocHM",
+        "Instagram": "FAILED: Meta API error: {'debug_info': {'retriable': False, 'type': 'ProcessingFailedError', 'message': 'Request processing failed'}}",
+        "Facebook": "https://www.facebook.com/reel/2388726818326814"
+      },
+      "stats": {
+        "Facebook": {
+          "likes": 0,
+          "comments": 1
+        },
+        "YouTube": {
+          "views": 249,
+          "likes": 1,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-08T00:48:33"
     },
-    "YouTube": {
-     "views": 249,
-     "likes": 1,
-     "comments": 0
-    }
-   },
-   "stats_at": "2026-11-08T00:48:33"
-  },
-  {
-   "title": "The Loneliest Whale in the World",
-   "status": "auto-posted",
-   "links": {
-    "YouTube": "https://youtube.com/shorts/58cS2AuYNLU",
-    "Instagram": "https://www.instagram.com/reel/DfcD0VGgVzQ/",
-    "Facebook": "https://www.facebook.com/reel/1576277314528631"
-   },
-   "stats": {
-    "Instagram": {
-     "likes": 2,
-     "comments": 0
+    {
+      "title": "The Loneliest Whale in the World",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/58cS2AuYNLU",
+        "Instagram": "https://www.instagram.com/reel/DfcD0VGgVzQ/",
+        "Facebook": "https://www.facebook.com/reel/1576277314528631"
+      },
+      "stats": {
+        "Instagram": {
+          "likes": 2,
+          "comments": 0
+        },
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        },
+        "YouTube": {
+          "views": 1525,
+          "likes": 27,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-08T00:48:33"
     },
-    "Facebook": {
-     "likes": 0,
-     "comments": 0
+    {
+      "title": "The Rocks That Breathe Oxygen in Total Darkness",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/-WmcpbIW0ss",
+        "Facebook": "FAILED: Meta API error: {'message': 'Cannot call API for app 2940747562966108 on behalf of user 122104341225535201', 'type': 'OAuthException', 'code': 200, 'fbtrace_id': 'A1jtOCwyfe548JETjzJkxBS'}",
+        "Instagram": "FAILED: Meta API error: {'message': 'Cannot call API for app 2940747562966108 on behalf of user 122104341225535201', 'type': 'OAuthException', 'code': 200, 'fbtrace_id': 'Avgx7On2aH8cpHNrOOeLb__'}"
+      },
+      "stats": {
+        "YouTube": {
+          "views": 0,
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-08T00:48:33"
     },
-    "YouTube": {
-     "views": 1525,
-     "likes": 27,
-     "comments": 0
-    }
-   },
-   "stats_at": "2026-11-08T00:48:33"
-  },
-  {
-   "title": "The Rocks That Breathe Oxygen in Total Darkness",
-   "status": "auto-posted",
-   "links": {
-    "YouTube": "https://youtube.com/shorts/-WmcpbIW0ss",
-    "Facebook": "FAILED: Meta API error: {'message': 'Cannot call API for app 2940747562966108 on behalf of user 122104341225535201', 'type': 'OAuthException', 'code': 200, 'fbtrace_id': 'A1jtOCwyfe548JETjzJkxBS'}",
-    "Instagram": "FAILED: Meta API error: {'message': 'Cannot call API for app 2940747562966108 on behalf of user 122104341225535201', 'type': 'OAuthException', 'code': 200, 'fbtrace_id': 'Avgx7On2aH8cpHNrOOeLb__'}"
-   },
-   "stats": {
-    "YouTube": {
-     "views": 0,
-     "likes": 0,
-     "comments": 0
-    }
-   },
-   "stats_at": "2026-11-08T00:48:33"
-  },
-  {
-   "title": "Your Brain Can't Feel Pain",
-   "status": "auto-posted",
-   "links": {
-    "YouTube": "https://youtube.com/shorts/KS7drrMFXKo",
-    "Facebook": "https://www.facebook.com/reel/2073874069943924",
-    "Instagram": "https://www.instagram.com/reel/Dfcn6IjE0pl/"
-   },
-   "stats": {
-    "Instagram": {
-     "likes": 0,
-     "comments": 0
+    {
+      "title": "Your Brain Can't Feel Pain",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/KS7drrMFXKo",
+        "Facebook": "https://www.facebook.com/reel/2073874069943924",
+        "Instagram": "https://www.instagram.com/reel/Dfcn6IjE0pl/"
+      },
+      "stats": {
+        "Instagram": {
+          "likes": 0,
+          "comments": 0
+        },
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        },
+        "YouTube": {
+          "views": 0,
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-08T00:48:33"
     },
-    "Facebook": {
-     "likes": 0,
-     "comments": 0
+    {
+      "title": "The Animal That Forged Real Iron Armor",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/WEMlig5bb8A",
+        "Facebook": "https://www.facebook.com/reel/2515061085566147",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-07T17:51:10",
+      "theme": "animals",
+      "hook": "Two miles beneath the sea, an animal built itself real iron armor.",
+      "series": "Animal Oddities #1",
+      "file_id": "BAACAgEAAxkDAAM4au9lEv6yw1W-d7srNYFn9R5j4b0AAhwHAAIQJHhHIUzSqEEaxXY9BA",
+      "stats": {
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-08T00:48:33"
     },
-    "YouTube": {
-     "views": 0,
-     "likes": 0,
-     "comments": 0
-    }
-   },
-   "stats_at": "2026-11-08T00:48:33"
-  },
-  {
-   "title": "The Animal That Forged Real Iron Armor",
-   "status": "auto-posted",
-   "links": {
-    "YouTube": "https://youtube.com/shorts/WEMlig5bb8A",
-    "Facebook": "https://www.facebook.com/reel/2515061085566147",
-    "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
-   },
-   "created": "2026-11-07T17:51:10",
-   "theme": "animals",
-   "hook": "Two miles beneath the sea, an animal built itself real iron armor.",
-   "series": "Animal Oddities #1",
-   "file_id": "BAACAgEAAxkDAAM4au9lEv6yw1W-d7srNYFn9R5j4b0AAhwHAAIQJHhHIUzSqEEaxXY9BA",
-   "stats": {
-    "Facebook": {
-     "likes": 0,
-     "comments": 0
-    }
-   },
-   "stats_at": "2026-11-08T00:48:33"
-  },
-  {
-   "title": "A Man Knocked Down a Wall and Found a City",
-   "status": "auto-posted",
-   "links": {
-    "YouTube": "https://youtube.com/shorts/kBwK6xhTxps",
-    "Facebook": "https://www.facebook.com/reel/29294215413595530",
-    "Instagram": "https://www.instagram.com/reel/DfdV67gDizH/"
-   },
-   "created": "2026-11-07T23:17:13",
-   "theme": "history",
-   "hook": "A man knocked down a wall in his house... and found an entire underground city.",
-   "series": "Lost History #1",
-   "file_id": "BAACAgEAAxkDAAM9au-xfAmsl6PvZCMHkfShGXDUv1oAAgWZAALw-oBHiVm-9AABDZ8-PQQ",
-   "stats": {
-    "Instagram": {
-     "likes": 0,
-     "comments": 0
+    {
+      "title": "A Man Knocked Down a Wall and Found a City",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/kBwK6xhTxps",
+        "Facebook": "https://www.facebook.com/reel/29294215413595530",
+        "Instagram": "https://www.instagram.com/reel/DfdV67gDizH/"
+      },
+      "created": "2026-11-07T23:17:13",
+      "theme": "history",
+      "hook": "A man knocked down a wall in his house... and found an entire underground city.",
+      "series": "Lost History #1",
+      "file_id": "BAACAgEAAxkDAAM9au-xfAmsl6PvZCMHkfShGXDUv1oAAgWZAALw-oBHiVm-9AABDZ8-PQQ",
+      "stats": {
+        "Instagram": {
+          "likes": 0,
+          "comments": 0
+        },
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-08T00:48:33"
     },
-    "Facebook": {
-     "likes": 0,
-     "comments": 0
-    }
-   },
-   "stats_at": "2026-11-08T00:48:33"
-  },
-  {
-   "title": "The Boiling River of the Amazon",
-   "status": "auto-posted",
-   "links": {
-    "YouTube": "https://youtube.com/shorts/Fuq0nL7r6q8",
-    "Facebook": "https://www.facebook.com/reel/1519509663613026",
-    "Instagram": "https://www.instagram.com/reel/DfdZY2WghpW/"
-   },
-   "created": "2026-11-07T23:47:23",
-   "theme": "nature",
-   "hook": "Deep in the Amazon, there's a river that can cook animals alive.",
-   "series": "Nature's Weirdest #1",
-   "file_id": "BAACAgEAAxkDAANAau-4j5S00Xa__vI99FO7HUa1_MkAAhCZAALw-oBHpy4iT2juPD89BA",
-   "stats": {
-    "Instagram": {
-     "likes": 0,
-     "comments": 0
+    {
+      "title": "The Boiling River of the Amazon",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/Fuq0nL7r6q8",
+        "Facebook": "https://www.facebook.com/reel/1519509663613026",
+        "Instagram": "https://www.instagram.com/reel/DfdZY2WghpW/"
+      },
+      "created": "2026-11-07T23:47:23",
+      "theme": "nature",
+      "hook": "Deep in the Amazon, there's a river that can cook animals alive.",
+      "series": "Nature's Weirdest #1",
+      "file_id": "BAACAgEAAxkDAANAau-4j5S00Xa__vI99FO7HUa1_MkAAhCZAALw-oBHpy4iT2juPD89BA",
+      "stats": {
+        "Instagram": {
+          "likes": 0,
+          "comments": 0
+        },
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-08T00:48:33"
     },
-    "Facebook": {
-     "likes": 0,
-     "comments": 0
+    {
+      "title": "The Most Remote Place on Earth",
+      "status": "cleared"
+    },
+    {
+      "title": "The Solar Storm That Set Telegraphs on Fire",
+      "status": "cleared"
+    },
+    {
+      "title": "This Moon Shoots Oceans Into Space",
+      "status": "cleared"
+    },
+    {
+      "title": "Earth Built a Natural Nuclear Reactor 2 Billion Years Ago",
+      "status": "cleared"
+    },
+    {
+      "title": "This Frog Hides Its Blood to Become Invisible",
+      "status": "cleared"
+    },
+    {
+      "title": "The Fish That Fights With Slime",
+      "status": "cleared"
+    },
+    {
+      "title": "The Animal That Remembers Without a Brain",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/huNbJRqLu00",
+        "Facebook": "https://www.facebook.com/reel/3807542882718166",
+        "Instagram": "https://www.instagram.com/reel/Dfd_gNUCGQa/"
+      },
+      "created": "2026-11-08T05:19:31",
+      "theme": "animals",
+      "hook": "Cut off this creature’s head, and its brand-new brain will still remember everything.",
+      "series": "Animal Oddities #2",
+      "file_id": "BAACAgEAAxkDAANOavAGZkmojvJXhi050_dDnKbFNLgAAo2ZAALw-oBHvNeB0n4I7e89BA",
+      "youtube": {
+        "title": "The Animal That Remembers Without a Brain | Animal Oddities #2 #shorts",
+        "description": "Scientists cut off a flatworm's head, and when it grew a new brain, it still remembered its training. 🧠\n\n👇 If you could regenerate, what one memory would you keep?\n\n#sciencefacts #biology #flatworm #mindblowingfacts #neuroscience #weirdanimals #shorts\n\nImage credits:\nPhoto: Christopher Laumer · CC BY 2.0 · Wikimedia Commons\nVideo: Pixabay",
+        "tags": [
+          "sciencefacts",
+          "biology",
+          "flatworm",
+          "mindblowingfacts",
+          "neuroscience",
+          "weirdanimals",
+          "shorts",
+          "facts"
+        ]
+      }
+    },
+    {
+      "title": "The Animal That Turned Itself Into a Plant",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "FAILED: <HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai",
+        "Facebook": "https://www.facebook.com/reel/991751103401478",
+        "Instagram": "https://www.instagram.com/reel/Dff-bdYkiLL/"
+      },
+      "created": "2026-11-08T23:49:37",
+      "theme": "animals",
+      "hook": "Scientists found an animal that literally turns itself into a solar-powered plant.",
+      "series": "Animal Oddities #3",
+      "file_id": "BAACAgEAAxkDAAOyavEKlA5VppZ-TRpGB8CJubV6_TQAAh5YAALw-ohHitHwbX96Eng9BA",
+      "youtube": {
+        "title": "The Animal That Turned Itself Into a Plant | Animal Oddities #3 #shorts",
+        "description": "Meet Elysia chlorotica, the sea slug that steals chloroplasts and lives off pure sunlight ☀️\n\n👇 If you could photosynthesize like this slug, would you stop eating?\n\n#science #animals #nature #biology #oceanlife #wildlife #shorts\n\nImage credits:\nPhoto: Karen N. Pelletreau et al. · CC BY 4.0 · Wikimedia Commons\nVideo: Pixabay",
+        "tags": [
+          "science",
+          "animals",
+          "nature",
+          "biology",
+          "oceanlife",
+          "wildlife",
+          "shorts",
+          "facts"
+        ]
+      }
     }
-   },
-   "stats_at": "2026-11-08T00:48:33"
-  },
-  {
-   "title": "The Most Remote Place on Earth",
-   "status": "cleared"
-  },
-  {
-   "title": "The Solar Storm That Set Telegraphs on Fire",
-   "status": "cleared"
-  },
-  {
-   "title": "This Moon Shoots Oceans Into Space",
-   "status": "cleared"
-  },
-  {
-   "title": "Earth Built a Natural Nuclear Reactor 2 Billion Years Ago",
-   "status": "cleared"
-  },
-  {
-   "title": "This Frog Hides Its Blood to Become Invisible",
-   "status": "cleared"
-  },
-  {
-   "title": "The Fish That Fights With Slime",
-   "status": "cleared"
-  },
-  {
-   "title": "The Animal That Remembers Without a Brain",
-   "status": "auto-posted",
-   "links": {
-    "YouTube": "https://youtube.com/shorts/huNbJRqLu00",
-    "Facebook": "https://www.facebook.com/reel/3807542882718166",
-    "Instagram": "https://www.instagram.com/reel/Dfd_gNUCGQa/"
-   },
-   "created": "2026-11-08T05:19:31",
-   "theme": "animals",
-   "hook": "Cut off this creature’s head, and its brand-new brain will still remember everything.",
-   "series": "Animal Oddities #2",
-   "file_id": "BAACAgEAAxkDAANOavAGZkmojvJXhi050_dDnKbFNLgAAo2ZAALw-oBHvNeB0n4I7e89BA",
-   "youtube": {
-    "title": "The Animal That Remembers Without a Brain | Animal Oddities #2 #shorts",
-    "description": "Scientists cut off a flatworm's head, and when it grew a new brain, it still remembered its training. 🧠\n\n👇 If you could regenerate, what one memory would you keep?\n\n#sciencefacts #biology #flatworm #mindblowingfacts #neuroscience #weirdanimals #shorts\n\nImage credits:\nPhoto: Christopher Laumer · CC BY 2.0 · Wikimedia Commons\nVideo: Pixabay",
-    "tags": [
-     "sciencefacts",
-     "biology",
-     "flatworm",
-     "mindblowingfacts",
-     "neuroscience",
-     "weirdanimals",
-     "shorts",
-     "facts"
-    ]
-   }
+  ],
+  "last_slot": "2026-11-08 17:37",
+  "stats_day": "2026-11-07",
+  "stats_problems": {},
+  "followers": {
+    "YouTube": 7,
+    "Instagram": 0,
+    "Facebook": 0
   }
- ],
- "last_slot": "2026-11-08 11:37",
- "stats_day": "2026-11-07",
- "stats_problems": {},
- "followers": {
-  "YouTube": 7,
-  "Instagram": 0,
-  "Facebook": 0
- }
 }

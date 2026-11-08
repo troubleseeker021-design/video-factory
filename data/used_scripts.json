@@ -1,86 +1,94 @@
 [
- {
-  "id": "point-nemo",
-  "title": "The Most Remote Place on Earth"
- },
- {
-  "id": "carrington-event",
-  "title": "The Solar Storm That Set Telegraphs on Fire"
- },
- {
-  "id": "enceladus",
-  "title": "This Moon Shoots Oceans Into Space"
- },
- {
-  "id": "earth-built-a-natural-nuclear-reactor-2-billion-ye",
-  "title": "Earth Built a Natural Nuclear Reactor 2 Billion Years Ago"
- },
- {
-  "id": "glass-frog",
-  "title": "This Frog Hides Its Blood to Become Invisible"
- },
- {
-  "id": "hagfish-slime",
-  "title": "The Fish That Fights With Slime"
- },
- {
-  "id": "tardigrade-space",
-  "title": "The Animal That Survived Outer Space"
- },
- {
-  "id": "kola-borehole",
-  "title": "The Deepest Hole Ever Dug"
- },
- {
-  "id": "space-rum-cloud",
-  "title": "There's a Giant Alcohol Cloud in Space"
- },
- {
-  "id": "the-bird-that-uses-quantum-physics-to-fly",
-  "title": "The Bird That Uses Quantum Physics to Fly"
- },
- {
-  "id": "nature-invented-gears-millions-of-years-before-us",
-  "title": "Nature Invented Gears Millions of Years Before Us"
- },
- {
-  "id": "whale-52hz",
-  "title": "The Loneliest Whale in the World"
- },
- {
-  "id": "the-rocks-that-breathe-oxygen-in-total-darkness",
-  "title": "The Rocks That Breathe Oxygen in Total Darkness"
- },
- {
-  "id": "brain-no-pain",
-  "title": "Your Brain Can't Feel Pain"
- },
- {
-  "id": "the-animal-that-forged-real-iron-armor",
-  "title": "The Animal That Forged Real Iron Armor",
-  "theme": "animals"
- },
- {
-  "id": "derinkuyu",
-  "title": "A Man Knocked Down a Wall and Found a City",
-  "theme": "history"
- },
- {
-  "id": "boiling-river",
-  "title": "The Boiling River of the Amazon",
-  "theme": "nature"
- },
- {
-  "id": "the-animal-that-remembers-without-a-brain",
-  "title": "The Animal That Remembers Without a Brain",
-  "theme": "animals"
- },
- {
-  "id": "unreal-places-ep1",
-  "title": "These Look Fake but Are 100% Real",
-  "theme": "places",
-  "format": "places",
-  "hook": "These look fake.",
-  "date": "2026-11-08"
- }
+  {
+    "id": "point-nemo",
+    "title": "The Most Remote Place on Earth"
+  },
+  {
+    "id": "carrington-event",
+    "title": "The Solar Storm That Set Telegraphs on Fire"
+  },
+  {
+    "id": "enceladus",
+    "title": "This Moon Shoots Oceans Into Space"
+  },
+  {
+    "id": "earth-built-a-natural-nuclear-reactor-2-billion-ye",
+    "title": "Earth Built a Natural Nuclear Reactor 2 Billion Years Ago"
+  },
+  {
+    "id": "glass-frog",
+    "title": "This Frog Hides Its Blood to Become Invisible"
+  },
+  {
+    "id": "hagfish-slime",
+    "title": "The Fish That Fights With Slime"
+  },
+  {
+    "id": "tardigrade-space",
+    "title": "The Animal That Survived Outer Space"
+  },
+  {
+    "id": "kola-borehole",
+    "title": "The Deepest Hole Ever Dug"
+  },
+  {
+    "id": "space-rum-cloud",
+    "title": "There's a Giant Alcohol Cloud in Space"
+  },
+  {
+    "id": "the-bird-that-uses-quantum-physics-to-fly",
+    "title": "The Bird That Uses Quantum Physics to Fly"
+  },
+  {
+    "id": "nature-invented-gears-millions-of-years-before-us",
+    "title": "Nature Invented Gears Millions of Years Before Us"
+  },
+  {
+    "id": "whale-52hz",
+    "title": "The Loneliest Whale in the World"
+  },
+  {
+    "id": "the-rocks-that-breathe-oxygen-in-total-darkness",
+    "title": "The Rocks That Breathe Oxygen in Total Darkness"
+  },
+  {
+    "id": "brain-no-pain",
+    "title": "Your Brain Can't Feel Pain"
+  },
+  {
+    "id": "the-animal-that-forged-real-iron-armor",
+    "title": "The Animal That Forged Real Iron Armor",
+    "theme": "animals"
+  },
+  {
+    "id": "derinkuyu",
+    "title": "A Man Knocked Down a Wall and Found a City",
+    "theme": "history"
+  },
+  {
+    "id": "boiling-river",
+    "title": "The Boiling River of the Amazon",
+    "theme": "nature"
+  },
+  {
+    "id": "the-animal-that-remembers-without-a-brain",
+    "title": "The Animal That Remembers Without a Brain",
+    "theme": "animals"
+  },
+  {
+    "id": "unreal-places-ep1",
+    "title": "These Look Fake but Are 100% Real",
+    "theme": "places",
+    "format": "places",
+    "hook": "These look fake.",
+    "date": "2026-11-08"
+  },
+  {
+    "id": "the-animal-that-turned-itself-into-a-plant",
+    "title": "The Animal That Turned Itself Into a Plant",
+    "theme": "animals",
+    "format": "standard",
+    "hook": "Scientists found an animal that literally turns itself into a solar-powered plant.",
+    "date": "2026-11-08"
+  }
 ]
