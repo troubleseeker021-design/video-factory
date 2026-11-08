@@ -42,11 +42,13 @@ Structure (proven by viral-shorts research):
 - "wiki": 2 exact English Wikipedia article titles about the subject (used to find real photos).
 - "visuals": one short stock-footage search phrase for EACH spoken line (hook, each body sentence, cta), same order.
 - "emojis": one fitting emoji for EACH spoken line, same order.
+- "thumb": 2 to 4 shocking words for the thumbnail in CAPS that make people stop scrolling,
+  e.g. "IT BREATHES OXYGEN?!" or "NOBODY SURVIVED THIS". Never just repeat the title.
 - "question": one short, fun question to ask viewers in the comments about this topic
   (makes people comment, e.g. "Would you swim near this?"), max 12 words, no hashtags.
 {insights}
 Reply with JSON only:
-{{"title":"","hook":"","body":["",""],"cta":"","caption":"","hashtags":[],"keywords":[],"theme":"","wiki":[],"visuals":[],"emojis":[],"question":""}}"""
+{{"title":"","hook":"","body":["",""],"cta":"","caption":"","hashtags":[],"keywords":[],"theme":"","wiki":[],"visuals":[],"emojis":[],"thumb":"","question":""}}"""
 
 
 def _slug(text):

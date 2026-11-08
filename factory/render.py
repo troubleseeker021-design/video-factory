@@ -345,7 +345,7 @@ def _hero3d(frame, img, glow, t, si, scale, bob):
 
 
 # ---------------- main render ----------------
-def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg, seed, cover_path=None, workdir="."):
+def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg, seed, cover_path=None, workdir=".", thumb=None):
     rng = random.Random(seed)
     accent = ACCENTS.get(cfg.get("caption_style", "yellow"), ACCENTS["yellow"])
     style = rng.choice(["box", "color"])
@@ -556,6 +556,8 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
 
             if cover_path and f == int(FPS * 0.9):
                 rgb.save(cover_path, quality=88)
+            if thumb is not None and f == 0:  # first frame = thumbnail (Instagram/Facebook/YouTube use it as cover)
+                rgb = thumb
             proc.stdin.write(rgb.tobytes())
     finally:
         for p in providers.values():

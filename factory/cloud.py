@@ -98,12 +98,17 @@ def make():
 
 
 # ------------------------------------------------------------------ publish
-def _youtube(path, post):
+def _youtube(path, post, cover=None):
     from . import youtube_upload
     if not youtube_upload.prepare_token():
         return None
     privacy = os.environ.get("YOUTUBE_PRIVACY") or load_config().get("youtube_privacy", "public")
     url = youtube_upload.upload(path, post, privacy)
+    if cover and os.path.exists(cover):
+        try:
+            youtube_upload.set_thumbnail(youtube_upload.video_id(url), cover)
+        except Exception as e:
+            log(f"  (YouTube thumbnail skipped: {str(e)[:120]})")
     q = post.get("question")
     if q:  # a question from the channel under the video gets people commenting
         try:
@@ -130,9 +135,10 @@ def publish(item, local_path=None):
     else:
         tg.download(item["file_id"], path)
     post, results = item["post"], {}
+    cover = os.path.join(os.path.dirname(local_path), "cover.jpg") if local_path else None
     jobs = [
-        ("YouTube", lambda: _youtube(path, post)),
-        ("Facebook", lambda: meta_upload.facebook_reel(path, post["facebook"], os.environ["META_PAGE_ID"], os.environ["META_PAGE_TOKEN"])
+        ("YouTube", lambda: _youtube(path, post, cover)),
+        ("Facebook", lambda: meta_upload.facebook_reel(path, post["facebook"], os.environ["META_PAGE_ID"], os.environ["META_PAGE_TOKEN"], cover)
          if "Facebook" in _platforms() else None),
         ("Instagram", lambda: meta_upload.instagram_reel(
             path, post["instagram"], os.environ["IG_USER_ID"], os.environ["META_PAGE_TOKEN"],

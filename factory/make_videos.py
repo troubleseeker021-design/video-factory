@@ -10,7 +10,7 @@ import shutil
 import traceback
 
 from .common import REVIEW, load_config, log, write_json
-from . import writer, voice, music, media, render
+from . import writer, voice, music, media, render, thumbnail
 from .diary import note
 
 
@@ -71,9 +71,15 @@ def make_one(cfg, no_voice=False):
         note("researcher", f"Found {len(srcs) - clips} photos and {clips} video clips "
                            f"({', '.join(sorted({c.split(' · ')[-1].replace('Video: ', '') for c in srcs if c})) or 'own graphics'})")
         note("sound", "Prepared whooshes, pops, ticks and a bell")
+        thumb = None
+        try:
+            thumb = thumbnail.make(script, scenes, cfg, seed, os.path.join(work, "cover.jpg"))
+            note("editor", f"Designed a scroll-stopping thumbnail: \"{thumbnail.thumb_words(script)}\"")
+        except Exception as e:
+            log(f"  thumbnail failed (video still fine): {e}")
         note("editor", f"Editing {len(scenes)} scenes with captions and 3D graphics...")
         render.render(script, scenes, words, duration, wav, mus, os.path.join(work, "video.mp4"), cfg, seed,
-                      cover_path=os.path.join(work, "cover.jpg"), workdir=work)
+                      cover_path=None if thumb else os.path.join(work, "cover.jpg"), workdir=work, thumb=thumb)
         note("editor", f"Finished! {duration:.0f}-second video rendered", kind="done")
         credits = sorted({sc["media"]["credit"] for sc in scenes if sc.get("media") and sc["media"].get("credit")})
         script["_credits"] = credits

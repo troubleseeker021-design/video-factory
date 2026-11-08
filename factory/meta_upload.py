@@ -26,7 +26,7 @@ def _check(r):
 def _instagram_once(video_path, caption, ig_user_id, token):
     size = os.path.getsize(video_path)
     c = _check(requests.post(f"{G}/{ig_user_id}/media", data={
-        "media_type": "REELS", "upload_type": "resumable", "caption": caption[:2200],
+        "media_type": "REELS", "upload_type": "resumable", "caption": caption[:2200], "thumb_offset": "0",
         "share_to_feed": "true", "access_token": token}, timeout=60))
     cid = c["id"]
     with open(video_path, "rb") as f:
@@ -46,7 +46,7 @@ def _instagram_once(video_path, caption, ig_user_id, token):
     return url
 
 
-def facebook_reel(video_path, description, page_id, token):
+def facebook_reel(video_path, description, page_id, token, cover=None):
     size = os.path.getsize(video_path)
     start = _check(requests.post(f"{G}/{page_id}/video_reels", data={"upload_phase": "start", "access_token": token}, timeout=60))
     vid = start["video_id"]
@@ -56,6 +56,13 @@ def facebook_reel(video_path, description, page_id, token):
     _check(requests.post(f"{G}/{page_id}/video_reels", data={
         "upload_phase": "finish", "video_id": vid, "video_state": "PUBLISHED",
         "description": description[:2200], "access_token": token}, timeout=60))
+    if cover and os.path.exists(cover):
+        try:  # custom cover image for the reel
+            with open(cover, "rb") as f:
+                _check(requests.post(f"{G}/{vid}/thumbnails", data={"is_preferred": "true", "access_token": token},
+                                     files={"source": ("cover.jpg", f, "image/jpeg")}, timeout=60))
+        except Exception as e:
+            log(f"  (Facebook cover skipped: {str(e)[:120]})")
     url = f"https://www.facebook.com/reel/{vid}"
     log(f"  posted to Facebook: {url}")
     return url
@@ -89,7 +96,7 @@ def facebook_video_source(fb_url, token):
 
 def _instagram_from_url(video_url, caption, ig_user_id, token):
     c = _check(requests.post(f"{G}/{ig_user_id}/media", data={
-        "media_type": "REELS", "video_url": video_url, "caption": caption[:2200],
+        "media_type": "REELS", "video_url": video_url, "caption": caption[:2200], "thumb_offset": "0",
         "share_to_feed": "true", "access_token": token}, timeout=60))
     return _wait_and_publish(c["id"], ig_user_id, token)
 

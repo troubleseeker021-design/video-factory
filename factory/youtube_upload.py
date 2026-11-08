@@ -85,6 +85,11 @@ def comment(vid, text):
         "snippet": {"videoId": vid, "topLevelComment": {"snippet": {"textOriginal": text[:900]}}}}).execute()
 
 
+def set_thumbnail(vid, path):
+    from googleapiclient.http import MediaFileUpload
+    _service().thumbnails().set(videoId=vid, media_body=MediaFileUpload(path, mimetype="image/jpeg")).execute()
+
+
 def stats(ids):
     """{video_id: {"views": n, "likes": n, "comments": n}} for up to 50 ids per call."""
     out, ids = {}, [i for i in ids if i]
@@ -103,19 +108,36 @@ def channel_stats():
     return {"subscribers": int(s.get("subscriberCount", 0)), "views": int(s.get("viewCount", 0))}
 
 
+CLIENT_ID = "244014506799-m1ovk750oa1fbdus1l27oj3hoolt22e2.apps.googleusercontent.com"
+PORT = 8080  # must match "http://localhost:8080/" in the Google client's Authorized redirect URIs
+
+
 def sign_in():
     from google_auth_oauthlib.flow import InstalledAppFlow
-    if not os.path.exists(CLIENT_SECRET):
-        raise SystemExit("data/client_secret.json is missing. See Step 4 in START HERE.txt.")
-    flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRET, SCOPES)
-    creds = flow.run_local_server(port=0, prompt="consent", access_type="offline")
-    with open(TOKEN, "w") as f:
-        f.write(creds.to_json())
-    tok = json.loads(creds.to_json())
-    print("\nYouTube sign-in complete.\n")
-    print("Copy the line below into the GitHub secret  YT_REFRESH_TOKEN  (pencil icon > paste > Update secret):\n")
-    print(tok.get("refresh_token", "(no refresh token returned - run this again)"))
-    print("\nDo not share this value with anyone.")
+    from google.oauth2.credentials import Credentials
+    from googleapiclient.discovery import build
+    print("\n=== YouTube sign-in for Hidden Facts HQ ===\n")
+    secret = "".join(input("Paste your Google Client secret (starts with GOCSPX-) and press Enter: ").split())
+    flow = InstalledAppFlow.from_client_config({"installed": {
+        "client_id": CLIENT_ID, "client_secret": secret, "redirect_uris": [f"http://localhost:{PORT}/"],
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth", "token_uri": "https://oauth2.googleapis.com/token"}}, SCOPES)
+    print("\nA browser window is opening. Choose the Google account of your YouTube channel,")
+    print("click 'Advanced > Go to ... (unsafe)' if asked (it is your own app), tick BOTH boxes, then Continue.\n")
+    creds = flow.run_local_server(port=PORT, prompt="consent", access_type="offline", open_browser=True)
+    # test it right away, exactly like the cloud factory will use it
+    test = Credentials(None, refresh_token=creds.refresh_token, client_id=CLIENT_ID, client_secret=secret,
+                       token_uri="https://oauth2.googleapis.com/token")
+    from google.auth.transport.requests import Request
+    test.refresh(Request())
+    ch = build("youtube", "v3", credentials=test, cache_discovery=False).channels().list(part="snippet", mine=True).execute()
+    name = (ch.get("items") or [{}])[0].get("snippet", {}).get("title", "(no channel found on this account!)")
+    print("\n" + "=" * 70)
+    print(f"  TEST PASSED - signed in to YouTube channel: {name}")
+    print("=" * 70)
+    print("\nCopy the line below into the GitHub secret  YT_REFRESH_TOKEN  (pencil > paste > Update secret):\n")
+    print(creds.refresh_token)
+    print("\nAlso make sure the GitHub secret YT_CLIENT_SECRET is the same secret you pasted above.")
+    print("Do not share these codes with anyone.")
 
 
 if __name__ == "__main__":
