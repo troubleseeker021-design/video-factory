@@ -9,8 +9,10 @@
 
   "voice": "en-US-AndrewMultilingualNeural",
   "voice_options_help": "Curious storyteller voices: en-US-AndrewMultilingualNeural (default), en-US-BrianMultilingualNeural, en-US-ChristopherNeural, en-US-GuyNeural, en-US-AriaNeural, en-US-JennyNeural, en-GB-RyanNeural, en-AU-WilliamNeural",
-  "voice_speed": "+4%",
-  "voice_pitch": "-2Hz",
+  "voice_speed": "+10%",
+  "voice_pitch": "+0Hz",
+  "hindi_voice": "hi-IN-SwaraNeural",
+  "hindi_voice_speed": "+8%",
   "photo_3d": true,
 
   "gemini_api_key": "",
