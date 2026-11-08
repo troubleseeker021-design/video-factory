@@ -1,6 +1,6 @@
 """Hindi channel: every English video is remade in natural, conversational Hindi from the
 same visuals - translated script (Gemini), Hindi AI voice and Roman-Hinglish captions
-("Yeh jagah fake lagti hai...") on screen, in the thumbnail, caption text, hashtags and
+("Yeh jagah nakli lagti hai...") on screen, in the thumbnail, caption text, hashtags and
 comment question. Devanagari is used only behind the scenes so the voice pronounces it right.
 
 It only runs when the Hindi channel's accounts are connected (GitHub secrets
@@ -18,25 +18,28 @@ FONT_URL = "https://github.com/google/fonts/raw/main/ofl/notosansdevanagari/Noto
 VOICE = "hi-IN-MadhurNeural"  # chosen by the owner; change with "hindi_voice" in config.json
 LINES = ("hook", "body", "cta")
 
-PROMPT = """Rewrite this YouTube Shorts script in natural, conversational Hindi the way young Indians
-actually talk (Hinglish: keep common English words like "video", "real", "photo", place names and
-numbers as people say them). NOT word-for-word. Sound like a curious friend telling a secret:
-warm, excited, a little mysterious ("Socho...", "Lekin asli twist yeh hai...", "Yakeen nahi hoga...").
-Short sentences, natural pauses with "..." and "?" so the voice sounds human, never robotic.
+PROMPT = """Rewrite this YouTube Shorts script in natural, everyday spoken Hindi. Use real Hindi words,
+NOT English ones: nakli (not fake), asli / sach (not real), hairaan (not shocked), raaz (not secret/twist),
+jagah (not place), duniya (not world), jheel (not lake), pahaad (not mountain). Keep only place names,
+proper names and words with no common Hindi equivalent. Simple, warm Hindi people speak at home - not
+heavy textbook Hindi. NOT word-for-word. Sound like a curious friend telling a secret: warm, excited,
+a little mysterious ("Socho...", "Lekin asli raaz yeh hai...", "Yakeen nahi hoga...").
+Short sentences, natural pauses with "?" so the voice sounds human, never robotic.
 Keep exactly the same number of "body" lines and "labels".
 
 Return JSON only.
 - "hook", "body", "cta": the spoken lines in DEVANAGARI script (used for the voice). EVERY word must be
-  in Devanagari, including English words (फेक, रियल, वीडियो) and place names (लेक हिलियर, ऑस्ट्रेलिया).
+  in Devanagari, including place names (लेक हिलियर, ऑस्ट्रेलिया).
   Write numbers and symbols as spoken words (100% -> सौ प्रतिशत, 1960s -> उन्नीस सौ साठ के दशक).
   Keep it flowing: join short thoughts with commas, use a full stop only at the end of a line,
   never "..." (long pauses sound slow); no brackets, emojis or symbols.
-- "hook_roman", "body_roman", "cta_roman": the SAME lines word for word in Roman Hinglish, written
-  the way Indians type on WhatsApp (e.g. "Yeh jagah fake lagti hai, par 100% real hai!").
+- "hook_roman", "body_roman", "cta_roman": the SAME Hindi lines word for word in Roman letters, written
+  the way Indians type on WhatsApp (e.g. "Yeh jagah nakli lagti hai, par sau pratishat asli hai!").
   Same number of lines as the Devanagari ones.
-- "title", "caption", "question", "thumb", "labels", "hashtags": in Roman Hinglish (labels and
+- "title", "caption", "question", "thumb", "labels": in Hindi written in Roman letters (labels and
   thumb in CAPS; place names stay as they are, e.g. "LAKE HILLIER, AUSTRALIA").
-- "series": the series name in short Roman Hinglish, e.g. "Anokhi Jagahein" for Unreal Places.
+- "hashtags": 6 hashtags mixing Hindi in Roman letters and popular ones (#shorts, #travel).
+- "series": the series name in short Hindi in Roman letters, e.g. "Anokhi Jagahein" for Unreal Places.
 
 Script:
 {src}"""
