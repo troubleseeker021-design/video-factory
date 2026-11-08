@@ -119,7 +119,7 @@ def _record(item, status, results):
     return {"title": p.get("title"), "status": status, "links": results,
             "created": p.get("created") or dt.datetime.utcnow().isoformat(timespec="seconds"),
             "theme": p.get("theme", ""), "hook": p.get("hook", ""), "series": p.get("series", ""),
-            "file_id": item.get("file_id")}
+            "file_id": item.get("file_id"), "youtube": p.get("youtube")}
 
 
 def publish(item, local_path=None):
@@ -334,6 +334,42 @@ def tick():
     make()
 
 
+def repost():
+    """One-time fix: re-upload recent videos whose YouTube upload failed (Run workflow > task: repost)."""
+    from . import youtube_upload
+    st = _state()
+    done = 0
+    for h in st.get("history", [])[-30:]:
+        links = h.get("links") or {}
+        if not str(links.get("YouTube", "")).startswith("FAILED") or not h.get("file_id"):
+            continue
+        title = h.get("title", "Mind-blowing fact")
+        series = h.get("series", "")
+        yt = h.get("youtube") or {
+            "title": (f"{title} | {series}" if series and len(title) + len(series) < 88 else title)[:90] + " #shorts",
+            "description": f"{h.get('hook') or title}\n\n👇 Did you already know this? Tell us below!\n\n#facts #didyouknow #science #shorts",
+            "tags": ["facts", "did you know", "shorts", h.get("theme") or "science"]}
+        path = os.path.join(REVIEW, "repost.mp4")
+        try:
+            tg.download(h["file_id"], path)
+            url = _youtube(path, {"youtube": yt, "question": "Did you already know this?"})
+        except Exception as e:
+            log(f"Repost of '{title}' failed: {e}")
+            continue
+        finally:
+            if os.path.exists(path):
+                os.remove(path)
+        if url:
+            links["YouTube"] = url
+            done += 1
+            note("publisher", f"Re-posted '{title}' on YouTube!", kind="done", platform="YouTube", link=url)
+            tg.send_message(CHAT, f"🔁 Re-posted on YouTube: {title}\n{url}")
+            write_json(STATE_PATH, st)
+    log(f"Repost finished: {done} video(s) uploaded to YouTube.")
+    write_json(STATE_PATH, st)
+    diary.flush()
+
+
 def _growth_now(job):
     """Manual run from GitHub (Run workflow > task: stats / weekly / report)."""
     from . import growth
@@ -383,5 +419,5 @@ def _growth_jobs(cfg):
 
 
 if __name__ == "__main__":
-    {"make": make, "poll": poll, "tick": tick, "stats": lambda: _growth_now("stats"),
+    {"make": make, "poll": poll, "tick": tick, "repost": repost, "stats": lambda: _growth_now("stats"),
      "weekly": lambda: _growth_now("weekly"), "report": lambda: _growth_now("report")}[sys.argv[1]]()
