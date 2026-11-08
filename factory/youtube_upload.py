@@ -102,6 +102,18 @@ def stats(ids):
     return out
 
 
+def top_comments(vid, n=10):
+    """Newest top-level comments under a video: [{"id","author","text","mine"}]."""
+    r = _service().commentThreads().list(part="snippet", videoId=vid, maxResults=n, order="time",
+                                         textFormat="plainText").execute()
+    out = []
+    for it in r.get("items", []):
+        c = it["snippet"]["topLevelComment"]["snippet"]
+        out.append({"id": it["id"], "author": c.get("authorDisplayName", ""), "text": c.get("textDisplay", ""),
+                    "mine": c.get("authorChannelId", {}).get("value") == it["snippet"].get("channelId")})
+    return out
+
+
 def channel_stats():
     r = _service().channels().list(part="statistics", mine=True).execute()
     s = (r.get("items") or [{}])[0].get("statistics", {})

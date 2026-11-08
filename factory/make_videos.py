@@ -31,6 +31,9 @@ def build_post_pack(script, cfg):
         "hook": script.get("hook", ""),
         "series": series,
         "question": q,
+        "needs_check": bool(script.get("needs_check")),
+        "doubts": script.get("doubts") or [],
+        "format": script.get("format", ""),
         "youtube": {
             "title": (yt_title[:90] + " #shorts"),
             "description": f"{script['caption']}{ask}\n\n{tags} #shorts" + credits,
@@ -84,6 +87,9 @@ def make_one(cfg, no_voice=False):
         credits = sorted({sc["media"]["credit"] for sc in scenes if sc.get("media") and sc["media"].get("credit")})
         script["_credits"] = credits
         write_json(os.path.join(work, "post.json"), build_post_pack(script, cfg))
+        # remember the script + visuals so the Hindi channel can remake this video
+        keep = {k: v for k, v in script.items() if not k.startswith("_") or k == "_credits"}
+        write_json(os.path.join(work, "plan.json"), {"script": keep, "media": [sc["media"] for sc in scenes if sc.get("media")]})
         for tmp in ("voice.mp3", "voice.wav", "music.wav", "sfx.wav"):
             p = os.path.join(work, tmp)
             if os.path.exists(p):

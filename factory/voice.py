@@ -51,15 +51,17 @@ def _wav_duration(path):
         return w.getnframes() / float(w.getframerate())
 
 
-def narrate(text, cfg, workdir):
+def narrate(text, cfg, workdir, voices=None, rate=None, pitch=None):
     mp3 = os.path.join(workdir, "voice.mp3")
     wav = os.path.join(workdir, "voice.wav")
     # Curious, story-telling delivery: warm low male voice, slightly slower and deeper.
-    voices = [cfg.get("voice") or "en-US-AndrewMultilingualNeural", "en-US-AndrewNeural", "en-US-ChristopherNeural"]
+    voices = voices or [cfg.get("voice") or "en-US-AndrewMultilingualNeural", "en-US-AndrewNeural", "en-US-ChristopherNeural"]
+    rate = rate or cfg.get("voice_speed", "+4%")
+    pitch = pitch or cfg.get("voice_pitch", "-2Hz")
     words, last_err = None, None
     for v in dict.fromkeys(voices):
         try:
-            words = retry(lambda: asyncio.run(_tts(text, v, cfg.get("voice_speed", "+4%"), cfg.get("voice_pitch", "-2Hz"), mp3)),
+            words = retry(lambda: asyncio.run(_tts(text, v, rate, pitch, mp3)),
                           tries=3, wait=10, what=f"voice '{v}'")
             if os.path.getsize(mp3) > 1000:
                 break

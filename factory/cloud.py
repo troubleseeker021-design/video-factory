@@ -20,6 +20,7 @@ from . import telegram as tg
 from . import diary
 from .diary import note
 from .common import DATA, REVIEW, load_config, log, read_json, write_json
+from . import hindi
 
 STATE_PATH = os.path.join(DATA, "cloud_state.json")
 CHAT = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
@@ -68,33 +69,102 @@ def make():
         if not vid:
             tg.send_message(CHAT, "⚠️ A video failed to render. Check the GitHub Actions log.")
             continue
-        d = os.path.join(REVIEW, vid)
-        post = read_json(os.path.join(d, "post.json"), {})
-        short = _short(vid)
-        where = ", ".join(_platforms()) or "no platforms connected yet (you'll get the captions to post manually)"
-        cap = (f"🎬 {post.get('title', vid)}\n\n{post.get('script', '')[:600]}\n\n"
-               + ("🤖 Autopilot: posting now to: " if cfg.get("auto_post") else "Approve to post to: ") + where)
-        buttons = None if cfg.get("auto_post") else [[{"text": "✅ Approve & post", "callback_data": f"ok:{short}"},
-                                                      {"text": "❌ Reject", "callback_data": f"no:{short}"}]]
-        try:
-            msg = tg.send_video(CHAT, os.path.join(d, "video.mp4"), cap, buttons)
-        except Exception as e:
-            log(f"Sending to Telegram failed: {e}")
-            tg.send_message(CHAT, f"⚠️ '{post.get('title', vid)}' may have arrived without working buttons "
-                                  "(Telegram was slow). Ignore that copy - send /make for a new one.")
-            continue
-        st["pending"][short] = {"vid": vid, "post": post, "file_id": msg["video"]["file_id"],
-                                "message_id": msg["message_id"], "created": dt.datetime.utcnow().isoformat()}
-        write_json(STATE_PATH, st)
-        log(f"Sent to Telegram: {post.get('title')}")
-        diary.status("working", post.get("title", ""))
-        note("manager", "Sent the finished video to the boss on Telegram")
-        if cfg.get("auto_post"):
-            _auto_post(st, short, os.path.join(d, "video.mp4"))
-        shutil.rmtree(d, ignore_errors=True)  # the video now lives safely in your Telegram chat
+        hid = None
+        if hindi.enabled():
+            hid = hindi.make(vid, cfg)
+        _deliver(st, vid, cfg, "en")
+        if hid:
+            _deliver(st, hid, cfg, "hi")
     diary.status("idle")
     note("manager", "Great work everyone. Coffee break until the next video!", kind="idle")
     diary.flush()
+
+
+def _deliver(st, vid, cfg, channel="en", preview_only=False):
+    """Sends a finished video to Telegram, then posts it (autopilot) or waits for a tap.
+    Videos whose facts the Writer is not sure about always wait for the owner's approval."""
+    d = os.path.join(REVIEW, vid)
+    post = read_json(os.path.join(d, "post.json"), {})
+    short = _short(vid)
+    check = bool(post.get("needs_check"))
+    auto = cfg.get("auto_post") and not check and not preview_only
+    with channel_env(channel):
+        where = ", ".join(_platforms()) or "no platforms connected yet (you'll get the captions to post manually)"
+    flag = "🇮🇳 HINDI CHANNEL\n" if channel == "hi" else ""
+    warn = ""
+    if check:
+        doubts = "\n".join(f"• {x}" for x in post.get("doubts", [])[:4]) or "• the writer was not fully sure of every fact"
+        warn = f"\n\n⚠️ FACT CHECK NEEDED before posting:\n{doubts}\nPlease check, then tap Approve or Reject."
+    if preview_only:
+        status = "👀 Preview only (not posted)."
+    else:
+        status = ("🤖 Autopilot: posting now to: " if auto else "Approve to post to: ") + where
+    cap = f"{flag}🎬 {post.get('title', vid)}\n\n{post.get('script', '')[:500]}{warn}\n\n{status}"
+    buttons = None if (auto or preview_only) else [[{"text": "✅ Approve & post", "callback_data": f"ok:{short}"},
+                                                     {"text": "❌ Reject", "callback_data": f"no:{short}"}]]
+    try:
+        msg = tg.send_video(CHAT, os.path.join(d, "video.mp4"), cap[:1000], buttons)
+    except Exception as e:
+        log(f"Sending to Telegram failed: {e}")
+        tg.send_message(CHAT, f"⚠️ '{post.get('title', vid)}' may have arrived without working buttons "
+                              "(Telegram was slow). Ignore that copy - send /make for a new one.")
+        shutil.rmtree(d, ignore_errors=True)
+        return
+    if not preview_only:
+        st["pending"][short] = {"vid": vid, "post": post, "file_id": msg["video"]["file_id"], "channel": channel,
+                                "message_id": msg["message_id"], "created": dt.datetime.utcnow().isoformat()}
+        write_json(STATE_PATH, st)
+    log(f"Sent to Telegram: {post.get('title')} [{channel}]")
+    diary.status("working", post.get("title", ""))
+    note("manager", "Sent the Hindi version to the boss on Telegram" if channel == "hi"
+         else "Sent the finished video to the boss on Telegram")
+    if check:
+        note("manager", "Some facts need a human check - waiting for the boss's approval", kind="error")
+    if auto:
+        _auto_post(st, short, os.path.join(d, "video.mp4"))
+    shutil.rmtree(d, ignore_errors=True)  # the video now lives safely in your Telegram chat
+
+
+HI_ENV = {"YOUTUBE_TOKEN_JSON": "YOUTUBE_TOKEN_JSON_HI", "META_PAGE_ID": "HI_META_PAGE_ID",
+          "META_PAGE_TOKEN": "HI_META_PAGE_TOKEN", "IG_USER_ID": "HI_IG_USER_ID"}
+
+
+class channel_env:
+    """Temporarily swaps the account secrets so the same code posts to the Hindi channel."""
+    def __init__(self, channel):
+        self.channel, self.saved = channel, {}
+
+    def __enter__(self):
+        if self.channel == "hi":
+            for k, hk in HI_ENV.items():
+                self.saved[k] = os.environ.get(k)
+                os.environ[k] = os.environ.get(hk, "")
+            _reset_yt()
+        return self
+
+    def __exit__(self, *a):
+        for k, v in self.saved.items():
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+        if self.saved:
+            _reset_yt()
+
+
+def _reset_yt():
+    try:
+        from . import youtube_upload
+        youtube_upload._svc = None
+        if os.path.exists(youtube_upload.TOKEN):  # never let one channel use the other's sign-in
+            os.remove(youtube_upload.TOKEN)
+    except Exception:
+        pass
+
+
+def _hist(st, item):
+    key = "history_hi" if item.get("channel") == "hi" else "history"
+    return st.setdefault(key, [])
 
 
 # ------------------------------------------------------------------ publish
@@ -128,6 +198,11 @@ def _record(item, status, results):
 
 
 def publish(item, local_path=None):
+    with channel_env(item.get("channel", "en")):
+        return _publish(item, local_path)
+
+
+def _publish(item, local_path=None):
     from . import meta_upload
     path = os.path.join(REVIEW, "approved.mp4")
     if local_path and os.path.exists(local_path):
@@ -191,7 +266,7 @@ def _auto_post(st, short, local_path=None):
     tg.send_message(CHAT, f"🤖 Autopilot posted: {item['post'].get('title')}\n\n" + "\n".join(lines) +
                     "\n\n📱 TikTok caption 👇")
     tg.send_message(CHAT, item["post"].get("tiktok", ""))
-    st["history"].append(_record(item, "auto-posted", results))
+    _hist(st, item).append(_record(item, "auto-posted", results))
     write_json(STATE_PATH, st)
 
 
@@ -212,7 +287,7 @@ def _retry_approved(st):
         st["pending"].pop(short)
         lines = [f"{k}: {v}" for k, v in results.items()] or ["No platforms connected yet."]
         tg.send_message(CHAT, f"🚀 (retry worked) {item['post'].get('title')}\n\n" + "\n".join(lines))
-        st["history"].append(_record(item, "posted", results))
+        _hist(st, item).append(_record(item, "posted", results))
         write_json(STATE_PATH, st)
 
 
@@ -262,7 +337,7 @@ def poll(inline_make=False):
                 if action == "no":
                     tg.answer_callback(cb["id"], "Rejected 🗑️")
                     tg.send_message(CHAT, f"🗑️ Rejected: {item['post'].get('title')}")
-                    st["history"].append({"title": item["post"].get("title"), "status": "rejected"})
+                    _hist(st, item).append({"title": item["post"].get("title"), "status": "rejected"})
                 else:
                     tg.answer_callback(cb["id"], "Posting... 🚀")
                     try:
@@ -288,8 +363,10 @@ def poll(inline_make=False):
                                 "Facebook": item["post"].get("facebook", "")}
                     for p in manual:
                         tg.send_message(CHAT, f"— {p} —\n{captions[p]}")
-                    st["history"].append(_record(item, "posted", results))
+                    _hist(st, item).append(_record(item, "posted", results))
             st["history"] = st["history"][-300:]
+            if "history_hi" in st:
+                st["history_hi"] = st["history_hi"][-300:]
         finally:
             write_json(STATE_PATH, st)
     write_json(STATE_PATH, st)
@@ -390,6 +467,31 @@ def repost():
     diary.flush()
 
 
+def _in_hi(fn):
+    with channel_env("hi"):
+        return fn()
+
+
+def hindi_test():
+    """Makes one English + Hindi video and sends both to Telegram as previews (nothing is posted)."""
+    from . import make_videos
+    cfg = load_config()
+    st = _state()
+    note("manager", "Making a Hindi test video for the boss.", kind="start")
+    vid = make_videos.make_one(cfg)
+    if not vid:
+        tg.send_message(CHAT, "⚠️ The test video failed to render.")
+        return
+    hid = hindi.make(vid, cfg)
+    if not hid:
+        tg.send_message(CHAT, "⚠️ The Hindi version failed - check the GitHub Actions log.")
+    _deliver(st, vid, cfg, "en", preview_only=True)
+    if hid:
+        _deliver(st, hid, cfg, "hi", preview_only=True)
+    diary.status("idle")
+    diary.flush()
+
+
 def _growth_now(job):
     """Manual run from GitHub (Run workflow > task: stats / weekly / report)."""
     from . import growth
@@ -414,6 +516,10 @@ def _growth_jobs(cfg):
     jobs = []
     if st.get("stats_day") != today and now.hour >= 5:
         jobs.append(("stats_day", today, lambda: growth.collect_stats(st)))
+        if hindi.enabled():
+            jobs.append(("stats_day_hi", today, lambda: _in_hi(lambda: growth.collect_stats(st, key="history_hi"))))
+    if st.get("comments_day") != today and now.hour >= 17:
+        jobs.append(("comments_day", today, lambda: growth.comment_digest(st, CHAT)))
     if now.weekday() == 6 and now.hour >= 14 and st.get("compile_week") != week and cfg.get("weekly_video", True):
         privacy = os.environ.get("YOUTUBE_PRIVACY") or cfg.get("youtube_privacy", "public")
         jobs.append(("compile_week", week, lambda: growth.compilation(st, CHAT, privacy)))
@@ -426,6 +532,9 @@ def _growth_jobs(cfg):
                      lambda: growth.weekly_report(st, CHAT)))
     elif now.weekday() == 6 and now.hour >= 19 and st.get("report_week") != week:
         jobs.append(("report_week", week, lambda: growth.weekly_report(st, CHAT)))
+        if hindi.enabled():
+            jobs.append(("report_week_hi", week, lambda: _in_hi(lambda: growth.weekly_report(
+                st, CHAT, key="history_hi", label="🇮🇳 HINDI CHANNEL · "))))
     for key, value, fn in jobs:
         st[key] = value  # mark first, so a failing job is not retried every 15 minutes
         write_json(STATE_PATH, st)
@@ -439,5 +548,6 @@ def _growth_jobs(cfg):
 
 
 if __name__ == "__main__":
-    {"make": make, "poll": poll, "tick": tick, "repost": repost, "clear": clear_pending, "stats": lambda: _growth_now("stats"),
+    {"make": make, "poll": poll, "tick": tick, "repost": repost, "clear": clear_pending, "hindi_test": hindi_test,
+     "comments": lambda: __import__("factory.growth", fromlist=["x"]).comment_digest(_state(), CHAT), "stats": lambda: _growth_now("stats"),
      "weekly": lambda: _growth_now("weekly"), "report": lambda: _growth_now("report")}[sys.argv[1]]()

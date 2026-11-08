@@ -67,13 +67,13 @@ def score(item):
     return views + 25 * eng
 
 
-def _posted(st):
-    return [h for h in st.get("history", []) if h.get("status") in ("posted", "auto-posted")]
+def _posted(st, key="history"):
+    return [h for h in st.get(key, []) if h.get("status") in ("posted", "auto-posted")]
 
 
 # ------------------------------------------------------------------ stats
-def collect_stats(st):
-    items = _posted(st)[-60:]
+def collect_stats(st, key="history"):
+    items = _posted(st, key)[-60:]
     if not items:
         return {}
     problems = {}
@@ -130,7 +130,7 @@ def collect_stats(st):
     for h in items:
         if h.get("stats"):
             h["stats_at"] = now
-    st["stats_problems"] = problems
+    st["stats_problems" if key == "history" else f"stats_problems_{key}"] = problems
     log(f"Stats updated for {sum(1 for h in items if h.get('stats'))} videos. Problems: {problems or 'none'}")
     note("manager", "Checked how our videos are doing - taking notes for the writer")
     return problems
@@ -181,11 +181,11 @@ def insights(st):
 
 
 # ------------------------------------------------------------------ weekly report
-def weekly_report(st, chat):
+def weekly_report(st, chat, key="history", label=""):
     week_ago = dt.datetime.now() - dt.timedelta(days=7)
-    items = [h for h in _posted(st) if (_created(h) or dt.datetime.min) >= week_ago]
+    items = [h for h in _posted(st, key) if (_created(h) or dt.datetime.min) >= week_ago]
     rated = sorted([h for h in items if h.get("stats")], key=score, reverse=True)
-    lines = [f"📊 Weekly report — {week_ago:%b %d} to {dt.datetime.now():%b %d}", "",
+    lines = [f"{label}📊 Weekly report — {week_ago:%b %d} to {dt.datetime.now():%b %d}", "",
              f"🎬 Videos posted: {len(items)}"]
     totals = {}
     for h in items:
@@ -208,20 +208,79 @@ def weekly_report(st, chat):
     if series:
         best = max(series, key=lambda k: sum(series[k]) / len(series[k]))
         lines.append(f"🏆 Best series: {best}")
-    now_f, prev_f = followers(), st.get("followers", {})
+    fkey = "followers" if key == "history" else f"followers_{key}"
+    now_f, prev_f = followers(), st.get(fkey, {})
     if now_f:
         lines.append("")
         lines.append("👥 Followers: " + ", ".join(
             f"{p} {n:,}" + (f" ({n - prev_f[p]:+,})" if p in prev_f else "") for p, n in now_f.items()))
-        st["followers"] = now_f
-    if st.get("stats_problems", {}).get("YouTube"):
+        st[fkey] = now_f
+    if key == "history" and st.get("stats_problems", {}).get("YouTube"):
         lines += ["", "⚠️ YouTube numbers need the new sign-in: run YOUTUBE_SIGNIN.bat on your PC "
                       "and update the GitHub secret YT_REFRESH_TOKEN."]
-    tip = insights(st)
+    tip = insights(st) if key == "history" else ""
     if tip:
         lines += ["", "🧠 The writer is now leaning toward what works best for your audience."]
     tg.send_message(chat, "\n".join(lines))
     note("manager", "Sent the boss this week's report")
+
+
+# ------------------------------------------------------------------ daily comments
+QUESTIONS_FILE = os.path.join(DATA, "viewer_questions.json")
+
+
+def comment_digest(st, chat):
+    """Once a day: the newest viewer comments from YouTube and Instagram in one Telegram message,
+    so you can reply personally. Questions are saved so the Writer can turn them into videos."""
+    from .common import read_json, write_json
+    week_ago = dt.datetime.now() - dt.timedelta(days=10)
+    items = [h for h in _posted(st) if (_created(h) or dt.datetime.min) >= week_ago][-15:]
+    seen = set(st.get("comments_seen", []))
+    found = []  # (platform, title, author, text, link)
+    try:
+        yt = _yt()
+        for h in items:
+            url = h.get("links", {}).get("YouTube", "")
+            vid = yt.video_id(url)
+            if not vid:
+                continue
+            for c in yt.top_comments(vid, 10):
+                if c["id"] not in seen and not c.get("mine"):
+                    found.append(("YouTube", h.get("title", ""), c["author"], c["text"], url, c["id"]))
+    except Exception as e:
+        log(f"  comments (YouTube) skipped: {e}")
+    ig_user = os.environ.get("IG_USER_ID", "").strip()
+    if ig_user:
+        try:
+            media = _meta(f"{ig_user}/media", fields="id,permalink,comments_count", limit=25) or {}
+            titles = {_ig_code(h.get("links", {}).get("Instagram", "")): h.get("title", "") for h in items}
+            for m in media.get("data", []):
+                code = _ig_code(m.get("permalink"))
+                if code not in titles or not m.get("comments_count"):
+                    continue
+                cs = _meta(f"{m['id']}/comments", fields="id,text,username", limit=10) or {}
+                for c in cs.get("data", []):
+                    if c["id"] not in seen:
+                        found.append(("Instagram", titles[code], c.get("username", "someone"),
+                                      c.get("text", ""), m.get("permalink"), c["id"]))
+        except Exception as e:
+            log(f"  comments (Instagram) skipped: {e}")
+    if not found:
+        log("No new comments today.")
+        return
+    lines = ["💬 New comments today - reply personally, it helps the channel grow:", ""]
+    for plat, title, who, text, link, _ in found[:20]:
+        lines.append(f"• {plat} · {title[:40]}\n  {who}: {text[:200]}\n  {link}")
+    if len(found) > 20:
+        lines.append(f"...and {len(found) - 20} more.")
+    tg.send_message(chat, "\n".join(lines)[:3900])
+    qs = read_json(QUESTIONS_FILE, [])
+    for f in found:
+        if "?" in f[3] and len(f[3]) > 12:
+            qs.append({"text": f[3][:300], "from": f[0], "video": f[1]})
+    write_json(QUESTIONS_FILE, qs[-50:])
+    st["comments_seen"] = (list(seen) + [f[5] for f in found])[-500:]
+    note("manager", f"Sent the boss {len(found)} new viewer comments to reply to")
 
 
 # ------------------------------------------------------------------ weekly compilation

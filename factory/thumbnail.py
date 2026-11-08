@@ -93,10 +93,10 @@ def _wrap(text, font, max_w):
     return lines
 
 
-def _text_block(text):
+def _text_block(text, lang="en"):
     """Huge outlined words, alternating white / yellow lines, auto-sized to fit."""
     for size in (230, 210, 190, 170, 150, 135, 120):
-        f = _font("Anton-Regular.ttf", size)
+        f = _font("NotoSansDevanagari.ttf", int(size * .8), "Bold") if lang == "hi" else _font("Anton-Regular.ttf", size)
         lines = _wrap(text, f, 960)
         if len(lines) <= 3:
             break
@@ -130,7 +130,7 @@ def _arrow(d, p0, p1, p2, width=26):
                        zip(head, (ang, ang + 2.3, ang - 2.3))], fill=col)
 
 
-def make(script, scenes, cfg, seed, out_path=None):
+def make(script, scenes, cfg, seed, out_path=None, lang="en"):
     rng = random.Random(seed)
     bg, real = _background(script, scenes, seed)
     bg = ImageEnhance.Color(bg).enhance(1.35)
@@ -184,7 +184,7 @@ def make(script, scenes, cfg, seed, out_path=None):
         img.alpha_composite(pad, (ox, oy))
 
     # huge words
-    blk = _text_block(thumb_words(script)).rotate(-3, Image.BICUBIC, expand=True)
+    blk = _text_block(thumb_words(script), lang).rotate(-3, Image.BICUBIC, expand=True)
     by = 960
     sh = Image.new("RGBA", blk.size, (0, 0, 0, 0))
     sh.putalpha(blk.getchannel("A").filter(ImageFilter.GaussianBlur(14)).point(lambda v: int(v * .7)))
@@ -200,7 +200,7 @@ def make(script, scenes, cfg, seed, out_path=None):
     # series badge on top
     series = script.get("series_tag", "")
     if series:
-        f = _font("Montserrat-Variable.ttf", 46, "Black")
+        f = _font("NotoSansDevanagari.ttf", 42, "Bold") if lang == "hi" else _font("Montserrat-Variable.ttf", 46, "Black")
         tw = f.getlength(series.upper()) + 70
         d.rounded_rectangle([(W - tw) / 2, 150, (W + tw) / 2, 230], radius=40, fill=RED + (255,))
         d.text((W / 2, 191), series.upper(), font=f, fill=WHITE, anchor="mm")

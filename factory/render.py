@@ -55,6 +55,7 @@ F_LABEL = _font("Montserrat-Variable.ttf", 52, "Black")
 F_BTN = _font("Montserrat-Variable.ttf", 70, "Black")
 F_SMALL = _font("Montserrat-Variable.ttf", 30, "Bold")
 F_CREDIT = _font("Poppins-Medium.ttf", 22)
+F_PLACE = _font("Montserrat-Variable.ttf", 44, "Black")
 
 
 # ---------------- easing ----------------
@@ -69,7 +70,7 @@ def ease_out(x):
 
 
 def _norm(s):
-    return re.sub(r"[^a-z0-9]", "", s.lower())
+    return re.sub(r"[\W_]", "", s.lower())  # keeps letters of any alphabet (Hindi too)
 
 
 # ---------------- planning ----------------
@@ -124,14 +125,23 @@ def plan_scenes(script, words, duration, rng):
         if not ws:
             continue
         dur = ws[-1]["end"] - ws[0]["start"]
-        if i > 0 and dur > 4.2 and len(ws) >= 8:
-            lo, hi = int(len(ws) * 0.35), int(len(ws) * 0.65)
-            cut = next((j + 1 for j in range(lo, hi) if re.search(r"[,;:]$", ws[j]["word"])), len(ws) // 2)
-            raw += [(i, ws[:cut]), (i, ws[cut:])]
-        else:
+        # fast cuts: a new shot about every 2 seconds (what this week's viral shorts do)
+        parts = min(3, max(1, round(dur / 2.1)), max(1, len(ws) // 3))
+        if parts == 1 or i == 0:  # the hook stays one shot (its banner animates in once)
             raw.append((i, ws))
+            continue
+        start = 0
+        for p in range(1, parts):
+            target = int(len(ws) * p / parts)
+            lo, hi = max(start + 2, target - 2), min(len(ws) - 2, target + 2)
+            cut = next((j + 1 for j in range(lo, hi) if re.search(r"[,;:]$", ws[j]["word"])), target)
+            cut = max(start + 2, min(cut, len(ws) - 2))
+            raw.append((i, ws[start:cut]))
+            start = cut
+        raw.append((i, ws[start:]))
     scenes, used = [], set()
     custom = script.get("emojis") or []
+    labels = script.get("labels") or []
     for k, (i, ws) in enumerate(raw):
         sc = {"i": i, "words": ws, "text": " ".join(w["word"] for w in ws),
               "start": 0.0 if k == 0 else ws[0]["start"] - 0.06}
@@ -140,6 +150,7 @@ def plan_scenes(script, words, duration, rng):
         sc["end"] = scenes[k + 1]["start"] if k + 1 < len(scenes) else duration
         sc["dur"] = sc["end"] - sc["start"]
         sc["kind"] = "hook" if sc["i"] == 0 else "body"
+        sc["label"] = (labels[sc["i"]] or "").strip() if sc["i"] < len(labels) else ""
         first_of_sentence = k == 0 or scenes[k - 1]["i"] != sc["i"]
         e = custom[sc["i"]] if first_of_sentence and sc["i"] < len(custom) and custom[sc["i"]] else None
         e = e or EMO.pick(sc["text"], used)
@@ -195,6 +206,38 @@ def _hook_banner(title):
         d.text((20 + bw / 2, y), l, font=F_HOOK, fill=(12, 12, 12), anchor="ma")
         y += lh
     return img.rotate(2, resample=Image.BICUBIC, expand=True)
+
+
+def _label_img(text):
+    """Pill with a map pin + the place/name, shown near the top of the screen."""
+    text = text.upper()[:40]
+    tmp = ImageDraw.Draw(Image.new("RGB", (1, 1)))
+    tw = tmp.textlength(text, font=F_PLACE)
+    w, h = int(tw) + 130, 92
+    img = Image.new("RGBA", (w + 20, h + 24), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([10, 18, w + 10, h + 18], radius=46, fill=(0, 0, 0, 110))
+    d.rounded_rectangle([10, 10, w + 10, h + 10], radius=46, fill=(12, 12, 18, 235), outline=(255, 255, 255, 230), width=3)
+    cx, cy = 62, 10 + h / 2 - 6  # map pin
+    d.ellipse([cx - 20, cy - 22, cx + 20, cy + 18], fill=RED + (255,))
+    d.polygon([(cx - 15, cy + 8), (cx + 15, cy + 8), (cx, cy + 34)], fill=RED + (255,))
+    d.ellipse([cx - 8, cy - 10, cx + 8, cy + 6], fill=(255, 255, 255, 255))
+    d.text((100, 10 + h / 2), text, font=F_PLACE, fill=(255, 255, 255), anchor="lm")
+    return img
+
+
+def set_language(lang):
+    """Hindi videos need a Devanagari font for captions, labels and the hook banner."""
+    global F_CAP, F_CAP_SMALL, F_HOOK, F_LABEL, F_SMALL, F_PLACE
+    if lang == "hi":
+        dev = "NotoSansDevanagari.ttf"
+        F_CAP, F_CAP_SMALL = _font(dev, 88, "Bold"), _font(dev, 76, "Bold")
+        F_HOOK, F_LABEL = _font(dev, 78, "Bold"), _font(dev, 50, "Bold")
+        F_SMALL, F_PLACE = _font(dev, 30, "Bold"), _font(dev, 42, "Bold")
+    else:
+        F_CAP, F_CAP_SMALL = _font("Montserrat-Variable.ttf", 96, "Black"), _font("Montserrat-Variable.ttf", 84, "Black")
+        F_HOOK, F_LABEL = _font("Anton-Regular.ttf", 84), _font("Montserrat-Variable.ttf", 52, "Black")
+        F_SMALL, F_PLACE = _font("Montserrat-Variable.ttf", 30, "Bold"), _font("Montserrat-Variable.ttf", 44, "Black")
 
 
 def _stat_card(stat, value, accent):
@@ -363,6 +406,10 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
     cap_cache, stat_cache = {}, {}
     channel = cfg.get("channel_name", "")
     series_tag = script.get("series_tag", "")
+    label_cache, first_label_scene = {}, {}
+    for sc_ in scenes:
+        if sc_.get("label"):
+            first_label_scene.setdefault(sc_["label"], sc_)
 
     # ---- sound design timeline ----
     ev = [(0.0, "impact", 0.9), (0.05, "whoosh", 0.5)]
@@ -527,6 +574,12 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
                 d.text((W / 2, 34), channel, font=F_SMALL, fill=(255, 255, 255, 150), anchor="ma")
             if series_tag and sc["kind"] != "hook":
                 d.text((W / 2, 74), series_tag.upper(), font=F_SMALL, fill=accent + (230,), anchor="ma")
+            if sc.get("label") and sc["kind"] != "hook":  # place / name on screen
+                if sc["label"] not in label_cache:
+                    label_cache[sc["label"]] = _label_img(sc["label"])
+                li = label_cache[sc["label"]]
+                k = ease_out_back(min(1.0, lt / 0.35)) if sc is first_label_scene.get(sc["label"]) else 1.0
+                _paste_center(hud, li, W / 2, 205, scale=max(0.05, k))
             frame.alpha_composite(hud)
 
             rgb = frame.convert("RGB")
