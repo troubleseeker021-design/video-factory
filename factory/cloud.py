@@ -497,16 +497,14 @@ def hindi_test():
     diary.flush()
 
 
-VOICE_SAMPLES = {
-    "en": ("Okay... this looks completely fake. But it's 100% real. And the strangest part? "
-           "Almost nobody has heard of it.",
-           ["en-US-AndrewMultilingualNeural", "en-US-BrianMultilingualNeural", "en-US-AvaMultilingualNeural",
-            "en-US-EmmaMultilingualNeural", "en-US-ChristopherNeural"]),
-    "hi": ("सोचो... ये जगह बिल्कुल fake लगती है. लेकिन ये 100% real है. और असली twist? "
-           "ज़्यादातर लोगों ने इसके बारे में कभी सुना ही नहीं.",
-           ["hi-IN-MadhurNeural", "hi-IN-SwaraNeural", "en-US-AndrewMultilingualNeural",
-            "en-US-AvaMultilingualNeural", "en-US-EmmaMultilingualNeural"]),
-}
+HI_SAMPLE = ("सोचो, ये जगह बिल्कुल फेक लगती है। लेकिन ये सौ प्रतिशत रियल है। और असली ट्विस्ट क्या है? "
+             "ज़्यादातर लोगों ने इसके बारे में कभी सुना ही नहीं।")
+VOICE_SAMPLES = [  # (label, voice, text, rate)
+    ("🇮🇳 HINDI · Andrew, clean Hindi text, normal speed", "en-US-AndrewMultilingualNeural", HI_SAMPLE, "+0%"),
+    ("🇮🇳 HINDI · Andrew, clean Hindi text, a bit slower", "en-US-AndrewMultilingualNeural", HI_SAMPLE, "-6%"),
+    ("🇮🇳 HINDI · Andrew, clean Hindi text, a bit faster", "en-US-AndrewMultilingualNeural", HI_SAMPLE, "+6%"),
+    ("🇮🇳 HINDI · Madhur (native Hindi voice) for comparison", "hi-IN-MadhurNeural", HI_SAMPLE, "+0%"),
+]
 
 
 def voices():
@@ -515,20 +513,14 @@ def voices():
     import tempfile
     from .voice import _tts
     cfg = load_config()
-    tg.send_message(CHAT, "🎙️ Voice audition! Listen and tell Claude which number you like best "
-                          "for English and for Hindi.")
-    n = 0
-    for lang, (text, names) in VOICE_SAMPLES.items():
-        rate = cfg.get("voice_speed", "+10%") if lang == "en" else cfg.get("hindi_voice_speed", "+5%")
-        for v in names:
-            n += 1
-            mp3 = os.path.join(tempfile.gettempdir(), f"sample_{n}.mp3")
-            try:
-                asyncio.run(_tts(text, v, rate, "+0Hz", mp3))
-                flag = "🇬🇧 ENGLISH" if lang == "en" else "🇮🇳 HINDI"
-                tg.send_audio(CHAT, mp3, f"{flag} voice #{n}: {v}", title=f"{n} {v}")
-            except Exception as e:
-                log(f"sample {v} failed: {e}")
+    tg.send_message(CHAT, "🎙️ Voice audition! Listen and tell Claude which number sounds best.")
+    for n, (label, v, text, rate) in enumerate(VOICE_SAMPLES, 1):
+        mp3 = os.path.join(tempfile.gettempdir(), f"sample_{n}.mp3")
+        try:
+            asyncio.run(_tts(text, v, rate, "+0Hz", mp3))
+            tg.send_audio(CHAT, mp3, f"#{n} {label}", title=f"{n} {v}")
+        except Exception as e:
+            log(f"sample {v} failed: {e}")
 
 
 def _growth_now(job):

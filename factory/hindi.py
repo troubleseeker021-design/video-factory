@@ -15,7 +15,7 @@ from .common import FONTS, REVIEW, log, read_json, write_json
 
 FONT = os.path.join(FONTS, "NotoSansDevanagari.ttf")
 FONT_URL = "https://github.com/google/fonts/raw/main/ofl/notosansdevanagari/NotoSansDevanagari%5Bwdth%2Cwght%5D.ttf"
-VOICE = "hi-IN-SwaraNeural"  # change with "hindi_voice" in config.json (try the "voices" task)
+VOICE = "en-US-AndrewMultilingualNeural"  # chosen by the owner; change with "hindi_voice" in config.json
 LINES = ("hook", "body", "cta")
 
 PROMPT = """Rewrite this YouTube Shorts script in natural, conversational Hindi the way young Indians
@@ -26,7 +26,10 @@ Short sentences, natural pauses with "..." and "?" so the voice sounds human, ne
 Keep exactly the same number of "body" lines and "labels".
 
 Return JSON only.
-- "hook", "body", "cta": the spoken lines in DEVANAGARI script (used for the voice).
+- "hook", "body", "cta": the spoken lines in DEVANAGARI script (used for the voice). EVERY word must be
+  in Devanagari, including English words (फेक, रियल, वीडियो) and place names (लेक हिलियर, ऑस्ट्रेलिया).
+  Write numbers and symbols as spoken words (100% -> सौ प्रतिशत, 1960s -> उन्नीस सौ साठ के दशक).
+  Use commas and full stops for natural breathing pauses; no brackets, emojis or symbols.
 - "hook_roman", "body_roman", "cta_roman": the SAME lines word for word in Roman Hinglish, written
   the way Indians type on WhatsApp (e.g. "Yeh jagah fake lagti hai, par 100% real hai!").
   Same number of lines as the Devanagari ones.
@@ -123,8 +126,8 @@ def make(vid, cfg, seed=None):
         sp = script.pop("spoken")
         spoken = [sp["hook"], *sp["body"], sp["cta"]]
         wav, vdur, dev_words = voice.narrate(" ".join(spoken), hcfg, work,
-                                             voices=[cfg.get("hindi_voice") or VOICE, "hi-IN-SwaraNeural", "hi-IN-MadhurNeural"],
-                                             rate=cfg.get("hindi_voice_speed", "+5%"), pitch=cfg.get("hindi_voice_pitch", "+0Hz"))
+                                             voices=[cfg.get("hindi_voice") or VOICE, "hi-IN-MadhurNeural"],
+                                             rate=cfg.get("hindi_voice_speed", "+0%"), pitch=cfg.get("hindi_voice_pitch", "+0Hz"))
         duration = vdur + 0.8
         note("narrator", f"Recorded the Hindi voice-over: {duration:.0f} seconds")
         words = roman_timings(dev_words, spoken, [script["hook"], *script["body"], script["cta"]], duration)
