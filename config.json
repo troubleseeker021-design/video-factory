@@ -12,7 +12,7 @@
   "voice_speed": "+10%",
   "voice_pitch": "+0Hz",
   "hindi_voice": "hi-IN-MadhurNeural",
-  "hindi_voice_speed": "+6%",
+  "hindi_voice_speed": "+10%",
   "photo_3d": true,
 
   "gemini_api_key": "",
