@@ -1934,5 +1934,583 @@
    "International Space Station",
    "Extravehicular activity"
   ]
+ },
+ {
+  "id": "unreal-places-ep1",
+  "episode": 1,
+  "theme": "places",
+  "title": "These Look Fake but Are 100% Real",
+  "hook": "These look fake. They're all real.",
+  "body": [
+   "Number one: Lake Hillier in Australia is bubblegum pink, thanks to salt-loving algae and bacteria.",
+   "Number two: Bolivia's Salar de Uyuni, the world's biggest salt flat.",
+   "After rain it becomes a perfect mirror of the sky.",
+   "Number three: China's Zhangjiajie pillars, said to have inspired the floating mountains in Avatar."
+  ],
+  "cta": "Which one would you visit: 1, 2 or 3?",
+  "caption": "These Look Fake but Are 100% Real 🌍 Which one would you visit: 1, 2 or 3?",
+  "hashtags": [
+   "#travel",
+   "#unrealplaces",
+   "#amazingplaces",
+   "#shorts",
+   "#bucketlist",
+   "#nature"
+  ],
+  "keywords": [
+   "pink lake aerial",
+   "salt flat mirror reflection",
+   "Zhangjiajie mountains fog"
+  ],
+  "wiki": [
+   "Lake Hillier",
+   "Salar de Uyuni",
+   "Zhangjiajie National Forest Park"
+  ],
+  "visuals": [
+   "pink lake aerial",
+   "pink lake aerial",
+   "salt flat mirror reflection",
+   "salt flat mirror reflection",
+   "Zhangjiajie mountains fog",
+   "Zhangjiajie mountains fog"
+  ],
+  "emojis": [
+   "🏝️",
+   "1️⃣",
+   "2️⃣",
+   "",
+   "3️⃣",
+   "🤔"
+  ],
+  "labels": [
+   "",
+   "LAKE HILLIER, AUSTRALIA",
+   "SALAR DE UYUNI, BOLIVIA",
+   "",
+   "ZHANGJIAJIE, CHINA",
+   ""
+  ],
+  "thumb": "REAL OR RENDERED?",
+  "question": "Which one would you visit: 1, 2 or 3?",
+  "confidence": "high",
+  "doubts": []
+ },
+ {
+  "id": "unreal-places-ep2",
+  "episode": 2,
+  "theme": "places",
+  "title": "Water That Glows in the Dark",
+  "hook": "Water shouldn't do this.",
+  "body": [
+   "Number one: Caño Cristales in Colombia, the river of five colours, turns red from a plant that grows only there.",
+   "Number two: on Vaadhoo island in the Maldives, tiny plankton make the waves glow blue at night.",
+   "Number three: New Zealand's Waitomo caves, where thousands of glowworms light the ceiling like stars."
+  ],
+  "cta": "Which would you see first: 1, 2 or 3?",
+  "caption": "Water That Glows in the Dark 🌍 Which one would you visit: 1, 2 or 3?",
+  "hashtags": [
+   "#travel",
+   "#bioluminescence",
+   "#naturelovers",
+   "#shorts",
+   "#unrealplaces",
+   "#amazingplaces"
+  ],
+  "keywords": [
+   "colorful river red plants",
+   "bioluminescent waves beach night",
+   "glowworm cave"
+  ],
+  "wiki": [
+   "Caño Cristales",
+   "Vaadhoo",
+   "Waitomo Glowworm Caves"
+  ],
+  "visuals": [
+   "colorful river red plants",
+   "colorful river red plants",
+   "bioluminescent waves beach night",
+   "glowworm cave",
+   "glowworm cave"
+  ],
+  "emojis": [
+   "🌊",
+   "1️⃣",
+   "2️⃣",
+   "3️⃣",
+   "🤔"
+  ],
+  "labels": [
+   "",
+   "CAÑO CRISTALES, COLOMBIA",
+   "VAADHOO, MALDIVES",
+   "WAITOMO CAVES, NEW ZEALAND",
+   ""
+  ],
+  "thumb": "THIS WATER GLOWS?!",
+  "question": "Which one would you visit: 1, 2 or 3?",
+  "confidence": "high",
+  "doubts": []
+ },
+ {
+  "id": "unreal-places-ep3",
+  "episode": 3,
+  "theme": "places",
+  "title": "No Human Made These",
+  "hook": "Nature built these, not people.",
+  "body": [
+   "Number one: Antelope Canyon in Arizona, carved by flash floods, and you can only enter with a Navajo guide.",
+   "Number two: Pamukkale in Turkey, white terraces formed by hot spring minerals, and you must walk them barefoot.",
+   "Number three: the Giant's Causeway in Northern Ireland, about 40,000 stone columns left by ancient lava."
+  ],
+  "cta": "Which one: 1, 2 or 3?",
+  "caption": "No Human Made These 🌍 Which one would you visit: 1, 2 or 3?",
+  "hashtags": [
+   "#travel",
+   "#geology",
+   "#amazingplaces",
+   "#shorts",
+   "#naturelovers",
+   "#unrealplaces"
+  ],
+  "keywords": [
+   "slot canyon light beams",
+   "white travertine terraces",
+   "basalt columns coast"
+  ],
+  "wiki": [
+   "Antelope Canyon",
+   "Pamukkale",
+   "Giant's Causeway"
+  ],
+  "visuals": [
+   "slot canyon light beams",
+   "slot canyon light beams",
+   "white travertine terraces",
+   "basalt columns coast",
+   "basalt columns coast"
+  ],
+  "emojis": [
+   "🏜️",
+   "1️⃣",
+   "2️⃣",
+   "3️⃣",
+   "🤔"
+  ],
+  "labels": [
+   "",
+   "ANTELOPE CANYON, USA",
+   "PAMUKKALE, TURKEY",
+   "GIANT'S CAUSEWAY, N. IRELAND",
+   ""
+  ],
+  "thumb": "NO HUMAN MADE THIS",
+  "question": "Which one would you visit: 1, 2 or 3?",
+  "confidence": "high",
+  "doubts": []
+ },
+ {
+  "id": "unreal-places-ep4",
+  "episode": 4,
+  "theme": "places",
+  "title": "India's Most Unreal Places",
+  "hook": "Most people have never heard of these places in India.",
+  "body": [
+   "Number one: Lonar Lake in Maharashtra sits in a crater made by a meteorite, and in 2020 it turned pink.",
+   "Number two: Loktak Lake in Manipur has floating islands and the world's only floating national park.",
+   "Number three: the Umngot River in Meghalaya is so clear the boats look like they're flying."
+  ],
+  "cta": "Which one: 1, 2 or 3?",
+  "caption": "India's Most Unreal Places 🌍 Which one would you visit: 1, 2 or 3?",
+  "hashtags": [
+   "#incredibleindia",
+   "#travel",
+   "#meghalaya",
+   "#shorts",
+   "#hiddengems",
+   "#unrealplaces"
+  ],
+  "keywords": [
+   "crater lake India",
+   "floating islands lake",
+   "clear river boat Meghalaya"
+  ],
+  "wiki": [
+   "Lonar Lake",
+   "Loktak Lake",
+   "Dawki"
+  ],
+  "visuals": [
+   "crater lake India",
+   "crater lake India",
+   "floating islands lake",
+   "clear river boat Meghalaya",
+   "clear river boat Meghalaya"
+  ],
+  "emojis": [
+   "🇮🇳",
+   "1️⃣",
+   "2️⃣",
+   "3️⃣",
+   "🤔"
+  ],
+  "labels": [
+   "",
+   "LONAR LAKE, MAHARASHTRA",
+   "LOKTAK LAKE, MANIPUR",
+   "UMNGOT RIVER, MEGHALAYA",
+   ""
+  ],
+  "thumb": "THIS IS INDIA?!",
+  "question": "Which one would you visit: 1, 2 or 3?",
+  "confidence": "high",
+  "doubts": []
+ },
+ {
+  "id": "unreal-places-ep5",
+  "episode": 5,
+  "theme": "places",
+  "title": "Beautiful but Deadly",
+  "hook": "Gorgeous, but you wouldn't want to touch them.",
+  "body": [
+   "Number one: Lake Natron in Tanzania is so alkaline it can burn skin, yet flamingos breed there.",
+   "Number two: Turkmenistan's Darvaza gas crater has been burning for decades.",
+   "Locals call it the Door to Hell.",
+   "Number three: Fly Geyser in Nevada, created by accident when a well was drilled in the 1960s."
+  ],
+  "cta": "Which one: 1, 2 or 3?",
+  "caption": "Beautiful but Deadly 🌍 Which one would you visit: 1, 2 or 3?",
+  "hashtags": [
+   "#travel",
+   "#dangerousplaces",
+   "#unrealplaces",
+   "#shorts",
+   "#didyouknow",
+   "#amazingplaces"
+  ],
+  "keywords": [
+   "red lake flamingos",
+   "burning gas crater night",
+   "colorful geyser desert"
+  ],
+  "wiki": [
+   "Lake Natron",
+   "Darvaza gas crater",
+   "Fly Geyser"
+  ],
+  "visuals": [
+   "red lake flamingos",
+   "red lake flamingos",
+   "burning gas crater night",
+   "burning gas crater night",
+   "colorful geyser desert",
+   "colorful geyser desert"
+  ],
+  "emojis": [
+   "🔥",
+   "1️⃣",
+   "2️⃣",
+   "",
+   "3️⃣",
+   "🤔"
+  ],
+  "labels": [
+   "",
+   "LAKE NATRON, TANZANIA",
+   "DARVAZA CRATER, TURKMENISTAN",
+   "",
+   "FLY GEYSER, NEVADA",
+   ""
+  ],
+  "thumb": "DON'T TOUCH THIS",
+  "question": "Which one would you visit: 1, 2 or 3?",
+  "confidence": "high",
+  "doubts": []
+ },
+ {
+  "id": "unreal-places-ep6",
+  "episode": 6,
+  "theme": "places",
+  "title": "This Ice Looks Photoshopped",
+  "hook": "This ice looks edited. It isn't.",
+  "body": [
+   "Number one: Abraham Lake in Alberta, Canada, where bubbles of methane freeze in layers under the ice.",
+   "Number two: Lake Baikal in Russia, the world's deepest lake, with ice so clear you can see below your feet.",
+   "Number three: Iceland's Diamond Beach, where icebergs wash up on black sand."
+  ],
+  "cta": "Which one: 1, 2 or 3?",
+  "caption": "This Ice Looks Photoshopped 🌍 Which one would you visit: 1, 2 or 3?",
+  "hashtags": [
+   "#travel",
+   "#winter",
+   "#iceland",
+   "#shorts",
+   "#amazingplaces",
+   "#unrealplaces"
+  ],
+  "keywords": [
+   "frozen bubbles lake ice",
+   "clear blue ice lake",
+   "icebergs black sand beach"
+  ],
+  "wiki": [
+   "Abraham Lake",
+   "Lake Baikal",
+   "Jökulsárlón"
+  ],
+  "visuals": [
+   "frozen bubbles lake ice",
+   "frozen bubbles lake ice",
+   "clear blue ice lake",
+   "icebergs black sand beach",
+   "icebergs black sand beach"
+  ],
+  "emojis": [
+   "🧊",
+   "1️⃣",
+   "2️⃣",
+   "3️⃣",
+   "🤔"
+  ],
+  "labels": [
+   "",
+   "ABRAHAM LAKE, CANADA",
+   "LAKE BAIKAL, RUSSIA",
+   "DIAMOND BEACH, ICELAND",
+   ""
+  ],
+  "thumb": "THIS ICE IS REAL?!",
+  "question": "Which one would you visit: 1, 2 or 3?",
+  "confidence": "high",
+  "doubts": []
+ },
+ {
+  "id": "unreal-places-ep7",
+  "episode": 7,
+  "theme": "places",
+  "title": "Trees From Another Planet",
+  "hook": "These look like alien plants.",
+  "body": [
+   "Number one: Socotra island's dragon's blood trees, shaped like umbrellas and bleeding red sap.",
+   "Number two: the rainbow eucalyptus, whose bark peels off in stripes of green, blue, purple and orange.",
+   "Number three: Meghalaya's living root bridges, grown from tree roots by Khasi villagers over decades."
+  ],
+  "cta": "Which one: 1, 2 or 3?",
+  "caption": "Trees From Another Planet 🌍 Which one would you visit: 1, 2 or 3?",
+  "hashtags": [
+   "#nature",
+   "#trees",
+   "#unrealplaces",
+   "#shorts",
+   "#travel",
+   "#amazingplaces"
+  ],
+  "keywords": [
+   "dragon blood tree",
+   "rainbow eucalyptus bark",
+   "living root bridge"
+  ],
+  "wiki": [
+   "Dracaena cinnabari",
+   "Eucalyptus deglupta",
+   "Living root bridge"
+  ],
+  "visuals": [
+   "dragon blood tree",
+   "dragon blood tree",
+   "rainbow eucalyptus bark",
+   "living root bridge",
+   "living root bridge"
+  ],
+  "emojis": [
+   "🌳",
+   "1️⃣",
+   "2️⃣",
+   "3️⃣",
+   "🤔"
+  ],
+  "labels": [
+   "",
+   "SOCOTRA, YEMEN",
+   "RAINBOW EUCALYPTUS",
+   "LIVING ROOT BRIDGES, INDIA",
+   ""
+  ],
+  "thumb": "ALIEN TREES ON EARTH",
+  "question": "Which one would you visit: 1, 2 or 3?",
+  "confidence": "high",
+  "doubts": []
+ },
+ {
+  "id": "unreal-places-ep8",
+  "episode": 8,
+  "theme": "places",
+  "title": "Zero Filters, These Colours Are Real",
+  "hook": "No filters on any of these.",
+  "body": [
+   "Number one: China's Zhangye Danxia mountains, striped in red, orange and yellow by layers of minerals.",
+   "Number two: Spotted Lake in Canada, which dries into dozens of coloured pools every summer.",
+   "Number three: Brazil's Lençóis Maranhenses, white sand dunes filled with blue rainwater lagoons."
+  ],
+  "cta": "Which one: 1, 2 or 3?",
+  "caption": "Zero Filters, These Colours Are Real 🌍 Which one would you visit: 1, 2 or 3?",
+  "hashtags": [
+   "#travel",
+   "#nofilter",
+   "#amazingplaces",
+   "#shorts",
+   "#bucketlist",
+   "#unrealplaces"
+  ],
+  "keywords": [
+   "rainbow mountains China",
+   "spotted lake Canada",
+   "sand dunes lagoons Brazil"
+  ],
+  "wiki": [
+   "Zhangye Danxia",
+   "Spotted Lake",
+   "Lençóis Maranhenses National Park"
+  ],
+  "visuals": [
+   "rainbow mountains China",
+   "rainbow mountains China",
+   "spotted lake Canada",
+   "sand dunes lagoons Brazil",
+   "sand dunes lagoons Brazil"
+  ],
+  "emojis": [
+   "🌈",
+   "1️⃣",
+   "2️⃣",
+   "3️⃣",
+   "🤔"
+  ],
+  "labels": [
+   "",
+   "ZHANGYE DANXIA, CHINA",
+   "SPOTTED LAKE, CANADA",
+   "LENÇÓIS MARANHENSES, BRAZIL",
+   ""
+  ],
+  "thumb": "ZERO FILTERS. REAL.",
+  "question": "Which one would you visit: 1, 2 or 3?",
+  "confidence": "high",
+  "doubts": []
+ },
+ {
+  "id": "unreal-places-ep9",
+  "episode": 9,
+  "theme": "places",
+  "title": "There's a Jungle Inside This Cave",
+  "hook": "Some of Earth's best places are underground.",
+  "body": [
+   "Number one: Chile's Marble Caves, polished into swirls of blue by waves over thousands of years.",
+   "Number two: Vietnam's Son Doong, the world's largest cave, with its own jungle and clouds.",
+   "Number three: Mexico's Cave of Crystals, with crystals longer than a bus."
+  ],
+  "cta": "Which one: 1, 2 or 3?",
+  "caption": "There's a Jungle Inside This Cave 🌍 Which one would you visit: 1, 2 or 3?",
+  "hashtags": [
+   "#caves",
+   "#travel",
+   "#unrealplaces",
+   "#shorts",
+   "#explore",
+   "#amazingplaces"
+  ],
+  "keywords": [
+   "marble caves blue water",
+   "giant cave jungle",
+   "crystal cave"
+  ],
+  "wiki": [
+   "Marble Caves",
+   "Hang Sơn Đoòng",
+   "Cave of the Crystals"
+  ],
+  "visuals": [
+   "marble caves blue water",
+   "marble caves blue water",
+   "giant cave jungle",
+   "crystal cave",
+   "crystal cave"
+  ],
+  "emojis": [
+   "🕳️",
+   "1️⃣",
+   "2️⃣",
+   "3️⃣",
+   "🤔"
+  ],
+  "labels": [
+   "",
+   "MARBLE CAVES, CHILE",
+   "SON DOONG, VIETNAM",
+   "CAVE OF CRYSTALS, MEXICO",
+   ""
+  ],
+  "thumb": "A JUNGLE INSIDE A CAVE?!",
+  "question": "Which one would you visit: 1, 2 or 3?",
+  "confidence": "high",
+  "doubts": []
+ },
+ {
+  "id": "unreal-places-ep10",
+  "episode": 10,
+  "theme": "places",
+  "title": "The Bluest Water on Earth",
+  "hook": "This is the bluest water on the planet.",
+  "body": [
+   "Number one: Belize's Great Blue Hole, a giant underwater sinkhole you can see from the sky.",
+   "Number two: Croatia's Plitvice Lakes, sixteen lakes linked by waterfalls.",
+   "Number three: Moraine Lake in Canada, turned turquoise by fine rock dust from glaciers."
+  ],
+  "cta": "Which one: 1, 2 or 3?",
+  "caption": "The Bluest Water on Earth 🌍 Which one would you visit: 1, 2 or 3?",
+  "hashtags": [
+   "#travel",
+   "#turquoise",
+   "#amazingplaces",
+   "#shorts",
+   "#naturelovers",
+   "#unrealplaces"
+  ],
+  "keywords": [
+   "blue hole aerial ocean",
+   "Plitvice waterfalls lakes",
+   "Moraine Lake turquoise"
+  ],
+  "wiki": [
+   "Great Blue Hole",
+   "Plitvice Lakes National Park",
+   "Moraine Lake"
+  ],
+  "visuals": [
+   "blue hole aerial ocean",
+   "blue hole aerial ocean",
+   "Plitvice waterfalls lakes",
+   "Moraine Lake turquoise",
+   "Moraine Lake turquoise"
+  ],
+  "emojis": [
+   "💙",
+   "1️⃣",
+   "2️⃣",
+   "3️⃣",
+   "🤔"
+  ],
+  "labels": [
+   "",
+   "GREAT BLUE HOLE, BELIZE",
+   "PLITVICE LAKES, CROATIA",
+   "MORAINE LAKE, CANADA",
+   ""
+  ],
+  "thumb": "THIS BLUE IS NOT EDITED",
+  "question": "Which one would you visit: 1, 2 or 3?",
+  "confidence": "high",
+  "doubts": []
  }
 ]
