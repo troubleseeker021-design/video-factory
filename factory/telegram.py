@@ -46,6 +46,12 @@ def send_video(chat_id, path, caption, buttons=None):
         return call("sendVideo", files={"video": ("video.mp4", f, "video/mp4")}, http_timeout=900, **params)
 
 
+def send_audio(chat_id, path, caption, title="voice"):
+    with open(path, "rb") as f:
+        return call("sendAudio", files={"audio": (f"{title}.mp3", f, "audio/mpeg")}, chat_id=chat_id,
+                    caption=caption[:1000], title=title)
+
+
 def get_updates(offset):
     return call("getUpdates", offset=offset, timeout=0, allowed_updates=["message", "callback_query"])
 

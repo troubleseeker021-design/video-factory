@@ -478,7 +478,12 @@ def hindi_test():
     cfg = load_config()
     st = _state()
     note("manager", "Making a Hindi test video for the boss.", kind="start")
-    vid = make_videos.make_one(cfg)
+    from . import writer
+    used_before = read_json(writer.USED, [])
+    try:
+        vid = make_videos.make_one(cfg)
+    finally:  # a preview must not use up a script from the queue
+        write_json(writer.USED, used_before)
     if not vid:
         tg.send_message(CHAT, "⚠️ The test video failed to render.")
         return
@@ -490,6 +495,40 @@ def hindi_test():
         _deliver(st, hid, cfg, "hi", preview_only=True)
     diary.status("idle")
     diary.flush()
+
+
+VOICE_SAMPLES = {
+    "en": ("Okay... this looks completely fake. But it's 100% real. And the strangest part? "
+           "Almost nobody has heard of it.",
+           ["en-US-AndrewMultilingualNeural", "en-US-BrianMultilingualNeural", "en-US-AvaMultilingualNeural",
+            "en-US-EmmaMultilingualNeural", "en-US-ChristopherNeural"]),
+    "hi": ("सोचो... ये जगह बिल्कुल fake लगती है. लेकिन ये 100% real है. और असली twist? "
+           "ज़्यादातर लोगों ने इसके बारे में कभी सुना ही नहीं.",
+           ["hi-IN-MadhurNeural", "hi-IN-SwaraNeural", "en-US-AndrewMultilingualNeural",
+            "en-US-AvaMultilingualNeural", "en-US-EmmaMultilingualNeural"]),
+}
+
+
+def voices():
+    """Sends short voice samples to Telegram so the owner can pick the voice by ear."""
+    import asyncio
+    import tempfile
+    from .voice import _tts
+    cfg = load_config()
+    tg.send_message(CHAT, "🎙️ Voice audition! Listen and tell Claude which number you like best "
+                          "for English and for Hindi.")
+    n = 0
+    for lang, (text, names) in VOICE_SAMPLES.items():
+        rate = cfg.get("voice_speed", "+10%") if lang == "en" else cfg.get("hindi_voice_speed", "+5%")
+        for v in names:
+            n += 1
+            mp3 = os.path.join(tempfile.gettempdir(), f"sample_{n}.mp3")
+            try:
+                asyncio.run(_tts(text, v, rate, "+0Hz", mp3))
+                flag = "🇬🇧 ENGLISH" if lang == "en" else "🇮🇳 HINDI"
+                tg.send_audio(CHAT, mp3, f"{flag} voice #{n}: {v}", title=f"{n} {v}")
+            except Exception as e:
+                log(f"sample {v} failed: {e}")
 
 
 def _growth_now(job):
@@ -548,6 +587,6 @@ def _growth_jobs(cfg):
 
 
 if __name__ == "__main__":
-    {"make": make, "poll": poll, "tick": tick, "repost": repost, "clear": clear_pending, "hindi_test": hindi_test,
+    {"make": make, "poll": poll, "tick": tick, "repost": repost, "clear": clear_pending, "hindi_test": hindi_test, "voices": voices,
      "comments": lambda: __import__("factory.growth", fromlist=["x"]).comment_digest(_state(), CHAT), "stats": lambda: _growth_now("stats"),
      "weekly": lambda: _growth_now("weekly"), "report": lambda: _growth_now("report")}[sys.argv[1]]()
