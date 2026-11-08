@@ -69,5 +69,10 @@
     "id": "boiling-river",
     "title": "The Boiling River of the Amazon",
     "theme": "nature"
+  },
+  {
+    "id": "the-animal-that-remembers-without-a-brain",
+    "title": "The Animal That Remembers Without a Brain",
+    "theme": "animals"
   }
 ]

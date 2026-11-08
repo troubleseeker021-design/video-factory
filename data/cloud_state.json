@@ -1,5 +1,5 @@
 {
-  "offset": 41248575,
+  "offset": 41248576,
   "pending": {},
   "history": [
     {
@@ -263,6 +263,34 @@
     {
       "title": "The Fish That Fights With Slime",
       "status": "cleared"
+    },
+    {
+      "title": "The Animal That Remembers Without a Brain",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/huNbJRqLu00",
+        "Facebook": "https://www.facebook.com/reel/3807542882718166",
+        "Instagram": "https://www.instagram.com/reel/Dfd_gNUCGQa/"
+      },
+      "created": "2026-11-08T05:19:31",
+      "theme": "animals",
+      "hook": "Cut off this creature’s head, and its brand-new brain will still remember everything.",
+      "series": "Animal Oddities #2",
+      "file_id": "BAACAgEAAxkDAANOavAGZkmojvJXhi050_dDnKbFNLgAAo2ZAALw-oBHvNeB0n4I7e89BA",
+      "youtube": {
+        "title": "The Animal That Remembers Without a Brain | Animal Oddities #2 #shorts",
+        "description": "Scientists cut off a flatworm's head, and when it grew a new brain, it still remembered its training. 🧠\n\n👇 If you could regenerate, what one memory would you keep?\n\n#sciencefacts #biology #flatworm #mindblowingfacts #neuroscience #weirdanimals #shorts\n\nImage credits:\nPhoto: Christopher Laumer · CC BY 2.0 · Wikimedia Commons\nVideo: Pixabay",
+        "tags": [
+          "sciencefacts",
+          "biology",
+          "flatworm",
+          "mindblowingfacts",
+          "neuroscience",
+          "weirdanimals",
+          "shorts",
+          "facts"
+        ]
+      }
     }
   ],
   "last_slot": "2026-11-07 17:37",
