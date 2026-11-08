@@ -497,13 +497,11 @@ def hindi_test():
     diary.flush()
 
 
-HI_SAMPLE = ("सोचो, ये जगह बिल्कुल फेक लगती है। लेकिन ये सौ प्रतिशत रियल है। और असली ट्विस्ट क्या है? "
+HI_SAMPLE = ("सोचो, ये जगह बिल्कुल फेक लगती है, लेकिन ये सौ प्रतिशत रियल है। और असली ट्विस्ट क्या है, "
              "ज़्यादातर लोगों ने इसके बारे में कभी सुना ही नहीं।")
 VOICE_SAMPLES = [  # (label, voice, text, rate)
-    ("🇮🇳 HINDI · Andrew, clean Hindi text, normal speed", "en-US-AndrewMultilingualNeural", HI_SAMPLE, "+0%"),
-    ("🇮🇳 HINDI · Andrew, clean Hindi text, a bit slower", "en-US-AndrewMultilingualNeural", HI_SAMPLE, "-6%"),
-    ("🇮🇳 HINDI · Andrew, clean Hindi text, a bit faster", "en-US-AndrewMultilingualNeural", HI_SAMPLE, "+6%"),
-    ("🇮🇳 HINDI · Madhur (native Hindi voice) for comparison", "hi-IN-MadhurNeural", HI_SAMPLE, "+0%"),
+    ("🇮🇳 HINDI · Madhur, shorter pauses, a little faster (new setting)", "hi-IN-MadhurNeural", HI_SAMPLE, "+6%"),
+    ("🇮🇳 HINDI · Madhur, shorter pauses, faster", "hi-IN-MadhurNeural", HI_SAMPLE, "+10%"),
 ]
 
 
