@@ -334,6 +334,20 @@ def tick():
     make()
 
 
+def clear_pending():
+    """Removes videos stuck in 'waiting for approval' (Run workflow > task: clear)."""
+    st = _state()
+    old = st.get("pending", {})
+    titles = [p.get("post", {}).get("title", p.get("vid", "?")) for p in old.values()]
+    for p in old.values():
+        st.setdefault("history", []).append({"title": p.get("post", {}).get("title"), "status": "cleared"})
+    st["pending"] = {}
+    write_json(STATE_PATH, st)
+    log(f"Cleared {len(titles)} old pending video(s).")
+    if CHAT:
+        tg.send_message(CHAT, f"🧹 Cleared {len(titles)} old video(s) from the approval list:\n" + "\n".join(f"• {t}" for t in titles[:20]))
+
+
 def repost():
     """One-time fix: re-upload recent videos whose YouTube upload failed (Run workflow > task: repost)."""
     from . import youtube_upload
@@ -419,5 +433,5 @@ def _growth_jobs(cfg):
 
 
 if __name__ == "__main__":
-    {"make": make, "poll": poll, "tick": tick, "repost": repost, "stats": lambda: _growth_now("stats"),
+    {"make": make, "poll": poll, "tick": tick, "repost": repost, "clear": clear_pending, "stats": lambda: _growth_now("stats"),
      "weekly": lambda: _growth_now("weekly"), "report": lambda: _growth_now("report")}[sys.argv[1]]()
