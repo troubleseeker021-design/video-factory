@@ -11,7 +11,7 @@
   "voice_options_help": "Curious storyteller voices: en-US-AndrewMultilingualNeural (default), en-US-BrianMultilingualNeural, en-US-ChristopherNeural, en-US-GuyNeural, en-US-AriaNeural, en-US-JennyNeural, en-GB-RyanNeural, en-AU-WilliamNeural",
   "voice_speed": "+10%",
   "voice_pitch": "+0Hz",
-  "hindi_voice": "en-US-AndrewMultilingualNeural",
+  "hindi_voice": "hi-IN-MadhurNeural",
   "hindi_voice_speed": "+0%",
   "photo_3d": true,
 
