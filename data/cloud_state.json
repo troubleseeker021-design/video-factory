@@ -200,7 +200,7 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-07T17:39:57"
+      "stats_at": "2026-11-08T00:48:33"
     },
     {
       "title": "The Deepest Hole Ever Dug",
@@ -219,7 +219,7 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-07T17:39:57"
+      "stats_at": "2026-11-08T00:48:33"
     },
     {
       "title": "There's a Giant Alcohol Cloud in Space",
@@ -239,7 +239,7 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-07T17:39:57"
+      "stats_at": "2026-11-08T00:48:33"
     },
     {
       "title": "The Bird That Uses Quantum Physics to Fly",
@@ -253,9 +253,14 @@
         "Facebook": {
           "likes": 0,
           "comments": 0
+        },
+        "YouTube": {
+          "views": 55,
+          "likes": 2,
+          "comments": 0
         }
       },
-      "stats_at": "2026-11-07T17:39:57"
+      "stats_at": "2026-11-08T00:48:33"
     },
     {
       "title": "Nature Invented Gears Millions of Years Before Us",
@@ -269,9 +274,14 @@
         "Facebook": {
           "likes": 0,
           "comments": 1
+        },
+        "YouTube": {
+          "views": 249,
+          "likes": 1,
+          "comments": 0
         }
       },
-      "stats_at": "2026-11-07T17:39:57"
+      "stats_at": "2026-11-08T00:48:33"
     },
     {
       "title": "The Loneliest Whale in the World",
@@ -289,9 +299,14 @@
         "Facebook": {
           "likes": 0,
           "comments": 0
+        },
+        "YouTube": {
+          "views": 1525,
+          "likes": 27,
+          "comments": 0
         }
       },
-      "stats_at": "2026-11-07T17:39:57"
+      "stats_at": "2026-11-08T00:48:33"
     },
     {
       "title": "The Rocks That Breathe Oxygen in Total Darkness",
@@ -300,7 +315,15 @@
         "YouTube": "https://youtube.com/shorts/-WmcpbIW0ss",
         "Facebook": "FAILED: Meta API error: {'message': 'Cannot call API for app 2940747562966108 on behalf of user 122104341225535201', 'type': 'OAuthException', 'code': 200, 'fbtrace_id': 'A1jtOCwyfe548JETjzJkxBS'}",
         "Instagram": "FAILED: Meta API error: {'message': 'Cannot call API for app 2940747562966108 on behalf of user 122104341225535201', 'type': 'OAuthException', 'code': 200, 'fbtrace_id': 'Avgx7On2aH8cpHNrOOeLb__'}"
-      }
+      },
+      "stats": {
+        "YouTube": {
+          "views": 0,
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-08T00:48:33"
     },
     {
       "title": "Your Brain Can't Feel Pain",
@@ -318,9 +341,14 @@
         "Facebook": {
           "likes": 0,
           "comments": 0
+        },
+        "YouTube": {
+          "views": 0,
+          "likes": 0,
+          "comments": 0
         }
       },
-      "stats_at": "2026-11-07T17:39:57"
+      "stats_at": "2026-11-08T00:48:33"
     },
     {
       "title": "The Animal That Forged Real Iron Armor",
@@ -334,7 +362,14 @@
       "theme": "animals",
       "hook": "Two miles beneath the sea, an animal built itself real iron armor.",
       "series": "Animal Oddities #1",
-      "file_id": "BAACAgEAAxkDAAM4au9lEv6yw1W-d7srNYFn9R5j4b0AAhwHAAIQJHhHIUzSqEEaxXY9BA"
+      "file_id": "BAACAgEAAxkDAAM4au9lEv6yw1W-d7srNYFn9R5j4b0AAhwHAAIQJHhHIUzSqEEaxXY9BA",
+      "stats": {
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-08T00:48:33"
     },
     {
       "title": "A Man Knocked Down a Wall and Found a City",
@@ -348,7 +383,18 @@
       "theme": "history",
       "hook": "A man knocked down a wall in his house... and found an entire underground city.",
       "series": "Lost History #1",
-      "file_id": "BAACAgEAAxkDAAM9au-xfAmsl6PvZCMHkfShGXDUv1oAAgWZAALw-oBHiVm-9AABDZ8-PQQ"
+      "file_id": "BAACAgEAAxkDAAM9au-xfAmsl6PvZCMHkfShGXDUv1oAAgWZAALw-oBHiVm-9AABDZ8-PQQ",
+      "stats": {
+        "Instagram": {
+          "likes": 0,
+          "comments": 0
+        },
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-08T00:48:33"
     },
     {
       "title": "The Boiling River of the Amazon",
@@ -362,15 +408,25 @@
       "theme": "nature",
       "hook": "Deep in the Amazon, there's a river that can cook animals alive.",
       "series": "Nature's Weirdest #1",
-      "file_id": "BAACAgEAAxkDAANAau-4j5S00Xa__vI99FO7HUa1_MkAAhCZAALw-oBHpy4iT2juPD89BA"
+      "file_id": "BAACAgEAAxkDAANAau-4j5S00Xa__vI99FO7HUa1_MkAAhCZAALw-oBHpy4iT2juPD89BA",
+      "stats": {
+        "Instagram": {
+          "likes": 0,
+          "comments": 0
+        },
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-08T00:48:33"
     }
   ],
   "last_slot": "2026-11-07 17:37",
   "stats_day": "2026-11-07",
-  "stats_problems": {
-    "YouTube": "('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})"
-  },
+  "stats_problems": {},
   "followers": {
+    "YouTube": 7,
     "Instagram": 0,
     "Facebook": 0
   }
