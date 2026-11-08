@@ -431,10 +431,11 @@ def clear_pending():
         tg.send_message(CHAT, f"🧹 Cleared {len(titles)} old video(s) from the approval list:\n" + "\n".join(f"• {t}" for t in titles[:20]))
 
 
-def repost():
-    """One-time fix: re-upload recent videos whose YouTube upload failed (Run workflow > task: repost)."""
+def repost(st=None):
+    """Re-uploads recent videos whose YouTube upload failed (runs by itself every 6 hours when needed,
+    or Run workflow > task: repost)."""
     from . import youtube_upload
-    st = _state()
+    st = st or _state()
     done = 0
     for h in st.get("history", [])[-30:]:
         links = h.get("links") or {}
@@ -547,6 +548,10 @@ def _growth_jobs(cfg):
         jobs.append(("stats_day", today, lambda: growth.collect_stats(st)))
         if hindi.enabled():
             jobs.append(("stats_day_hi", today, lambda: _in_hi(lambda: growth.collect_stats(st, key="history_hi"))))
+    block = f"{today}-{now.hour // 6}"
+    if st.get("repost_block") != block and any(str((h.get("links") or {}).get("YouTube", "")).startswith("FAILED")
+                                               and h.get("file_id") for h in st.get("history", [])[-30:]):
+        jobs.append(("repost_block", block, lambda: repost(st)))  # e.g. YouTube's daily upload limit
     if st.get("comments_day") != today and now.hour >= 17:
         jobs.append(("comments_day", today, lambda: growth.comment_digest(st, CHAT)))
     if now.weekday() == 6 and now.hour >= 14 and st.get("compile_week") != week and cfg.get("weekly_video", True):
