@@ -98,5 +98,13 @@
     "format": "quiz",
     "hook": "Real or fake? A killer underwater icicle can freeze the ocean floor solid.",
     "date": "2026-11-09"
+  },
+  {
+    "id": "unreal-places-ep2",
+    "title": "Water That Glows in the Dark",
+    "theme": "places",
+    "format": "places",
+    "hook": "Water shouldn't do this.",
+    "date": "2026-11-09"
   }
 ]

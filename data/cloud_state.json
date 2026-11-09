@@ -1,6 +1,47 @@
 {
   "offset": 41248576,
-  "pending": {},
+  "pending": {
+    "cba6fa185a": {
+      "vid": "20261109-171530-unreal-places-ep2-hi",
+      "post": {
+        "title": "Andhere Mein Chamakne Wala Paani",
+        "created": "2026-11-09T17:24:55",
+        "source": "bank:unreal-places",
+        "theme": "places",
+        "hook": "Paani kabhi aisi harkat nahi karta hai kya?",
+        "series": "Anokhe Raaz Ep 2",
+        "question": "Pehle kisse dekhne jaoge: ek, do ya teen?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "places",
+        "youtube": {
+          "title": "Andhere Mein Chamakne Wala Paani | Anokhe Raaz Ep 2 #shorts",
+          "description": "Andhere Mein Chamakne Wala Paani 🌍 Pehle kisse dekhne jaoge: ek, do ya teen?\n\n👇 Pehle kisse dekhne jaoge: ek, do ya teen?\n\n#shorts #travel #rochak #prakriti #kahani #naturelovers #shorts\n\nImage credits:\nPhoto: Karora · Public domain · Wikimedia Commons\nPhoto: Michael Willison · CC BY 2.5 · Wikimedia Commons\nPhoto: Peter Fitzgerald · CC BY 3.0 · Wikimedia Commons\nVideo: Pixabay",
+          "tags": [
+            "shorts",
+            "travel",
+            "rochak",
+            "prakriti",
+            "kahani",
+            "naturelovers",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Andhere Mein Chamakne Wala Paani 🌍 Pehle kisse dekhne jaoge: ek, do ya teen? #shorts #travel #rochak #prakriti #kahani #naturelovers #fyp #facts",
+        "instagram": "Anokhe Raaz Ep 2 🔎 Andhere Mein Chamakne Wala Paani 🌍 Pehle kisse dekhne jaoge: ek, do ya teen?\n\n👇 Pehle kisse dekhne jaoge: ek, do ya teen?\n.\n.\n#shorts #travel #rochak #prakriti #kahani #naturelovers #reels #facts #didyouknow",
+        "facebook": "Anokhe Raaz Ep 2 🔎 Andhere Mein Chamakne Wala Paani 🌍 Pehle kisse dekhne jaoge: ek, do ya teen?\n\n👇 Pehle kisse dekhne jaoge: ek, do ya teen?\n\n#shorts #travel #rochak #prakriti #kahani #naturelovers",
+        "script": "Paani kabhi aisi harkat nahi karta hai kya? Socho, Colombia ka Caño Cristales nadi paanch rango mein badal jaati hai, aur wahan ek khaas paudha iska sach hai? Hairaani ki baat hai, Maldives ke Vaadhoo tapu par chhote jeev raaton mein lehron ko neela chamka dete hain? Aur New Zealand ki Waitomo gufayein jahan hazaaron jugnu chhat ko taaron ki tarah chamkate hain? Pehle kisse dekhne jaoge ek, do ya teen?",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAPIavICIcaHl-0RxA7Y_pZDefWmXLgAAl0IAAJj_5FHvDZqYNIkMdo9BA",
+      "channel": "hi",
+      "message_id": 200,
+      "created": "2026-11-09T17:25:54.672781",
+      "scheduled": true
+    }
+  },
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -400,9 +441,37 @@
         }
       },
       "stats_at": "2026-11-09T11:00:33"
+    },
+    {
+      "title": "Water That Glows in the Dark",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/uhaWhg_cZ_A",
+        "Facebook": "https://www.facebook.com/reel/1812162873382937",
+        "Instagram": "https://www.instagram.com/reel/Dfh3NStAO8F/"
+      },
+      "created": "2026-11-09T17:17:34",
+      "theme": "places",
+      "hook": "Water shouldn't do this.",
+      "series": "Unreal Places Ep 2",
+      "file_id": "BAACAgEAAxkDAAPFavIB6pFfMnWkRccdEBA6ds8bYxwAAlsIAAJj_5FHcVYME1wfbv49BA",
+      "youtube": {
+        "title": "Water That Glows in the Dark | Unreal Places Ep 2 #shorts",
+        "description": "Water That Glows in the Dark 🌍 Which one would you visit: 1, 2 or 3?\n\n👇 Which one would you visit: 1, 2 or 3?\n\n#travel #bioluminescence #naturelovers #shorts #unrealplaces #amazingplaces #shorts\n\nImage credits:\nPhoto: Karora · Public domain · Wikimedia Commons\nPhoto: Michael Willison · CC BY 2.5 · Wikimedia Commons\nPhoto: Peter Fitzgerald · CC BY 3.0 · Wikimedia Commons\nVideo: Pixabay",
+        "tags": [
+          "travel",
+          "bioluminescence",
+          "naturelovers",
+          "shorts",
+          "unrealplaces",
+          "amazingplaces",
+          "shorts",
+          "facts"
+        ]
+      }
     }
   ],
-  "last_slot": "2026-11-08 19:15",
+  "last_slot": "2026-11-09 11:15",
   "stats_day": "2026-11-09",
   "stats_problems": {},
   "followers": {
