@@ -28,7 +28,7 @@ SERIES = {"space": "Space Secrets", "ocean": "Ocean Mysteries", "nature": "Natur
 QUESTIONS = ["Did you already know this?", "Which part surprised you most?",
              "Would you want to see this in person?", "What should we cover next?"]
 CATCHPHRASE = "And that's the part nobody talks about."
-GEMINI_MODELS = ["gemini-2.5-flash", "gemini-flash-latest", "gemini-2.0-flash"]
+GEMINI_MODELS = ["gemini-flash-latest", "gemini-2.5-flash", "gemini-flash-lite-latest"]
 FORMATS = {
     "standard": "FORMAT: a standard fact story about ONE jaw-dropping subject.",
     "quiz": ('FORMAT: "Real or fake?" quiz. The hook asks viewers to guess if something is real '
@@ -96,20 +96,48 @@ def gemini_json(cfg, prompt, temperature=1.0):
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {"temperature": temperature, "responseMimeType": "application/json"},
     }).encode()
-    for model in GEMINI_MODELS:
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
-        try:
-            req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
-            with urllib.request.urlopen(req, timeout=180) as r:
-                resp = json.loads(r.read())
-            text = resp["candidates"][0]["content"]["parts"][0]["text"]
-            text = text.strip().removeprefix("```json").removesuffix("```").strip()
-            out = json.loads(text)
-            out["_model"] = model
-            return out
-        except Exception as e:  # timeouts, network hiccups, bad replies -> try next model
-            log(f"Gemini ({model}) failed: {e}")
+    import time
+    for attempt in range(2):
+        for model in _models(key):
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
+            try:
+                req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
+                with urllib.request.urlopen(req, timeout=180) as r:
+                    resp = json.loads(r.read())
+                text = resp["candidates"][0]["content"]["parts"][0]["text"]
+                text = text.strip().removeprefix("```json").removesuffix("```").strip()
+                out = json.loads(text)
+                out["_model"] = model
+                return out
+            except Exception as e:  # timeouts, busy (503), retired model (404) -> try the next one
+                log(f"Gemini ({model}) failed: {e}")
+        time.sleep(20)  # Google busy? wait a moment and go round once more
     return None
+
+
+_MODELS = None
+
+
+def _models(key):
+    """Google retires model names over time, so ask which "flash" models this key can use right now."""
+    global _MODELS
+    if _MODELS is None:
+        found = []
+        try:
+            with urllib.request.urlopen(f"https://generativelanguage.googleapis.com/v1beta/models?key={key}&pageSize=200",
+                                        timeout=30) as r:
+                for m in json.loads(r.read()).get("models", []):
+                    name = m.get("name", "").split("/")[-1]
+                    if ("flash" in name and "generateContent" in m.get("supportedGenerationMethods", [])
+                            and not any(x in name for x in ("image", "tts", "audio", "live", "thinking", "exp"))):
+                        found.append(name)
+        except Exception as e:
+            log(f"Gemini model list failed: {e}")
+        # newest first: stable "-latest" aliases, then highest version numbers, "lite" last
+        found.sort(key=lambda n: ("lite" in n, "latest" not in n, "preview" in n, [-int(x) for x in re.findall(r"\d+", n)]))
+        _MODELS = list(dict.fromkeys([*found[:4], *GEMINI_MODELS]))
+        log(f"Gemini models to try: {', '.join(_MODELS)}")
+    return _MODELS
 
 
 def _norm_hook(h):
