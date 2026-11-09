@@ -88,6 +88,9 @@ def _deliver(st, vid, cfg, channel="en", preview_only=False):
     short = _short(vid)
     check = bool(post.get("needs_check"))
     auto = cfg.get("auto_post") and not check and not preview_only
+    scheduled = auto and channel == "hi" and bool(cfg.get("hindi_post_times"))
+    if scheduled:
+        auto = False  # it waits in the queue for the next Hindi prime-time slot
     with channel_env(channel):
         where = ", ".join(_platforms()) or "no platforms connected yet (you'll get the captions to post manually)"
     flag = "🇮🇳 HINDI CHANNEL\n" if channel == "hi" else ""
@@ -97,10 +100,13 @@ def _deliver(st, vid, cfg, channel="en", preview_only=False):
         warn = f"\n\n⚠️ FACT CHECK NEEDED before posting:\n{doubts}\nPlease check, then tap Approve or Reject."
     if preview_only:
         status = "👀 Preview only (not posted)."
+    elif scheduled:
+        status = ("🕗 Queued: posts at the next India prime time (" +
+                  " / ".join(cfg["hindi_post_times"]) + " IST) to: " + where)
     else:
         status = ("🤖 Autopilot: posting now to: " if auto else "Approve to post to: ") + where
     cap = f"{flag}🎬 {post.get('title', vid)}\n\n{post.get('script', '')[:500]}{warn}\n\n{status}"
-    buttons = None if (auto or preview_only) else [[{"text": "✅ Approve & post", "callback_data": f"ok:{short}"},
+    buttons = None if (auto or preview_only or scheduled) else [[{"text": "✅ Approve & post", "callback_data": f"ok:{short}"},
                                                      {"text": "❌ Reject", "callback_data": f"no:{short}"}]]
     try:
         msg = tg.send_video(CHAT, os.path.join(d, "video.mp4"), cap[:1000], buttons)
@@ -112,7 +118,8 @@ def _deliver(st, vid, cfg, channel="en", preview_only=False):
         return
     if not preview_only:
         st["pending"][short] = {"vid": vid, "post": post, "file_id": msg["video"]["file_id"], "channel": channel,
-                                "message_id": msg["message_id"], "created": dt.datetime.utcnow().isoformat()}
+                                "message_id": msg["message_id"], "created": dt.datetime.utcnow().isoformat(),
+                                **({"scheduled": True} if scheduled else {})}
         write_json(STATE_PATH, st)
     log(f"Sent to Telegram: {post.get('title')} [{channel}]")
     diary.status("working", post.get("title", ""))
@@ -379,6 +386,33 @@ def poll(inline_make=False):
 DEFAULT_TIMES = ["07:37", "11:37", "17:37"]  # Edmonton time; videos arrive ~20 min later
 
 
+def _due_hindi(cfg, st, now=None):
+    """The India prime-time slot (e.g. '2026-11-09 20:00') that should post a queued Hindi video now."""
+    from zoneinfo import ZoneInfo
+    tz = ZoneInfo(cfg.get("hindi_timezone", "Asia/Kolkata"))
+    now = now or dt.datetime.now(tz)
+    due = None
+    for day in (now.date() - dt.timedelta(days=1), now.date()):
+        for hm in cfg.get("hindi_post_times", []):
+            h, m = map(int, hm.split(":"))
+            t = dt.datetime(day.year, day.month, day.day, h, m, tzinfo=tz)
+            if t <= now <= t + dt.timedelta(hours=2):
+                due = t.strftime("%Y-%m-%d %H:%M")
+    return due if due and due != st.get("last_hi_slot") else None
+
+
+def _post_queued_hindi(cfg, st):
+    slot = _due_hindi(cfg, st)
+    queue = sorted((k for k, v in st["pending"].items() if v.get("scheduled")),
+                   key=lambda k: st["pending"][k].get("created", ""))
+    if not slot or not queue:
+        return
+    st["last_hi_slot"] = slot  # mark first, so it never posts twice
+    write_json(STATE_PATH, st)
+    log(f"India prime time ({slot} IST): posting the queued Hindi video.")
+    _auto_post(st, queue[0])
+
+
 def _due_slot(cfg, st, now=None):
     """Return the scheduled slot (e.g. '2026-11-07 07:37') that still needs a video, or None.
     A missed slot is caught up to 3 hours late; each slot is made only once."""
@@ -402,6 +436,11 @@ def tick():
     reads Telegram, then makes a video if one of today's slots is due."""
     poll(inline_make=True)
     cfg = load_config()
+    st = _state()
+    try:
+        _post_queued_hindi(cfg, st)
+    except Exception:
+        log(f"Hindi queue failed:\n{traceback.format_exc()}")
     st = _state()
     slot = _due_slot(cfg, st)
     asked = st.pop("make_now", False)
