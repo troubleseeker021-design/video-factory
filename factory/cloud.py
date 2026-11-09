@@ -561,6 +561,34 @@ def voices():
             log(f"sample {v} failed: {e}")
 
 
+def check():
+    """Shows which YouTube channel, Facebook Page and Instagram account each channel will post to."""
+    from . import growth, youtube_upload
+    lines = ["🔎 Connection check"]
+    for ch, label in (("en", "🇬🇧 Hidden Facts HQ (English)"), ("hi", "🇮🇳 Kya Sach Hai? (Hindi)")):
+        lines += ["", label]
+        with channel_env(ch):
+            try:
+                youtube_upload.prepare_token() or (_ for _ in ()).throw(RuntimeError("not connected"))
+                r = youtube_upload._service().channels().list(part="snippet", mine=True).execute()
+                lines.append("YouTube: " + ", ".join(i["snippet"]["title"] for i in r.get("items", [])))
+            except Exception as e:
+                lines.append(f"YouTube: ❌ {str(e)[:120]}")
+            try:
+                pg = growth._meta(os.environ.get("META_PAGE_ID", "").strip() or "me", fields="name")
+                lines.append(f"Facebook: {pg['name'] if pg else '❌ not connected'}")
+            except Exception as e:
+                lines.append(f"Facebook: ❌ {str(e)[:120]}")
+            try:
+                ig = os.environ.get("IG_USER_ID", "").strip()
+                lines.append("Instagram: @" + growth._meta(ig, fields="username")["username"] if ig else "Instagram: ❌ not connected")
+            except Exception as e:
+                lines.append(f"Instagram: ❌ {str(e)[:120]}")
+    msg = "\n".join(lines)
+    log(msg)
+    tg.send_message(CHAT, msg)
+
+
 def _growth_now(job):
     """Manual run from GitHub (Run workflow > task: stats / weekly / report)."""
     from . import growth
@@ -621,6 +649,6 @@ def _growth_jobs(cfg):
 
 
 if __name__ == "__main__":
-    {"make": make, "poll": poll, "tick": tick, "repost": repost, "clear": clear_pending, "hindi_test": hindi_test, "voices": voices,
+    {"make": make, "poll": poll, "tick": tick, "repost": repost, "clear": clear_pending, "hindi_test": hindi_test, "voices": voices, "check": check,
      "comments": lambda: __import__("factory.growth", fromlist=["x"]).comment_digest(_state(), CHAT), "stats": lambda: _growth_now("stats"),
      "weekly": lambda: _growth_now("weekly"), "report": lambda: _growth_now("report")}[sys.argv[1]]()
