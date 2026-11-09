@@ -1,6 +1,47 @@
 {
   "offset": 41248576,
-  "pending": {},
+  "pending": {
+    "b0914448c8": {
+      "vid": "20261109-021757-the-ocean-s-real-finger-of-death-hi",
+      "post": {
+        "title": "Samundar Ki Maut Ki Ungli",
+        "created": "2026-11-09T02:30:57",
+        "source": "gemini:gemini-flash-latest",
+        "theme": "ocean",
+        "hook": "Socho, kya yeh sach hai ya nakli? Samundar ki gahrai mein barf ka ek kanta poore farsh ko jama sakta hai.",
+        "series": "Samundar Ke Raaz #1",
+        "question": "Kya aap samundar ke neeche is barf ko chhoona chahoge?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "quiz",
+        "youtube": {
+          "title": "Samundar Ki Maut Ki Ungli | Samundar Ke Raaz #1 #shorts",
+          "description": "Antarctica ke samundar ke neeche chhupa hai barf ka aisa jaal jo sab kuch jama deta hai 🥶\n\n👇 Kya aap samundar ke neeche is barf ko chhoona chahoge?\n\n#samundar #kudrat #raaz #science #shorts #travel #shorts\n\nImage credits:\nPhoto: Endlisnis · CC BY 2.0 · Wikimedia Commons\nPhoto: Jeff Schmaltz · Public domain · Wikimedia Commons\nPhoto: MODIS Rapid Response Team · Public domain · Wikimedia Commons\nPhoto: NASA Goddard Space Flight Center from Gr · Public domain · Wikimedia Commons\nPhoto: Patrick Kelley · CC BY 2.0 · Wikimedia Commons\nPhoto: stephen davis · CC BY 2.0 · Wikimedia Commons\nVideo: Pixabay",
+          "tags": [
+            "samundar",
+            "kudrat",
+            "raaz",
+            "science",
+            "shorts",
+            "travel",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Antarctica ke samundar ke neeche chhupa hai barf ka aisa jaal jo sab kuch jama deta hai 🥶 #samundar #kudrat #raaz #science #shorts #travel #fyp #facts",
+        "instagram": "Samundar Ke Raaz #1 🔎 Antarctica ke samundar ke neeche chhupa hai barf ka aisa jaal jo sab kuch jama deta hai 🥶\n\n👇 Kya aap samundar ke neeche is barf ko chhoona chahoge?\n.\n.\n#samundar #kudrat #raaz #science #shorts #travel #reels #facts #didyouknow",
+        "facebook": "Samundar Ke Raaz #1 🔎 Antarctica ke samundar ke neeche chhupa hai barf ka aisa jaal jo sab kuch jama deta hai 🥶\n\n👇 Kya aap samundar ke neeche is barf ko chhoona chahoge?\n\n#samundar #kudrat #raaz #science #shorts #travel",
+        "script": "Socho, kya yeh sach hai ya nakli? Samundar ki gahrai mein barf ka ek kanta poore farsh ko jama sakta hai. Zyadatar logon ko lagta hai ki yeh koi computer ka khel hai, lekin yeh sau pratishat sach hai. Vaigyanik ise brinicle kahate hain, yaani samundar ki maut ki ungli. Jab barf jamti hai, toh usmein se bahut thanda aur behad khara paani nikalta hai, jo khud nahi jamta. Yeh khara paani aam paani se bhaari hota hai, isliye yeh tezi se andhere tal ki taraf girta hai. Neeche girte hi, yeh aaspas ke paani ko turant jamakar barf ki ek khokhali nali bana deta hai. Jaise hi yeh nali neeche pahunchti hai, barf ki chaadar phail jaati hai aur samudri jeevon ko wahin jama deti hai. Kudrat ka yeh roop kitna hairaan kar dene wala hai na, kya aapne kabhi aisa socha tha?",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAO7avEwzMepCfKxgBLD0O68aDx6tFoAAldYAALw-ohHBL5uSFt4DgE9BA",
+      "channel": "hi",
+      "message_id": 187,
+      "created": "2026-11-09T02:32:44.218766",
+      "scheduled": true
+    }
+  },
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -361,9 +402,37 @@
         }
       },
       "stats_at": "2026-11-09T00:00:33"
+    },
+    {
+      "title": "The Ocean's Real 'Finger of Death'",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "FAILED: <HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai",
+        "Facebook": "https://www.facebook.com/reel/1691685832533197",
+        "Instagram": "https://www.instagram.com/reel/DfgQ_rSCuRL/"
+      },
+      "created": "2026-11-09T02:19:52",
+      "theme": "ocean",
+      "hook": "Real or fake? A killer underwater icicle can freeze the ocean floor solid.",
+      "series": "Ocean Mysteries #1",
+      "file_id": "BAACAgEAAxkDAAO4avEwZPMsxAi8b8LmxEpFxNmHp4sAAlZYAALw-ohHD44CuZJASpk9BA",
+      "youtube": {
+        "title": "The Ocean's Real 'Finger of Death' | Ocean Mysteries #1 #shorts",
+        "description": "Beneath Antarctic ice sheets lurks an icy tendril that freezes sea life in seconds 🥶\n\n👇 Would you touch this if you saw it diving?\n\n#ocean #science #nature #mindblowing #antarctica #learnontiktok #shorts\n\nImage credits:\nPhoto: Endlisnis · CC BY 2.0 · Wikimedia Commons\nPhoto: Jeff Schmaltz · Public domain · Wikimedia Commons\nPhoto: MODIS Rapid Response Team · Public domain · Wikimedia Commons\nPhoto: NASA Goddard Space Flight Center from Gr · Public domain · Wikimedia Commons\nPhoto: Patrick Kelley · CC BY 2.0 · Wikimedia Commons\nPhoto: stephen davis · CC BY 2.0 · Wikimedia Commons\nVideo: Pixabay",
+        "tags": [
+          "ocean",
+          "science",
+          "nature",
+          "mindblowing",
+          "antarctica",
+          "learnontiktok",
+          "shorts",
+          "facts"
+        ]
+      }
     }
   ],
-  "last_slot": "2026-11-08 17:37",
+  "last_slot": "2026-11-08 19:15",
   "stats_day": "2026-11-08",
   "stats_problems": {},
   "followers": {

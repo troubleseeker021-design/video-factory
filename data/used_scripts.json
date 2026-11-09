@@ -90,5 +90,13 @@
     "format": "standard",
     "hook": "Scientists found an animal that literally turns itself into a solar-powered plant.",
     "date": "2026-11-08"
+  },
+  {
+    "id": "the-ocean-s-real-finger-of-death",
+    "title": "The Ocean's Real 'Finger of Death'",
+    "theme": "ocean",
+    "format": "quiz",
+    "hook": "Real or fake? A killer underwater icicle can freeze the ocean floor solid.",
+    "date": "2026-11-09"
   }
 ]
