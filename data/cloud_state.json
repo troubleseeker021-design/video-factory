@@ -367,11 +367,12 @@
   "stats_day": "2026-11-08",
   "stats_problems": {},
   "followers": {
-    "YouTube": 7,
+    "YouTube": 8,
     "Instagram": 0,
     "Facebook": 0
   },
   "repost_block": "2026-11-08-3",
   "comments_day": "2026-11-08",
-  "compile_week": "2026-W45"
+  "compile_week": "2026-W45",
+  "report_week": "2026-W45"
 }
