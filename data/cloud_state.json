@@ -19,7 +19,7 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-08T00:48:33"
+      "stats_at": "2026-11-09T00:00:33"
     },
     {
       "title": "The Deepest Hole Ever Dug",
@@ -38,7 +38,7 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-08T00:48:33"
+      "stats_at": "2026-11-09T00:00:33"
     },
     {
       "title": "There's a Giant Alcohol Cloud in Space",
@@ -58,7 +58,7 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-08T00:48:33"
+      "stats_at": "2026-11-09T00:00:33"
     },
     {
       "title": "The Bird That Uses Quantum Physics to Fly",
@@ -74,12 +74,12 @@
           "comments": 0
         },
         "YouTube": {
-          "views": 55,
+          "views": 57,
           "likes": 2,
           "comments": 0
         }
       },
-      "stats_at": "2026-11-08T00:48:33"
+      "stats_at": "2026-11-09T00:00:33"
     },
     {
       "title": "Nature Invented Gears Millions of Years Before Us",
@@ -95,12 +95,12 @@
           "comments": 1
         },
         "YouTube": {
-          "views": 249,
+          "views": 256,
           "likes": 1,
           "comments": 0
         }
       },
-      "stats_at": "2026-11-08T00:48:33"
+      "stats_at": "2026-11-09T00:00:33"
     },
     {
       "title": "The Loneliest Whale in the World",
@@ -120,12 +120,12 @@
           "comments": 0
         },
         "YouTube": {
-          "views": 1525,
+          "views": 1681,
           "likes": 27,
           "comments": 0
         }
       },
-      "stats_at": "2026-11-08T00:48:33"
+      "stats_at": "2026-11-09T00:00:33"
     },
     {
       "title": "The Rocks That Breathe Oxygen in Total Darkness",
@@ -142,7 +142,7 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-08T00:48:33"
+      "stats_at": "2026-11-09T00:00:33"
     },
     {
       "title": "Your Brain Can't Feel Pain",
@@ -167,7 +167,7 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-08T00:48:33"
+      "stats_at": "2026-11-09T00:00:33"
     },
     {
       "title": "The Animal That Forged Real Iron Armor",
@@ -186,9 +186,14 @@
         "Facebook": {
           "likes": 0,
           "comments": 0
+        },
+        "YouTube": {
+          "views": 873,
+          "likes": 16,
+          "comments": 0
         }
       },
-      "stats_at": "2026-11-08T00:48:33"
+      "stats_at": "2026-11-09T00:00:33"
     },
     {
       "title": "A Man Knocked Down a Wall and Found a City",
@@ -211,9 +216,14 @@
         "Facebook": {
           "likes": 0,
           "comments": 0
+        },
+        "YouTube": {
+          "views": 177,
+          "likes": 4,
+          "comments": 0
         }
       },
-      "stats_at": "2026-11-08T00:48:33"
+      "stats_at": "2026-11-09T00:00:33"
     },
     {
       "title": "The Boiling River of the Amazon",
@@ -236,9 +246,14 @@
         "Facebook": {
           "likes": 0,
           "comments": 0
+        },
+        "YouTube": {
+          "views": 1180,
+          "likes": 24,
+          "comments": 0
         }
       },
-      "stats_at": "2026-11-08T00:48:33"
+      "stats_at": "2026-11-09T00:00:33"
     },
     {
       "title": "The Most Remote Place on Earth",
@@ -290,7 +305,23 @@
           "shorts",
           "facts"
         ]
-      }
+      },
+      "stats": {
+        "YouTube": {
+          "views": 0,
+          "likes": 0,
+          "comments": 0
+        },
+        "Instagram": {
+          "likes": 0,
+          "comments": 0
+        },
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-09T00:00:33"
     },
     {
       "title": "The Animal That Turned Itself Into a Plant",
@@ -318,15 +349,29 @@
           "shorts",
           "facts"
         ]
-      }
+      },
+      "stats": {
+        "Instagram": {
+          "likes": 0,
+          "comments": 0
+        },
+        "Facebook": {
+          "likes": 0,
+          "comments": 0
+        }
+      },
+      "stats_at": "2026-11-09T00:00:33"
     }
   ],
   "last_slot": "2026-11-08 17:37",
-  "stats_day": "2026-11-07",
+  "stats_day": "2026-11-08",
   "stats_problems": {},
   "followers": {
     "YouTube": 7,
     "Instagram": 0,
     "Facebook": 0
-  }
+  },
+  "repost_block": "2026-11-08-3",
+  "comments_day": "2026-11-08",
+  "compile_week": "2026-W45"
 }
