@@ -93,7 +93,8 @@ class PhotoBG:
         rng = random.Random(seed)
         img = ImageOps.exif_transpose(Image.open(path)).convert("RGB")
         self.zoom_in = rng.random() < 0.7
-        self.tall = img.height / img.width >= 1.45
+        self.tall = True  # premium look: every photo fills the whole screen (no framed cards)
+        self.pan = rng.choice([-1, 1])
         if self.tall:
             self.full = ImageOps.fit(img, (int(W * 1.15), int(H * 1.15)), Image.LANCZOS)
         else:
@@ -115,7 +116,8 @@ class PhotoBG:
         if self.tall:
             fw, fh = self.full.size
             cw, ch = int(fw / z * 0.87), int(fh / z * 0.87)
-            x0, y0 = (fw - cw) // 2, int((fh - ch) * (0.35 + 0.3 * k))
+            x0 = int((fw - cw) * (0.5 + 0.18 * self.pan * (k - 0.5)))
+            y0 = int((fh - ch) * (0.4 + 0.2 * k))
             return self.full.crop((x0, y0, x0 + cw, y0 + ch)).resize((self.W, self.H), Image.BILINEAR)
         f = self.back.copy().convert("RGBA")
         sw, sh = self.card_src.size
@@ -139,6 +141,7 @@ class ClipBG:
     blurred copy of itself (keeps wide footage sharp instead of cropping and enlarging it)."""
 
     def __init__(self, path, W, H, dur, fps, fit="full", start=0):
+        fit = "full"  # premium look: footage always fills the screen
         self.W, self.H = W, H
         self.size = W * H * 3
         if fit == "card":
@@ -149,7 +152,7 @@ class ClipBG:
             ch = int(cw * 9 / 16)
             self.card_box = (int((W - cw) / 2), 640 - ch // 2, int((W + cw) / 2), 640 + ch // 2)
         else:
-            vf = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps},eq=brightness=-0.05:saturation=1.12"
+            vf = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps},eq=brightness=-0.03:contrast=1.06:saturation=1.15"
         ss = ["-ss", str(start)] if start else []
         self.proc = subprocess.Popen([ffmpeg_exe(), "-loglevel", "error", "-stream_loop", "-1", *ss, "-i", path,
                                       "-t", f"{dur + 0.5:.2f}", "-filter_complex" if fit == "card" else "-vf", vf,

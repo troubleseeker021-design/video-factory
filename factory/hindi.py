@@ -139,7 +139,7 @@ def make(vid, cfg, seed=None):
         scenes = render.plan_scenes(script, words, duration, rng)
         pool = [m for m in plan.get("media", []) if m and os.path.exists(m.get("path", ""))]
         for k, sc in enumerate(scenes):  # same visuals as the English video
-            sc["media"] = pool[(k - k // 3) % len(pool)] if pool and k % 3 != 2 else None
+            sc["media"] = dict(pool[k % len(pool)]) if pool else None
         thumb = thumbnail.make(script, scenes, hcfg, seed, os.path.join(work, "cover.jpg"))
         render.render(script, scenes, words, duration, wav, mus, os.path.join(work, "video.mp4"), hcfg, seed,
                       workdir=work, thumb=thumb)

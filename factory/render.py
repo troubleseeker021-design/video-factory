@@ -36,6 +36,30 @@ def _shade():
 SHADE = _shade()
 
 
+def _finish_overlays():
+    """Cinematic finish: dark gradients top/bottom (text always readable), vignette, film grain."""
+    y = np.linspace(0, 1, H)[:, None]
+    x = np.linspace(-1, 1, W)[None, :]
+    top = np.clip(1 - y / 0.22, 0, 1) ** 1.6 * 150
+    bot = np.clip((y - 0.50) / 0.50, 0, 1) ** 1.3 * 200
+    vig = np.clip((x ** 2 * 0.55 + ((y - 0.5) * 2) ** 2 * 0.45) - 0.35, 0, 1) * 150
+    a = np.clip(top + bot + vig, 0, 235).astype(np.uint8)
+    g = np.zeros((H, W, 4), np.uint8)
+    g[..., 3] = a
+    grains = []
+    r = np.random.RandomState(7)
+    for _ in range(4):
+        n = r.randint(0, 255, (H // 2, W // 2), np.uint8)
+        gi = np.zeros((H // 2, W // 2, 4), np.uint8)
+        gi[..., :3] = n[..., None]
+        gi[..., 3] = 9
+        grains.append(Image.fromarray(gi, "RGBA").resize((W, H), Image.NEAREST))
+    return Image.fromarray(g, "RGBA"), grains
+
+
+FINISH, GRAINS = _finish_overlays()
+
+
 def _font(name, size, var=None):
     path = os.path.join(FONTS, name)
     try:
@@ -194,18 +218,19 @@ def _hook_banner(title):
             cur = w
     lines.append(cur)
     lines = lines[:3]
-    lh = 100
-    bw = int(max(tmp.textlength(l, font=F_HOOK) for l in lines)) + 80
-    bh = lh * len(lines) + 50
-    img = Image.new("RGBA", (bw + 40, bh + 40), (0, 0, 0, 0))
-    d = ImageDraw.Draw(img)
-    d.rounded_rectangle([20, 26, bw + 20, bh + 26], radius=26, fill=(0, 0, 0, 120))
-    d.rounded_rectangle([20, 20, bw + 20, bh + 20], radius=26, fill=(255, 255, 255, 255))
-    y = 40
-    for l in lines:
-        d.text((20 + bw / 2, y), l, font=F_HOOK, fill=(12, 12, 12), anchor="ma")
+    # premium title: big clean type, last line in gold, soft cinematic shadow (no sticker box)
+    lh = 104
+    bw, bh = 1000, lh * len(lines) + 60
+    img = Image.new("RGBA", (bw, bh), (0, 0, 0, 0))
+    sh = Image.new("RGBA", (bw, bh), (0, 0, 0, 0))
+    d, ds = ImageDraw.Draw(img), ImageDraw.Draw(sh)
+    y = 30
+    for i, l in enumerate(lines):
+        col = (255, 214, 10) if i == len(lines) - 1 and len(lines) > 1 else (255, 255, 255)
+        ds.text((bw / 2, y + 6), l, font=F_HOOK, fill=(0, 0, 0, 230), anchor="ma")
+        d.text((bw / 2, y), l, font=F_HOOK, fill=col, anchor="ma", stroke_width=3, stroke_fill=(0, 0, 0))
         y += lh
-    return img.rotate(2, resample=Image.BICUBIC, expand=True)
+    return Image.alpha_composite(sh.filter(ImageFilter.GaussianBlur(10)), img)
 
 
 def _label_img(text):
@@ -290,7 +315,7 @@ def _caption_img(chunk, hl, accent, style):
                 d.text((x, y), texts[i], font=font, fill=(10, 10, 10))
             else:
                 col = accent if (i == hl or is_num) else (255, 255, 255)
-                d.text((x, y), texts[i], font=font, fill=col, stroke_width=9, stroke_fill=(0, 0, 0))
+                d.text((x, y), texts[i], font=font, fill=col, stroke_width=6, stroke_fill=(0, 0, 0))
             x += widths[i] + space
     shadow = shadow.filter(ImageFilter.GaussianBlur(7))
     return Image.alpha_composite(shadow, img)
@@ -391,8 +416,9 @@ def _hero3d(frame, img, glow, t, si, scale, bob):
 def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg, seed, cover_path=None, workdir=".", thumb=None):
     rng = random.Random(seed)
     accent = ACCENTS.get(cfg.get("caption_style", "yellow"), ACCENTS["yellow"])
-    style = rng.choice(["box", "color"])
-    fill_missing_emoji(scenes, rng)
+    style = "color"  # clean premium captions: white words, the spoken word in the accent colour
+    for sc_ in scenes:  # no emoji stickers - real visuals only
+        sc_["emoji"] = None
     use3d = cfg.get("photo_3d", True)
     bokeh = _bokeh_sprites()
     f_on = duration * 0.5  # mid-video FOLLOW pop-up
@@ -401,7 +427,7 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
     hook_img = _hook_banner(script["title"])
     glow = _glow(700, (255, 255, 255))
     btn_follow, btn_done = _follow_button("follow"), _follow_button("done")
-    hand = EMO.image("👆", 190)
+    hand = None
     chunks = _chunks(words)
     cap_cache, stat_cache = {}, {}
     channel = cfg.get("channel_name", "")
@@ -482,9 +508,9 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
                 frame = proc_bg.frame(t, hue_shift=si * 0.7).convert("RGBA")
                 card = None
 
-            # darken the caption zone slightly for readability on photos/footage
-            if m and not card:
-                frame.alpha_composite(SHADE, (0, CAP_Y - SHADE.height // 2))
+            # cinematic finish: gradients for readable text, vignette, subtle film grain
+            frame.alpha_composite(FINISH)
+            frame.alpha_composite(GRAINS[f % len(GRAINS)])
 
             # ---- hero graphic / sticker ----
             e = sc["emoji"]
@@ -538,7 +564,7 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
                     _paste_center(frame, hand, W / 2 + 260 - 150 * hk, y + 200 - 120 * hk, 0.8, -10, alpha=min(1, max(0, hk * 2)))
                 else:
                     _paste_center(frame, btn_done, W / 2, y, 0.62 * (1 - 0.08 * math.exp(-(lt2 - tap) * 12)))
-                    _paste_center(frame, EMO.image("🔔", 120), W / 2 + 230, y - 40, 1.0, math.sin(t * 16) * 18)
+                    pass
 
             # ---- captions ----
             ci = None
@@ -594,14 +620,14 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
                     z = 1 + 0.14 * (1 - ease_out(k))
                     cw, ch = int(W / z), int(H / z)
                     rgb = rgb.crop(((W - cw) // 2, (H - ch) // 2, (W + cw) // 2, (H + ch) // 2)).resize((W, H), Image.BILINEAR)
-                if sc["trans"] == 1 and lt < 0.14:
-                    a = np.asarray(rgb).copy()
-                    off = int(26 * (1 - k))
-                    a[..., 0] = np.roll(a[..., 0], off, axis=1)
-                    a[..., 2] = np.roll(a[..., 2], -off, axis=1)
-                    rgb = Image.fromarray(a)
-                if sc["trans"] == 2 and lt < 0.12:
-                    rgb = Image.blend(rgb, Image.new("RGB", (W, H), (255, 255, 255)), 0.45 * (1 - lt / 0.12))
+                if sc["trans"] == 1:  # smooth push-out (premium alternative to a glitch)
+                    z = 1 + 0.08 * (1 - ease_out(k))
+                    cw, ch = int(W / z), int(H / z)
+                    rgb = rgb.crop(((W - cw) // 2, (H - ch) // 2, (W + cw) // 2, (H + ch) // 2)).resize((W, H), Image.BILINEAR)
+                    if lt < 0.1:
+                        rgb = rgb.filter(ImageFilter.BoxBlur(int(10 * (1 - lt / 0.1))))
+                if sc["trans"] == 2 and lt < 0.1:  # soft dip from black instead of a white flash
+                    rgb = Image.blend(rgb, Image.new("RGB", (W, H), (0, 0, 0)), 0.5 * (1 - lt / 0.1))
             if stat_on and (t - sc["stat_t"]) < 0.3:  # small punch-in on the number
                 z = 1 + 0.035 * math.sin(math.pi * (t - sc["stat_t"]) / 0.3)
                 cw, ch = int(W / z), int(H / z)

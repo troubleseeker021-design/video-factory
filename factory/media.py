@@ -204,8 +204,8 @@ def plan(script, scenes, cfg, seed):
     key = cfg.get("pexels_api_key", "").strip()
     visuals = script.get("visuals") or []
     keywords = script.get("keywords") or [script.get("theme", "nature")]
-    # 2 of every 3 scenes get real visuals, the rest show 3D graphics (variety = retention)
-    targets = [k for k in range(n) if k % 3 != 2]
+    # premium look: every shot is a real photo or video, full screen
+    targets = list(range(n))
 
     if own:
         for k in targets:
@@ -215,7 +215,7 @@ def plan(script, scenes, cfg, seed):
     pics = []
     if cfg.get("use_wikipedia_images", True):
         for title in script.get("wiki", [])[:3]:
-            pics += wiki_images(title, limit=5)
+            pics += wiki_images(title, limit=8)
         seen, uniq = set(), []
         for p in pics:
             if p["url"] not in seen:
@@ -264,6 +264,12 @@ def plan(script, scenes, cfg, seed):
         if not m:
             m = second(k) if second is clip_for else second()
         scenes[k]["media"] = m
+    # not enough different visuals? reuse the ones we found (shown with a different move/crop)
+    pool = [sc["media"] for sc in scenes if sc["media"]]
+    if pool:
+        for k, sc in enumerate(scenes):
+            if not sc["media"]:
+                sc["media"] = dict(pool[k % len(pool)])
     found = sum(1 for sc in scenes if sc["media"])
     log(f"  media: {found}/{n} scenes with real photos/footage, the rest use 3D graphics")
     return scenes

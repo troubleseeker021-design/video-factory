@@ -157,46 +157,17 @@ def make(script, scenes, cfg, seed, out_path=None, lang="en"):
     v.putalpha(vig)
     img.alpha_composite(v)
 
-    # hero 3D object with a light burst behind it
-    hook_sc = scenes[0] if scenes else {}
-    e = hook_sc.get("emoji") or (EMO.THEME_POOL.get(script.get("theme", ""), ["🤯"]) or ["🤯"])[0]
-    hero = EMO.image(e, 600)
+    # premium look: the real photo is the hero - no emoji objects, bursts or arrows
     cx, cy = W // 2, 640
-    burst = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    bd = ImageDraw.Draw(burst)
-    for k in range(16):
-        a = k * math.pi / 8 + rng.uniform(-.05, .05)
-        bd.polygon([(cx, cy), (cx + 1400 * math.cos(a - .07), cy + 1400 * math.sin(a - .07)),
-                    (cx + 1400 * math.cos(a + .07), cy + 1400 * math.sin(a + .07))], fill=(255, 230, 160, 40))
-    bd.ellipse([cx - 300, cy - 300, cx + 300, cy + 300], fill=(255, 240, 200, 55))
-    img.alpha_composite(burst.filter(ImageFilter.GaussianBlur(18)))
-    if hero is not None:
-        if hero.width < 560:
-            hero = hero.resize((560, int(560 * hero.height / hero.width)), Image.LANCZOS)
-        hs = hero.rotate(rng.choice([-9, -6, 6, 9]), Image.BICUBIC, expand=True)
-        pad = Image.new("RGBA", (hs.width + 200, hs.height + 200), (0, 0, 0, 0))
-        pad.alpha_composite(hs, (100, 100))
-        sh = Image.new("RGBA", pad.size, (0, 0, 0, 0))
-        sh.putalpha(pad.getchannel("A").filter(ImageFilter.GaussianBlur(22)).point(lambda v: int(v * .6)))
-        ox, oy = cx - pad.width // 2, cy - pad.height // 2
-        img.alpha_composite(sh, (ox + 14, oy + 30))
-        img.alpha_composite(_glow(pad, 30, (255, 240, 200), 1.2), (ox, oy))
-        img.alpha_composite(pad, (ox, oy))
-
     # huge words
     blk = _text_block(thumb_words(script), lang).rotate(-3, Image.BICUBIC, expand=True)
-    by = 960
+    by = 1080
     sh = Image.new("RGBA", blk.size, (0, 0, 0, 0))
     sh.putalpha(blk.getchannel("A").filter(ImageFilter.GaussianBlur(14)).point(lambda v: int(v * .7)))
     img.alpha_composite(sh, ((W - blk.width) // 2 + 10, by + 16))
     img.alpha_composite(blk, ((W - blk.width) // 2, by))
 
-    # red arrow from the words to the object
     d = ImageDraw.Draw(img)
-    side = rng.choice([-1, 1])
-    x0 = cx + side * 330
-    _arrow(d, (x0, by + 10), (cx + side * 420, cy + 120), (cx + side * 230, cy + 150))
-
     # series badge on top
     series = script.get("series_tag", "")
     if series:
