@@ -106,5 +106,13 @@
     "format": "places",
     "hook": "Water shouldn't do this.",
     "date": "2026-11-09"
+  },
+  {
+    "id": "trees-that-feed-on-pure-gold",
+    "title": "Trees That Feed on Pure Gold",
+    "theme": "nature",
+    "format": "countdown",
+    "hook": "These trees swallow solid gold particles straight from the ground.",
+    "date": "2026-11-09"
   }
 ]

@@ -40,6 +40,46 @@
       "message_id": 200,
       "created": "2026-11-09T17:25:54.672781",
       "scheduled": true
+    },
+    "302356f16b": {
+      "vid": "20261109-222157-trees-that-feed-on-pure-gold-hi",
+      "post": {
+        "title": "Sone Khane Wale Anokhe Ped",
+        "created": "2026-11-09T22:34:08",
+        "source": "gemini:gemini-flash-lite-latest",
+        "theme": "nature",
+        "hook": "Socho, kya koi ped jameen ke neeche se seedha asli sona nigal sakta hai?",
+        "series": "Kudrat Ke Raaz #2",
+        "question": "Kya aap ped ki pattiyon se sona dhundhna chahenge?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "countdown",
+        "youtube": {
+          "title": "Sone Khane Wale Anokhe Ped | Kudrat Ke Raaz #2 #shorts",
+          "description": "Kudrat ka yeh anokha jaadoo dekh kar aap bhi hairaan reh jayenge! 🌲✨\n\n👇 Kya aap ped ki pattiyon se sona dhundhna chahenge?\n\n#kudrat #raaz #science #gold #shorts #travel #shorts\n\nImage credits:\nPhoto: Patche99z · Public domain · Wikimedia Commons\nPhoto: Quixoticelixer- · CC BY 4.0 · Wikimedia Commons\nPhoto: Themium · CC0 · Wikimedia Commons\nPhoto: Wikimedia Commons · CC0 · Wikimedia Commons\nVideo: Pixabay",
+          "tags": [
+            "kudrat",
+            "raaz",
+            "science",
+            "gold",
+            "shorts",
+            "travel",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Kudrat ka yeh anokha jaadoo dekh kar aap bhi hairaan reh jayenge! 🌲✨ #kudrat #raaz #science #gold #shorts #travel #fyp #facts",
+        "instagram": "Kudrat Ke Raaz #2 🔎 Kudrat ka yeh anokha jaadoo dekh kar aap bhi hairaan reh jayenge! 🌲✨\n\n👇 Kya aap ped ki pattiyon se sona dhundhna chahenge?\n.\n.\n#kudrat #raaz #science #gold #shorts #travel #reels #facts #didyouknow",
+        "facebook": "Kudrat Ke Raaz #2 🔎 Kudrat ka yeh anokha jaadoo dekh kar aap bhi hairaan reh jayenge! 🌲✨\n\n👇 Kya aap ped ki pattiyon se sona dhundhna chahenge?\n\n#kudrat #raaz #science #gold #shorts #travel",
+        "script": "Socho, kya koi ped jameen ke neeche se seedha asli sona nigal sakta hai? Teesre number par, Australia ke sukhe ilaakon mein Eucalyptus ke ped nanhi mashinon ki tarah kaam karte hain? Inki gahri jaden jameen ke bahut neeche chhipe sone ke baareek kan sokh leti hain. Doosre number par, yeh sona tane se oopar ki taraf badhte hue pattiyon tak pahunchta hai? Vaigyaanikom ko pattiyon ki sataha par sach mein chamakte hue sone ke baareek kan mile hain. Aur pehle number par, kudrat ka yeh anokha raaz khajaana dhundhne vaalom ke kaam aata hai? Ab bina vajah gaddhe khodne ki jagah, ve bas in pattiyon ki jaanch kar lete hain. To kya aap jaante the ki yeh ped jameen se seedha asli sona nigalte hain? Aur yahi vo anokha raaz hai, jiske baare mein koi baat nahi karta. To kya aap jaante the ki yeh ped jameen se seedha asli sona nigalte hain.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAPMavJKmDcJMdj7TKXJ-4nEqPdRV3sAAlcIAAJj_5lHMSrGNSOPCug9BA",
+      "channel": "hi",
+      "message_id": 204,
+      "created": "2026-11-09T22:35:05.092118",
+      "scheduled": true
     }
   },
   "history": [
@@ -469,9 +509,37 @@
           "facts"
         ]
       }
+    },
+    {
+      "title": "Trees That Feed on Pure Gold",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/tn2-K3NT3Ug",
+        "Facebook": "https://www.facebook.com/reel/2346992906060123",
+        "Instagram": "https://www.instagram.com/reel/DfiamNJkXYD/"
+      },
+      "created": "2026-11-09T22:25:21",
+      "theme": "nature",
+      "hook": "These trees swallow solid gold particles straight from the ground.",
+      "series": "Nature's Weirdest #2",
+      "file_id": "BAACAgEAAxkDAAPJavJKZHmWxXyw1MU9RIj2nsaaDLUAAlYIAAJj_5lHL6QxHFxB-hs9BA",
+      "youtube": {
+        "title": "Trees That Feed on Pure Gold | Nature's Weirdest #2 #shorts",
+        "description": "Mother Nature is the ultimate gold prospector. 🌲✨\n\n👇 Would you try panning for gold in tree leaves?\n\n#science #nature #gold #trees #geology #curiosity #shorts\n\nImage credits:\nPhoto: Patche99z · Public domain · Wikimedia Commons\nPhoto: Quixoticelixer- · CC BY 4.0 · Wikimedia Commons\nPhoto: Themium · CC0 · Wikimedia Commons\nPhoto: Wikimedia Commons · CC0 · Wikimedia Commons\nVideo: Pixabay",
+        "tags": [
+          "science",
+          "nature",
+          "gold",
+          "trees",
+          "geology",
+          "curiosity",
+          "shorts",
+          "facts"
+        ]
+      }
     }
   ],
-  "last_slot": "2026-11-09 11:15",
+  "last_slot": "2026-11-09 16:15",
   "stats_day": "2026-11-09",
   "stats_problems": {},
   "followers": {
