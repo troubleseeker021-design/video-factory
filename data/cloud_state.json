@@ -1,47 +1,6 @@
 {
   "offset": 41248576,
-  "pending": {
-    "b0914448c8": {
-      "vid": "20261109-021757-the-ocean-s-real-finger-of-death-hi",
-      "post": {
-        "title": "Samundar Ki Maut Ki Ungli",
-        "created": "2026-11-09T02:30:57",
-        "source": "gemini:gemini-flash-latest",
-        "theme": "ocean",
-        "hook": "Socho, kya yeh sach hai ya nakli? Samundar ki gahrai mein barf ka ek kanta poore farsh ko jama sakta hai.",
-        "series": "Samundar Ke Raaz #1",
-        "question": "Kya aap samundar ke neeche is barf ko chhoona chahoge?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "quiz",
-        "youtube": {
-          "title": "Samundar Ki Maut Ki Ungli | Samundar Ke Raaz #1 #shorts",
-          "description": "Antarctica ke samundar ke neeche chhupa hai barf ka aisa jaal jo sab kuch jama deta hai 🥶\n\n👇 Kya aap samundar ke neeche is barf ko chhoona chahoge?\n\n#samundar #kudrat #raaz #science #shorts #travel #shorts\n\nImage credits:\nPhoto: Endlisnis · CC BY 2.0 · Wikimedia Commons\nPhoto: Jeff Schmaltz · Public domain · Wikimedia Commons\nPhoto: MODIS Rapid Response Team · Public domain · Wikimedia Commons\nPhoto: NASA Goddard Space Flight Center from Gr · Public domain · Wikimedia Commons\nPhoto: Patrick Kelley · CC BY 2.0 · Wikimedia Commons\nPhoto: stephen davis · CC BY 2.0 · Wikimedia Commons\nVideo: Pixabay",
-          "tags": [
-            "samundar",
-            "kudrat",
-            "raaz",
-            "science",
-            "shorts",
-            "travel",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "Antarctica ke samundar ke neeche chhupa hai barf ka aisa jaal jo sab kuch jama deta hai 🥶 #samundar #kudrat #raaz #science #shorts #travel #fyp #facts",
-        "instagram": "Samundar Ke Raaz #1 🔎 Antarctica ke samundar ke neeche chhupa hai barf ka aisa jaal jo sab kuch jama deta hai 🥶\n\n👇 Kya aap samundar ke neeche is barf ko chhoona chahoge?\n.\n.\n#samundar #kudrat #raaz #science #shorts #travel #reels #facts #didyouknow",
-        "facebook": "Samundar Ke Raaz #1 🔎 Antarctica ke samundar ke neeche chhupa hai barf ka aisa jaal jo sab kuch jama deta hai 🥶\n\n👇 Kya aap samundar ke neeche is barf ko chhoona chahoge?\n\n#samundar #kudrat #raaz #science #shorts #travel",
-        "script": "Socho, kya yeh sach hai ya nakli? Samundar ki gahrai mein barf ka ek kanta poore farsh ko jama sakta hai. Zyadatar logon ko lagta hai ki yeh koi computer ka khel hai, lekin yeh sau pratishat sach hai. Vaigyanik ise brinicle kahate hain, yaani samundar ki maut ki ungli. Jab barf jamti hai, toh usmein se bahut thanda aur behad khara paani nikalta hai, jo khud nahi jamta. Yeh khara paani aam paani se bhaari hota hai, isliye yeh tezi se andhere tal ki taraf girta hai. Neeche girte hi, yeh aaspas ke paani ko turant jamakar barf ki ek khokhali nali bana deta hai. Jaise hi yeh nali neeche pahunchti hai, barf ki chaadar phail jaati hai aur samudri jeevon ko wahin jama deti hai. Kudrat ka yeh roop kitna hairaan kar dene wala hai na, kya aapne kabhi aisa socha tha?",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAO7avEwzMepCfKxgBLD0O68aDx6tFoAAldYAALw-ohHBL5uSFt4DgE9BA",
-      "channel": "hi",
-      "message_id": 187,
-      "created": "2026-11-09T02:32:44.218766",
-      "scheduled": true
-    }
-  },
+  "pending": {},
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -443,5 +402,36 @@
   "repost_block": "2026-11-08-3",
   "comments_day": "2026-11-08",
   "compile_week": "2026-W45",
-  "report_week": "2026-W45"
+  "report_week": "2026-W45",
+  "last_hi_slot": "2026-11-09 08:00",
+  "history_hi": [
+    {
+      "title": "Samundar Ki Maut Ki Ungli",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/6gPa5vl8QJY",
+        "Facebook": "https://www.facebook.com/reel/1125046923726163",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-09T02:30:57",
+      "theme": "ocean",
+      "hook": "Socho, kya yeh sach hai ya nakli? Samundar ki gahrai mein barf ka ek kanta poore farsh ko jama sakta hai.",
+      "series": "Samundar Ke Raaz #1",
+      "file_id": "BAACAgEAAxkDAAO7avEwzMepCfKxgBLD0O68aDx6tFoAAldYAALw-ohHBL5uSFt4DgE9BA",
+      "youtube": {
+        "title": "Samundar Ki Maut Ki Ungli | Samundar Ke Raaz #1 #shorts",
+        "description": "Antarctica ke samundar ke neeche chhupa hai barf ka aisa jaal jo sab kuch jama deta hai 🥶\n\n👇 Kya aap samundar ke neeche is barf ko chhoona chahoge?\n\n#samundar #kudrat #raaz #science #shorts #travel #shorts\n\nImage credits:\nPhoto: Endlisnis · CC BY 2.0 · Wikimedia Commons\nPhoto: Jeff Schmaltz · Public domain · Wikimedia Commons\nPhoto: MODIS Rapid Response Team · Public domain · Wikimedia Commons\nPhoto: NASA Goddard Space Flight Center from Gr · Public domain · Wikimedia Commons\nPhoto: Patrick Kelley · CC BY 2.0 · Wikimedia Commons\nPhoto: stephen davis · CC BY 2.0 · Wikimedia Commons\nVideo: Pixabay",
+        "tags": [
+          "samundar",
+          "kudrat",
+          "raaz",
+          "science",
+          "shorts",
+          "travel",
+          "shorts",
+          "facts"
+        ]
+      }
+    }
+  ]
 }
