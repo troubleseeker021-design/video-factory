@@ -327,7 +327,7 @@
       "title": "The Animal That Turned Itself Into a Plant",
       "status": "auto-posted",
       "links": {
-        "YouTube": "FAILED: <HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai",
+        "YouTube": "https://youtube.com/shorts/on_JTPZXB-o",
         "Facebook": "https://www.facebook.com/reel/991751103401478",
         "Instagram": "https://www.instagram.com/reel/Dff-bdYkiLL/"
       },
@@ -366,7 +366,7 @@
       "title": "The Ocean's Real 'Finger of Death'",
       "status": "auto-posted",
       "links": {
-        "YouTube": "FAILED: <HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai",
+        "YouTube": "https://youtube.com/shorts/PNrhIEbJUJI",
         "Facebook": "https://www.facebook.com/reel/1691685832533197",
         "Instagram": "https://www.instagram.com/reel/DfgQ_rSCuRL/"
       },
@@ -410,7 +410,7 @@
     "Instagram": 0,
     "Facebook": 0
   },
-  "repost_block": "2026-11-09-0",
+  "repost_block": "2026-11-09-1",
   "comments_day": "2026-11-08",
   "compile_week": "2026-W45",
   "report_week": "2026-W45",
