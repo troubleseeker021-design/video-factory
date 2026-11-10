@@ -596,6 +596,65 @@ def check():
     tg.send_message(CHAT, msg)
 
 
+PIP = ("Pip, a tiny round fluffy white cloud with big sparkling kind eyes, rosy pink cheeks and a small happy "
+       "smile, the same cute character in every picture")
+KIDS_SAMPLE = {
+    "title": "Pip the Little Cloud", "theme": "nature", "series_tag": "Bedtime Stories #1",
+    "hook": "High above the green hills lived Pip, the smallest cloud in the whole sky.",
+    "body": ["Every morning, the big clouds rained on the flowers, and the flowers smiled.",
+             "But Pip never rained. Pip was scared.",
+             "What if my raindrops are too tiny, Pip whispered.",
+             "One hot day, a little sunflower drooped her head. She was so very thirsty.",
+             "Pip looked around. The big clouds were far, far away.",
+             "So Pip took a deep breath, and gave everything he had.",
+             "Plip, plop, plip! Tiny drops danced down onto the sunflower.",
+             "She lifted her head and smiled the biggest smile in the garden."],
+    "cta": "And Pip learned that even the smallest helper can make the biggest difference.",
+    "art": [f"{PIP} floating alone high above rolling green hills at sunrise, wide shot",
+            f"big friendly grey rain clouds raining gently on a colourful flower meadow, flowers smiling, {PIP} watching from the side",
+            f"{PIP} hiding shyly behind a rainbow, looking nervous",
+            f"close-up of {PIP} looking worried, whispering, tiny sparkles around him",
+            "a small cute sunflower with a sweet face drooping her head in hot sunshine, cracked dry ground, a little garden",
+            f"{PIP} looking around a wide empty blue sky, the big clouds tiny and far away on the horizon",
+            f"{PIP} puffing up bravely with eyes closed, taking a deep breath, determined",
+            f"{PIP} raining tiny sparkling raindrops onto the little sunflower, drops bouncing, joyful",
+            f"the happy sunflower standing tall with the biggest smile, {PIP} smiling above, colourful garden",
+            f"{PIP} and the sunflower smiling at each other at golden sunset, warm glow, peaceful"],
+    "labels": [], "emojis": [],
+}
+
+
+def kids_sample():
+    """One sample storybook video for a kids channel - sent to Telegram only, never posted."""
+    import random as _r
+    import tempfile
+    from . import aiart, music, render, thumbnail, voice
+    cfg = dict(load_config(), channel_name="")
+    work = tempfile.mkdtemp(prefix="kids_")
+    seed = 4242
+    script = dict(KIDS_SAMPLE)
+    aiart.STYLE = ("children's picture-book illustration, soft watercolour and gouache textures, cute rounded "
+                   "shapes, warm pastel colours, gentle soft light, cosy and magical, high quality storybook art, "
+                   "vertical 9:16 frame, the character large and centred, absolutely no text, no letters, no watermark")
+    text = " ".join([script["hook"], *script["body"], script["cta"]])
+    wav, vdur, words = voice.narrate(text, cfg, work, voices=["en-US-AvaMultilingualNeural", "en-US-JennyNeural"],
+                                     rate="-6%", pitch="+0Hz")
+    duration = vdur + 1.0
+    mus = music.pick_music(duration, seed, work)
+    scenes = render.plan_scenes(script, words, duration, _r.Random(seed))
+    aiart.plan(script, scenes, cfg, seed, work)
+    pool = [sc["media"] for sc in scenes if sc.get("media")]
+    for k, sc in enumerate(scenes):
+        if not sc.get("media") and pool:
+            sc["media"] = dict(pool[k % len(pool)])
+    thumb = thumbnail.make(dict(script, thumb="PIP THE LITTLE CLOUD"), scenes, cfg, seed, os.path.join(work, "cover.jpg"))
+    out = os.path.join(work, "video.mp4")
+    render.render(script, scenes, words, duration, wav, mus, out, cfg, seed, workdir=work, thumb=thumb)
+    tg.send_video(CHAT, out, "🧸 KIDS CHANNEL SAMPLE (not posted)\n\nPip the Little Cloud - an original "
+                             "storybook-style bedtime story. Free AI pictures + camera motion + warm narrator.")
+    log("Kids sample sent to Telegram.")
+
+
 def _growth_now(job):
     """Manual run from GitHub (Run workflow > task: stats / weekly / report)."""
     from . import growth
@@ -656,6 +715,6 @@ def _growth_jobs(cfg):
 
 
 if __name__ == "__main__":
-    {"make": make, "poll": poll, "tick": tick, "repost": repost, "clear": clear_pending, "hindi_test": hindi_test, "voices": voices, "check": check,
+    {"make": make, "poll": poll, "tick": tick, "repost": repost, "clear": clear_pending, "hindi_test": hindi_test, "voices": voices, "check": check, "kids_sample": kids_sample,
      "comments": lambda: __import__("factory.growth", fromlist=["x"]).comment_digest(_state(), CHAT), "stats": lambda: _growth_now("stats"),
      "weekly": lambda: _growth_now("weekly"), "report": lambda: _growth_now("report")}[sys.argv[1]]()
