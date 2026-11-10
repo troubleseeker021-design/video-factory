@@ -1,13 +1,14 @@
 """The Animator: an AI-generated 3D-render style picture for every shot (the look of the viral
 3D explainer reels), animated later by the renderer with camera moves.
-Uses Google Gemini's image model with the existing free Gemini key; if that is not available,
-falls back to Pollinations (free, no key). Returns None when both fail, so the factory can
-fall back to real photos/footage."""
+Uses Cloudflare Workers AI (free daily allowance; GitHub secrets CF_ACCOUNT_ID + CF_API_TOKEN).
+Gemini images are tried only if "ai_art_gemini" is true in config.json (needs a paid Gemini plan).
+Returns None when nothing works, so the factory falls back to real photos/footage."""
 import base64
 import json
 import os
 import random
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -58,6 +59,43 @@ def _gemini(prompt, key):
     return None
 
 
+CF_MODELS = [  # (model, extra settings) - best first; each falls back to the next
+    ("@cf/leonardo/lucid-origin", {"width": 864, "height": 1536, "steps": 25}),
+    ("@cf/black-forest-labs/flux-1-schnell", {"steps": 8}),
+]
+
+
+def _cloudflare(prompt, seed):
+    acct, tok = os.environ.get("CF_ACCOUNT_ID", "").strip(), os.environ.get("CF_API_TOKEN", "").strip()
+    if not acct or not tok:
+        return None
+    for model, extra in CF_MODELS:
+        if model in _CF_BAD:
+            continue
+        body = json.dumps({"prompt": prompt[:2000], "seed": seed % 2_000_000_000, **extra}).encode()
+        req = urllib.request.Request(f"https://api.cloudflare.com/client/v4/accounts/{acct}/ai/run/{model}", data=body,
+                                     headers={"Authorization": f"Bearer {tok}", "Content-Type": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                ctype, raw = r.headers.get("Content-Type", ""), r.read()
+            if ctype.startswith("image/"):
+                return raw
+            img = (json.loads(raw).get("result") or {}).get("image")
+            if img:
+                return base64.b64decode(img)
+        except urllib.error.HTTPError as e:
+            msg = e.read()[:200].decode("utf-8", "ignore")
+            log(f"  AI art: Cloudflare {model.split('/')[-1]} failed: {e.code} {msg}")
+            if e.code in (400, 404):  # model or settings not available - don't try it again this run
+                _CF_BAD.add(model)
+        except Exception as e:
+            log(f"  AI art: Cloudflare {model.split('/')[-1]} failed: {str(e)[:120]}")
+    return None
+
+
+_CF_BAD = set()
+
+
 def _pollinations(prompt, seed):
     q = urllib.parse.quote(prompt[:900])
     url = (f"https://image.pollinations.ai/prompt/{q}?width=1080&height=1920&nologo=true&enhance=false"
@@ -80,9 +118,12 @@ def make(prompt, path, cfg, seed=None):
     from PIL import Image
     full = f"{prompt.strip().rstrip('.')}. {STYLE}"
     key = cfg.get("gemini_api_key", "").strip()
-    data = _gemini(full, key) if key and cfg.get("ai_art_gemini", True) else None
-    if not data:
-        data = _pollinations(full, seed if seed is not None else random.randint(1, 10 ** 6))
+    seed = seed if seed is not None else random.randint(1, 10 ** 6)
+    data = _cloudflare(full, seed)
+    if not data and key and cfg.get("ai_art_gemini", False):
+        data = _gemini(full, key)
+    if not data and cfg.get("ai_art_pollinations", False):
+        data = _pollinations(full, seed)
     if not data:
         return None
     with open(path, "wb") as f:
@@ -91,6 +132,11 @@ def make(prompt, path, cfg, seed=None):
         img = Image.open(path).convert("RGB")
         if min(img.size) < 400:
             return None
+        if img.width / img.height > 0.7:  # square picture: keep the centre as a tall 9:16 frame, sharpened
+            from PIL import ImageFilter
+            w = int(img.height * 9 / 16)
+            img = img.crop(((img.width - w) // 2, 0, (img.width + w) // 2, img.height))
+            img = img.resize((1080, 1920), Image.LANCZOS).filter(ImageFilter.UnsharpMask(1.6, 70, 2))
         img.save(path, quality=93)
         return path
     except Exception:

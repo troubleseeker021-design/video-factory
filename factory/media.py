@@ -194,6 +194,29 @@ def nasa_video(query, used):
 
 
 # ---------------- per-scene plan ----------------
+def unsplash_photos(query, limit=4):
+    """Beautiful free photos from Unsplash (GitHub secret UNSPLASH_ACCESS_KEY), credited to the photographer."""
+    key = os.environ.get("UNSPLASH_ACCESS_KEY", "").strip()
+    if not key:
+        return []
+    hdr = {"Authorization": f"Client-ID {key}", "Accept-Version": "v1"}
+    q = urllib.parse.urlencode({"query": query, "orientation": "portrait", "per_page": limit, "content_filter": "high"})
+    try:
+        res = _get_json(f"https://api.unsplash.com/search/photos?{q}", hdr).get("results", [])
+    except Exception as e:
+        log(f"  unsplash search failed for '{query}': {e}")
+        return []
+    out = []
+    for p in res:
+        raw = (p.get("urls") or {}).get("raw")
+        if not raw:
+            continue
+        name = ((p.get("user") or {}).get("name") or "Unsplash")[:40]
+        out.append({"url": raw + "&w=1080&h=1920&fit=crop&crop=entropy&q=85&fm=jpg", "credit": f"Photo: {name} · Unsplash",
+                    "track": (p.get("links") or {}).get("download_location"), "hdr": hdr})
+    return out
+
+
 def plan(script, scenes, cfg, seed):
     """Attach real visuals to scenes (sets scene["media"]). Hook gets the strongest image."""
     rng = random.Random(seed)
@@ -233,6 +256,11 @@ def plan(script, scenes, cfg, seed):
                 seen.add(p["url"])
                 uniq.append(p)
         pics = uniq
+    # Unsplash: stunning portrait photos for every topic (real places keep Wikipedia's exact photos first)
+    unsplash = []
+    for q in (script.get("keywords") or [])[:3]:
+        unsplash += unsplash_photos(q)
+    pics = pics + unsplash if script.get("theme") == "places" else unsplash + pics
 
     pixabay_key = (os.environ.get("PIXABAY_API_KEY") or cfg.get("pixabay_api_key", "")).strip()
     space = script.get("theme") == "space"
@@ -263,7 +291,13 @@ def plan(script, scenes, cfg, seed):
         while pics:
             pic = pics.pop(0)
             try:
-                return {"type": "photo", "path": _download(pic["url"], ".jpg"), "credit": pic["credit"]}
+                path = _download(pic["url"], ".jpg")
+                if pic.get("track"):  # Unsplash's rules: report each photo we use
+                    try:
+                        _get_json(pic["track"], pic["hdr"])
+                    except Exception:
+                        pass
+                return {"type": "photo", "path": path, "credit": pic["credit"]}
             except Exception as e:
                 log(f"  image download failed: {e}")
         return None
