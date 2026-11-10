@@ -340,7 +340,7 @@ async function pullLive(first){
   }catch(e){setLive(false);if(first){allEvents=[];renderFeed();renderStatus(null);}}
 }
 function setLive(ok,u){document.getElementById("dot").className="dot"+(ok?" on":"");
-  document.getElementById("liveTxt").textContent=ok?`LIVE · ${u?fmt(u):"now"}`:"awaiting first mission…";}
+  document.getElementById("liveTxt").textContent=ok?`LIVE · last activity ${u?fmt(u):"just now"}`:"awaiting first mission…";}
 async function pullVideos(){
   try{let st;if(DEMO)st=demoState();else{const r=await fetch(STATE(),{cache:"no-store"});st=await r.json();}
     const hist=(st.history||[]).filter(h=>h.links).slice(-8).reverse();
