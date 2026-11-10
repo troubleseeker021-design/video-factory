@@ -80,6 +80,46 @@
       "message_id": 204,
       "created": "2026-11-09T22:35:05.092118",
       "scheduled": true
+    },
+    "a68b8eabeb": {
+      "vid": "20261110-011858-why-europeans-ate-egyptian-mummies-for-centuries-hi",
+      "post": {
+        "title": "Kyun Europe Ke Log Sadiyon Tak Misra Ki Mamiyan Khate Rahe",
+        "created": "2026-11-10T01:29:52",
+        "source": "gemini:gemini-3.6-flash",
+        "theme": "history",
+        "hook": "Socho, kya aapko lagta hai ki purani mamiyon ko hamesha bahut sambhalkar aur pavitra khazana mana jata tha?",
+        "series": "Ajeeb Itihaas #2",
+        "question": "Kya aapko pata tha ki 1960s tak asli mamiyon se rang banaya jata tha?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "myth",
+        "youtube": {
+          "title": "Kyun Europe Ke Log Sadiyon Tak Misra Ki Mamiyan Khate Rahe | Ajeeb Itihaas #2 #shorts",
+          "description": "Sadiyon tak Europe mein pisi hui Misra ki mamiyon ko dawai aur rang ki tarah istemaal kiya jata tha.\n\n👇 Kya aapko pata tha ki 1960s tak asli mamiyon se rang banaya jata tha?\n\n#history #historyfacts #mummies #rochaktathya #kahaniyan #shorts #shorts\n\nImage credits:\nPhoto: Christoph Braun · CC0 · Wikimedia Commons\nPhoto: Edward Burne-Jones · Public domain · Wikimedia Commons\nPhoto: Eugène Delacroix · Public domain · Wikimedia Commons\nPhoto: Martin Drolling · Public domain · Wikimedia Commons\nVideo: Pixabay",
+          "tags": [
+            "history",
+            "historyfacts",
+            "mummies",
+            "rochaktathya",
+            "kahaniyan",
+            "shorts",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Sadiyon tak Europe mein pisi hui Misra ki mamiyon ko dawai aur rang ki tarah istemaal kiya jata tha. #history #historyfacts #mummies #rochaktathya #kahaniyan #shorts #fyp #facts",
+        "instagram": "Ajeeb Itihaas #2 🔎 Sadiyon tak Europe mein pisi hui Misra ki mamiyon ko dawai aur rang ki tarah istemaal kiya jata tha.\n\n👇 Kya aapko pata tha ki 1960s tak asli mamiyon se rang banaya jata tha?\n.\n.\n#history #historyfacts #mummies #rochaktathya #kahaniyan #shorts #reels #facts #didyouknow",
+        "facebook": "Ajeeb Itihaas #2 🔎 Sadiyon tak Europe mein pisi hui Misra ki mamiyon ko dawai aur rang ki tarah istemaal kiya jata tha.\n\n👇 Kya aapko pata tha ki 1960s tak asli mamiyon se rang banaya jata tha?\n\n#history #historyfacts #mummies #rochaktathya #kahaniyan #shorts",
+        "script": "Socho, kya aapko lagta hai ki purani mamiyon ko hamesha bahut sambhalkar aur pavitra khazana mana jata tha? Hairaan kar dene wala sach toh yeh hai ki sadiyon tak Europe ke log inhe khate the. Madhyakaal se hi Misra ki pisi hui mamiyon ko dawa ki dukano par becha jata tha. Wahan ke vaidya kehte the ki insani mummy ka churn sirdard aur ghav theek kar sakta hai. Iski maang itni badh gayi ki bechne walon ne apradhiyon ke sukhe shavon se nakli mamiyan banana shuru kar diya. Lekin asli acharaj ki baat toh abhi baaki hai. Chitrakaron ne bhi mamiyon ko peeskar ek gehra rang banaya, jise Mummy Bhura kaha gaya. Europe ke kalakar unnees sau saath ke dashak tak apni tasveeron mein asli mummy ka istemaal karte rahe. Aur yeh ek aisa raaz hai, jiske baare mein koi baat nahi karta. Yakeen nahi hota na, par yeh sach hai.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAPUavJzwkQMzuZkNio0ZEQiAzX7UWYAAsMIAAJj_5lHRLqwYGTWBvE9BA",
+      "channel": "hi",
+      "message_id": 212,
+      "created": "2026-11-10T01:30:42.682564",
+      "scheduled": true
     }
   },
   "history": [
@@ -537,9 +577,37 @@
           "facts"
         ]
       }
+    },
+    {
+      "title": "Why Europeans Ate Egyptian Mummies For Centuries",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/VNsWPooSV94",
+        "Facebook": "https://www.facebook.com/reel/1452217287969009",
+        "Instagram": "https://www.instagram.com/reel/DfiutCVD8bb/"
+      },
+      "created": "2026-11-10T01:21:23",
+      "theme": "history",
+      "hook": "You probably think ancient mummies were always treated as sacred historical treasures.",
+      "series": "Lost History #2",
+      "file_id": "BAACAgEAAxkDAAPRavJzlO0TgPmcXqJpQcLsueg6fbUAAsIIAAJj_5lHv8KIjDwVrAE9BA",
+      "youtube": {
+        "title": "Why Europeans Ate Egyptian Mummies For Centuries | Lost History #2 #shorts",
+        "description": "For centuries, ground-up Egyptian mummies were sold as medicine and turned into oil paint in Europe. 💀\n\n👇 Did you know real mummies were used in paint until the 1960s?\n\n#history #historyfacts #mummies #mindblowingfacts #weirdhistory #ancientegypt #shorts\n\nImage credits:\nPhoto: Christoph Braun · CC0 · Wikimedia Commons\nPhoto: Edward Burne-Jones · Public domain · Wikimedia Commons\nPhoto: Eugène Delacroix · Public domain · Wikimedia Commons\nPhoto: Martin Drolling · Public domain · Wikimedia Commons\nVideo: Pixabay",
+        "tags": [
+          "history",
+          "historyfacts",
+          "mummies",
+          "mindblowingfacts",
+          "weirdhistory",
+          "ancientegypt",
+          "shorts",
+          "facts"
+        ]
+      }
     }
   ],
-  "last_slot": "2026-11-09 16:15",
+  "last_slot": "2026-11-09 19:15",
   "stats_day": "2026-11-09",
   "stats_problems": {},
   "followers": {
