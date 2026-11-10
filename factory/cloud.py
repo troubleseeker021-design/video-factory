@@ -544,11 +544,11 @@ HI_MIX = ("हमें लगता है आँख मलना नॉर्�
 HI_ROMAN = ("Humein lagta hai aankh malna normal hai, but science ise kuch aur hi bolti hai. "
             "Subah aankhon mein jo sticky cheez milti hai, use rheum kehte hain, aur ye actually tumhari aankh ki safai hai.")
 VOICE_SAMPLES = [  # (label, voice, text, rate)
-    ("Madhur - pure Hindi words (current)", "hi-IN-MadhurNeural", HI_PURE, "+10%"),
-    ("Madhur - Hinglish mix, normal speed", "hi-IN-MadhurNeural", HI_MIX, "+10%"),
-    ("Madhur - Hinglish mix, faster", "hi-IN-MadhurNeural", HI_MIX, "+22%"),
-    ("Prabhat (Indian English accent) - Roman Hinglish", "en-IN-PrabhatNeural", HI_ROMAN, "+12%"),
-    ("Swara (female) - Hinglish mix, faster", "hi-IN-SwaraNeural", HI_MIX, "+18%"),
+    ("Madhur - brighter (+15Hz), fast", "hi-IN-MadhurNeural", HI_MIX, "+18%", "+15Hz"),
+    ("Madhur - brighter (+30Hz), fast", "hi-IN-MadhurNeural", HI_MIX, "+18%", "+30Hz"),
+    ("Madhur - brightest (+45Hz), fast", "hi-IN-MadhurNeural", HI_MIX, "+20%", "+45Hz"),
+    ("Madhur - brighter (+30Hz), very fast", "hi-IN-MadhurNeural", HI_MIX, "+26%", "+30Hz"),
+    ("Swara - your favourite from last time (reference)", "hi-IN-SwaraNeural", HI_MIX, "+18%", "+0Hz"),
 ]
 
 
@@ -559,10 +559,10 @@ def voices():
     from .voice import _tts
     cfg = load_config()
     tg.send_message(CHAT, "🎙️ Voice audition! Listen and tell Claude which number sounds best.")
-    for n, (label, v, text, rate) in enumerate(VOICE_SAMPLES, 1):
+    for n, (label, v, text, rate, *pitch) in enumerate(VOICE_SAMPLES, 1):
         mp3 = os.path.join(tempfile.gettempdir(), f"sample_{n}.mp3")
         try:
-            asyncio.run(_tts(text, v, rate, "+0Hz", mp3))
+            asyncio.run(_tts(text, v, rate, pitch[0] if pitch else "+0Hz", mp3))
             tg.send_audio(CHAT, mp3, f"#{n} {label}", title=f"{n} {v}")
         except Exception as e:
             log(f"sample {v} failed: {e}")

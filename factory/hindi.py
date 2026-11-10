@@ -18,23 +18,25 @@ FONT_URL = "https://github.com/google/fonts/raw/main/ofl/notosansdevanagari/Noto
 VOICE = "hi-IN-MadhurNeural"  # chosen by the owner; change with "hindi_voice" in config.json
 LINES = ("hook", "body", "cta")
 
-PROMPT = """Rewrite this YouTube Shorts script in natural, everyday spoken Hindi. Use real Hindi words,
-NOT English ones: nakli (not fake), asli / sach (not real), hairaan (not shocked), raaz (not secret/twist),
-jagah (not place), duniya (not world), jheel (not lake), pahaad (not mountain). Keep only place names,
-proper names and words with no common Hindi equivalent. Simple, warm Hindi people speak at home - not
-heavy textbook Hindi. NOT word-for-word. Sound like a curious friend telling a secret: warm, excited,
-a little mysterious ("Socho...", "Lekin asli raaz yeh hai...", "Yakeen nahi hoga...").
-Short sentences, natural pauses with "?" so the voice sounds human, never robotic.
+PROMPT = """Rewrite this YouTube Shorts script in natural HINGLISH - the way popular Indian science/facts
+creators talk on Instagram Reels: Hindi sentence structure with common English words mixed in exactly where
+people really use them (science, normal, actually, real, fact, body, brain, process, system, scientists,
+experiment, signal, energy, percent, numbers). Fluent, fast, confident, curious - like explaining something
+amazing to a friend. Explain HOW it works step by step ("Pehle..., phir..., isliye..., aur jab...").
+Simple everyday comparisons. No dramatic pauses, no "...", no questions to the viewer, no "follow" or "comment".
+NOT word-for-word.
 Keep exactly the same number of "body" lines and "labels".
 
 Return JSON only.
 - "hook", "body", "cta": the spoken lines in DEVANAGARI script (used for the voice). EVERY word must be
-  in Devanagari, including place names (लेक हिलियर, ऑस्ट्रेलिया).
+  in Devanagari - the English words too, spelled as Indians say them (साइंस, नॉर्मल, एक्चुअली, सिस्टम) -
+  and place names (लेक हिलियर, ऑस्ट्रेलिया).
   Write numbers and symbols as spoken words (100% -> सौ प्रतिशत, 1960s -> उन्नीस सौ साठ के दशक).
   Keep it flowing: join short thoughts with commas, use a full stop only at the end of a line,
   never "..." (long pauses sound slow); no brackets, emojis or symbols.
-- "hook_roman", "body_roman", "cta_roman": the SAME Hindi lines word for word in Roman letters, written
-  the way Indians type on WhatsApp (e.g. "Yeh jagah nakli lagti hai, par sau pratishat asli hai!").
+- "hook_roman", "body_roman", "cta_roman": the SAME lines word for word in Roman letters, written the way
+  Indians type on WhatsApp, English words in normal English spelling
+  (e.g. "Humein lagta hai aankh malna normal hai, but science ise kuch aur hi bolti hai.").
   Same number of lines as the Devanagari ones.
 - "title", "caption", "question", "thumb", "labels": in Hindi written in Roman letters (labels and
   thumb in CAPS; place names stay as they are, e.g. "LAKE HILLIER, AUSTRALIA").
