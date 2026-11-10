@@ -644,8 +644,12 @@ def kids_sample():
     scenes = render.plan_scenes(script, words, duration, _r.Random(seed))
     aiart.plan(script, scenes, cfg, seed, work)
     pool = [sc["media"] for sc in scenes if sc.get("media")]
+    if not pool:
+        tg.send_message(CHAT, "⚠️ Kids sample: the free AI picture allowance is used up for today - "
+                              "it resets at 5 PM Edmonton time. Try again after that.")
+        return
     for k, sc in enumerate(scenes):
-        if not sc.get("media") and pool:
+        if not sc.get("media"):
             sc["media"] = dict(pool[k % len(pool)])
     thumb = thumbnail.make(dict(script, thumb="PIP THE LITTLE CLOUD"), scenes, cfg, seed, os.path.join(work, "cover.jpg"))
     out = os.path.join(work, "video.mp4")

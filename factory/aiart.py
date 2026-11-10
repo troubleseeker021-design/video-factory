@@ -59,10 +59,9 @@ def _gemini(prompt, key):
     return None
 
 
-CF_MODELS = [  # (model, extra settings) - best first; each falls back to the next
-    ("@cf/leonardo/lucid-origin", {"width": 864, "height": 1536, "steps": 25}),
-    ("@cf/black-forest-labs/flux-1-schnell", {"steps": 8}),
-]
+# Flux schnell: ~100 neurons per picture, so the free 10,000/day covers ~100 pictures.
+# (lucid-origin looked nicer but used the whole free day in ~10 pictures.)
+CF_MODELS = [("@cf/black-forest-labs/flux-1-schnell", {"steps": 8})]
 
 
 def _cloudflare(prompt, seed):
@@ -72,7 +71,7 @@ def _cloudflare(prompt, seed):
     for model, extra in CF_MODELS:
         if model in _CF_BAD:
             continue
-        body = json.dumps({"prompt": prompt[:2000], "seed": seed % 2_000_000_000, **extra}).encode()
+        body = json.dumps({"prompt": prompt[:2000], **extra}).encode()
         req = urllib.request.Request(f"https://api.cloudflare.com/client/v4/accounts/{acct}/ai/run/{model}", data=body,
                                      headers={"Authorization": f"Bearer {tok}", "Content-Type": "application/json"})
         try:
@@ -86,7 +85,7 @@ def _cloudflare(prompt, seed):
         except urllib.error.HTTPError as e:
             msg = e.read()[:200].decode("utf-8", "ignore")
             log(f"  AI art: Cloudflare {model.split('/')[-1]} failed: {e.code} {msg}")
-            if e.code in (400, 404):  # model or settings not available - don't try it again this run
+            if e.code in (400, 404, 429):  # not available / free allowance used up - stop trying this run
                 _CF_BAD.add(model)
         except Exception as e:
             log(f"  AI art: Cloudflare {model.split('/')[-1]} failed: {str(e)[:120]}")
