@@ -53,15 +53,18 @@ Pick a TRULY little-known, jaw-dropping topic most people have never heard of (n
 Never reuse or closely copy any of these recent hooks: {hooks}
 
 Structure (proven by this week's viral shorts):
-- "hook": the first line, max 14 words, spoken in under 3 seconds. Make it a CLAIM viewers want to
-  verify ("This looks fake, but it's 100% real."), a curiosity gap or a "this shouldn't exist" twist.
-  Never start with "Did you know" or "In this video".
-- "body": 5 to 7 short sentences (under 20 words each), third person, upbeat and energetic but
-  intriguing (NOT slow or gloomy). Escalate: context -> surprising detail -> an open loop
-  ("But that's not the strangest part.") -> the payoff. Use "..." for a dramatic pause once.
+STYLE = viral 3D-explainer reels: explain HOW something works, step by step, like a mini documentary.
+- "hook": the first line, max 14 words. Either a contradiction ("This plane attacks its target by
+  flying circles around it.") or a "what if" aimed at the viewer ("If you were frozen for a hundred
+  years, you wouldn't wake up."). Never start with "Did you know" or "In this video".
+- "body": 6 to 9 short sentences (under 18 words each) forming a cause-and-effect chain: "They did X.
+  Then Y. So Z. And when..., ...". Simple everyday metaphors ("your body is made of tiny bags of water").
+  Concrete numbers. A twist near the end ("But a little frog in Alaska freezes like this every winter...").
+  Plain, confident narration - no exclamation marks, no "..." pauses, no questions to the viewer.
   Only verified facts; hedge with "scientists think" when not certain. No medical/financial advice.
-- "cta": a final line that LOOPS back into the hook so the video can replay seamlessly.
-- Total spoken length 80 to 110 words (about 35 to 45 seconds).
+- "cta": NOT a call to action. A last line that stops mid-thought so the video loops straight back into
+  the hook (e.g. "Which is why..." or "And that's exactly why"). No "follow", no "comment".
+- Total spoken length 100 to 150 words (about 35 to 50 seconds).
 - "title": catchy, under 60 characters, no hashtags.
 - "caption": 1-2 sentence social caption with 1 emoji.
 - "hashtags": 6 relevant hashtags starting with #.
@@ -70,6 +73,9 @@ Structure (proven by this week's viral shorts):
 - "wiki": 2 or 3 exact English Wikipedia article titles about the subject(s) (used to find real photos).
 - "visuals": one short stock-footage search phrase for EACH spoken line (hook, each body sentence, cta), same order.
 - "emojis": one fitting emoji for EACH spoken line, same order.
+- "art": for EACH spoken line, a vivid description of ONE 3D-animation shot that shows exactly what the
+  line says (subject, action, camera angle, setting; e.g. "tweezers pulling an antenna off a moth and
+  placing it on a green circuit board, macro close-up"). No text in the picture. Same order.
 - "labels": for EACH spoken line, a short on-screen label in CAPS (a place, person or thing name, max 4 words)
   or "" when the line needs none. Same order.
 - "thumb": 2 to 4 shocking words for the thumbnail in CAPS that make people stop scrolling,
@@ -80,7 +86,7 @@ Structure (proven by this week's viral shorts):
 - "doubts": the facts you are not fully sure about (empty list if none).
 {viewer}{insights}
 Reply with JSON only:
-{{"title":"","hook":"","body":["",""],"cta":"","caption":"","hashtags":[],"keywords":[],"theme":"","wiki":[],"visuals":[],"emojis":[],"labels":[],"thumb":"","question":"","confidence":"high","doubts":[]}}"""
+{{"title":"","hook":"","body":["",""],"cta":"","caption":"","hashtags":[],"keywords":[],"theme":"","wiki":[],"visuals":[],"emojis":[],"art":[],"labels":[],"thumb":"","question":"","confidence":"high","doubts":[]}}"""
 
 
 def _slug(text):
@@ -222,10 +228,10 @@ def next_script(cfg):
     if not script.get("question"):
         script["question"] = random.choice(QUESTIONS)
     # recurring catchphrase on most videos (before the looping last line)
-    if theme != "places" and random.random() < 0.7 and CATCHPHRASE not in script["body"]:
+    if theme != "places" and random.random() < cfg.get("catchphrase_chance", 0) and CATCHPHRASE not in script["body"]:
         n = len(script["body"]) + 1  # per-line lists are [hook, *body, cta]; insert before the cta
         script["body"] = [*script["body"], CATCHPHRASE]
-        for k, filler in (("emojis", "🤫"), ("visuals", ""), ("labels", "")):
+        for k, filler in (("emojis", "🤫"), ("visuals", ""), ("labels", ""), ("art", "")):
             if script.get(k):
                 script[k] = [*script[k][:n], filler, *script[k][n:]]
     conf = str(script.get("confidence", "high")).lower()

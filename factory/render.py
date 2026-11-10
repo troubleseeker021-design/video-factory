@@ -421,7 +421,7 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
         sc_["emoji"] = None
     use3d = cfg.get("photo_3d", True)
     bokeh = _bokeh_sprites()
-    f_on = duration * 0.5  # mid-video FOLLOW pop-up
+    f_on = duration + 99 if not cfg.get("follow_popup") else duration * 0.5  # off: viral explainers have no CTA
     f_tap = f_on + 1.0
     proc_bg = ProceduralBG(script.get("theme", "science"), W, H, seed)
     hook_img = _hook_banner(script["title"])
@@ -448,7 +448,8 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
             for k in range(8):
                 ev.append((sc["stat_t"] + k * 0.08, "tick", 0.6))
             ev.append((sc["stat_t"] + 0.7, "ding", 0.55))
-    ev += [(f_on, "pop", 0.45), (f_tap, "click", 0.8), (f_tap + 0.05, "bell", 0.5)]
+    if f_on < duration:
+        ev += [(f_on, "pop", 0.45), (f_tap, "click", 0.8), (f_tap + 0.05, "bell", 0.5)]
     sfx_path = SFX.build_track(ev, duration, os.path.join(workdir, "sfx.wav"))
 
     # ---- encoder ----

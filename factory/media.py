@@ -204,8 +204,19 @@ def plan(script, scenes, cfg, seed):
     key = cfg.get("pexels_api_key", "").strip()
     visuals = script.get("visuals") or []
     keywords = script.get("keywords") or [script.get("theme", "nature")]
-    # premium look: every shot is a real photo or video, full screen
-    targets = list(range(n))
+    # 3D-explainer look: an AI-generated 3D-render picture for every shot; real photos/footage
+    # only fill the shots where the AI art failed
+    if cfg.get("ai_visuals", True):
+        try:
+            import tempfile
+            from . import aiart
+            aiart.plan(script, scenes, cfg, seed, tempfile.mkdtemp(prefix="art_"))
+        except Exception as e:
+            log(f"  AI art skipped: {e}")
+    targets = [k for k in range(n) if not scenes[k]["media"]]
+    if not targets:
+        log(f"  media: all {n} shots are AI 3D art")
+        return scenes
 
     if own:
         for k in targets:
