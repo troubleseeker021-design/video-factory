@@ -218,6 +218,16 @@ def _publish(item, local_path=None):
         tg.download(item["file_id"], path)
     post, results = item["post"], {}
     cover = os.path.join(os.path.dirname(local_path), "cover.jpg") if local_path else None
+    if not cover or not os.path.exists(cover):  # e.g. queued Hindi videos: the first frame IS the thumbnail
+        cover = os.path.join(REVIEW, "cover_from_video.jpg")
+        try:
+            import subprocess
+            from .common import ffmpeg_exe
+            subprocess.run([ffmpeg_exe(), "-y", "-loglevel", "error", "-i", path, "-frames:v", "1", "-q:v", "2", cover],
+                           check=True, timeout=60)
+        except Exception as e:
+            log(f"  (could not take the cover from the video: {e})")
+            cover = None
     jobs = [
         ("YouTube", lambda: _youtube(path, post, cover)),
         ("Facebook", lambda: meta_upload.facebook_reel(path, post["facebook"], os.environ["META_PAGE_ID"], os.environ["META_PAGE_TOKEN"], cover)

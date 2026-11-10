@@ -112,6 +112,29 @@ def _text_block(text, lang="en"):
     return blk
 
 
+def _punch_block(text, lang="en"):
+    """Click-worthy title: white outlined words, the LAST line black on a bright yellow bar."""
+    for size in (250, 225, 200, 180, 160, 140):
+        f = _font("NotoSansDevanagari.ttf", int(size * .8), "Bold") if lang == "hi" else _font("Anton-Regular.ttf", size)
+        lines = _wrap(text, f, 940)
+        if len(lines) <= 3:
+            break
+    lh = int(size * 1.12)
+    blk = Image.new("RGBA", (W, lh * len(lines) + 90), (0, 0, 0, 0))
+    d = ImageDraw.Draw(blk)
+    for i, ln in enumerate(lines):
+        y = 40 + i * lh
+        if i == len(lines) - 1:
+            tw = f.getlength(ln)
+            d.rounded_rectangle([(W - tw) / 2 - 34, y - 6, (W + tw) / 2 + 34, y + size * 1.14], radius=22,
+                                fill=YELLOW + (255,))
+            d.text((W / 2, y), ln, font=f, fill=(15, 15, 15, 255), anchor="ma")
+        else:
+            d.text((W / 2, y), ln, font=f, fill=WHITE + (255,), anchor="ma",
+                   stroke_width=max(9, size // 14), stroke_fill=(0, 0, 0, 255))
+    return blk
+
+
 def _arrow(d, p0, p1, p2, width=26):
     pts = []
     for k in range(40):
@@ -133,8 +156,9 @@ def _arrow(d, p0, p1, p2, width=26):
 def make(script, scenes, cfg, seed, out_path=None, lang="en"):
     rng = random.Random(seed)
     bg, real = _background(script, scenes, seed)
-    bg = ImageEnhance.Color(bg).enhance(1.35)
-    bg = ImageEnhance.Contrast(bg).enhance(1.15)
+    bg = ImageEnhance.Color(bg).enhance(1.45)
+    bg = ImageEnhance.Contrast(bg).enhance(1.22)
+    bg = ImageEnhance.Sharpness(bg).enhance(1.6)
     img = bg.convert("RGBA")
 
     # darken top & bottom so the words pop; soft vignette
@@ -142,10 +166,10 @@ def make(script, scenes, cfg, seed, out_path=None, lang="en"):
     sd = ImageDraw.Draw(shade)
     for y in range(H):
         a = 0
-        if y < 420:
-            a = 150 * (1 - y / 420)
-        if y > 880:
-            a = min(215, 215 * (y - 880) / 480)
+        if y < 900:  # dark band behind the title (top half) so the words punch
+            a = 170 * (1 - y / 900) ** 0.8
+        if y > 1500:
+            a = min(160, 160 * (y - 1500) / 420)
         sd.line([(0, y), (W, y)], fill=int(a))
     dark = Image.new("RGBA", (W, H), (0, 0, 0, 255))
     dark.putalpha(shade)
@@ -160,8 +184,8 @@ def make(script, scenes, cfg, seed, out_path=None, lang="en"):
     # premium look: the real photo is the hero - no emoji objects, bursts or arrows
     cx, cy = W // 2, 640
     # huge words
-    blk = _text_block(thumb_words(script), lang).rotate(-3, Image.BICUBIC, expand=True)
-    by = 1080
+    blk = _punch_block(thumb_words(script), lang).rotate(-2, Image.BICUBIC, expand=True)
+    by = 300
     sh = Image.new("RGBA", blk.size, (0, 0, 0, 0))
     sh.putalpha(blk.getchannel("A").filter(ImageFilter.GaussianBlur(14)).point(lambda v: int(v * .7)))
     img.alpha_composite(sh, ((W - blk.width) // 2 + 10, by + 16))
@@ -173,8 +197,8 @@ def make(script, scenes, cfg, seed, out_path=None, lang="en"):
     if series:
         f = _font("NotoSansDevanagari.ttf", 42, "Bold") if lang == "hi" else _font("Montserrat-Variable.ttf", 46, "Black")
         tw = f.getlength(series.upper()) + 70
-        d.rounded_rectangle([(W - tw) / 2, 150, (W + tw) / 2, 230], radius=40, fill=RED + (255,))
-        d.text((W / 2, 191), series.upper(), font=f, fill=WHITE, anchor="mm")
+        d.rounded_rectangle([(W - tw) / 2, 140, (W + tw) / 2, 220], radius=40, fill=RED + (255,))
+        d.text((W / 2, 181), series.upper(), font=f, fill=WHITE, anchor="mm")
 
     out = img.convert("RGB")
     if out_path:

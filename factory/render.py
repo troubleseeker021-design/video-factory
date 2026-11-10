@@ -636,7 +636,7 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
 
             if cover_path and f == int(FPS * 0.9):
                 rgb.save(cover_path, quality=88)
-            if thumb is not None and f == 0:  # first frame = thumbnail (Instagram/Facebook/YouTube use it as cover)
+            if thumb is not None and f < int(FPS * 0.4):  # first 0.4 s = thumbnail (every platform's cover picks it)
                 rgb = thumb
             proc.stdin.write(rgb.tobytes())
     finally:
