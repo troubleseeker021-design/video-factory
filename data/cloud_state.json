@@ -638,7 +638,7 @@
         }
       },
       "stats_at": "2026-11-10T11:00:41",
-      "ig_tries": 1
+      "ig_tries": 2
     },
     {
       "title": "Andhere Mein Chamakne Wala Paani",
@@ -711,7 +711,7 @@
           "facts"
         ]
       },
-      "ig_tries": 1,
+      "ig_tries": 2,
       "stats": {
         "YouTube": {
           "views": 0,
@@ -728,5 +728,5 @@
   ],
   "stats_day_hi": "2026-11-10",
   "stats_problems_history_hi": {},
-  "ig_retry_block": "2026-11-10-0"
+  "ig_retry_block": "2026-11-10-1"
 }
