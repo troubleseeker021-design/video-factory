@@ -34,6 +34,6 @@
   "caption_style_help": "yellow, white, green or pink. This is the color of the highlighted word.",
 
   "youtube_upload_enabled": false,
-  "youtube_privacy": "private",
+  "youtube_privacy": "public",
   "youtube_help": "Not used in the cloud version yet."
 }
