@@ -1,6 +1,47 @@
 {
   "offset": 41248576,
-  "pending": {},
+  "pending": {
+    "2e9a574f71": {
+      "vid": "20261110-171534-unreal-places-ep3-hi",
+      "post": {
+        "title": "Kudrat Ka Karishma",
+        "created": "2026-11-10T17:22:30",
+        "source": "bank:unreal-places",
+        "theme": "places",
+        "hook": "Inhein kisi insaan ne nahi banaya, kudrat ka asal magic hai ye.",
+        "series": "Anokhi Jagahein Ep 3",
+        "question": "Aap kahan jaana chahenge: ek, do ya teen?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "places",
+        "youtube": {
+          "title": "Kudrat Ka Karishma | Anokhi Jagahein Ep 3 #shorts",
+          "description": "Inhe kisi insaan ne nahi banaya 🌍 Aap kahan jaana chahenge: ek, do ya teen?\n\n👇 Aap kahan jaana chahenge: ek, do ya teen?\n\n#travel #geology #amazingplaces #shorts #naturelovers #unrealplaces #shorts\n\nImage credits:\nPhoto: Bertrand Borie · Unsplash\nPhoto: Chmee2 · CC BY 3.0 · Wikimedia Commons\nPhoto: Lucas Löffler · Public domain · Wikimedia Commons\nPhoto: Slava Jamm · Unsplash\nPhoto: missfitz · CC BY 2.0 · Wikimedia Commons\nVideo: Pixabay",
+          "tags": [
+            "travel",
+            "geology",
+            "amazingplaces",
+            "shorts",
+            "naturelovers",
+            "unrealplaces",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Inhe kisi insaan ne nahi banaya 🌍 Aap kahan jaana chahenge: ek, do ya teen? #travel #geology #amazingplaces #shorts #naturelovers #unrealplaces #fyp #facts",
+        "instagram": "Anokhi Jagahein Ep 3 🔎 Inhe kisi insaan ne nahi banaya 🌍 Aap kahan jaana chahenge: ek, do ya teen?\n\n👇 Aap kahan jaana chahenge: ek, do ya teen?\n.\n.\n#travel #geology #amazingplaces #shorts #naturelovers #unrealplaces #reels #facts #didyouknow",
+        "facebook": "Anokhi Jagahein Ep 3 🔎 Inhe kisi insaan ne nahi banaya 🌍 Aap kahan jaana chahenge: ek, do ya teen?\n\n👇 Aap kahan jaana chahenge: ek, do ya teen?\n\n#travel #geology #amazingplaces #shorts #naturelovers #unrealplaces",
+        "script": "Inhein kisi insaan ne nahi banaya, kudrat ka asal magic hai ye. Pehle baat karte hain Arizona ke Antelope Canyon ki, jahan paani ke tez bahaao se rocks mein aisi designs bani hain aur yahan aane ke liye guide ki zarurat padti hai. Phir aate hain Turkey ke Pamukkale par, jahan garam paani ke minerals se safed terraces bani hain aur yahan sabko nange pair chalna padta hai. Aur aakhri hai Northern Ireland ka Giant's Causeway, jahan purane lava ke thande hone se chaalis hazaar stone columns ban gaye hain. In teeno mein se aapko sabse zyada kya pasand aaya.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAPxavNTCqX729Fpd4oREw0_GMrHmVMAAtAHAAJj_6FHNGewwNbvBKI9BA",
+      "channel": "hi",
+      "message_id": 241,
+      "created": "2026-11-10T17:23:23.902614",
+      "scheduled": true
+    }
+  },
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -542,9 +583,39 @@
         }
       },
       "stats_at": "2026-11-10T11:00:32"
+    },
+    {
+      "title": "No Human Made These",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/CoqYLbb-Ysc",
+        "Facebook": "https://www.facebook.com/reel/1000020549831985",
+        "Instagram": "https://www.instagram.com/reel/DfkbuStCbxU/"
+      },
+      "created": "2026-11-10T17:16:45",
+      "theme": "places",
+      "hook": "Nature built these, not people.",
+      "series": "Unreal Places Ep 3",
+      "file_id": "BAACAgEAAxkDAAPuavNS2EyPtpXwmjXI4ulCQaTcWhoAAs8HAAJj_6FHIMS3nWlck5k9BA",
+      "youtube": {
+        "title": "No Human Made These | Unreal Places Ep 3 #shorts",
+        "description": "No Human Made These 🌍 Which one would you visit: 1, 2 or 3?\n\n👇 Which one would you visit: 1, 2 or 3?\n\n#travel #geology #amazingplaces #shorts #naturelovers #unrealplaces #shorts\n\nImage credits:\nPhoto: Bertrand Borie · Unsplash\nPhoto: Chmee2 · CC BY 3.0 · Wikimedia Commons\nPhoto: Lucas Löffler · Public domain · Wikimedia Commons\nPhoto: Slava Jamm · Unsplash\nPhoto: missfitz · CC BY 2.0 · Wikimedia Commons\nVideo: Pixabay",
+        "tags": [
+          "travel",
+          "geology",
+          "amazingplaces",
+          "shorts",
+          "naturelovers",
+          "unrealplaces",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Unreal Places Ep 3 🔎 No Human Made These 🌍 Which one would you visit: 1, 2 or 3?\n\n👇 Which one would you visit: 1, 2 or 3?\n.\n.\n#travel #geology #amazingplaces #shorts #naturelovers #unrealplaces #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-09 19:15",
+  "last_slot": "2026-11-10 11:15",
   "stats_day": "2026-11-10",
   "stats_problems": {},
   "followers": {

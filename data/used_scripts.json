@@ -122,5 +122,13 @@
     "format": "myth",
     "hook": "You probably think ancient mummies were always treated as sacred historical treasures.",
     "date": "2026-11-10"
+  },
+  {
+    "id": "unreal-places-ep3",
+    "title": "No Human Made These",
+    "theme": "places",
+    "format": "places",
+    "hook": "Nature built these, not people.",
+    "date": "2026-11-10"
   }
 ]
