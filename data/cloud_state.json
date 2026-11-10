@@ -1,46 +1,6 @@
 {
   "offset": 41248576,
   "pending": {
-    "302356f16b": {
-      "vid": "20261109-222157-trees-that-feed-on-pure-gold-hi",
-      "post": {
-        "title": "Sone Khane Wale Anokhe Ped",
-        "created": "2026-11-09T22:34:08",
-        "source": "gemini:gemini-flash-lite-latest",
-        "theme": "nature",
-        "hook": "Socho, kya koi ped jameen ke neeche se seedha asli sona nigal sakta hai?",
-        "series": "Kudrat Ke Raaz #2",
-        "question": "Kya aap ped ki pattiyon se sona dhundhna chahenge?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "countdown",
-        "youtube": {
-          "title": "Sone Khane Wale Anokhe Ped | Kudrat Ke Raaz #2 #shorts",
-          "description": "Kudrat ka yeh anokha jaadoo dekh kar aap bhi hairaan reh jayenge! 🌲✨\n\n👇 Kya aap ped ki pattiyon se sona dhundhna chahenge?\n\n#kudrat #raaz #science #gold #shorts #travel #shorts\n\nImage credits:\nPhoto: Patche99z · Public domain · Wikimedia Commons\nPhoto: Quixoticelixer- · CC BY 4.0 · Wikimedia Commons\nPhoto: Themium · CC0 · Wikimedia Commons\nPhoto: Wikimedia Commons · CC0 · Wikimedia Commons\nVideo: Pixabay",
-          "tags": [
-            "kudrat",
-            "raaz",
-            "science",
-            "gold",
-            "shorts",
-            "travel",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "Kudrat ka yeh anokha jaadoo dekh kar aap bhi hairaan reh jayenge! 🌲✨ #kudrat #raaz #science #gold #shorts #travel #fyp #facts",
-        "instagram": "Kudrat Ke Raaz #2 🔎 Kudrat ka yeh anokha jaadoo dekh kar aap bhi hairaan reh jayenge! 🌲✨\n\n👇 Kya aap ped ki pattiyon se sona dhundhna chahenge?\n.\n.\n#kudrat #raaz #science #gold #shorts #travel #reels #facts #didyouknow",
-        "facebook": "Kudrat Ke Raaz #2 🔎 Kudrat ka yeh anokha jaadoo dekh kar aap bhi hairaan reh jayenge! 🌲✨\n\n👇 Kya aap ped ki pattiyon se sona dhundhna chahenge?\n\n#kudrat #raaz #science #gold #shorts #travel",
-        "script": "Socho, kya koi ped jameen ke neeche se seedha asli sona nigal sakta hai? Teesre number par, Australia ke sukhe ilaakon mein Eucalyptus ke ped nanhi mashinon ki tarah kaam karte hain? Inki gahri jaden jameen ke bahut neeche chhipe sone ke baareek kan sokh leti hain. Doosre number par, yeh sona tane se oopar ki taraf badhte hue pattiyon tak pahunchta hai? Vaigyaanikom ko pattiyon ki sataha par sach mein chamakte hue sone ke baareek kan mile hain. Aur pehle number par, kudrat ka yeh anokha raaz khajaana dhundhne vaalom ke kaam aata hai? Ab bina vajah gaddhe khodne ki jagah, ve bas in pattiyon ki jaanch kar lete hain. To kya aap jaante the ki yeh ped jameen se seedha asli sona nigalte hain? Aur yahi vo anokha raaz hai, jiske baare mein koi baat nahi karta. To kya aap jaante the ki yeh ped jameen se seedha asli sona nigalte hain.",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAPMavJKmDcJMdj7TKXJ-4nEqPdRV3sAAlcIAAJj_5lHMSrGNSOPCug9BA",
-      "channel": "hi",
-      "message_id": 204,
-      "created": "2026-11-09T22:35:05.092118",
-      "scheduled": true
-    },
     "a68b8eabeb": {
       "vid": "20261110-011858-why-europeans-ate-egyptian-mummies-for-centuries-hi",
       "post": {
@@ -579,7 +539,7 @@
   "comments_day": "2026-11-09",
   "compile_week": "2026-W45",
   "report_week": "2026-W45",
-  "last_hi_slot": "2026-11-10 08:00",
+  "last_hi_slot": "2026-11-10 13:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -644,6 +604,34 @@
           "prakriti",
           "kahani",
           "naturelovers",
+          "shorts",
+          "facts"
+        ]
+      }
+    },
+    {
+      "title": "Sone Khane Wale Anokhe Ped",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/LwCdrsb_Ytg",
+        "Facebook": "https://www.facebook.com/reel/1470121015099669",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-09T22:34:08",
+      "theme": "nature",
+      "hook": "Socho, kya koi ped jameen ke neeche se seedha asli sona nigal sakta hai?",
+      "series": "Kudrat Ke Raaz #2",
+      "file_id": "BAACAgEAAxkDAAPMavJKmDcJMdj7TKXJ-4nEqPdRV3sAAlcIAAJj_5lHMSrGNSOPCug9BA",
+      "youtube": {
+        "title": "Sone Khane Wale Anokhe Ped | Kudrat Ke Raaz #2 #shorts",
+        "description": "Kudrat ka yeh anokha jaadoo dekh kar aap bhi hairaan reh jayenge! 🌲✨\n\n👇 Kya aap ped ki pattiyon se sona dhundhna chahenge?\n\n#kudrat #raaz #science #gold #shorts #travel #shorts\n\nImage credits:\nPhoto: Patche99z · Public domain · Wikimedia Commons\nPhoto: Quixoticelixer- · CC BY 4.0 · Wikimedia Commons\nPhoto: Themium · CC0 · Wikimedia Commons\nPhoto: Wikimedia Commons · CC0 · Wikimedia Commons\nVideo: Pixabay",
+        "tags": [
+          "kudrat",
+          "raaz",
+          "science",
+          "gold",
+          "shorts",
+          "travel",
           "shorts",
           "facts"
         ]
