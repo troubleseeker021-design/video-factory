@@ -201,7 +201,8 @@ def _record(item, status, results):
     return {"title": p.get("title"), "status": status, "links": results,
             "created": p.get("created") or dt.datetime.utcnow().isoformat(timespec="seconds"),
             "theme": p.get("theme", ""), "hook": p.get("hook", ""), "series": p.get("series", ""),
-            "file_id": item.get("file_id"), "youtube": p.get("youtube")}
+            "file_id": item.get("file_id"), "youtube": p.get("youtube"), "instagram": p.get("instagram"),
+            "channel": item.get("channel", "en")}
 
 
 def publish(item, local_path=None):
@@ -517,6 +518,33 @@ def repost(st=None):
     diary.flush()
 
 
+def retry_instagram(st):
+    """Instagram sometimes refuses an upload (error 2207076). Every 6 hours, try again with the copy
+    already on the Facebook Page, up to 3 times per video."""
+    from . import meta_upload
+    for key, ch in (("history", "en"), ("history_hi", "hi")):
+        for h in st.get(key, [])[-12:]:
+            links = h.get("links") or {}
+            if not str(links.get("Instagram", "")).startswith("FAILED") or not str(links.get("Facebook", "")).startswith("http"):
+                continue
+            if h.get("ig_tries", 0) >= 3:
+                continue
+            h["ig_tries"] = h.get("ig_tries", 0) + 1
+            with channel_env(ch):
+                tok, ig = os.environ.get("META_PAGE_TOKEN", "").strip(), os.environ.get("IG_USER_ID", "").strip()
+                if not tok or not ig:
+                    continue
+                try:
+                    src = meta_upload.facebook_video_source(links["Facebook"], tok)
+                    url = meta_upload._instagram_from_url(src, h.get("instagram") or h.get("title", ""), ig, tok)
+                except Exception as e:
+                    log(f"Instagram retry for '{h.get('title')}' failed: {str(e)[:150]}")
+                    continue
+            links["Instagram"] = url
+            tg.send_message(CHAT, f"🔁 Posted on Instagram (retry worked): {h.get('title')}\n{url}")
+            write_json(STATE_PATH, st)
+
+
 def _in_hi(fn):
     with channel_env("hi"):
         return fn()
@@ -699,6 +727,10 @@ def _growth_jobs(cfg):
     if st.get("repost_block") != block and any(str((h.get("links") or {}).get("YouTube", "")).startswith("FAILED")
                                                and h.get("file_id") for h in st.get("history", [])[-30:]):
         jobs.append(("repost_block", block, lambda: repost(st)))  # e.g. YouTube's daily upload limit
+    if st.get("ig_retry_block") != block and any(
+            str((h.get("links") or {}).get("Instagram", "")).startswith("FAILED") and h.get("ig_tries", 0) < 3
+            for k in ("history", "history_hi") for h in st.get(k, [])[-12:]):
+        jobs.append(("ig_retry_block", block, lambda: retry_instagram(st)))
     if st.get("comments_day") != today and now.hour >= 17:
         jobs.append(("comments_day", today, lambda: growth.comment_digest(st, CHAT)))
     if now.weekday() == 6 and now.hour >= 14 and st.get("compile_week") != week and cfg.get("weekly_video", True):
