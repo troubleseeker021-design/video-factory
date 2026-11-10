@@ -130,5 +130,13 @@
     "format": "places",
     "hook": "Nature built these, not people.",
     "date": "2026-11-10"
+  },
+  {
+    "id": "3-animals-that-invented-military-technology",
+    "title": "3 Animals That Invented Military Technology",
+    "theme": "animals",
+    "format": "countdown",
+    "hook": "The most advanced military weapons on Earth were actually invented by fish.",
+    "date": "2026-11-10"
   }
 ]
