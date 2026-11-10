@@ -537,11 +537,18 @@ def hindi_test():
     diary.flush()
 
 
-HI_SAMPLE = ("सोचो, ये जगह बिल्कुल नकली लगती है, लेकिन ये सौ प्रतिशत असली है। और असली राज़ क्या है, "
-             "ज़्यादातर लोगों ने इसके बारे में कभी सुना ही नहीं।")
+HI_PURE = ("आँख मलना हमें आम बात लगती है, लेकिन विज्ञान इसे कुछ और ही कहता है। "
+           "सुबह आँखों में जो चिपचिपी चीज़ मिलती है, उसे रूम कहते हैं।")
+HI_MIX = ("हमें लगता है आँख मलना नॉर्मल है, बट साइंस इसे कुछ और ही बोलती है। "
+          "सुबह आँखों में जो स्टिकी चीज़ मिलती है, उसे रूम कहते हैं, और ये असल में तुम्हारी आँख की सफ़ाई है।")
+HI_ROMAN = ("Humein lagta hai aankh malna normal hai, but science ise kuch aur hi bolti hai. "
+            "Subah aankhon mein jo sticky cheez milti hai, use rheum kehte hain, aur ye actually tumhari aankh ki safai hai.")
 VOICE_SAMPLES = [  # (label, voice, text, rate)
-    ("🇮🇳 HINDI · Madhur, shorter pauses, a little faster (new setting)", "hi-IN-MadhurNeural", HI_SAMPLE, "+6%"),
-    ("🇮🇳 HINDI · Madhur, shorter pauses, faster", "hi-IN-MadhurNeural", HI_SAMPLE, "+10%"),
+    ("Madhur - pure Hindi words (current)", "hi-IN-MadhurNeural", HI_PURE, "+10%"),
+    ("Madhur - Hinglish mix, normal speed", "hi-IN-MadhurNeural", HI_MIX, "+10%"),
+    ("Madhur - Hinglish mix, faster", "hi-IN-MadhurNeural", HI_MIX, "+22%"),
+    ("Prabhat (Indian English accent) - Roman Hinglish", "en-IN-PrabhatNeural", HI_ROMAN, "+12%"),
+    ("Swara (female) - Hinglish mix, faster", "hi-IN-SwaraNeural", HI_MIX, "+18%"),
 ]
 
 
