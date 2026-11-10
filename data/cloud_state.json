@@ -579,7 +579,8 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-09T11:00:41"
+      "stats_at": "2026-11-09T11:00:41",
+      "ig_tries": 1
     },
     {
       "title": "Andhere Mein Chamakne Wala Paani",
@@ -635,9 +636,11 @@
           "shorts",
           "facts"
         ]
-      }
+      },
+      "ig_tries": 1
     }
   ],
   "stats_day_hi": "2026-11-09",
-  "stats_problems_history_hi": {}
+  "stats_problems_history_hi": {},
+  "ig_retry_block": "2026-11-10-0"
 }
