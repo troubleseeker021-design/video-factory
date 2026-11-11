@@ -41,8 +41,9 @@ FORMATS = {
 }
 PLACES_FORMAT = ("FORMAT: \"Unreal Places\": exactly 3 real places on Earth that look fake, one surprising fact "
                  "each, the most shocking place last. Say \"Number one\", \"Number two\", \"Number three\". "
-                 "The \"cta\" is the question naming all 3 places, e.g. \"So which one would you visit: Lake Hillier, "
-                 "Socotra or Pamukkale?\" and \"question\" is the same question. \"labels\" must hold the place name and "
+                 "The \"cta\" is exactly \"So, which one of these would you visit?\" (no names, no numbers) and "
+                 "\"question\" is the same question. Name places simply (\"Lonar Lake in India\"), never "
+                 "hard-to-pronounce regional or state names. \"labels\" must hold the place name and "
                  "country (e.g. \"LAKE HILLIER, AUSTRALIA\") on the line where each place is introduced.")
 
 PROMPT = """You write viral, 100% factually accurate YouTube Shorts / Reels scripts for a curiosity
@@ -246,13 +247,14 @@ def next_script(cfg):
         for k, filler in (("emojis", "🤫"), ("visuals", ""), ("labels", ""), ("art", ""), ("facts", "")):
             if script.get(k):
                 script[k] = [*script[k][:n], filler, *script[k][n:]]
-    # "Which one would you visit: 1, 2 or 3?" is unclear when spoken - say the place names instead
-    names = [" ".join(w if w in ("de", "del", "la", "of", "the", "and") else w.capitalize()
-                      for w in (lb or "").split(",")[0].strip().lower().split())
-             for lb in (script.get("labels") or []) if (lb or "").strip()]
-    if re.search(r"1, 2,? or 3", script.get("cta", "")) and len(names) >= 3:
-        script["cta"] = f"So which one would you visit: {names[0]}, {names[1]} or {names[2]}?"
-        script["question"] = script["cta"].replace("So which", "Which")
+    # "Which one: 1, 2 or 3?" sounds unclear - ask it as a plain question (no names, no numbers)
+    if re.search(r"1, 2,? or 3", script.get("cta", "")):
+        script["cta"] = "So, which one of these would you visit?"
+        script["question"] = "Which one of these would you visit?"
+    # the English voice stumbles over Indian state names - keep the pace by just saying "India"
+    for k in ("hook", "cta"):
+        script[k] = _easy_names(script.get(k, ""))
+    script["body"] = [_easy_names(b) for b in script.get("body", [])]
     if cfg.get("spoken_outro", True):  # the narrator asks the question and asks for a like + follow
         if script.get("cta", "").strip().endswith("?"):  # the last line already IS the question
             script["question"] = script["question"] if not re.search(r"1, 2,? or 3", script["question"]) \
@@ -269,6 +271,18 @@ def next_script(cfg):
                  "hook": script.get("hook", ""), "date": dt.date.today().isoformat()})
     write_json(USED, used)
     return script
+
+
+HARD_NAMES = ("Andhra Pradesh|Arunachal Pradesh|Assam|Bihar|Chhattisgarh|Goa|Gujarat|Haryana|Himachal Pradesh|"
+              "Jharkhand|Karnataka|Kerala|Madhya Pradesh|Maharashtra|Manipur|Meghalaya|Mizoram|Nagaland|Odisha|"
+              "Punjab|Rajasthan|Sikkim|Tamil Nadu|Telangana|Tripura|Uttar Pradesh|Uttarakhand|West Bengal|"
+              "Ladakh|Jammu and Kashmir|Andaman and Nicobar Islands")
+
+
+def _easy_names(text):
+    """'Lonar Lake in Maharashtra' -> 'Lonar Lake in India' (only for the English voice; labels keep the state)."""
+    t = re.sub(rf"\b(in|from|of) ({HARD_NAMES})\b(, India)?", r"\1 India", text)
+    return re.sub(r"\bin India,? India\b", "in India", t)
 
 
 def spoken_text(script):

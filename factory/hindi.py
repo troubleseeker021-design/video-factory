@@ -6,6 +6,7 @@ comment question. Devanagari is used only behind the scenes so the voice pronoun
 It only runs when the Hindi channel's accounts are connected (GitHub secrets
 HI_YT_REFRESH_TOKEN and/or HI_META_PAGE_TOKEN), or for a test (task: hindi_test)."""
 import json
+import re
 import os
 import random
 
@@ -33,8 +34,12 @@ Return JSON only.
   in Devanagari - the English words too, spelled as Indians say them (साइंस, नॉर्मल, एक्चुअली, सिस्टम) -
   and place names (लेक हिलियर, ऑस्ट्रेलिया).
   Write numbers and symbols as spoken words (100% -> सौ प्रतिशत, 1960s -> उन्नीस सौ साठ के दशक).
-  Keep it flowing: join short thoughts with commas, use a full stop only at the end of a line,
-  never "..." (long pauses sound slow); no brackets, emojis or symbols.
+  Keep it flowing: one smooth sentence per line, very few commas (every comma makes the voice pause),
+  never "..."; no brackets, emojis, symbols or hyphens.
+  Use only EASY, common words the voice says smoothly: everyday Hindi words, and only the very common
+  English words listed above. Avoid long or rare English words (say "bahut purana" not "ancient",
+  "gulabi" not "pink-coloured"). Write big numbers simply ("करीब पचास हज़ार साल", not exact digits).
+  Place names: short and in their common Hindi form (लोनार झील, भारत), skip extra region names.
 - "outro" (only if the source has one): the viewer question in Hinglish, then ask them to comment, like and
   follow, e.g. "...? Comment mein batao, aur aise aur videos ke liye video ko like aur channel ko follow karo."
   Spoken version in DEVANAGARI like the other lines.
@@ -102,6 +107,13 @@ def translate(script, cfg):
     return hi
 
 
+def _smooth(line):
+    """Fewer pauses for the Hindi voice: drop commas/dashes inside a line, keep only the line's end."""
+    line = re.sub(r"\s*[,;:\u2013\u2014-]\s*", " ", line or "")
+    line = re.sub(r"\s*\.\.\.+\s*", " ", line)
+    return re.sub(r"\s{2,}", " ", line).strip()
+
+
 def roman_timings(dev_words, spoken, roman, duration):
     """The voice speaks Devanagari; the captions show Roman Hinglish. Each Roman line gets the exact
     time span of the same spoken line, spread over its words by length."""
@@ -140,7 +152,7 @@ def make(vid, cfg, seed=None):
         note("writer", "Translated the script into conversational Hindi for our Hindi channel")
         hcfg = dict(cfg, channel_name=os.environ.get("HI_CHANNEL_NAME", "").strip())
         sp = script.pop("spoken")
-        spoken = [sp["hook"], *sp["body"], sp["cta"], *([sp["outro"]] if sp.get("outro") else [])]
+        spoken = [_smooth(x) for x in [sp["hook"], *sp["body"], sp["cta"], *([sp["outro"]] if sp.get("outro") else [])]]
         wav, vdur, dev_words = voice.narrate(" ".join(spoken), hcfg, work,
                                              voices=[cfg.get("hindi_voice") or VOICE, "hi-IN-MadhurNeural"],
                                              rate=cfg.get("hindi_voice_speed", "+6%"), pitch=cfg.get("hindi_voice_pitch", "+0Hz"))
