@@ -25,7 +25,7 @@ experiment, signal, energy, percent, numbers). Fluent, fast, confident, curious 
 amazing to a friend. Explain HOW it works step by step ("Pehle..., phir..., isliye..., aur jab...").
 Simple everyday comparisons. No dramatic pauses, no "...", no questions to the viewer, no "follow" or "comment".
 NOT word-for-word.
-Keep exactly the same number of "body" lines and "labels".
+Keep exactly the same number of "body" lines, "labels" and "facts".
 
 Return JSON only.
 - "hook", "body", "cta": the spoken lines in DEVANAGARI script (used for the voice). EVERY word must be
@@ -38,6 +38,7 @@ Return JSON only.
   Indians type on WhatsApp, English words in normal English spelling
   (e.g. "Humein lagta hai aankh malna normal hai, but science ise kuch aur hi bolti hai.").
   Same number of lines as the Devanagari ones.
+- "facts": the small on-screen fact boxes in short Roman Hinglish, keep the numbers ("" stays "").
 - "title", "caption", "question", "thumb", "labels": in Hindi written in Roman letters (labels and
   thumb in CAPS; place names stay as they are, e.g. "LAKE HILLIER, AUSTRALIA").
 - "hashtags": 6 hashtags mixing Hindi in Roman letters and popular ones (#shorts, #travel).
@@ -63,7 +64,7 @@ def ensure_font():
 
 def translate(script, cfg):
     from . import writer
-    keys = ["title", "hook", "body", "cta", "caption", "hashtags", "question", "thumb", "labels"]
+    keys = ["title", "hook", "body", "cta", "caption", "hashtags", "question", "thumb", "labels", "facts"]
     src = json.dumps({k: script.get(k) for k in keys}, ensure_ascii=False)
     out = None
     for _ in range(2):
@@ -85,6 +86,8 @@ def translate(script, cfg):
     labels = out.get("labels") or []
     if len(labels) != len(script.get("labels") or []):
         hi["labels"] = script.get("labels") or []
+    if len(out.get("facts") or []) != len(script.get("facts") or []):
+        hi["facts"] = script.get("facts") or []
     tag = script.get("series_tag", "")
     num = tag[len(script.get("series", "")):].strip() if tag.startswith(script.get("series", "")) else tag.rsplit(" ", 1)[-1]
     hi["series_tag"] = f"{out.get('series') or script.get('series', '')} {num}".strip()

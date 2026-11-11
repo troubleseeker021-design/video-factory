@@ -217,6 +217,39 @@ def unsplash_photos(query, limit=4):
     return out
 
 
+def _proof_insets(script, scenes, cfg):
+    """detailfuse-style 'proof': a small framed REAL photo in the corner over the 3D art on some shots
+    (e.g. 'The real Lake Hillier'). Uses Wikipedia first (exact subject), then Unsplash."""
+    if not cfg.get("proof_insets", True):
+        return
+    found = []
+    for title in (script.get("wiki") or [])[:3]:
+        for pic in wiki_images(title, limit=1):
+            found.append((pic, title))
+    if len(found) < 2:
+        for q in (script.get("keywords") or [])[:2]:
+            for pic in unsplash_photos(q, limit=1):
+                found.append((pic, q.title()))
+    insets = []
+    for pic, title in found[:3]:
+        try:
+            path = _download(pic["url"], ".jpg")
+            if pic.get("track"):
+                try:
+                    _get_json(pic["track"], pic["hdr"])
+                except Exception:
+                    pass
+            credit = pic["credit"].replace("Photo: ", "")
+            insets.append({"path": path, "caption": f"The real {title.split(' (')[0]}"[:40], "credit": credit[:60]})
+        except Exception as e:
+            log(f"  proof photo failed: {e}")
+    slots = [k for k, sc in enumerate(scenes) if k > 0 and sc.get("media") and sc["media"].get("ai")]
+    for j, k in enumerate(slots[1::3][:len(insets)]):  # about every third AI shot, never the hook
+        scenes[k]["media"] = dict(scenes[k]["media"], inset=insets[j])
+    if insets:
+        log(f"  proof photos: {len(insets)} real photo inset(s) added")
+
+
 def plan(script, scenes, cfg, seed):
     """Attach real visuals to scenes (sets scene["media"]). Hook gets the strongest image."""
     rng = random.Random(seed)
@@ -237,6 +270,7 @@ def plan(script, scenes, cfg, seed):
         except Exception as e:
             log(f"  AI art skipped: {e}")
     targets = [k for k in range(n) if not scenes[k]["media"]]
+    _proof_insets(script, scenes, cfg)
     if not targets:
         log(f"  media: all {n} shots are AI 3D art")
         return scenes

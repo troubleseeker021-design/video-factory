@@ -24,7 +24,7 @@ QUESTIONS_FILE = os.path.join(DATA, "viewer_questions.json")
 # Every video belongs to a numbered series - gives viewers a reason to follow and binge.
 SERIES = {"space": "Space Secrets", "ocean": "Ocean Mysteries", "nature": "Nature's Weirdest",
           "history": "Lost History", "body": "Body Facts", "science": "Science Shocks",
-          "animals": "Animal Oddities", "places": "Unreal Places"}
+          "animals": "Animal Oddities", "places": "Unreal Places", "tech": "How It Works"}
 QUESTIONS = ["Did you already know this?", "Which part surprised you most?",
              "Would you want to see this in person?", "What should we cover next?"]
 CATCHPHRASE = "And that's the part nobody talks about."
@@ -69,13 +69,17 @@ STYLE = viral 3D-explainer reels: explain HOW something works, step by step, lik
 - "caption": 1-2 sentence social caption with 1 emoji.
 - "hashtags": 6 relevant hashtags starting with #.
 - "keywords": 3 simple stock-footage search terms (e.g. "ocean", "octopus underwater").
-- "theme": one of space, ocean, nature, history, body, science, animals, places.
+- "theme": one of space, ocean, nature, history, body, science, animals, places, tech
+  ("tech" = HOW a machine / aircraft / vehicle / weapon / engine / building really works inside).
 - "wiki": 2 or 3 exact English Wikipedia article titles about the subject(s) (used to find real photos).
 - "visuals": one short stock-footage search phrase for EACH spoken line (hook, each body sentence, cta), same order.
 - "emojis": one fitting emoji for EACH spoken line, same order.
 - "art": for EACH spoken line, a vivid description of ONE 3D-animation shot that shows exactly what the
   line says (subject, action, camera angle, setting; e.g. "tweezers pulling an antenna off a moth and
   placing it on a green circuit board, macro close-up"). No text in the picture. Same order.
+- "facts": for EACH spoken line, a tiny on-screen fact box with a concrete number or spec, max 5 words
+  (e.g. "Core: about 1,277 °C", "Turret turns 110° each way", "Top speed: 3,500 km/h"), or "" when the
+  line has no hard fact. Use it on about half of the lines. Same order.
 - "labels": for EACH spoken line, a short on-screen label in CAPS (a place, person or thing name, max 4 words)
   or "" when the line needs none. Same order.
 - "thumb": 2 to 4 shocking words for the thumbnail in CAPS that make people stop scrolling,
@@ -86,7 +90,7 @@ STYLE = viral 3D-explainer reels: explain HOW something works, step by step, lik
 - "doubts": the facts you are not fully sure about (empty list if none).
 {viewer}{insights}
 Reply with JSON only:
-{{"title":"","hook":"","body":["",""],"cta":"","caption":"","hashtags":[],"keywords":[],"theme":"","wiki":[],"visuals":[],"emojis":[],"art":[],"labels":[],"thumb":"","question":"","confidence":"high","doubts":[]}}"""
+{{"title":"","hook":"","body":["",""],"cta":"","caption":"","hashtags":[],"keywords":[],"theme":"","wiki":[],"visuals":[],"emojis":[],"art":[],"facts":[],"labels":[],"thumb":"","question":"","confidence":"high","doubts":[]}}"""
 
 
 def _slug(text):
@@ -156,6 +160,8 @@ def _plan(used):
     last_format = used[-1].get("format") if used else None
     since_places = next((i for i, u in enumerate(reversed(used)) if u.get("theme") == "places"), len(used))
     want_places = since_places >= 2 and last_theme != "places"
+    since_tech = next((i for i, u in enumerate(reversed(used)) if u.get("theme") == "tech"), len(used))
+    _plan.want_tech = (not want_places) and since_tech >= 2 and last_theme != "tech"
     fmt = "places" if want_places else random.choice([f for f in FORMATS if f != last_format])
     return want_places, fmt, last_theme
 
@@ -166,6 +172,9 @@ def _gemini(cfg, used, want_places, fmt, last_theme):
     hooks = [u["hook"] for u in used if u.get("hook") and u.get("date", "") >= cutoff][-60:]
     if want_places:
         theme_rule = 'The "theme" MUST be "places".'
+    elif getattr(_plan, "want_tech", False):
+        theme_rule = ('The "theme" MUST be "tech": explain how one impressive machine, aircraft, vehicle, weapon '
+                      'system, engine or structure works inside, step by step (series "How It Works").')
     else:
         theme_rule = (f'The "theme" must NOT be "{last_theme}" (we never post the same series twice in a row) '
                       'and must not be "places".' if last_theme else 'The "theme" must not be "places".')
@@ -185,7 +194,7 @@ def _gemini(cfg, used, want_places, fmt, last_theme):
         if _norm_hook(s["hook"]) in recent_hooks and attempt == 0:
             log("  hook was too similar to a recent one - asking again")
             continue
-        if not want_places and s.get("theme") in (last_theme, "places") and attempt == 0:
+        if not want_places and not getattr(_plan, "want_tech", False) and s.get("theme") in (last_theme, "places") and attempt == 0:
             log("  same series as last video - asking again")
             continue
         s["source"] = f"gemini:{s.pop('_model', '')}"
@@ -231,7 +240,7 @@ def next_script(cfg):
     if theme != "places" and random.random() < cfg.get("catchphrase_chance", 0) and CATCHPHRASE not in script["body"]:
         n = len(script["body"]) + 1  # per-line lists are [hook, *body, cta]; insert before the cta
         script["body"] = [*script["body"], CATCHPHRASE]
-        for k, filler in (("emojis", "🤫"), ("visuals", ""), ("labels", ""), ("art", "")):
+        for k, filler in (("emojis", "🤫"), ("visuals", ""), ("labels", ""), ("art", ""), ("facts", "")):
             if script.get(k):
                 script[k] = [*script[k][:n], filler, *script[k][n:]]
     conf = str(script.get("confidence", "high")).lower()

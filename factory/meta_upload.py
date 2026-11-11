@@ -1,6 +1,7 @@
 """Agent 9 - The Publisher (Instagram Reels + Facebook Page Reels) via the official Meta Graph API.
 Needs: META_PAGE_ID, META_PAGE_TOKEN (long-lived Page token) and IG_USER_ID
 (see CLOUD SETUP GUIDE.txt, part 5 - META_SETUP.bat prints all three for you)."""
+import json
 import os
 import time
 
@@ -23,11 +24,28 @@ def _check(r):
     return data
 
 
+TRIAL = True  # Instagram "trial reels": shown to non-followers first, shared to followers if it does well
+
+
+def _create(ig_user_id, data):
+    """Create the Reel container - as a trial reel when allowed, otherwise a normal reel."""
+    global TRIAL
+    if TRIAL:
+        try:
+            trial = dict(data, trial_params=json.dumps({"graduation_strategy": "SS_PERFORMANCE"}))
+            trial.pop("share_to_feed", None)
+            return _check(requests.post(f"{G}/{ig_user_id}/media", data=trial, timeout=60))
+        except Exception as e:
+            log(f"  trial reel not accepted ({str(e)[:120]}) - posting as a normal reel")
+            TRIAL = False
+    return _check(requests.post(f"{G}/{ig_user_id}/media", data=data, timeout=60))
+
+
 def _instagram_once(video_path, caption, ig_user_id, token):
     size = os.path.getsize(video_path)
-    c = _check(requests.post(f"{G}/{ig_user_id}/media", data={
+    c = _create(ig_user_id, {
         "media_type": "REELS", "upload_type": "resumable", "caption": caption[:2200], "thumb_offset": "0",
-        "share_to_feed": "true", "access_token": token}, timeout=60))
+        "share_to_feed": "true", "access_token": token})
     cid = c["id"]
     with open(video_path, "rb") as f:
         _check(requests.post(f"https://rupload.facebook.com/ig-api-upload/{VER}/{cid}", data=f, timeout=600, headers={
@@ -95,9 +113,9 @@ def facebook_video_source(fb_url, token):
 
 
 def _instagram_from_url(video_url, caption, ig_user_id, token):
-    c = _check(requests.post(f"{G}/{ig_user_id}/media", data={
+    c = _create(ig_user_id, {
         "media_type": "REELS", "video_url": video_url, "caption": caption[:2200], "thumb_offset": "0",
-        "share_to_feed": "true", "access_token": token}, timeout=60))
+        "share_to_feed": "true", "access_token": token})
     return _wait_and_publish(c["id"], ig_user_id, token)
 
 

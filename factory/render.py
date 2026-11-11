@@ -11,7 +11,7 @@ import re
 import subprocess
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 from . import emoji as EMO
 from . import sfx as SFX
@@ -79,6 +79,9 @@ F_LABEL = _font("Montserrat-Variable.ttf", 52, "Black")
 F_BTN = _font("Montserrat-Variable.ttf", 70, "Black")
 F_SMALL = _font("Montserrat-Variable.ttf", 30, "Bold")
 F_CREDIT = _font("Poppins-Medium.ttf", 22)
+F_INSET = _font("Montserrat-Variable.ttf", 32, "Bold")
+F_FACT = _font("Montserrat-Variable.ttf", 40, "Bold")
+F_WATER = _font("Montserrat-Variable.ttf", 26, "Bold")
 F_PLACE = _font("Montserrat-Variable.ttf", 44, "Black")
 
 
@@ -231,6 +234,30 @@ def _hook_banner(title):
         d.text((bw / 2, y), l, font=F_HOOK, fill=col, anchor="ma", stroke_width=3, stroke_fill=(0, 0, 0))
         y += lh
     return Image.alpha_composite(sh.filter(ImageFilter.GaussianBlur(10)), img)
+
+
+def _inset_card(inset):
+    """Small framed real photo with a caption bar - the 'proof' picture-in-picture."""
+    cw, ch = 500, 330
+    img = ImageOps.fit(Image.open(inset["path"]).convert("RGB"), (cw, ch), Image.LANCZOS)
+    card = Image.new("RGBA", (cw + 16, ch + 96), (0, 0, 0, 0))
+    d = ImageDraw.Draw(card)
+    d.rounded_rectangle([0, 0, cw + 15, ch + 95], radius=14, fill=(12, 14, 20, 225), outline=(255, 255, 255, 235), width=3)
+    card.paste(img, (8, 8))
+    d.text((14, ch + 18), inset["caption"], font=F_INSET, fill=(255, 255, 255, 255))
+    d.text((14, ch + 58), "Photo: " + inset["credit"], font=F_CREDIT, fill=(200, 200, 210, 230))
+    return card
+
+
+def _fact_box(text):
+    """Small dark spec box with a yellow edge, top-left (e.g. 'Core: about 1,277 °C')."""
+    tw = int(F_FACT.getlength(text)) + 60
+    img = Image.new("RGBA", (tw, 84), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([0, 0, tw - 1, 83], radius=10, fill=(10, 12, 18, 215))
+    d.rectangle([0, 0, 9, 83], fill=(255, 214, 10, 255))
+    d.text((32, 42), text, font=F_FACT, fill=(255, 255, 255, 255), anchor="lm")
+    return img
 
 
 def _label_img(text):
@@ -433,6 +460,8 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
     channel = cfg.get("channel_name", "")
     series_tag = script.get("series_tag", "")
     label_cache, first_label_scene = {}, {}
+    inset_cache, fact_cache = {}, {}
+    facts = script.get("facts") or []
     for sc_ in scenes:
         if sc_.get("label"):
             first_label_scene.setdefault(sc_["label"], sc_)
@@ -597,8 +626,31 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
                 d.text((W / 2, cy), m["credit"][:90], font=F_CREDIT, fill=(255, 255, 255, 170), anchor="ma")
             d.rectangle([0, 0, W, 14], fill=(255, 255, 255, 50))
             d.rectangle([0, 0, int(W * t / duration), 14], fill=accent + (255,))
-            if channel and sc["kind"] != "hook":
-                d.text((W / 2, 34), channel, font=F_SMALL, fill=(255, 255, 255, 150), anchor="ma")
+            if channel and sc["kind"] != "hook":  # subtle brand watermark, like detailfuse
+                d.text((44, int(H * 0.60)), channel, font=F_WATER, fill=(255, 255, 255, 120), anchor="lm")
+            inset = (m or {}).get("inset") if sc["kind"] != "hook" else None
+            if inset:  # real "proof" photo in the corner
+                key = inset["path"]
+                if key not in inset_cache:
+                    try:
+                        if script.get("lang") == "hi":
+                            inset = dict(inset, caption=inset["caption"].replace("The real ", "Asli "))
+                        inset_cache[key] = _inset_card(inset)
+                    except Exception:
+                        inset_cache[key] = None
+                ic = inset_cache[key]
+                if ic is not None:
+                    k_in = ease_out_back(min(1.0, (lt - 0.15) / 0.35)) if lt > 0.15 else 0
+                    _paste_center(hud, ic, 44 + ic.width / 2, 290 + ic.height / 2, scale=max(0.02, k_in))
+            fi = sc["i"]
+            fact = (facts[fi] or "").strip() if fi < len(facts) and sc["kind"] != "hook" and not inset else ""
+            first_of_line = si == 0 or scenes[si - 1]["i"] != fi
+            if fact and (lt > 0.2 or not first_of_line):  # spec box, top-left, stays for the whole line
+                if fact not in fact_cache:
+                    fact_cache[fact] = _fact_box(fact[:40])
+                fb = fact_cache[fact]
+                k_in = ease_out_back(min(1.0, (lt - 0.2) / 0.3)) if first_of_line else 1.0
+                _paste_center(hud, fb, 44 + fb.width / 2, 300, scale=max(0.02, k_in))
             if series_tag and sc["kind"] != "hook":
                 d.text((W / 2, 74), series_tag.upper(), font=F_SMALL, fill=accent + (230,), anchor="ma")
             if sc.get("label") and sc["kind"] != "hook":  # place / name on screen
