@@ -144,7 +144,8 @@ def _parse_number(sentence):
 def plan_scenes(script, words, duration, rng):
     """Split the narration into scenes: one per sentence, and long sentences are cut in two
     so the picture changes every ~2-4 seconds (pattern interrupts keep viewers watching)."""
-    sentences = [script["hook"], *script["body"], script["cta"]]
+    sentences = [script["hook"], *script["body"], script["cta"], *([script["outro"]] if script.get("outro") else [])]
+    outro_i = len(script["body"]) + 2 if script.get("outro") else -1
     align(words, sentences)
     raw = []
     for i, s in enumerate(sentences):
@@ -176,7 +177,7 @@ def plan_scenes(script, words, duration, rng):
     for k, sc in enumerate(scenes):
         sc["end"] = scenes[k + 1]["start"] if k + 1 < len(scenes) else duration
         sc["dur"] = sc["end"] - sc["start"]
-        sc["kind"] = "hook" if sc["i"] == 0 else "body"
+        sc["kind"] = "hook" if sc["i"] == 0 else ("outro" if sc["i"] == outro_i else "body")
         sc["label"] = (labels[sc["i"]] or "").strip() if sc["i"] < len(labels) else ""
         first_of_sentence = k == 0 or scenes[k - 1]["i"] != sc["i"]
         e = custom[sc["i"]] if first_of_sentence and sc["i"] < len(custom) and custom[sc["i"]] else None
@@ -522,7 +523,9 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
     n_on = max(6.0, duration * 0.55)  # once, a little after the middle, for ~3 s
     q_text = (script.get("question") or "").strip()
     q_card = _question_card(q_text, script.get("lang", "en")) if q_text and cfg.get("question_card", True) else None
-    q_on = max(duration * 0.6, duration - 4.0)  # the question stays on screen for the last ~4 s
+    outro_start = next((s_["start"] for s_ in scenes if s_["kind"] == "outro"), None)
+    # shown while the narrator asks the question (or the last ~4 s when there is no spoken outro)
+    q_on = outro_start if outro_start is not None else max(duration * 0.6, duration - 4.0)
     hand = None
     chunks = _chunks(words)
     cap_cache, stat_cache = {}, {}
@@ -677,7 +680,7 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
             if q_card is not None and t >= q_on:
                 lt4 = t - q_on
                 k_in = ease_out_back(min(1.0, lt4 / 0.45))
-                _paste_center(frame, q_card, W / 2, 760, max(0.02, 0.9 * k_in))
+                _paste_center(frame, q_card, W / 2, 268 + q_card.height * 0.45, max(0.02, 0.9 * k_in))
 
             # ---- captions ----
             ci = None

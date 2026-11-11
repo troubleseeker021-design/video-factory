@@ -62,8 +62,8 @@ STYLE = viral 3D-explainer reels: explain HOW something works, step by step, lik
   Concrete numbers. A twist near the end ("But a little frog in Alaska freezes like this every winter...").
   Plain, confident narration - no exclamation marks, no "..." pauses, no questions to the viewer.
   Only verified facts; hedge with "scientists think" when not certain. No medical/financial advice.
-- "cta": NOT a call to action. A last line that stops mid-thought so the video loops straight back into
-  the hook (e.g. "Which is why..." or "And that's exactly why"). No "follow", no "comment".
+- "cta": one short, satisfying final line that wraps up the story (a last surprising detail or a punchy
+  conclusion). No "follow", no "comment" - that part is added automatically after it.
 - Total spoken length 100 to 150 words (about 35 to 50 seconds).
 - "title": catchy, under 60 characters, no hashtags.
 - "caption": 1-2 sentence social caption with 1 emoji.
@@ -245,6 +245,10 @@ def next_script(cfg):
         for k, filler in (("emojis", "🤫"), ("visuals", ""), ("labels", ""), ("art", ""), ("facts", "")):
             if script.get(k):
                 script[k] = [*script[k][:n], filler, *script[k][n:]]
+    if cfg.get("spoken_outro", True):  # the narrator asks the question and asks for a like + follow
+        q = script["question"].strip().rstrip(".")
+        q = q if q.endswith("?") else q + "?"
+        script["outro"] = f"{q} Tell us in the comments, and like and follow for more videos like this."
     conf = str(script.get("confidence", "high")).lower()
     script["needs_check"] = conf != "high" or bool(script.get("doubts"))
     used.append({"id": script["id"], "title": script["title"], "theme": theme, "format": script["format"],
@@ -254,4 +258,4 @@ def next_script(cfg):
 
 
 def spoken_text(script):
-    return " ".join([script["hook"], *script["body"], script["cta"]])
+    return " ".join([script["hook"], *script["body"], script["cta"], *([script["outro"]] if script.get("outro") else [])])

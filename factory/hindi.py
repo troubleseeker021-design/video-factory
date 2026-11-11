@@ -16,14 +16,15 @@ from .common import FONTS, REVIEW, log, read_json, write_json
 FONT = os.path.join(FONTS, "NotoSansDevanagari.ttf")
 FONT_URL = "https://github.com/google/fonts/raw/main/ofl/notosansdevanagari/NotoSansDevanagari%5Bwdth%2Cwght%5D.ttf"
 VOICE = "hi-IN-MadhurNeural"  # chosen by the owner; change with "hindi_voice" in config.json
-LINES = ("hook", "body", "cta")
+LINES = ("hook", "body", "cta", "outro")
 
 PROMPT = """Rewrite this YouTube Shorts script in natural HINGLISH - the way popular Indian science/facts
 creators talk on Instagram Reels: Hindi sentence structure with common English words mixed in exactly where
 people really use them (science, normal, actually, real, fact, body, brain, process, system, scientists,
 experiment, signal, energy, percent, numbers). Fluent, fast, confident, curious - like explaining something
 amazing to a friend. Explain HOW it works step by step ("Pehle..., phir..., isliye..., aur jab...").
-Simple everyday comparisons. No dramatic pauses, no "...", no questions to the viewer, no "follow" or "comment".
+Simple everyday comparisons. No dramatic pauses, no "...", no questions to the viewer, no "follow" or "comment"
+(except in "outro").
 NOT word-for-word.
 Keep exactly the same number of "body" lines, "labels" and "facts".
 
@@ -34,7 +35,10 @@ Return JSON only.
   Write numbers and symbols as spoken words (100% -> सौ प्रतिशत, 1960s -> उन्नीस सौ साठ के दशक).
   Keep it flowing: join short thoughts with commas, use a full stop only at the end of a line,
   never "..." (long pauses sound slow); no brackets, emojis or symbols.
-- "hook_roman", "body_roman", "cta_roman": the SAME lines word for word in Roman letters, written the way
+- "outro" (only if the source has one): the viewer question in Hinglish, then ask them to comment, like and
+  follow, e.g. "...? Comment mein batao, aur aise aur videos ke liye video ko like aur channel ko follow karo."
+  Spoken version in DEVANAGARI like the other lines.
+- "hook_roman", "body_roman", "cta_roman", "outro_roman": the SAME lines word for word in Roman letters, written the way
   Indians type on WhatsApp, English words in normal English spelling
   (e.g. "Humein lagta hai aankh malna normal hai, but science ise kuch aur hi bolti hai.").
   Same number of lines as the Devanagari ones.
@@ -64,7 +68,7 @@ def ensure_font():
 
 def translate(script, cfg):
     from . import writer
-    keys = ["title", "hook", "body", "cta", "caption", "hashtags", "question", "thumb", "labels", "facts"]
+    keys = ["title", "hook", "body", "cta", "outro", "caption", "hashtags", "question", "thumb", "labels", "facts"]
     src = json.dumps({k: script.get(k) for k in keys}, ensure_ascii=False)
     out = None
     for _ in range(2):
@@ -80,8 +84,11 @@ def translate(script, cfg):
     for k in keys:
         if out.get(k):
             hi[k] = out[k]
-    hi["spoken"] = {k: out[k] for k in LINES}  # Devanagari, for the voice only
-    for k in LINES:  # on screen everything is Roman Hinglish
+    lines = [k for k in LINES if k != "outro" or (script.get("outro") and out.get("outro") and out.get("outro_roman"))]
+    if "outro" not in lines:
+        hi.pop("outro", None)
+    hi["spoken"] = {k: out[k] for k in lines}  # Devanagari, for the voice only
+    for k in lines:  # on screen everything is Roman Hinglish
         hi[k] = out[f"{k}_roman"]
     labels = out.get("labels") or []
     if len(labels) != len(script.get("labels") or []):
@@ -133,13 +140,14 @@ def make(vid, cfg, seed=None):
         note("writer", "Translated the script into conversational Hindi for our Hindi channel")
         hcfg = dict(cfg, channel_name=os.environ.get("HI_CHANNEL_NAME", "").strip())
         sp = script.pop("spoken")
-        spoken = [sp["hook"], *sp["body"], sp["cta"]]
+        spoken = [sp["hook"], *sp["body"], sp["cta"], *([sp["outro"]] if sp.get("outro") else [])]
         wav, vdur, dev_words = voice.narrate(" ".join(spoken), hcfg, work,
                                              voices=[cfg.get("hindi_voice") or VOICE, "hi-IN-MadhurNeural"],
                                              rate=cfg.get("hindi_voice_speed", "+6%"), pitch=cfg.get("hindi_voice_pitch", "+0Hz"))
         duration = vdur + 0.8
         note("narrator", f"Recorded the Hindi voice-over: {duration:.0f} seconds")
-        words = roman_timings(dev_words, spoken, [script["hook"], *script["body"], script["cta"]], duration)
+        words = roman_timings(dev_words, spoken, [script["hook"], *script["body"], script["cta"],
+                                                  *([script["outro"]] if script.get("outro") else [])], duration)
         mus = music.pick_music(duration, seed, work)
         scenes = render.plan_scenes(script, words, duration, rng)
         pool = [m for m in plan.get("media", []) if m and os.path.exists(m.get("path", ""))]
