@@ -524,6 +524,8 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
     q_text = (script.get("question") or "").strip()
     q_card = _question_card(q_text, script.get("lang", "en")) if q_text and cfg.get("question_card", True) else None
     outro_start = next((s_["start"] for s_ in scenes if s_["kind"] == "outro"), None)
+    if script.get("q_in_cta"):  # the question is the last story line - show the card while it is asked
+        outro_start = next((s_["start"] for s_ in scenes if s_["i"] == len(script["body"]) + 1), outro_start)
     # shown while the narrator asks the question (or the last ~4 s when there is no spoken outro)
     q_on = outro_start if outro_start is not None else max(duration * 0.6, duration - 4.0)
     hand = None

@@ -41,7 +41,8 @@ FORMATS = {
 }
 PLACES_FORMAT = ("FORMAT: \"Unreal Places\": exactly 3 real places on Earth that look fake, one surprising fact "
                  "each, the most shocking place last. Say \"Number one\", \"Number two\", \"Number three\". "
-                 "End with \"Which one would you visit: 1, 2 or 3?\". \"labels\" must hold the place name and "
+                 "The \"cta\" is the question naming all 3 places, e.g. \"So which one would you visit: Lake Hillier, "
+                 "Socotra or Pamukkale?\" and \"question\" is the same question. \"labels\" must hold the place name and "
                  "country (e.g. \"LAKE HILLIER, AUSTRALIA\") on the line where each place is introduced.")
 
 PROMPT = """You write viral, 100% factually accurate YouTube Shorts / Reels scripts for a curiosity
@@ -245,10 +246,23 @@ def next_script(cfg):
         for k, filler in (("emojis", "🤫"), ("visuals", ""), ("labels", ""), ("art", ""), ("facts", "")):
             if script.get(k):
                 script[k] = [*script[k][:n], filler, *script[k][n:]]
+    # "Which one would you visit: 1, 2 or 3?" is unclear when spoken - say the place names instead
+    names = [" ".join(w if w in ("de", "del", "la", "of", "the", "and") else w.capitalize()
+                      for w in (lb or "").split(",")[0].strip().lower().split())
+             for lb in (script.get("labels") or []) if (lb or "").strip()]
+    if re.search(r"1, 2,? or 3", script.get("cta", "")) and len(names) >= 3:
+        script["cta"] = f"So which one would you visit: {names[0]}, {names[1]} or {names[2]}?"
+        script["question"] = script["cta"].replace("So which", "Which")
     if cfg.get("spoken_outro", True):  # the narrator asks the question and asks for a like + follow
-        q = script["question"].strip().rstrip(".")
-        q = q if q.endswith("?") else q + "?"
-        script["outro"] = f"{q} Tell us in the comments, and like and follow for more videos like this."
+        if script.get("cta", "").strip().endswith("?"):  # the last line already IS the question
+            script["question"] = script["question"] if not re.search(r"1, 2,? or 3", script["question"]) \
+                else script["cta"]
+            script["q_in_cta"] = True
+            script["outro"] = "Tell us in the comments, and like and follow for more videos like this."
+        else:
+            q = script["question"].strip().rstrip(".")
+            q = q if q.endswith("?") else q + "?"
+            script["outro"] = f"{q} Tell us in the comments, and like and follow for more videos like this."
     conf = str(script.get("confidence", "high")).lower()
     script["needs_check"] = conf != "high" or bool(script.get("doubts"))
     used.append({"id": script["id"], "title": script["title"], "theme": theme, "format": script["format"],
