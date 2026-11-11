@@ -389,6 +389,45 @@ def _subscribe_nudge(lang="en"):
     return img
 
 
+F_Q = _font("Montserrat-Variable.ttf", 50, "Black")
+F_QTAG = _font("Montserrat-Variable.ttf", 32, "Black")
+
+
+def _question_card(question, lang="en"):
+    """End card: 'COMMENT BELOW' tag + the viewer question, to get people talking in the comments."""
+    tag = "COMMENT MEIN BATAO" if lang == "hi" else "COMMENT BELOW"
+    words, lines, cur = question.split(), [], ""
+    for wd in words:
+        t = (cur + " " + wd).strip()
+        if F_Q.getlength(t) > 860 and cur:
+            lines.append(cur)
+            cur = wd
+        else:
+            cur = t
+    lines = (lines + [cur])[:4]
+    w, lh = 960, 64
+    h = 130 + lh * len(lines) + 40
+    img = Image.new("RGBA", (w + 40, h + 40), (0, 0, 0, 0))
+    sh = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    ImageDraw.Draw(sh).rounded_rectangle([20, 30, w + 20, h + 26], radius=36, fill=(0, 0, 0, 160))
+    img = Image.alpha_composite(img, sh.filter(ImageFilter.GaussianBlur(12)))
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([20, 20, w + 20, h + 20], radius=36, fill=(255, 255, 255, 248))
+    # tag pill with a speech-bubble icon
+    tw = int(F_QTAG.getlength(tag)) + 110
+    x0 = 20 + (w - tw) / 2
+    d.rounded_rectangle([x0, 46, x0 + tw, 112], radius=33, fill=RED + (255,))
+    bx, by = x0 + 46, 79
+    d.rounded_rectangle([bx - 22, by - 17, bx + 22, by + 13], radius=9, fill=(255, 255, 255))
+    d.polygon([(bx - 10, by + 11), (bx - 14, by + 24), (bx + 2, by + 12)], fill=(255, 255, 255))
+    for dx in (-10, 0, 10):
+        d.ellipse([bx + dx - 3, by - 5, bx + dx + 3, by + 1], fill=RED + (255,))
+    d.text((x0 + 80, 79), tag, font=F_QTAG, fill=(255, 255, 255), anchor="lm")
+    for i, ln in enumerate(lines):
+        d.text((20 + w / 2, 150 + i * lh), ln, font=F_Q, fill=(20, 20, 28), anchor="ma")
+    return img
+
+
 def _follow_button(state):
     w, h = 600, 150
     img = Image.new("RGBA", (w + 30, h + 30), (0, 0, 0, 0))
@@ -481,6 +520,9 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
     btn_follow, btn_done = _follow_button("follow"), _follow_button("done")
     nudge = _subscribe_nudge(script.get("lang", "en")) if cfg.get("subscribe_nudge", True) else None
     n_on = max(6.0, duration * 0.55)  # once, a little after the middle, for ~3 s
+    q_text = (script.get("question") or "").strip()
+    q_card = _question_card(q_text, script.get("lang", "en")) if q_text and cfg.get("question_card", True) else None
+    q_on = max(duration * 0.6, duration - 4.0)  # the question stays on screen for the last ~4 s
     hand = None
     chunks = _chunks(words)
     cap_cache, stat_cache = {}, {}
@@ -631,6 +673,12 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
                 wob = 1 + 0.03 * math.sin(lt3 * 10) * (1 if 0.5 < lt3 < 1.4 else 0)
                 _paste_center(frame, nudge, W / 2, 1490 + 420 * out, max(0.02, 0.8 * k_in * wob), alpha=1 - out)
 
+            # ---- end question: ask viewers to comment ----
+            if q_card is not None and t >= q_on:
+                lt4 = t - q_on
+                k_in = ease_out_back(min(1.0, lt4 / 0.45))
+                _paste_center(frame, q_card, W / 2, 760, max(0.02, 0.9 * k_in))
+
             # ---- captions ----
             ci = None
             for i, c in enumerate(chunks):
@@ -663,7 +711,7 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
             d.rectangle([0, 0, int(W * t / duration), 14], fill=accent + (255,))
             if channel and sc["kind"] != "hook":  # subtle brand watermark, like detailfuse
                 d.text((44, int(H * 0.60)), channel, font=F_WATER, fill=(255, 255, 255, 120), anchor="lm")
-            inset = (m or {}).get("inset") if sc["kind"] != "hook" else None
+            inset = (m or {}).get("inset") if sc["kind"] != "hook" and not (q_card is not None and t >= q_on) else None
             if inset:  # real "proof" photo in the corner
                 key = inset["path"]
                 if key not in inset_cache:
@@ -680,7 +728,7 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
             fi = sc["i"]
             fact = (facts[fi] or "").strip() if fi < len(facts) and sc["kind"] != "hook" and not inset else ""
             first_of_line = si == 0 or scenes[si - 1]["i"] != fi
-            if fact and (lt > 0.2 or not first_of_line):  # spec box, top-left, stays for the whole line
+            if fact and (lt > 0.2 or not first_of_line) and not (q_card is not None and t >= q_on):  # spec box, top-left, stays for the whole line
                 if fact not in fact_cache:
                     fact_cache[fact] = _fact_box(fact[:40])
                 fb = fact_cache[fact]

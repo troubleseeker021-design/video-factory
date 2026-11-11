@@ -84,8 +84,10 @@ STYLE = viral 3D-explainer reels: explain HOW something works, step by step, lik
   or "" when the line needs none. Same order.
 - "thumb": 2 to 4 shocking words for the thumbnail in CAPS that make people stop scrolling,
   e.g. "IT BREATHES OXYGEN?!" or "NOBODY SURVIVED THIS". Never just repeat the title.
-- "question": one short, fun question to ask viewers in the comments about this topic
-  (makes people comment, e.g. "Would you swim near this?"), max 12 words, no hashtags.
+- "question": one interesting question shown at the end of the video so viewers comment. It must be
+  about THIS topic and easy to answer in a word or two - a choice, a dare, a guess or an opinion
+  (e.g. "Would you swim in this lake? Yes or no?", "Guess how old this tree is?",
+  "Which would you rather visit, A or B?"). Max 12 words, no hashtags, no emojis.
 - "confidence": "high" only if EVERY fact is well documented; otherwise "medium" or "low".
 - "doubts": the facts you are not fully sure about (empty list if none).
 {viewer}{insights}
