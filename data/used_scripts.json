@@ -138,5 +138,13 @@
     "format": "countdown",
     "hook": "The most advanced military weapons on Earth were actually invented by fish.",
     "date": "2026-11-10"
+  },
+  {
+    "id": "the-world-s-largest-waterfall-is-underwater",
+    "title": "The World's Largest Waterfall Is Underwater",
+    "theme": "ocean",
+    "format": "standard",
+    "hook": "The largest waterfall on Earth is completely hidden beneath the ocean.",
+    "date": "2026-11-11"
   }
 ]
