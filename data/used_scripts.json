@@ -154,5 +154,13 @@
     "format": "places",
     "hook": "Most people have never heard of these places in India.",
     "date": "2026-11-11"
+  },
+  {
+    "id": "how-a-torpedo-flies-in-an-underwater-bubble",
+    "title": "How a Torpedo Flies in an Underwater Bubble",
+    "theme": "tech",
+    "format": "quiz",
+    "hook": "Real or fake? A weapon can fly underwater wrapped inside a giant bubble.",
+    "date": "2026-11-11"
   }
 ]
