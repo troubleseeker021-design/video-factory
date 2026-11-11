@@ -364,6 +364,31 @@ def _chunks(words):
     return out
 
 
+F_NUDGE = _font("Montserrat-Variable.ttf", 40, "Black")
+
+
+def _subscribe_nudge(lang="en"):
+    """Short 'follow for more' pill: red circle with a bell + one line of text."""
+    text = "Aise aur videos ke liye FOLLOW karo" if lang == "hi" else "FOLLOW for more such videos"
+    tw = int(F_NUDGE.getlength(text))
+    w, h = tw + 150, 110
+    img = Image.new("RGBA", (w + 20, h + 20), (0, 0, 0, 0))
+    sh = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    ImageDraw.Draw(sh).rounded_rectangle([10, 16, w + 10, h + 14], radius=55, fill=(0, 0, 0, 150))
+    img = Image.alpha_composite(img, sh.filter(ImageFilter.GaussianBlur(8)))
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([10, 10, w + 10, h + 10], radius=55, fill=(255, 255, 255, 245))
+    cx, cy = 10 + 58, 10 + h / 2
+    d.ellipse([cx - 40, cy - 40, cx + 40, cy + 40], fill=RED + (255,))
+    # bell
+    d.pieslice([cx - 20, cy - 24, cx + 20, cy + 16], 180, 360, fill=(255, 255, 255))
+    d.rectangle([cx - 20, cy - 4, cx + 20, cy + 10], fill=(255, 255, 255))
+    d.polygon([(cx - 26, cy + 14), (cx + 26, cy + 14), (cx + 20, cy + 6), (cx - 20, cy + 6)], fill=(255, 255, 255))
+    d.ellipse([cx - 7, cy + 14, cx + 7, cy + 26], fill=(255, 255, 255))
+    d.text((10 + 115, cy), text, font=F_NUDGE, fill=(20, 20, 28), anchor="lm")
+    return img
+
+
 def _follow_button(state):
     w, h = 600, 150
     img = Image.new("RGBA", (w + 30, h + 30), (0, 0, 0, 0))
@@ -454,6 +479,8 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
     hook_img = _hook_banner(script["title"])
     glow = _glow(700, (255, 255, 255))
     btn_follow, btn_done = _follow_button("follow"), _follow_button("done")
+    nudge = _subscribe_nudge(script.get("lang", "en")) if cfg.get("subscribe_nudge", True) else None
+    n_on = max(6.0, duration * 0.55)  # once, a little after the middle, for ~3 s
     hand = None
     chunks = _chunks(words)
     cap_cache, stat_cache = {}, {}
@@ -595,6 +622,14 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
                 else:
                     _paste_center(frame, btn_done, W / 2, y, 0.62 * (1 - 0.08 * math.exp(-(lt2 - tap) * 12)))
                     pass
+
+            # ---- small "follow for more" nudge (lower third) ----
+            if nudge is not None and n_on <= t < n_on + 3.2:
+                lt3 = t - n_on
+                k_in = ease_out_back(min(1.0, lt3 / 0.4))
+                out = ease_out((lt3 - 2.85) / 0.35) if lt3 > 2.85 else 0
+                wob = 1 + 0.03 * math.sin(lt3 * 10) * (1 if 0.5 < lt3 < 1.4 else 0)
+                _paste_center(frame, nudge, W / 2, 1490 + 420 * out, max(0.02, 0.8 * k_in * wob), alpha=1 - out)
 
             # ---- captions ----
             ci = None
