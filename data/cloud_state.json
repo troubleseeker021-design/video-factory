@@ -1,6 +1,48 @@
 {
   "offset": 41248576,
-  "pending": {},
+  "pending": {
+    "791a10466e": {
+      "vid": "20261112-171557-how-slot-machines-trick-your-brain-into-losing-mon-hi",
+      "post": {
+        "title": "Casino Slot Machine Ka Dimaagi Khel",
+        "created": "2026-11-12T17:26:25",
+        "source": "gemini:gemini-3.6-flash",
+        "theme": "money",
+        "hook": "Casinos aapke real loss ko jeet ke sound se chhipa dete hain",
+        "series": "Dimaag Ka Khel #1",
+        "question": "Kya aapne kabhi slot machine try ki hai?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "secret",
+        "youtube": {
+          "title": "Casino Slot Machine Ka Dimaagi Khel | Dimaag Ka Khel #1 #shorts",
+          "description": "Casinos slot machines par ye psychological trick use karke aapko bewakoof banate hain. 🎰\n\n👇 Kya aapne kabhi slot machine try ki hai?\n\n#psychology #money #sciencefacts #brain #casinotricks #mindblowing #shorts",
+          "tags": [
+            "psychology",
+            "money",
+            "sciencefacts",
+            "brain",
+            "casinotricks",
+            "mindblowing",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Casinos slot machines par ye psychological trick use karke aapko bewakoof banate hain. 🎰 #psychology #money #sciencefacts #brain #casinotricks #mindblowing #fyp #facts",
+        "instagram": "Dimaag Ka Khel #1 🔎 Casinos slot machines par ye psychological trick use karke aapko bewakoof banate hain. 🎰\n\n👇 Kya aapne kabhi slot machine try ki hai?\n.\n.\n#psychology #money #sciencefacts #brain #casinotricks #mindblowing #reels #facts #didyouknow",
+        "facebook": "Dimaag Ka Khel #1 🔎 Casinos slot machines par ye psychological trick use karke aapko bewakoof banate hain. 🎰\n\n👇 Kya aapne kabhi slot machine try ki hai?\n\n#psychology #money #sciencefacts #brain #casinotricks #mindblowing",
+        "script": "Casinos aapke real loss ko jeet ke sound se chhipa dete hain Maan lo aapne ek dollar lagaya aur bees cent waapas mile Nuksaan assi cent ka hua par machine loud music bajaati hai Ab dekho hota kya hai Aapka brain loss aur win ke beech fark nahi samajh paata Isliye system mein dopamine release hota hai aur aap khush hote hain Aur yahin asli twist hai Scans dikhate hain ki ye fake win actual jeet se zyada daanw lagwaati hain Aise ye machines aapka bank account khaali karti hain aur aap muskuraate rehte hain Kya aapne kabhi slot machine try ki hai? Comment mein batao aur follow karo",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBJGr19zHfuuso5_Wh8xieUry5Eq67AAIQCAAC8oqxR7P4OaCoriXUPQQ",
+      "channel": "hi",
+      "message_id": 292,
+      "created": "2026-11-12T17:28:17.968619",
+      "scheduled": true
+    }
+  },
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -812,9 +854,40 @@
         }
       },
       "stats_at": "2026-11-12T11:00:30"
+    },
+    {
+      "title": "How Slot Machines Trick Your Brain Into Losing Money",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/mAxYZF46w_M",
+        "Facebook": "https://www.facebook.com/reel/839644329242593",
+        "Instagram": "https://www.instagram.com/reel/Dfpl3PQkzNh/"
+      },
+      "created": "2026-11-12T17:18:42",
+      "theme": "money",
+      "hook": "Casinos hide your real losses by playing victory sounds.",
+      "series": "Money Secrets #1",
+      "hook_style": "secret",
+      "file_id": "BAACAgEAAxkDAAIBIWr19sN2BZs_bpdOa2nPr6X0sUKoAAIOCAAC8oqxR9y12quTV1IzPQQ",
+      "youtube": {
+        "title": "How Slot Machines Trick Your Brain Into Losing Money | Money Secrets #1 #shorts",
+        "description": "Here is the exact psychological trick casinos use on slot machines to keep you spinning. 🎰\n\n👇 Have you ever played a slot machine before?\n\n#psychology #money #sciencefacts #brain #casinotricks #mindblowing #shorts",
+        "tags": [
+          "psychology",
+          "money",
+          "sciencefacts",
+          "brain",
+          "casinotricks",
+          "mindblowing",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Money Secrets #1 🔎 Here is the exact psychological trick casinos use on slot machines to keep you spinning. 🎰\n\n👇 Have you ever played a slot machine before?\n.\n.\n#psychology #money #sciencefacts #brain #casinotricks #mindblowing #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-11 19:15",
+  "last_slot": "2026-11-12 11:15",
   "stats_day": "2026-11-12",
   "stats_problems": {},
   "followers": {

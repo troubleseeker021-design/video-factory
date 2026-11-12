@@ -170,5 +170,14 @@
     "format": "countdown",
     "hook": "If you broke your own bones to make weapons, you would probably die.",
     "date": "2026-11-12"
+  },
+  {
+    "id": "how-slot-machines-trick-your-brain-into-losing-mon",
+    "title": "How Slot Machines Trick Your Brain Into Losing Money",
+    "theme": "money",
+    "format": "standard",
+    "hook_style": "secret",
+    "hook": "Casinos hide your real losses by playing victory sounds.",
+    "date": "2026-11-12"
   }
 ]
