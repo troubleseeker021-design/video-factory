@@ -41,6 +41,47 @@
       "message_id": 292,
       "created": "2026-11-12T17:28:17.968619",
       "scheduled": true
+    },
+    "7db9f9fc62": {
+      "vid": "20261112-221823-why-hardtack-never-rots-hi",
+      "post": {
+        "title": "Hardtack Biscuits Kabhi Kharab Kyun Nahi Hote",
+        "created": "2026-11-12T22:29:52",
+        "source": "gemini:gemini-flash-lite-latest",
+        "theme": "food",
+        "hook": "Purane zamane ke sailors tees saal purana biscuit bhi aaram se kaise kha lete the",
+        "series": "Vigyan Ke Kisse #1",
+        "question": "Kya tum dedh sau saal purana biscuit khaoge?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "myth",
+        "hook_style": "why_question",
+        "youtube": {
+          "title": "Hardtack Biscuits Kabhi Kharab Kyun Nahi Hote | Vigyan Ke Kisse #1 #shorts",
+          "description": "Yeh 150 saal purana biscuit aaj bhi safe hai! 🍞\n\n👇 Kya tum dedh sau saal purana biscuit khaoge?\n\n#science #facts #history #sciencefacts #anokhefacts #shorts #shorts",
+          "tags": [
+            "science",
+            "facts",
+            "history",
+            "sciencefacts",
+            "anokhefacts",
+            "shorts",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Yeh 150 saal purana biscuit aaj bhi safe hai! 🍞 #science #facts #history #sciencefacts #anokhefacts #shorts #fyp #facts",
+        "instagram": "Vigyan Ke Kisse #1 🔎 Yeh 150 saal purana biscuit aaj bhi safe hai! 🍞\n\n👇 Kya tum dedh sau saal purana biscuit khaoge?\n.\n.\n#science #facts #history #sciencefacts #anokhefacts #shorts #reels #facts #didyouknow",
+        "facebook": "Vigyan Ke Kisse #1 🔎 Yeh 150 saal purana biscuit aaj bhi safe hai! 🍞\n\n👇 Kya tum dedh sau saal purana biscuit khaoge?\n\n#science #facts #history #sciencefacts #anokhefacts #shorts",
+        "script": "Purane zamane ke sailors tees saal purana biscuit bhi aaram se kaise kha lete the Humein lagta hai purana khana kuch hi saalon mein poori tarah kharab ho jata hai Lekin 19th century mein sailors aata aur paani ka bana hardtack khate the Dekho hota kya hai aata bake karke uska sara moisture nikal dete the Bina paani ke bacteria aur mold ke liye grow karna namumkin hai Matlab biscuit ekdam patthar jaisa sakht aur dashakon tak safe rehta hai Aur yahin twist hai museum mein rakhe purane biscuit aaj bhi bilkul sahi hain Yeh actually gehun ki bani ek aisi eent hai jo kabhi nasht nahi hoti Kya tum dedh sau saal purana biscuit khaoge? Comment mein batao, aur follow karo.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBKWr2PkZ9sxea9vLw88dwIE7DqGfSAAJuCAAC8oqxRylCL_mOi_B-PQQ",
+      "channel": "hi",
+      "message_id": 297,
+      "created": "2026-11-12T22:31:36.031731",
+      "scheduled": true
     }
   },
   "history": [
@@ -885,9 +926,40 @@
       },
       "instagram": "Money Secrets #1 🔎 Here is the exact psychological trick casinos use on slot machines to keep you spinning. 🎰\n\n👇 Have you ever played a slot machine before?\n.\n.\n#psychology #money #sciencefacts #brain #casinotricks #mindblowing #reels #facts #didyouknow",
       "channel": "en"
+    },
+    {
+      "title": "Why Hardtack Never Rots",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/YJzpUjJCfaE",
+        "Facebook": "https://www.facebook.com/reel/1696054295561180",
+        "Instagram": "https://www.instagram.com/reel/DfqIlO4j2Xb/"
+      },
+      "created": "2026-11-12T22:21:33",
+      "theme": "food",
+      "hook": "Why did sailors eat ship biscuit that survived thirty years?",
+      "series": "Food Secrets #1",
+      "hook_style": "why_question",
+      "file_id": "BAACAgEAAxkDAAIBJmr2PeK1CROydvntv6TrJKOaaYQOAAJsCAAC8oqxR0aj2pR7jB9tPQQ",
+      "youtube": {
+        "title": "Why Hardtack Never Rots | Food Secrets #1 #shorts",
+        "description": "This 160-year-old cracker is still technically edible. 🍞\n\n👇 Would you try eating a 150-year-old biscuit? Yes or no?\n\n#history #food #science #archaeology #facts #survival #shorts",
+        "tags": [
+          "history",
+          "food",
+          "science",
+          "archaeology",
+          "facts",
+          "survival",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Food Secrets #1 🔎 This 160-year-old cracker is still technically edible. 🍞\n\n👇 Would you try eating a 150-year-old biscuit? Yes or no?\n.\n.\n#history #food #science #archaeology #facts #survival #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-12 11:15",
+  "last_slot": "2026-11-12 16:15",
   "stats_day": "2026-11-12",
   "stats_problems": {},
   "followers": {

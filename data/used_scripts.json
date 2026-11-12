@@ -179,5 +179,14 @@
     "hook_style": "secret",
     "hook": "Casinos hide your real losses by playing victory sounds.",
     "date": "2026-11-12"
+  },
+  {
+    "id": "why-hardtack-never-rots",
+    "title": "Why Hardtack Never Rots",
+    "theme": "food",
+    "format": "myth",
+    "hook_style": "why_question",
+    "hook": "Why did sailors eat ship biscuit that survived thirty years?",
+    "date": "2026-11-12"
   }
 ]
