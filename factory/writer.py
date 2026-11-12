@@ -35,16 +35,12 @@ CATCHPHRASE = "And that's the part nobody talks about."
 GEMINI_MODELS = ["gemini-flash-latest", "gemini-2.5-flash", "gemini-flash-lite-latest"]
 FORMATS = {
     "standard": "FORMAT: a standard fact story about ONE jaw-dropping subject.",
-    "quiz": ('FORMAT: "Real or fake?" quiz. The hook asks viewers to guess if something is real '
-             '(e.g. "Real or fake? This lake is bright pink."), the body builds suspense, then reveals it is REAL '
-             "and explains why. Everything must be a real, verified fact."),
     "myth": ('FORMAT: "Myth vs truth". The hook states a popular belief most people think is true, '
              "the body shows why it is wrong and what is actually true, with the evidence."),
-    "countdown": ("FORMAT: mini countdown of exactly 3 related items (\"Number three... number two... "
-                  "and number one...\"), saving the most shocking for last so people stay to the end."),
 }
 PLACES_FORMAT = ("FORMAT: \"Unreal Places\": exactly 3 real places on Earth that look fake, one surprising fact "
-                 "each, the most shocking place last. Say \"Number one\", \"Number two\", \"Number three\". "
+                 "each. The HOOK must state the single most shocking place concretely (e.g. \"There's a lake in Australia "
+                 "that is naturally bubblegum pink.\"), never a vague line like \"These look fake.\". Say \"Number one\", \"Number two\", \"Number three\". "
                  "The \"cta\" is exactly \"So, which one of these would you visit?\" (no names, no numbers) and "
                  "\"question\" is the same question. Name places simply (\"Lonar Lake in India\"), never "
                  "hard-to-pronounce regional or state names. \"labels\" must hold the place name and "
@@ -60,9 +56,12 @@ Never reuse or closely copy any of these recent hooks: {hooks}
 
 Structure (proven by this week's viral shorts):
 STYLE = viral 3D-explainer reels: explain HOW something works, step by step, like a mini documentary.
-- "hook": the first line, max 14 words. Either a contradiction ("This plane attacks its target by
-  flying circles around it.") or a "what if" aimed at the viewer ("If you were frozen for a hundred
-  years, you wouldn't wake up."). Never start with "Did you know" or "In this video".
+- "hook": the first line, max 12 words. It must NAME the subject and state the one impossible-sounding
+  fact concretely, so it makes sense with the sound off. Our best hooks: "These trees swallow solid gold
+  particles straight from the ground." / "The loneliest whale sings at a pitch no other whale can hear."
+  Our worst hooks (most people swiped away): "These look fake." / "Water shouldn't do this." /
+  "Nature built these, not people." / "Real or fake? ..." - vague, no subject, no fact. Never write hooks
+  like those. Never start with "Did you know", "In this video", "Real or fake" or "Number three".
 - "body": 5 to 7 short sentences (under 16 words each) forming a cause-and-effect chain: "They did X.
   Then Y. So Z. And when..., ...". Simple everyday metaphors ("your body is made of tiny bags of water").
   Concrete numbers. A twist near the end ("But a little frog in Alaska freezes like this every winter...").
@@ -186,7 +185,7 @@ def _plan(used):
     _plan.want_tech = (not want_places) and since_tech >= 4 and last_theme != "tech"
     since_grown = next((i for i, u in enumerate(reversed(used)) if u.get("theme") in GROWNUP), len(used))
     _plan.want_grownup = (not want_places) and (not _plan.want_tech) and since_grown >= 1
-    fmt = "places" if want_places else random.choice([f for f in FORMATS if f != last_format])
+    fmt = "places" if want_places else random.choice(["standard", "standard", "standard", "myth"])  # one-subject stories hold viewers best
     return want_places, fmt, last_theme
 
 
