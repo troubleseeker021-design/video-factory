@@ -30,6 +30,8 @@ Simple everyday comparisons. No dramatic pauses, no "...", no questions to the v
 (except in "outro").
 NOT word-for-word.
 Keep exactly the same number of "body" lines, "labels" and "facts".
+Keep it SHORT: each Hindi line should have about as many words as the English one (never more than 10% extra),
+because long videos get rejected by Instagram and lose viewers.
 
 Return JSON only.
 - "hook", "body", "cta": the spoken lines in DEVANAGARI script (used for the voice). EVERY word must be

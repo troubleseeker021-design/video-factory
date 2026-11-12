@@ -24,7 +24,7 @@ def _check(r):
     return data
 
 
-TRIAL = True  # Instagram "trial reels": shown to non-followers first, shared to followers if it does well
+TRIAL = False  # Instagram "trial reels" - our Meta app has no permission for them yet (error code 10)
 
 
 def _create(ig_user_id, data):
@@ -123,7 +123,7 @@ def instagram_reencoded(video_url, caption, ig_user_id, token):
                    check=True, timeout=600)
     trial, TRIAL = TRIAL, False
     try:
-        return _instagram_once(out, caption, ig_user_id, token)
+        return _instagram_once(_fit_for_instagram(out), caption, ig_user_id, token)
     finally:
         TRIAL = trial
 
@@ -146,10 +146,46 @@ def _instagram_from_url(video_url, caption, ig_user_id, token):
     return _wait_and_publish(c["id"], ig_user_id, token)
 
 
+IG_MAX_S = 50.0  # our reels longer than ~55 s keep failing on Instagram (ProcessingFailedError / 2207076)
+
+
+def _duration(path):
+    import re
+    import subprocess
+    from .common import ffmpeg_exe
+    p = subprocess.run([ffmpeg_exe(), "-i", path], capture_output=True, text=True)
+    m = re.search(r"Duration: (\d+):(\d+):([\d.]+)", p.stderr)
+    return int(m.group(1)) * 3600 + int(m.group(2)) * 60 + float(m.group(3)) if m else 0.0
+
+
+def _fit_for_instagram(path):
+    """Instagram copy only: if the video is long, play it a little faster (max 1.3x) so it fits
+    ~50 s, re-encoded with Instagram's safest settings. YouTube/Facebook keep the original."""
+    import subprocess
+    from .common import ffmpeg_exe
+    dur = _duration(path)
+    if not dur or dur <= IG_MAX_S + 2:
+        return path
+    f = min(1.3, dur / IG_MAX_S)
+    out = os.path.splitext(path)[0] + "_ig.mp4"
+    subprocess.run([ffmpeg_exe(), "-y", "-loglevel", "error", "-i", path,
+                    "-vf", f"setpts=PTS/{f:.4f},fps=30", "-af", f"atempo={f:.4f}",
+                    "-c:v", "libx264", "-profile:v", "main", "-level", "4.0", "-pix_fmt", "yuv420p",
+                    "-b:v", "4M", "-maxrate", "4M", "-bufsize", "8M", "-g", "60",
+                    "-c:a", "aac", "-b:a", "128k", "-ar", "44100", "-ac", "2", "-movflags", "+faststart", out],
+                   check=True, timeout=600)
+    log(f"  Instagram copy: {dur:.0f}s -> {dur / f:.0f}s (played {f:.2f}x faster)")
+    return out
+
+
 def instagram_reel(video_path, caption, ig_user_id, token, tries=2, fallback_url=None):
     """Upload a Reel. Instagram's direct upload sometimes fails with "ProcessingFailedError";
     then we hand Instagram the same video from Facebook's servers instead (fallback_url)."""
     last = None
+    try:
+        video_path = _fit_for_instagram(video_path)
+    except Exception as e:
+        log(f"  (could not shorten the Instagram copy: {str(e)[:120]})")
     for i in range(tries):
         try:
             return _instagram_once(video_path, caption, ig_user_id, token)

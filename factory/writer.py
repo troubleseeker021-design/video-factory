@@ -63,7 +63,7 @@ STYLE = viral 3D-explainer reels: explain HOW something works, step by step, lik
 - "hook": the first line, max 14 words. Either a contradiction ("This plane attacks its target by
   flying circles around it.") or a "what if" aimed at the viewer ("If you were frozen for a hundred
   years, you wouldn't wake up."). Never start with "Did you know" or "In this video".
-- "body": 6 to 9 short sentences (under 18 words each) forming a cause-and-effect chain: "They did X.
+- "body": 5 to 7 short sentences (under 16 words each) forming a cause-and-effect chain: "They did X.
   Then Y. So Z. And when..., ...". Simple everyday metaphors ("your body is made of tiny bags of water").
   Concrete numbers. A twist near the end ("But a little frog in Alaska freezes like this every winter...").
   Write it the way a person TALKS when explaining to a friend, not like an article being read out:
@@ -73,7 +73,7 @@ STYLE = viral 3D-explainer reels: explain HOW something works, step by step, lik
   Only verified facts; hedge with "scientists think" when not certain. No medical/financial advice.
 - "cta": one short, satisfying final line that wraps up the story (a last surprising detail or a punchy
   conclusion). No "follow", no "comment" - that part is added automatically after it.
-- Total spoken length 100 to 150 words (about 35 to 50 seconds).
+- Total spoken length 90 to 120 words (about 30 to 45 seconds). Shorter videos are watched to the end.
 - "title": catchy, under 60 characters, no hashtags.
 - "caption": 1-2 sentence social caption with 1 emoji.
 - "hashtags": 6 relevant hashtags starting with #.
@@ -277,6 +277,7 @@ def next_script(cfg):
         for k, filler in (("emojis", "🤫"), ("visuals", ""), ("labels", ""), ("art", ""), ("facts", "")):
             if script.get(k):
                 script[k] = [*script[k][:n], filler, *script[k][n:]]
+    _trim(script)
     # "Which one: 1, 2 or 3?" sounds unclear - ask it as a plain question (no names, no numbers)
     if re.search(r"1, 2,? or 3", script.get("cta", "")):
         script["cta"] = "So, which one of these would you visit?"
@@ -301,6 +302,25 @@ def next_script(cfg):
                  "hook": script.get("hook", ""), "date": dt.date.today().isoformat()})
     write_json(USED, used)
     return script
+
+
+MAX_WORDS = 130  # ~45 s of voice; longer videos get rejected by Instagram and lose viewers
+
+
+def _trim(script):
+    """Keep the video short: drop middle body lines (and their per-line extras) until it fits."""
+    if script.get("theme") == "places":
+        return
+    def words():
+        return sum(len(x.split()) for x in [script["hook"], *script["body"], script["cta"]])
+    while words() > MAX_WORDS and len(script["body"]) > 4:
+        k = len(script["body"]) // 2  # keep the opening chain and the twist near the end
+        script["body"] = script["body"][:k] + script["body"][k + 1:]
+        for key in ("emojis", "visuals", "labels", "art", "facts"):
+            lst = script.get(key)
+            if isinstance(lst, list) and len(lst) > k + 1:
+                script[key] = lst[:k + 1] + lst[k + 2:]
+        log(f"  trimmed a line to keep the video short ({words()} words)")
 
 
 HARD_NAMES = ("Andhra Pradesh|Arunachal Pradesh|Assam|Bihar|Chhattisgarh|Goa|Gujarat|Haryana|Himachal Pradesh|"
