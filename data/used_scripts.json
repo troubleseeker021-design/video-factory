@@ -162,5 +162,13 @@
     "format": "quiz",
     "hook": "Real or fake? A weapon can fly underwater wrapped inside a giant bubble.",
     "date": "2026-11-11"
+  },
+  {
+    "id": "3-animals-that-break-their-own-bones-to-fight",
+    "title": "3 Animals That Break Their Own Bones to Fight",
+    "theme": "animals",
+    "format": "countdown",
+    "hook": "If you broke your own bones to make weapons, you would probably die.",
+    "date": "2026-11-12"
   }
 ]
