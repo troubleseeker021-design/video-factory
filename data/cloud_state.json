@@ -699,7 +699,7 @@
       },
       "instagram": "Animal Oddities #4 🔎 Nature engineered military-grade weapons millions of years before humans existed. ⚡\n\n👇 Which of these three biological weapons is the scariest?\n.\n.\n#wildlife #marinebiology #nature #sciencefacts #electriceel #oceancreatures #reels #facts #didyouknow",
       "channel": "en",
-      "ig_tries": 3,
+      "ig_tries": 4,
       "stats": {
         "YouTube": {
           "views": 803,
@@ -711,7 +711,8 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-11T11:00:36"
+      "stats_at": "2026-11-11T11:00:36",
+      "ig_fix": true
     },
     {
       "title": "The World's Largest Waterfall Is Underwater",
@@ -818,7 +819,8 @@
       },
       "instagram": "How It Works #1 🔎 Engineers built an underwater rocket that travels inside its own custom bubble envelope 🫧\n\n👇 Could any submarine dodge this weapon?\n.\n.\n#engineering #militarytech #howitworks #physics #technology #submarine #reels #facts #didyouknow",
       "channel": "en",
-      "ig_tries": 1
+      "ig_tries": 2,
+      "ig_fix": true
     },
     {
       "title": "3 Animals That Break Their Own Bones to Fight",
@@ -848,7 +850,9 @@
         ]
       },
       "instagram": "Animal Oddities #5 🔎 These three animals turn their own bodies into lethal organic weapons. 🦎\n\n👇 Which animal defense mechanism surprised you most?\n.\n.\n#nature #animals #science #biology #wildlife #facts #reels #facts #didyouknow",
-      "channel": "en"
+      "channel": "en",
+      "ig_tries": 1,
+      "ig_fix": true
     }
   ],
   "last_slot": "2026-11-11 19:15",
@@ -904,7 +908,8 @@
         }
       },
       "stats_at": "2026-11-11T11:00:55",
-      "ig_tries": 3
+      "ig_tries": 4,
+      "ig_fix": true
     },
     {
       "title": "Andhere Mein Chamakne Wala Paani",
@@ -977,7 +982,7 @@
           "facts"
         ]
       },
-      "ig_tries": 3,
+      "ig_tries": 4,
       "stats": {
         "YouTube": {
           "views": 0,
@@ -989,7 +994,8 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-11T11:00:55"
+      "stats_at": "2026-11-11T11:00:55",
+      "ig_fix": true
     },
     {
       "title": "Kyun Europe Ke Log Sadiyon Tak Misra Ki Mamiyan Khate Rahe",
@@ -1020,7 +1026,7 @@
       },
       "instagram": "Ajeeb Itihaas #2 🔎 Sadiyon tak Europe mein pisi hui Misra ki mamiyon ko dawai aur rang ki tarah istemaal kiya jata tha.\n\n👇 Kya aapko pata tha ki 1960s tak asli mamiyon se rang banaya jata tha?\n.\n.\n#history #historyfacts #mummies #rochaktathya #kahaniyan #shorts #reels #facts #didyouknow",
       "channel": "hi",
-      "ig_tries": 3,
+      "ig_tries": 4,
       "stats": {
         "YouTube": {
           "views": 0,
@@ -1032,7 +1038,8 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-11T11:00:55"
+      "stats_at": "2026-11-11T11:00:55",
+      "ig_fix": true
     },
     {
       "title": "Kudrat Ka Karishma",
@@ -1155,7 +1162,8 @@
       },
       "instagram": "Anokhi Kudrat #2 🔎 Duniya ka sabse bada waterfall zameen par nahi, Denmark Strait ke samandar mein sadhe gyarah hazaar feet neeche girta hai. 🌊\n\n👇 Kya aapko pehle pata tha ki underwater waterfalls bhi hote hain?\n.\n.\n#vigyan #sciencefacts #samandar #oceanmystery #shorts #earthfacts #reels #facts #didyouknow",
       "channel": "hi",
-      "ig_tries": 2
+      "ig_tries": 3,
+      "ig_fix": true
     },
     {
       "title": "Bharat Ki Sabse Anokhi Jaghein",
@@ -1185,10 +1193,12 @@
         ]
       },
       "instagram": "Anokhi Jagahein Ep 4 🔎 Bharat ki 3 sabse unreal jaghein 🌍 Aap kahan jaana chahoge?\n\n👇 Inmein se kaun si jagah sabse amazing lagi?\n.\n.\n#incredibleindia #travel #meghalaya #shorts #hiddengems #unrealplaces #reels #facts #didyouknow",
-      "channel": "hi"
+      "channel": "hi",
+      "ig_tries": 1,
+      "ig_fix": true
     }
   ],
   "stats_day_hi": "2026-11-11",
   "stats_problems_history_hi": {},
-  "ig_retry_block": "2026-11-11-3"
+  "ig_retry_block": "2026-11-12-0"
 }
