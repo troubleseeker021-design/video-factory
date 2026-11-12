@@ -34,6 +34,7 @@ def build_post_pack(script, cfg):
         "needs_check": bool(script.get("needs_check")),
         "doubts": script.get("doubts") or [],
         "format": script.get("format", ""),
+        "hook_style": script.get("hook_style", ""),
         "youtube": {
             "title": (yt_title[:90] + " #shorts"),
             "description": f"{script['caption']}{ask}\n\n{tags} #shorts" + credits,

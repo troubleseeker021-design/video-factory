@@ -38,6 +38,24 @@ FORMATS = {
     "myth": ('FORMAT: "Myth vs truth". The hook states a popular belief most people think is true, '
              "the body shows why it is wrong and what is actually true, with the evidence."),
 }
+# Proven Shorts hook styles (studied from top creators + our own Studio numbers). One is picked per video,
+# never the same twice in a row, and saved with the video so the weekly numbers show which style wins.
+HOOK_STYLES = {
+    "bold_fact": ('Name the subject and state its most impossible-sounding fact as plain truth. '
+                  'e.g. "These trees swallow solid gold straight out of the ground."'),
+    "never_seen": ('Tell viewers they have never seen this, then name the subject and the fact. '
+                   'e.g. "You\'ve never seen a fish that fights with snot."'),
+    "you_body": ('Put the VIEWER inside the fact, using "you" or "your". '
+                 'e.g. "Your brain deletes a tenth of everything you see."'),
+    "secret": ('Reveal something hidden that someone keeps quiet, naming who and what. '
+               'e.g. "Casinos hide every clock so you lose track of time."'),
+    "why_question": ('Ask one concrete "why" question about a named thing that viewers cannot answer. '
+                     'e.g. "Why do pilots dump fuel before an emergency landing?"'),
+    "contradiction": ('State something everyone believes, then flip it in the same breath. '
+                      'e.g. "Goldfish don\'t have three-second memories. They remember for months."'),
+}
+
+
 PLACES_FORMAT = ("FORMAT: \"Unreal Places\": exactly 3 real places on Earth that look fake, one surprising fact "
                  "each. The HOOK must state the single most shocking place concretely (e.g. \"There's a lake in Australia "
                  "that is naturally bubblegum pink.\"), never a vague line like \"These look fake.\". Say \"Number one\", \"Number two\", \"Number three\". "
@@ -56,7 +74,7 @@ Never reuse or closely copy any of these recent hooks: {hooks}
 
 Structure (proven by this week's viral shorts):
 STYLE = viral 3D-explainer reels: explain HOW something works, step by step, like a mini documentary.
-- "hook": the first line, max 12 words. It must NAME the subject and state the one impossible-sounding
+- "hook": the first line, max 10 words (it must be spoken in under 3 seconds). It must NAME the subject and state the one impossible-sounding
   fact concretely, so it makes sense with the sound off. Our best hooks: "These trees swallow solid gold
   particles straight from the ground." / "The loneliest whale sings at a pitch no other whale can hear."
   Our worst hooks (most people swiped away): "These look fake." / "Water shouldn't do this." /
@@ -70,6 +88,7 @@ STYLE = viral 3D-explainer reels: explain HOW something works, step by step, lik
   crazy part.", "Think of it like..."), mix very short punchy sentences with medium ones, use contractions
   (it's, they're, you'd). No exclamation marks, no "..." pauses, no questions asking viewers to comment.
   Only verified facts; hedge with "scientists think" when not certain. No medical/financial advice.
+- Pay off fast: the core reveal must come by the 3rd body sentence; save one extra twist for the end.
 - "cta": one short, satisfying final line that wraps up the story (a last surprising detail or a punchy
   conclusion). No "follow", no "comment" - that part is added automatically after it.
 - Total spoken length 90 to 120 words (about 30 to 45 seconds). Shorter videos are watched to the end.
@@ -215,6 +234,12 @@ def _gemini(cfg, used, want_places, fmt, last_theme):
     if vq and random.random() < 0.35 and not want_places:
         q = random.choice(vq[-15:])
         viewer = f'\nA viewer asked: "{q["text"][:160]}". If it makes a great, verifiable video, answer it.\n'
+    last_style = next((u.get("hook_style") for u in reversed(used) if u.get("hook_style")), None)
+    style = random.choice([k for k in HOOK_STYLES if k != last_style])
+    if not want_places:
+        theme_rule += (f'\nHOOK STYLE for this video ("{style}"): {HOOK_STYLES[style]} '
+                       '(If the theme is "whatif", a concrete "What if..." hook is fine instead.)')
+    _gemini.style = style
     prompt = PROMPT.format(niche=cfg.get("niche", "facts"), recent="; ".join(recent_titles) or "none",
                            format=PLACES_FORMAT if want_places else FORMATS[fmt], theme_rule=theme_rule,
                            hooks="; ".join(hooks) or "none", viewer=viewer, insights=cfg.get("_insights", ""))
@@ -231,6 +256,7 @@ def _gemini(cfg, used, want_places, fmt, last_theme):
             log("  same series as last video - asking again")
             continue
         s["source"] = f"gemini:{s.pop('_model', '')}"
+        s["hook_style"] = "places" if want_places else style
         return s
     return None
 
@@ -298,6 +324,7 @@ def next_script(cfg):
     conf = str(script.get("confidence", "high")).lower()
     script["needs_check"] = conf != "high" or bool(script.get("doubts"))
     used.append({"id": script["id"], "title": script["title"], "theme": theme, "format": script["format"],
+                 "hook_style": script.get("hook_style", ""),
                  "hook": script.get("hook", ""), "date": dt.date.today().isoformat()})
     write_json(USED, used)
     return script

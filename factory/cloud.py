@@ -201,6 +201,7 @@ def _record(item, status, results):
     return {"title": p.get("title"), "status": status, "links": results,
             "created": p.get("created") or dt.datetime.utcnow().isoformat(timespec="seconds"),
             "theme": p.get("theme", ""), "hook": p.get("hook", ""), "series": p.get("series", ""),
+            "hook_style": p.get("hook_style", ""),
             "file_id": item.get("file_id"), "youtube": p.get("youtube"), "instagram": p.get("instagram"),
             "channel": item.get("channel", "en")}
 

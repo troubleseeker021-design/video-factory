@@ -170,6 +170,12 @@ def insights(st):
         if h.get("theme"):
             themes.setdefault(h["theme"], []).append(score(h))
     ranked = sorted(themes, key=lambda t: sum(themes[t]) / len(themes[t]), reverse=True)
+    styles = {}
+    for h in rated:
+        if h.get("hook_style"):
+            styles.setdefault(h["hook_style"], []).append(score(h))
+    styles = {k: v for k, v in styles.items() if len(v) >= 2}
+    best_styles = sorted(styles, key=lambda t: sum(styles[t]) / len(styles[t]), reverse=True)
     lines = ["\nWHAT WORKS ON THIS CHANNEL (from real view counts - use it, but keep topics fresh):"]
     lines.append("- Best performing videos: " + "; ".join(
         f"\"{h['title']}\"" + (f" (hook: {h['hook']})" if h.get("hook") else "") for h in top))
@@ -177,6 +183,9 @@ def insights(st):
     if len(ranked) >= 2:
         lines.append(f"- Strongest themes: {', '.join(ranked[:2])}. Weakest theme: {ranked[-1]}. "
                      "Pick a strong theme about 2 times out of 3.")
+    if len(best_styles) >= 2:
+        lines.append(f"- Hook styles that work best here: {', '.join(best_styles[:2])}. "
+                     f"Weakest hook style: {best_styles[-1]}.")
     return "\n".join(lines) + "\n"
 
 
