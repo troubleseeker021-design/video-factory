@@ -28,6 +28,8 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main  # always start from the newest saved progress (a queued run must not use an old copy)
 
       - uses: actions/setup-python@v5
         with:
