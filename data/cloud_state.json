@@ -1,46 +1,6 @@
 {
   "offset": 41248576,
   "pending": {
-    "bfbf12812c": {
-      "vid": "20261111-221751-how-a-torpedo-flies-in-an-underwater-bubble-hi",
-      "post": {
-        "title": "Paani ke andar rocket jaisa torpedo kaise chalta hai",
-        "created": "2026-11-11T22:31:49",
-        "source": "gemini:gemini-flash-latest",
-        "theme": "tech",
-        "hook": "Actually yeh real hai paani ke andar ek hathiyaar bade se bubble mein ud sakta hai",
-        "series": "Vigyan Ke Khel #1",
-        "question": "Kya koi submarine is hathiyaar se bach sakti hai?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "quiz",
-        "youtube": {
-          "title": "Paani ke andar rocket jaisa torpedo kaise chalta hai | Vigyan Ke Khel #1 #shorts",
-          "description": "Paani ke andar bubble ke andar udne wala rocket torpedo 🫧\n\n👇 Kya koi submarine is hathiyaar se bach sakti hai?\n\n#shorts #sciencefacts #technology #vigyan #howitworks #hindi #shorts\n\nImage credits:\nPhoto: Adam Juman · Unsplash\nPhoto: Cardia Gong · Unsplash\nPhoto: Charlie Houston · Unsplash\nPhoto: Erik Mclean · Unsplash\nPhoto: Gower Brown · Unsplash\nPhoto: Kinø · Unsplash\nPhoto: Luca J · Unsplash\nPhoto: Meriç Dağlı · Unsplash\nPhoto: Naja Bertolt Jensen · Unsplash\nPhoto: Pablo Guerrero · Unsplash\nPhoto: kofa boyah · Unsplash\nVideo: Pixabay",
-          "tags": [
-            "shorts",
-            "sciencefacts",
-            "technology",
-            "vigyan",
-            "howitworks",
-            "hindi",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "Paani ke andar bubble ke andar udne wala rocket torpedo 🫧 #shorts #sciencefacts #technology #vigyan #howitworks #hindi #fyp #facts",
-        "instagram": "Vigyan Ke Khel #1 🔎 Paani ke andar bubble ke andar udne wala rocket torpedo 🫧\n\n👇 Kya koi submarine is hathiyaar se bach sakti hai?\n.\n.\n#shorts #sciencefacts #technology #vigyan #howitworks #hindi #reels #facts #didyouknow",
-        "facebook": "Vigyan Ke Khel #1 🔎 Paani ke andar bubble ke andar udne wala rocket torpedo 🫧\n\n👇 Kya koi submarine is hathiyaar se bach sakti hai?\n\n#shorts #sciencefacts #technology #vigyan #howitworks #hindi",
-        "script": "Actually yeh real hai paani ke andar ek hathiyaar bade se bubble mein ud sakta hai Sunne mein yeh bilkul fake lagta hai par yeh hathiyaar actually ekdam real hai Normal torpedo sirf nabbe kilometer per hour ki speed pakad paate hain kyunki paani ka drag bahut zyada hota hai Isi drag ko khatam karne ke liye scientists ne torpedo ke aage ek special flat disc lagai Pehle launch hote hi yeh disc paani ko tezi se baahar ki taraf dhakelti hai Phir iske peeche se garam gas nikal kar paani ke andar ek bada sa pocket banaati hai Isse ek bada gas ka bubble banta hai jo pure torpedo ko apne andar dhak leta hai Aur jab paani torpedo ki body se touch hi nahi hota toh friction ninyanve percent kam ho jata hai Iske baad bubble ke andar hi rocket jalta hai aur torpedo teen sau sattar kilometer per hour ki speed se daudta hai Is tarah pura samandar paani ke andar ek rocket launchpad ban jata hai Kya koi submarine is hathiyaar se bach sakti hai? Comment mein batao, aur aise aur videos ke liye video ko like aur channel ko follow karo.",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAIBEmr07ViyjY7C4finAZVGB72cxfDpAAJ7BwACF4upR16cMKfNC3xkPQQ",
-      "channel": "hi",
-      "message_id": 274,
-      "created": "2026-11-11T22:34:00.735860",
-      "scheduled": true
-    },
     "f429da2ab2": {
       "vid": "20261112-011614-3-animals-that-break-their-own-bones-to-fight-hi",
       "post": {
@@ -867,7 +827,7 @@
   "comments_day": "2026-11-11",
   "compile_week": "2026-W45",
   "report_week": "2026-W45",
-  "last_hi_slot": "2026-11-12 08:00",
+  "last_hi_slot": "2026-11-12 13:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -1196,6 +1156,37 @@
       "channel": "hi",
       "ig_tries": 1,
       "ig_fix": true
+    },
+    {
+      "title": "Paani ke andar rocket jaisa torpedo kaise chalta hai",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/0qQlSnn-alo",
+        "Facebook": "https://www.facebook.com/reel/1924062305630430",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-11T22:31:49",
+      "theme": "tech",
+      "hook": "Actually yeh real hai paani ke andar ek hathiyaar bade se bubble mein ud sakta hai",
+      "series": "Vigyan Ke Khel #1",
+      "hook_style": "",
+      "file_id": "BAACAgEAAxkDAAIBEmr07ViyjY7C4finAZVGB72cxfDpAAJ7BwACF4upR16cMKfNC3xkPQQ",
+      "youtube": {
+        "title": "Paani ke andar rocket jaisa torpedo kaise chalta hai | Vigyan Ke Khel #1 #shorts",
+        "description": "Paani ke andar bubble ke andar udne wala rocket torpedo 🫧\n\n👇 Kya koi submarine is hathiyaar se bach sakti hai?\n\n#shorts #sciencefacts #technology #vigyan #howitworks #hindi #shorts\n\nImage credits:\nPhoto: Adam Juman · Unsplash\nPhoto: Cardia Gong · Unsplash\nPhoto: Charlie Houston · Unsplash\nPhoto: Erik Mclean · Unsplash\nPhoto: Gower Brown · Unsplash\nPhoto: Kinø · Unsplash\nPhoto: Luca J · Unsplash\nPhoto: Meriç Dağlı · Unsplash\nPhoto: Naja Bertolt Jensen · Unsplash\nPhoto: Pablo Guerrero · Unsplash\nPhoto: kofa boyah · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "shorts",
+          "sciencefacts",
+          "technology",
+          "vigyan",
+          "howitworks",
+          "hindi",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Vigyan Ke Khel #1 🔎 Paani ke andar bubble ke andar udne wala rocket torpedo 🫧\n\n👇 Kya koi submarine is hathiyaar se bach sakti hai?\n.\n.\n#shorts #sciencefacts #technology #vigyan #howitworks #hindi #reels #facts #didyouknow",
+      "channel": "hi"
     }
   ],
   "stats_day_hi": "2026-11-11",
