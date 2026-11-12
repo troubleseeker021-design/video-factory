@@ -527,18 +527,29 @@ def retry_instagram(st):
             links = h.get("links") or {}
             if not str(links.get("Instagram", "")).startswith("FAILED") or not str(links.get("Facebook", "")).startswith("http"):
                 continue
-            if h.get("ig_tries", 0) >= 3:
+            if h.get("ig_tries", 0) >= 3 and h.get("ig_fix"):  # one extra try with the new re-encode fix
                 continue
             h["ig_tries"] = h.get("ig_tries", 0) + 1
+            h["ig_fix"] = True
             with channel_env(ch):
                 tok, ig = os.environ.get("META_PAGE_TOKEN", "").strip(), os.environ.get("IG_USER_ID", "").strip()
                 if not tok or not ig:
                     continue
+                cap = h.get("instagram") or h.get("title", "")
                 try:
                     src = meta_upload.facebook_video_source(links["Facebook"], tok)
-                    url = meta_upload._instagram_from_url(src, h.get("instagram") or h.get("title", ""), ig, tok)
                 except Exception as e:
-                    log(f"Instagram retry for '{h.get('title')}' failed: {str(e)[:150]}")
+                    log(f"Instagram retry for '{h.get('title')}': no Facebook copy ({str(e)[:120]})")
+                    continue
+                url = None
+                for how, fn in (("re-encoded upload", meta_upload.instagram_reencoded),
+                                ("Facebook copy", meta_upload._instagram_from_url)):
+                    try:
+                        url = fn(src, cap, ig, tok)
+                        break
+                    except Exception as e:
+                        log(f"Instagram retry ({how}) for '{h.get('title')}' failed: {str(e)[:150]}")
+                if not url:
                     continue
             links["Instagram"] = url
             tg.send_message(CHAT, f"🔁 Posted on Instagram (retry worked): {h.get('title')}\n{url}")

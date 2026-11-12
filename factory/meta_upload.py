@@ -101,6 +101,33 @@ def _wait_and_publish(cid, ig_user_id, token):
     return url
 
 
+def instagram_reencoded(video_url, caption, ig_user_id, token):
+    """Retry path: download the video, re-encode it to Instagram's safest settings (H.264 Main, 30 fps
+    constant, 5 Mbps, AAC 44.1 kHz) and upload the file directly as a normal reel (no trial)."""
+    import subprocess
+    import tempfile
+    from .common import ffmpeg_exe
+    global TRIAL
+    d = tempfile.mkdtemp(prefix="igfix_")
+    src, out = os.path.join(d, "in.mp4"), os.path.join(d, "out.mp4")
+    with requests.get(video_url, stream=True, timeout=120) as r:
+        r.raise_for_status()
+        with open(src, "wb") as f:
+            for chunk in r.iter_content(1 << 20):
+                f.write(chunk)
+    subprocess.run([ffmpeg_exe(), "-y", "-loglevel", "error", "-i", src,
+                    "-vf", "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,fps=30",
+                    "-c:v", "libx264", "-profile:v", "main", "-level", "4.0", "-pix_fmt", "yuv420p",
+                    "-b:v", "5M", "-maxrate", "5M", "-bufsize", "10M", "-g", "60", "-r", "30",
+                    "-c:a", "aac", "-b:a", "128k", "-ar", "44100", "-ac", "2", "-movflags", "+faststart", out],
+                   check=True, timeout=600)
+    trial, TRIAL = TRIAL, False
+    try:
+        return _instagram_once(out, caption, ig_user_id, token)
+    finally:
+        TRIAL = trial
+
+
 def facebook_video_source(fb_url, token):
     """The public MP4 link of a video already posted to the Facebook Page (Meta's own CDN)."""
     vid = fb_url.rstrip("/").split("/")[-1]
