@@ -62,7 +62,10 @@ STYLE = viral 3D-explainer reels: explain HOW something works, step by step, lik
 - "body": 6 to 9 short sentences (under 18 words each) forming a cause-and-effect chain: "They did X.
   Then Y. So Z. And when..., ...". Simple everyday metaphors ("your body is made of tiny bags of water").
   Concrete numbers. A twist near the end ("But a little frog in Alaska freezes like this every winter...").
-  Plain, confident narration - no exclamation marks, no "..." pauses, no questions to the viewer.
+  Write it the way a person TALKS when explaining to a friend, not like an article being read out:
+  speak to "you", use spoken connectors ("Now here's the thing.", "So what happens?", "And this is the
+  crazy part.", "Think of it like..."), mix very short punchy sentences with medium ones, use contractions
+  (it's, they're, you'd). No exclamation marks, no "..." pauses, no questions asking viewers to comment.
   Only verified facts; hedge with "scientists think" when not certain. No medical/financial advice.
 - "cta": one short, satisfying final line that wraps up the story (a last surprising detail or a punchy
   conclusion). No "follow", no "comment" - that part is added automatically after it.
@@ -260,11 +263,11 @@ def next_script(cfg):
             script["question"] = script["question"] if not re.search(r"1, 2,? or 3", script["question"]) \
                 else script["cta"]
             script["q_in_cta"] = True
-            script["outro"] = "Tell us in the comments, and like and follow for more videos like this."
+            script["outro"] = "Comment below, and follow for more."
         else:
             q = script["question"].strip().rstrip(".")
             q = q if q.endswith("?") else q + "?"
-            script["outro"] = f"{q} Tell us in the comments, and like and follow for more videos like this."
+            script["outro"] = f"{q} Comment below, and follow for more."
     conf = str(script.get("confidence", "high")).lower()
     script["needs_check"] = conf != "high" or bool(script.get("doubts"))
     used.append({"id": script["id"], "title": script["title"], "theme": theme, "format": script["format"],

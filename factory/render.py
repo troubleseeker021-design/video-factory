@@ -349,6 +349,9 @@ def _caption_img(chunk, hl, accent, style):
     return Image.alpha_composite(shadow, img)
 
 
+CAP_LAG = 0.12  # the voice file starts a hair after its word timings (mp3 padding)
+
+
 def _chunks(words):
     out, cur = [], []
     for w in words:
@@ -686,15 +689,16 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
 
             # ---- captions ----
             ci = None
+            tc = t - CAP_LAG  # captions follow the voice, never run ahead of it
             for i, c in enumerate(chunks):
-                if c[0]["start"] <= t:
+                if c[0]["start"] <= tc:
                     ci = i
                 else:
                     break
-            if ci is not None and t <= chunks[ci][-1]["end"] + 0.7:
+            if ci is not None and tc <= chunks[ci][-1]["end"] + 0.7:
                 chunk = chunks[ci]
-                hl = max(j for j, w in enumerate(chunk) if w["start"] <= t)
-                age = t - chunk[0]["start"]
+                hl = max(j for j, w in enumerate(chunk) if w["start"] <= tc)
+                age = tc - chunk[0]["start"]
                 s = round(ease_out_back(age / 0.16, 2.2) * 0.25 + 0.75, 2) if age < 0.16 else 1.0
                 key = (ci, hl)
                 base = cap_cache.get(key)
