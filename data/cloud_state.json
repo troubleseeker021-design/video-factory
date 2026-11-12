@@ -795,7 +795,7 @@
       },
       "instagram": "How It Works #1 🔎 Engineers built an underwater rocket that travels inside its own custom bubble envelope 🫧\n\n👇 Could any submarine dodge this weapon?\n.\n.\n#engineering #militarytech #howitworks #physics #technology #submarine #reels #facts #didyouknow",
       "channel": "en",
-      "ig_tries": 2,
+      "ig_tries": 3,
       "ig_fix": true,
       "stats": {
         "YouTube": {
@@ -839,7 +839,7 @@
       },
       "instagram": "Animal Oddities #5 🔎 These three animals turn their own bodies into lethal organic weapons. 🦎\n\n👇 Which animal defense mechanism surprised you most?\n.\n.\n#nature #animals #science #biology #wildlife #facts #reels #facts #didyouknow",
       "channel": "en",
-      "ig_tries": 1,
+      "ig_tries": 2,
       "ig_fix": true,
       "stats": {
         "YouTube": {
@@ -1206,7 +1206,7 @@
       },
       "instagram": "Anokhi Jagahein Ep 4 🔎 Bharat ki 3 sabse unreal jaghein 🌍 Aap kahan jaana chahoge?\n\n👇 Inmein se kaun si jagah sabse amazing lagi?\n.\n.\n#incredibleindia #travel #meghalaya #shorts #hiddengems #unrealplaces #reels #facts #didyouknow",
       "channel": "hi",
-      "ig_tries": 1,
+      "ig_tries": 2,
       "ig_fix": true,
       "stats": {
         "YouTube": {
@@ -1262,10 +1262,12 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-12T11:00:44"
+      "stats_at": "2026-11-12T11:00:44",
+      "ig_tries": 1,
+      "ig_fix": true
     }
   ],
   "stats_day_hi": "2026-11-12",
   "stats_problems_history_hi": {},
-  "ig_retry_block": "2026-11-12-0"
+  "ig_retry_block": "2026-11-12-1"
 }
