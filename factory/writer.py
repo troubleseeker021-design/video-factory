@@ -25,8 +25,10 @@ QUESTIONS_FILE = os.path.join(DATA, "viewer_questions.json")
 SERIES = {"space": "Space Secrets", "ocean": "Ocean Mysteries", "nature": "Nature's Weirdest",
           "history": "Lost History", "body": "Body Facts", "science": "Science Shocks",
           "animals": "Animal Oddities", "places": "Unreal Places", "tech": "How It Works",
-          "mind": "Mind Games", "dark": "Dark History", "money": "Money Secrets", "love": "Attraction Science"}
+          "mind": "Mind Games", "dark": "Dark History", "money": "Money Secrets", "love": "Attraction Science",
+          "whatif": "What If?", "survival": "Survival Science", "food": "Food Secrets"}
 GROWNUP = ("mind", "dark", "money", "love")  # gripping grown-up topics, mixed in about every other video
+HOOKY = ("whatif", "survival", "food")  # proven Shorts formats, used for about half of the remaining videos
 QUESTIONS = ["Did you already know this?", "Which part surprised you most?",
              "Would you want to see this in person?", "What should we cover next?"]
 CATCHPHRASE = "And that's the part nobody talks about."
@@ -76,14 +78,19 @@ STYLE = viral 3D-explainer reels: explain HOW something works, step by step, lik
 - "caption": 1-2 sentence social caption with 1 emoji.
 - "hashtags": 6 relevant hashtags starting with #.
 - "keywords": 3 simple stock-footage search terms (e.g. "ocean", "octopus underwater").
-- "theme": one of space, ocean, nature, history, body, science, animals, places, tech, mind, dark, money, love
+- "theme": one of space, ocean, nature, history, body, science, animals, places, tech, mind, dark, money, love,
+  whatif, survival, food
   ("tech" = HOW a machine / aircraft / vehicle / weapon / engine / building really works inside;
   "mind" = psychology: how the brain gets tricked, persuasion, manipulation tactics, body language, habits;
   "dark" = dark history: disasters, cults, famous heists, cold cases, prison escapes, cover-ups;
   "money" = how casinos, supermarkets, airlines, scams and big brands quietly make you spend;
   "love" = the science of attraction and relationships for women AND men: what people notice first, the
   body-language signs someone likes you, why we fall for certain people, the psychology of first dates and
-  why couples fight - backed by studies, never stereotypes, never sexual, never "how to manipulate" anyone).
+  why couples fight - backed by studies, never stereotypes, never sexual, never "how to manipulate" anyone;
+  "whatif" = science what-if scenarios told step by step ("What if the Moon disappeared tonight?");
+  "survival" = what really happens to your body in extreme situations and what actually keeps people alive
+  (only well-established safety facts);
+  "food" = how everyday foods are really made, food origins and food-industry secrets).
 - "wiki": 2 or 3 exact English Wikipedia article titles about the subject(s) (used to find real photos).
 - "visuals": one short stock-footage search phrase for EACH spoken line (hook, each body sentence, cta), same order.
 - "emojis": one fitting emoji for EACH spoken line, same order.
@@ -198,6 +205,9 @@ def _gemini(cfg, used, want_places, fmt, last_theme):
                       'true story, the trick being played on them. Keep it factual and respectful: no gore, no sexual '
                       'content, no graphic violence, no naming private people, nothing that teaches crime or scams - '
                       'explain how they work so viewers can spot them.')
+    elif last_theme not in HOOKY and random.random() < 0.5:
+        theme_rule = ('The "theme" MUST be one of "whatif", "survival" or "food" (pick the most gripping topic, '
+                      'and not "' + str(last_theme) + '").')
     else:
         theme_rule = (f'The "theme" must NOT be "{last_theme}" (we never post the same series twice in a row) '
                       'and must not be "places".' if last_theme else 'The "theme" must not be "places".')
