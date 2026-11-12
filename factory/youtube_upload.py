@@ -65,6 +65,8 @@ def upload(video_path, post, privacy="private", short=True):
             "description": post["youtube"]["description"][:4900],
             "tags": post["youtube"]["tags"][:15],
             "categoryId": "27",  # Education
+            "defaultLanguage": "hi" if post.get("channel") == "hi" else "en",
+            "defaultAudioLanguage": "hi" if post.get("channel") == "hi" else "en",
         },
         "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": False,
                    "containsSyntheticMedia": True},

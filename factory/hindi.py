@@ -111,6 +111,26 @@ def translate(script, cfg):
     return hi
 
 
+def _own_look(m, work):
+    """Give the Hindi channel its own version of each picture (mirrored, slightly zoomed and warmer)
+    so YouTube doesn't see two channels posting the same video frames."""
+    if m.get("type") != "photo":
+        return m
+    try:
+        from PIL import Image, ImageEnhance, ImageOps
+        img = ImageOps.mirror(Image.open(m["path"]).convert("RGB"))
+        w, h = img.size
+        img = img.crop((int(w * 0.04), int(h * 0.04), int(w * 0.96), int(h * 0.96))).resize((w, h), Image.LANCZOS)
+        img = ImageEnhance.Color(img).enhance(1.08)
+        r, g, b = img.split()
+        img = Image.merge("RGB", (r.point(lambda v: min(255, int(v * 1.04))), g, b.point(lambda v: int(v * 0.96))))
+        out = os.path.join(work, "hi_" + os.path.basename(m["path"]).rsplit(".", 1)[0] + ".jpg")
+        img.save(out, quality=92)
+        return dict(m, path=out)
+    except Exception:
+        return m
+
+
 def _smooth(line):
     """Fewer pauses for the Hindi voice: drop commas/dashes inside a line, keep only the line's end."""
     line = re.sub(r"\s*[,;:\u2013\u2014-]\s*", " ", line or "")
@@ -171,9 +191,9 @@ def make(vid, cfg, seed=None):
                                                   *([script["outro"]] if script.get("outro") else [])], duration)
         mus = music.pick_music(duration, seed, work)
         scenes = render.plan_scenes(script, words, duration, rng)
-        pool = [m for m in plan.get("media", []) if m and os.path.exists(m.get("path", ""))]
-        for k, sc in enumerate(scenes):  # same visuals as the English video
-            sc["media"] = dict(pool[k % len(pool)]) if pool else None
+        pool = [_own_look(m, work) for m in plan.get("media", []) if m and os.path.exists(m.get("path", ""))]
+        for k, sc in enumerate(scenes):  # the English video's pictures, mirrored and in a new order
+            sc["media"] = dict(pool[(k + 1) % len(pool)]) if pool else None
         thumb = thumbnail.make(script, scenes, hcfg, seed, os.path.join(work, "cover.jpg"))
         render.render(script, scenes, words, duration, wav, mus, os.path.join(work, "video.mp4"), hcfg, seed,
                       workdir=work, thumb=thumb)
