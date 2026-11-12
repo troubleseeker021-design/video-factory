@@ -24,7 +24,9 @@ QUESTIONS_FILE = os.path.join(DATA, "viewer_questions.json")
 # Every video belongs to a numbered series - gives viewers a reason to follow and binge.
 SERIES = {"space": "Space Secrets", "ocean": "Ocean Mysteries", "nature": "Nature's Weirdest",
           "history": "Lost History", "body": "Body Facts", "science": "Science Shocks",
-          "animals": "Animal Oddities", "places": "Unreal Places", "tech": "How It Works"}
+          "animals": "Animal Oddities", "places": "Unreal Places", "tech": "How It Works",
+          "mind": "Mind Games", "dark": "Dark History", "money": "Money Secrets"}
+GROWNUP = ("mind", "dark", "money")  # gripping grown-up topics, mixed in about every other video
 QUESTIONS = ["Did you already know this?", "Which part surprised you most?",
              "Would you want to see this in person?", "What should we cover next?"]
 CATCHPHRASE = "And that's the part nobody talks about."
@@ -74,8 +76,11 @@ STYLE = viral 3D-explainer reels: explain HOW something works, step by step, lik
 - "caption": 1-2 sentence social caption with 1 emoji.
 - "hashtags": 6 relevant hashtags starting with #.
 - "keywords": 3 simple stock-footage search terms (e.g. "ocean", "octopus underwater").
-- "theme": one of space, ocean, nature, history, body, science, animals, places, tech
-  ("tech" = HOW a machine / aircraft / vehicle / weapon / engine / building really works inside).
+- "theme": one of space, ocean, nature, history, body, science, animals, places, tech, mind, dark, money
+  ("tech" = HOW a machine / aircraft / vehicle / weapon / engine / building really works inside;
+  "mind" = psychology: how the brain gets tricked, persuasion, manipulation tactics, body language, habits;
+  "dark" = dark history: disasters, cults, famous heists, cold cases, prison escapes, cover-ups;
+  "money" = how casinos, supermarkets, airlines, scams and big brands quietly make you spend).
 - "wiki": 2 or 3 exact English Wikipedia article titles about the subject(s) (used to find real photos).
 - "visuals": one short stock-footage search phrase for EACH spoken line (hook, each body sentence, cta), same order.
 - "emojis": one fitting emoji for EACH spoken line, same order.
@@ -166,9 +171,11 @@ def _plan(used):
     last_theme = used[-1].get("theme") if used else None
     last_format = used[-1].get("format") if used else None
     since_places = next((i for i, u in enumerate(reversed(used)) if u.get("theme") == "places"), len(used))
-    want_places = since_places >= 2 and last_theme != "places"
+    want_places = since_places >= 4 and last_theme != "places"
     since_tech = next((i for i, u in enumerate(reversed(used)) if u.get("theme") == "tech"), len(used))
-    _plan.want_tech = (not want_places) and since_tech >= 2 and last_theme != "tech"
+    _plan.want_tech = (not want_places) and since_tech >= 4 and last_theme != "tech"
+    since_grown = next((i for i, u in enumerate(reversed(used)) if u.get("theme") in GROWNUP), len(used))
+    _plan.want_grownup = (not want_places) and (not _plan.want_tech) and since_grown >= 1
     fmt = "places" if want_places else random.choice([f for f in FORMATS if f != last_format])
     return want_places, fmt, last_theme
 
@@ -182,6 +189,12 @@ def _gemini(cfg, used, want_places, fmt, last_theme):
     elif getattr(_plan, "want_tech", False):
         theme_rule = ('The "theme" MUST be "tech": explain how one impressive machine, aircraft, vehicle, weapon '
                       'system, engine or structure works inside, step by step (series "How It Works").')
+    elif getattr(_plan, "want_grownup", False):
+        theme_rule = ('The "theme" MUST be one of "mind", "dark" or "money" (pick the one with the most gripping '
+                      'topic). Make it something ADULTS would stop scrolling for: the hidden psychology, the shocking '
+                      'true story, the trick being played on them. Keep it factual and respectful: no gore, no sexual '
+                      'content, no graphic violence, no naming private people, nothing that teaches crime or scams - '
+                      'explain how they work so viewers can spot them.')
     else:
         theme_rule = (f'The "theme" must NOT be "{last_theme}" (we never post the same series twice in a row) '
                       'and must not be "places".' if last_theme else 'The "theme" must not be "places".')
@@ -201,7 +214,8 @@ def _gemini(cfg, used, want_places, fmt, last_theme):
         if _norm_hook(s["hook"]) in recent_hooks and attempt == 0:
             log("  hook was too similar to a recent one - asking again")
             continue
-        if not want_places and not getattr(_plan, "want_tech", False) and s.get("theme") in (last_theme, "places") and attempt == 0:
+        if (not want_places and not getattr(_plan, "want_tech", False) and not getattr(_plan, "want_grownup", False)
+                and s.get("theme") in (last_theme, "places") and attempt == 0):
             log("  same series as last video - asking again")
             continue
         s["source"] = f"gemini:{s.pop('_model', '')}"
