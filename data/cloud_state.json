@@ -82,6 +82,47 @@
       "message_id": 297,
       "created": "2026-11-12T22:31:36.031731",
       "scheduled": true
+    },
+    "644a81bee4": {
+      "vid": "20261113-011529-unreal-places-ep5-hi",
+      "post": {
+        "title": "Khoobsurat Par Khatarnak",
+        "created": "2026-11-13T01:30:41",
+        "source": "bank:unreal-places",
+        "theme": "places",
+        "hook": "Dekho yeh jagah jitni beautiful hain utni hi dangerous hain",
+        "series": "Anokhi Jagahein Ep 5",
+        "question": "Which one of these would you visit?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "places",
+        "hook_style": "",
+        "youtube": {
+          "title": "Khoobsurat Par Khatarnak | Anokhi Jagahein Ep 5 #shorts",
+          "description": "Khoobsurat Par Khatarnak 🌍 Which one would you visit: 1, 2 or 3?\n\n👇 Which one of these would you visit?\n\n#travel #dangerousplaces #unrealplaces #shorts #didyouknow #amazingplaces #shorts",
+          "tags": [
+            "travel",
+            "dangerousplaces",
+            "unrealplaces",
+            "shorts",
+            "didyouknow",
+            "amazingplaces",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Khoobsurat Par Khatarnak 🌍 Which one would you visit: 1, 2 or 3? #travel #dangerousplaces #unrealplaces #shorts #didyouknow #amazingplaces #fyp #facts",
+        "instagram": "Anokhi Jagahein Ep 5 🔎 Khoobsurat Par Khatarnak 🌍 Which one would you visit: 1, 2 or 3?\n\n👇 Which one of these would you visit?\n.\n.\n#travel #dangerousplaces #unrealplaces #shorts #didyouknow #amazingplaces #reels #facts #didyouknow",
+        "facebook": "Anokhi Jagahein Ep 5 🔎 Khoobsurat Par Khatarnak 🌍 Which one would you visit: 1, 2 or 3?\n\n👇 Which one of these would you visit?\n\n#travel #dangerousplaces #unrealplaces #shorts #didyouknow #amazingplaces",
+        "script": "Dekho yeh jagah jitni beautiful hain utni hi dangerous hain Pehle Tanzania ki Lake Natron itni alkaline hai ki skin jala de Phir Turkmenistan ka Darvaza crater saalon se continuously jal raha hai Aur locals ise actually Door to Hell bolte hain Iske alawa Nevada ka Fly Geyser unnees sau sath mein accident se bana tha Toh inme se aap kahan jana chahoge Aap kahan jaoge comment mein batao aur follow karo",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBLWr2aKo38wkRXONqBajflBxRTkxiAAKdCAAC8oqxR6MP-ATVGOISPQQ",
+      "channel": "hi",
+      "message_id": 301,
+      "created": "2026-11-13T01:32:27.041533",
+      "scheduled": true
     }
   },
   "history": [
@@ -957,9 +998,40 @@
       },
       "instagram": "Food Secrets #1 🔎 This 160-year-old cracker is still technically edible. 🍞\n\n👇 Would you try eating a 150-year-old biscuit? Yes or no?\n.\n.\n#history #food #science #archaeology #facts #survival #reels #facts #didyouknow",
       "channel": "en"
+    },
+    {
+      "title": "Beautiful but Deadly",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/VYcwS7pFkyY",
+        "Facebook": "https://www.facebook.com/reel/2177851836460493",
+        "Instagram": "https://www.instagram.com/reel/DfqdRmIkqsU/"
+      },
+      "created": "2026-11-13T01:17:18",
+      "theme": "places",
+      "hook": "Gorgeous, but you wouldn't want to touch them.",
+      "series": "Unreal Places Ep 5",
+      "hook_style": "",
+      "file_id": "BAACAgEAAxkDAAIBKmr2aETGvl3imKn7wOE7Tg7jHBktAAKcCAAC8oqxR8z8aJezLCUKPQQ",
+      "youtube": {
+        "title": "Beautiful but Deadly | Unreal Places Ep 5 #shorts",
+        "description": "Beautiful but Deadly 🌍 Which one would you visit: 1, 2 or 3?\n\n👇 Which one of these would you visit?\n\n#travel #dangerousplaces #unrealplaces #shorts #didyouknow #amazingplaces #shorts",
+        "tags": [
+          "travel",
+          "dangerousplaces",
+          "unrealplaces",
+          "shorts",
+          "didyouknow",
+          "amazingplaces",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Unreal Places Ep 5 🔎 Beautiful but Deadly 🌍 Which one would you visit: 1, 2 or 3?\n\n👇 Which one of these would you visit?\n.\n.\n#travel #dangerousplaces #unrealplaces #shorts #didyouknow #amazingplaces #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-12 16:15",
+  "last_slot": "2026-11-12 19:15",
   "stats_day": "2026-11-12",
   "stats_problems": {},
   "followers": {

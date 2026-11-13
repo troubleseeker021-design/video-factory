@@ -188,5 +188,14 @@
     "hook_style": "why_question",
     "hook": "Why did sailors eat ship biscuit that survived thirty years?",
     "date": "2026-11-12"
+  },
+  {
+    "id": "unreal-places-ep5",
+    "title": "Beautiful but Deadly",
+    "theme": "places",
+    "format": "places",
+    "hook_style": "",
+    "hook": "Gorgeous, but you wouldn't want to touch them.",
+    "date": "2026-11-13"
   }
 ]
