@@ -41,6 +41,47 @@
       "message_id": 311,
       "created": "2026-11-13T17:27:45.232578",
       "scheduled": true
+    },
+    "8931d2e686": {
+      "vid": "20261113-222437-the-sleep-hack-that-stole-your-dreams-hi",
+      "post": {
+        "title": "2 Ghante Ki Neend Ka Hack",
+        "created": "2026-11-13T22:29:59",
+        "source": "gemini:gemini-flash-lite-latest",
+        "theme": "mind",
+        "hook": "Kuch log raat bhar sone ke bajaye din mein chhe chhote naps lete hain",
+        "series": "Science Ke Sach #1",
+        "question": "Kya aap din mein sirf do ghante sokar reh sakte hain?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "contradiction",
+        "youtube": {
+          "title": "2 Ghante Ki Neend Ka Hack | Science Ke Sach #1 #shorts",
+          "description": "Kya 20 minute ke naps par zinda reh sakte ho? ⏰\n\n👇 Kya aap din mein sirf do ghante sokar reh sakte hain?\n\n#science #neend #brainhacks #facts #hindi #shorts #shorts",
+          "tags": [
+            "science",
+            "neend",
+            "brainhacks",
+            "facts",
+            "hindi",
+            "shorts",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Kya 20 minute ke naps par zinda reh sakte ho? ⏰ #science #neend #brainhacks #facts #hindi #shorts #fyp #facts",
+        "instagram": "Science Ke Sach #1 🔎 Kya 20 minute ke naps par zinda reh sakte ho? ⏰\n\n👇 Kya aap din mein sirf do ghante sokar reh sakte hain?\n.\n.\n#science #neend #brainhacks #facts #hindi #shorts #reels #facts #didyouknow",
+        "facebook": "Science Ke Sach #1 🔎 Kya 20 minute ke naps par zinda reh sakte ho? ⏰\n\n👇 Kya aap din mein sirf do ghante sokar reh sakte hain?\n\n#science #neend #brainhacks #facts #hindi #shorts",
+        "script": "Kuch log raat bhar sone ke bajaye din mein chhe chhote naps lete hain Hum sab sochte hain ki har raat lagatar aath ghante sona normal hai Lekin polyphasic sleep mein har chaar ghante baad bas bees minute sona hota hai Isse brain halki neend ko chhodkar seedhe gehre REM cycle mein kood jata hai Aur twist ye hai ki body khud ko chalane ke liye stress hormones release karti hai Kuch hafte toh full energy lagti hai phir achanak brain ka reaction time crash kar jata hai Matlab jaise kisi sports car ko lagatar overspeed par bhagate rehna Aakhir mein poora system overheat hota hai aur body ko lambi recovery neend chahiye hoti hai Brain biology ko zyada din tak dhokha nahi de sakta Kya aap din mein sirf do ghante sokar reh sakte hain? Comment mein batao aur follow karo",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBO2r3j-L4M7cT_1dpfe2wWTTJ3_u3AAKcCAAC8oq5R1xj3ubD3T44PQQ",
+      "channel": "hi",
+      "message_id": 315,
+      "created": "2026-11-13T22:32:03.416808",
+      "scheduled": true
     }
   },
   "history": [
@@ -1032,9 +1073,40 @@
       "channel": "en",
       "ig_tries": 1,
       "ig_fix": true
+    },
+    {
+      "title": "The Sleep Hack That Stole Your Dreams",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/1-OW7kban88",
+        "Facebook": "https://www.facebook.com/reel/1018701311262665",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-13T22:28:01",
+      "theme": "mind",
+      "hook": "Polyphasic sleepers divide sleep into six daily naps.",
+      "series": "Mind Games #1",
+      "hook_style": "contradiction",
+      "file_id": "BAACAgEAAxkDAAIBOGr3j2o2duDjvRmfRpBM__IDNJvJAAKaCAAC8oq5R8epbbZ8rSLIPQQ",
+      "youtube": {
+        "title": "The Sleep Hack That Stole Your Dreams | Mind Games #1 #shorts",
+        "description": "Could you survive on twenty minute naps? ⏰\n\n👇 Could you survive on only two hours of sleep a day?\n\n#science #psychology #sleep #brain #health #facts #shorts",
+        "tags": [
+          "science",
+          "psychology",
+          "sleep",
+          "brain",
+          "health",
+          "facts",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Mind Games #1 🔎 Could you survive on twenty minute naps? ⏰\n\n👇 Could you survive on only two hours of sleep a day?\n.\n.\n#science #psychology #sleep #brain #health #facts #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-13 11:15",
+  "last_slot": "2026-11-13 16:15",
   "stats_day": "2026-11-13",
   "stats_problems": {},
   "followers": {

@@ -206,5 +206,14 @@
     "hook_style": "bold_fact",
     "hook": "The FLIP ship flips ninety degrees vertically in mid-ocean.",
     "date": "2026-11-13"
+  },
+  {
+    "id": "the-sleep-hack-that-stole-your-dreams",
+    "title": "The Sleep Hack That Stole Your Dreams",
+    "theme": "mind",
+    "format": "standard",
+    "hook_style": "contradiction",
+    "hook": "Polyphasic sleepers divide sleep into six daily naps.",
+    "date": "2026-11-13"
   }
 ]
