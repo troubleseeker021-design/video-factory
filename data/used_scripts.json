@@ -197,5 +197,14 @@
     "hook_style": "",
     "hook": "Gorgeous, but you wouldn't want to touch them.",
     "date": "2026-11-13"
+  },
+  {
+    "id": "how-this-ship-flips-90-degrees-in-mid-ocean",
+    "title": "How This Ship Flips 90 Degrees in Mid-Ocean",
+    "theme": "tech",
+    "format": "standard",
+    "hook_style": "bold_fact",
+    "hook": "The FLIP ship flips ninety degrees vertically in mid-ocean.",
+    "date": "2026-11-13"
   }
 ]

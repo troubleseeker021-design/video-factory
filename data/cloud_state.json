@@ -1,6 +1,48 @@
 {
   "offset": 41248576,
-  "pending": {},
+  "pending": {
+    "7ee5120202": {
+      "vid": "20261113-171918-how-this-ship-flips-90-degrees-in-mid-ocean-hi",
+      "post": {
+        "title": "Samandar Mein 90 Degree Ghumne Wala Anokha Ship",
+        "created": "2026-11-13T17:25:13",
+        "source": "gemini:gemini-3.6-flash",
+        "theme": "tech",
+        "hook": "FLIP ship samandar ke beech mein ninety degree seedha khada ho jata hai.",
+        "series": "Vigyan Ke Khel #2",
+        "question": "Kya aap aise ship par rehna chahoge?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "bold_fact",
+        "youtube": {
+          "title": "Samandar Mein 90 Degree Ghumne Wala Anokha Ship | Vigyan Ke Khel #2 #shorts",
+          "description": "FLIP ship samandar mein poora 90 degree ghum jata hai! Jaaniye yeh anokhi science kaise kaam karti hai. 🚢\n\n👇 Kya aap aise ship par rehna chahoge?\n\n#tech #science #kyaaapjantehain #amazingfacts #ocean #shorts #shorts\n\nImage credits:\nPhoto: Ciprian Boiciuc · Unsplash\nPhoto: Graphic Node · Unsplash\nPhoto: Korie Jenkins · Unsplash\nPhoto: Luca J · Unsplash\nPhoto: Lucas Liang · Unsplash\nPhoto: Markus Spiske · Unsplash\nPhoto: Nate Cheney · Unsplash\nPhoto: U.S. Navy/John F. Williams · Public domain · Wikimedia Commons\nPhoto: solitsocial dot com · Unsplash\nVideo: Pixabay",
+          "tags": [
+            "tech",
+            "science",
+            "kyaaapjantehain",
+            "amazingfacts",
+            "ocean",
+            "shorts",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "FLIP ship samandar mein poora 90 degree ghum jata hai! Jaaniye yeh anokhi science kaise kaam karti hai. 🚢 #tech #science #kyaaapjantehain #amazingfacts #ocean #shorts #fyp #facts",
+        "instagram": "Vigyan Ke Khel #2 🔎 FLIP ship samandar mein poora 90 degree ghum jata hai! Jaaniye yeh anokhi science kaise kaam karti hai. 🚢\n\n👇 Kya aap aise ship par rehna chahoge?\n.\n.\n#tech #science #kyaaapjantehain #amazingfacts #ocean #shorts #reels #facts #didyouknow",
+        "facebook": "Vigyan Ke Khel #2 🔎 FLIP ship samandar mein poora 90 degree ghum jata hai! Jaaniye yeh anokhi science kaise kaam karti hai. 🚢\n\n👇 Kya aap aise ship par rehna chahoge?\n\n#tech #science #kyaaapjantehain #amazingfacts #ocean #shorts",
+        "script": "FLIP ship samandar ke beech mein ninety degree seedha khada ho jata hai. Iske liye peeche ke bade tanks mein samandar ka pani bhara jata hai. Phir teen sau feet lamba steel ka hissa seedhe pani mein doob jata hai. Ab socho jaise swimming pool mein ek pencil seedhi tair rahi ho. Iski zyada tar body gahrai mein hone se badi lahrein bhi ise hila nahi patin. Aur yahin twist hai har kamre mein do darwaze aur ghumne wale toilet hain. Matlab jab yeh ghumta hai to deewarein turant naya farsh ban jati hain. Wapas seedha hone ke liye pressure se pani bahar nikal diya jata hai. Kya tum aise ship par rahoge? Comment mein batao, aur follow karo.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBN2r3SJCHhpS3ZhJTuQM2zB14gmCfAAI-CAAC8oq5R4qHYMtTNUccPQQ",
+      "channel": "hi",
+      "message_id": 311,
+      "created": "2026-11-13T17:27:45.232578",
+      "scheduled": true
+    }
+  },
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -957,9 +999,40 @@
         }
       },
       "stats_at": "2026-11-13T11:00:33"
+    },
+    {
+      "title": "How This Ship Flips 90 Degrees in Mid-Ocean",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/i8_57rtvarc",
+        "Facebook": "https://www.facebook.com/reel/1681170303654422",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-13T17:22:45",
+      "theme": "tech",
+      "hook": "The FLIP ship flips ninety degrees vertically in mid-ocean.",
+      "series": "How It Works #2",
+      "hook_style": "bold_fact",
+      "file_id": "BAACAgEAAxkDAAIBNGr3R_zPXa4HloAErnoIjPUkkMJkAAI9CAAC8oq5Rz1OlhalY5UmPQQ",
+      "youtube": {
+        "title": "How This Ship Flips 90 Degrees in Mid-Ocean | How It Works #2 #shorts",
+        "description": "The R/P FLIP ship literally rotates ninety degrees in open water to become a 300-foot underwater column. 🚢\n\n👇 Would you live on a ship that flips vertically? Yes or no?\n\n#tech #engineering #ships #ocean #science #howitworks #shorts\n\nImage credits:\nPhoto: Ciprian Boiciuc · Unsplash\nPhoto: Graphic Node · Unsplash\nPhoto: Korie Jenkins · Unsplash\nPhoto: Luca J · Unsplash\nPhoto: Lucas Liang · Unsplash\nPhoto: Markus Spiske · Unsplash\nPhoto: Nate Cheney · Unsplash\nPhoto: U.S. Navy/John F. Williams · Public domain · Wikimedia Commons\nPhoto: solitsocial dot com · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "tech",
+          "engineering",
+          "ships",
+          "ocean",
+          "science",
+          "howitworks",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "How It Works #2 🔎 The R/P FLIP ship literally rotates ninety degrees in open water to become a 300-foot underwater column. 🚢\n\n👇 Would you live on a ship that flips vertically? Yes or no?\n.\n.\n#tech #engineering #ships #ocean #science #howitworks #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-12 19:15",
+  "last_slot": "2026-11-13 11:15",
   "stats_day": "2026-11-13",
   "stats_problems": {},
   "followers": {
