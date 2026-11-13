@@ -1487,7 +1487,7 @@
       },
       "instagram": "Dimaag Ka Khel #1 🔎 Casinos slot machines par ye psychological trick use karke aapko bewakoof banate hain. 🎰\n\n👇 Kya aapne kabhi slot machine try ki hai?\n.\n.\n#psychology #money #sciencefacts #brain #casinotricks #mindblowing #reels #facts #didyouknow",
       "channel": "hi",
-      "ig_tries": 1,
+      "ig_tries": 2,
       "ig_fix": true,
       "stats": {
         "YouTube": {
@@ -1543,10 +1543,12 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-13T11:00:47"
+      "stats_at": "2026-11-13T11:00:47",
+      "ig_tries": 1,
+      "ig_fix": true
     }
   ],
   "stats_day_hi": "2026-11-13",
   "stats_problems_history_hi": {},
-  "ig_retry_block": "2026-11-13-0"
+  "ig_retry_block": "2026-11-13-1"
 }
