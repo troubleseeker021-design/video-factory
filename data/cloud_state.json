@@ -1029,7 +1029,9 @@
         ]
       },
       "instagram": "How It Works #2 🔎 The R/P FLIP ship literally rotates ninety degrees in open water to become a 300-foot underwater column. 🚢\n\n👇 Would you live on a ship that flips vertically? Yes or no?\n.\n.\n#tech #engineering #ships #ocean #science #howitworks #reels #facts #didyouknow",
-      "channel": "en"
+      "channel": "en",
+      "ig_tries": 1,
+      "ig_fix": true
     }
   ],
   "last_slot": "2026-11-13 11:15",
@@ -1518,7 +1520,7 @@
       },
       "instagram": "Dimaag Ka Khel #1 🔎 Casinos slot machines par ye psychological trick use karke aapko bewakoof banate hain. 🎰\n\n👇 Kya aapne kabhi slot machine try ki hai?\n.\n.\n#psychology #money #sciencefacts #brain #casinotricks #mindblowing #reels #facts #didyouknow",
       "channel": "hi",
-      "ig_tries": 2,
+      "ig_tries": 3,
       "ig_fix": true,
       "stats": {
         "YouTube": {
@@ -1575,7 +1577,7 @@
         }
       },
       "stats_at": "2026-11-13T11:00:47",
-      "ig_tries": 1,
+      "ig_tries": 2,
       "ig_fix": true
     },
     {
@@ -1612,5 +1614,5 @@
   ],
   "stats_day_hi": "2026-11-13",
   "stats_problems_history_hi": {},
-  "ig_retry_block": "2026-11-13-1"
+  "ig_retry_block": "2026-11-13-2"
 }
