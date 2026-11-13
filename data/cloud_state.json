@@ -1,48 +1,6 @@
 {
   "offset": 41248576,
-  "pending": {
-    "644a81bee4": {
-      "vid": "20261113-011529-unreal-places-ep5-hi",
-      "post": {
-        "title": "Khoobsurat Par Khatarnak",
-        "created": "2026-11-13T01:30:41",
-        "source": "bank:unreal-places",
-        "theme": "places",
-        "hook": "Dekho yeh jagah jitni beautiful hain utni hi dangerous hain",
-        "series": "Anokhi Jagahein Ep 5",
-        "question": "Which one of these would you visit?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "places",
-        "hook_style": "",
-        "youtube": {
-          "title": "Khoobsurat Par Khatarnak | Anokhi Jagahein Ep 5 #shorts",
-          "description": "Khoobsurat Par Khatarnak 🌍 Which one would you visit: 1, 2 or 3?\n\n👇 Which one of these would you visit?\n\n#travel #dangerousplaces #unrealplaces #shorts #didyouknow #amazingplaces #shorts",
-          "tags": [
-            "travel",
-            "dangerousplaces",
-            "unrealplaces",
-            "shorts",
-            "didyouknow",
-            "amazingplaces",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "Khoobsurat Par Khatarnak 🌍 Which one would you visit: 1, 2 or 3? #travel #dangerousplaces #unrealplaces #shorts #didyouknow #amazingplaces #fyp #facts",
-        "instagram": "Anokhi Jagahein Ep 5 🔎 Khoobsurat Par Khatarnak 🌍 Which one would you visit: 1, 2 or 3?\n\n👇 Which one of these would you visit?\n.\n.\n#travel #dangerousplaces #unrealplaces #shorts #didyouknow #amazingplaces #reels #facts #didyouknow",
-        "facebook": "Anokhi Jagahein Ep 5 🔎 Khoobsurat Par Khatarnak 🌍 Which one would you visit: 1, 2 or 3?\n\n👇 Which one of these would you visit?\n\n#travel #dangerousplaces #unrealplaces #shorts #didyouknow #amazingplaces",
-        "script": "Dekho yeh jagah jitni beautiful hain utni hi dangerous hain Pehle Tanzania ki Lake Natron itni alkaline hai ki skin jala de Phir Turkmenistan ka Darvaza crater saalon se continuously jal raha hai Aur locals ise actually Door to Hell bolte hain Iske alawa Nevada ka Fly Geyser unnees sau sath mein accident se bana tha Toh inme se aap kahan jana chahoge Aap kahan jaoge comment mein batao aur follow karo",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAIBLWr2aKo38wkRXONqBajflBxRTkxiAAKdCAAC8oqxR6MP-ATVGOISPQQ",
-      "channel": "hi",
-      "message_id": 301,
-      "created": "2026-11-13T01:32:27.041533",
-      "scheduled": true
-    }
-  },
+  "pending": {},
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -1013,7 +971,7 @@
   "comments_day": "2026-11-12",
   "compile_week": "2026-W45",
   "report_week": "2026-W45",
-  "last_hi_slot": "2026-11-13 13:00",
+  "last_hi_slot": "2026-11-13 20:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -1546,6 +1504,37 @@
       "stats_at": "2026-11-13T11:00:47",
       "ig_tries": 1,
       "ig_fix": true
+    },
+    {
+      "title": "Khoobsurat Par Khatarnak",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/JnZuJZTJxp4",
+        "Facebook": "https://www.facebook.com/reel/1123465263754434",
+        "Instagram": "https://www.instagram.com/reel/Dfr2c_cgh5w/"
+      },
+      "created": "2026-11-13T01:30:41",
+      "theme": "places",
+      "hook": "Dekho yeh jagah jitni beautiful hain utni hi dangerous hain",
+      "series": "Anokhi Jagahein Ep 5",
+      "hook_style": "",
+      "file_id": "BAACAgEAAxkDAAIBLWr2aKo38wkRXONqBajflBxRTkxiAAKdCAAC8oqxR6MP-ATVGOISPQQ",
+      "youtube": {
+        "title": "Khoobsurat Par Khatarnak | Anokhi Jagahein Ep 5 #shorts",
+        "description": "Khoobsurat Par Khatarnak 🌍 Which one would you visit: 1, 2 or 3?\n\n👇 Which one of these would you visit?\n\n#travel #dangerousplaces #unrealplaces #shorts #didyouknow #amazingplaces #shorts",
+        "tags": [
+          "travel",
+          "dangerousplaces",
+          "unrealplaces",
+          "shorts",
+          "didyouknow",
+          "amazingplaces",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Anokhi Jagahein Ep 5 🔎 Khoobsurat Par Khatarnak 🌍 Which one would you visit: 1, 2 or 3?\n\n👇 Which one of these would you visit?\n.\n.\n#travel #dangerousplaces #unrealplaces #shorts #didyouknow #amazingplaces #reels #facts #didyouknow",
+      "channel": "hi"
     }
   ],
   "stats_day_hi": "2026-11-13",
