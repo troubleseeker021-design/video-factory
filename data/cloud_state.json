@@ -1,47 +1,6 @@
 {
   "offset": 41248576,
   "pending": {
-    "791a10466e": {
-      "vid": "20261112-171557-how-slot-machines-trick-your-brain-into-losing-mon-hi",
-      "post": {
-        "title": "Casino Slot Machine Ka Dimaagi Khel",
-        "created": "2026-11-12T17:26:25",
-        "source": "gemini:gemini-3.6-flash",
-        "theme": "money",
-        "hook": "Casinos aapke real loss ko jeet ke sound se chhipa dete hain",
-        "series": "Dimaag Ka Khel #1",
-        "question": "Kya aapne kabhi slot machine try ki hai?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "standard",
-        "hook_style": "secret",
-        "youtube": {
-          "title": "Casino Slot Machine Ka Dimaagi Khel | Dimaag Ka Khel #1 #shorts",
-          "description": "Casinos slot machines par ye psychological trick use karke aapko bewakoof banate hain. 🎰\n\n👇 Kya aapne kabhi slot machine try ki hai?\n\n#psychology #money #sciencefacts #brain #casinotricks #mindblowing #shorts",
-          "tags": [
-            "psychology",
-            "money",
-            "sciencefacts",
-            "brain",
-            "casinotricks",
-            "mindblowing",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "Casinos slot machines par ye psychological trick use karke aapko bewakoof banate hain. 🎰 #psychology #money #sciencefacts #brain #casinotricks #mindblowing #fyp #facts",
-        "instagram": "Dimaag Ka Khel #1 🔎 Casinos slot machines par ye psychological trick use karke aapko bewakoof banate hain. 🎰\n\n👇 Kya aapne kabhi slot machine try ki hai?\n.\n.\n#psychology #money #sciencefacts #brain #casinotricks #mindblowing #reels #facts #didyouknow",
-        "facebook": "Dimaag Ka Khel #1 🔎 Casinos slot machines par ye psychological trick use karke aapko bewakoof banate hain. 🎰\n\n👇 Kya aapne kabhi slot machine try ki hai?\n\n#psychology #money #sciencefacts #brain #casinotricks #mindblowing",
-        "script": "Casinos aapke real loss ko jeet ke sound se chhipa dete hain Maan lo aapne ek dollar lagaya aur bees cent waapas mile Nuksaan assi cent ka hua par machine loud music bajaati hai Ab dekho hota kya hai Aapka brain loss aur win ke beech fark nahi samajh paata Isliye system mein dopamine release hota hai aur aap khush hote hain Aur yahin asli twist hai Scans dikhate hain ki ye fake win actual jeet se zyada daanw lagwaati hain Aise ye machines aapka bank account khaali karti hain aur aap muskuraate rehte hain Kya aapne kabhi slot machine try ki hai? Comment mein batao aur follow karo",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAIBJGr19zHfuuso5_Wh8xieUry5Eq67AAIQCAAC8oqxR7P4OaCoriXUPQQ",
-      "channel": "hi",
-      "message_id": 292,
-      "created": "2026-11-12T17:28:17.968619",
-      "scheduled": true
-    },
     "7db9f9fc62": {
       "vid": "20261112-221823-why-hardtack-never-rots-hi",
       "post": {
@@ -1043,7 +1002,7 @@
   "comments_day": "2026-11-12",
   "compile_week": "2026-W45",
   "report_week": "2026-W45",
-  "last_hi_slot": "2026-11-12 20:00",
+  "last_hi_slot": "2026-11-13 08:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -1474,6 +1433,37 @@
       "channel": "hi",
       "ig_tries": 2,
       "ig_fix": true
+    },
+    {
+      "title": "Casino Slot Machine Ka Dimaagi Khel",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/6yemw2h2vyA",
+        "Facebook": "https://www.facebook.com/reel/2027083727956554",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-12T17:26:25",
+      "theme": "money",
+      "hook": "Casinos aapke real loss ko jeet ke sound se chhipa dete hain",
+      "series": "Dimaag Ka Khel #1",
+      "hook_style": "secret",
+      "file_id": "BAACAgEAAxkDAAIBJGr19zHfuuso5_Wh8xieUry5Eq67AAIQCAAC8oqxR7P4OaCoriXUPQQ",
+      "youtube": {
+        "title": "Casino Slot Machine Ka Dimaagi Khel | Dimaag Ka Khel #1 #shorts",
+        "description": "Casinos slot machines par ye psychological trick use karke aapko bewakoof banate hain. 🎰\n\n👇 Kya aapne kabhi slot machine try ki hai?\n\n#psychology #money #sciencefacts #brain #casinotricks #mindblowing #shorts",
+        "tags": [
+          "psychology",
+          "money",
+          "sciencefacts",
+          "brain",
+          "casinotricks",
+          "mindblowing",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Dimaag Ka Khel #1 🔎 Casinos slot machines par ye psychological trick use karke aapko bewakoof banate hain. 🎰\n\n👇 Kya aapne kabhi slot machine try ki hai?\n.\n.\n#psychology #money #sciencefacts #brain #casinotricks #mindblowing #reels #facts #didyouknow",
+      "channel": "hi"
     }
   ],
   "stats_day_hi": "2026-11-12",
