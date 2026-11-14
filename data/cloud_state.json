@@ -1124,7 +1124,7 @@
       },
       "instagram": "Animal Oddities #6 🔎 This sea worm builds actual copper daggers inside its body to hunt prey! 🪱\n\n👇 Would you touch a worm with copper teeth? Yes or no?\n.\n.\n#science #animals #nature #deepsea #biology #weirdfacts #reels #facts #didyouknow",
       "channel": "en",
-      "ig_tries": 1,
+      "ig_tries": 2,
       "ig_fix": true,
       "stats": {
         "YouTube": {
@@ -1821,10 +1821,12 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-14T11:00:58"
+      "stats_at": "2026-11-14T11:00:58",
+      "ig_tries": 1,
+      "ig_fix": true
     }
   ],
   "stats_day_hi": "2026-11-14",
   "stats_problems_history_hi": {},
-  "ig_retry_block": "2026-11-14-0"
+  "ig_retry_block": "2026-11-14-1"
 }
