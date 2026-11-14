@@ -25,7 +25,10 @@ people really use them (science, normal, actually, real, fact, body, brain, proc
 experiment, signal, energy, percent, numbers). Fluent, fast, confident, curious - like explaining something
 amazing to a friend - TALKING, not reading out an article. Explain HOW it works step by step ("Pehle..., phir...,
 isliye..., aur jab..."), with spoken connectors like "Ab socho...", "Dekho, hota kya hai...", "Aur yahin
-twist hai...", "Matlab...". Mix very short punchy sentences with medium ones.
+twist hai...", "Matlab...", "Hamein lagta hai... lekin...", "Aur sabse badi baat kya hai?", "Solution simple hai:".
+Turn dry science into vivid desi images (dead cells -> "yeh asal mein ek kabristan hai").
+If the topic touches daily life, open the hook from a habit everyone has ("Subah uthte hi jab aap...").
+Mix very short punchy sentences with medium ones.
 Simple everyday comparisons. No dramatic pauses, no "...", no questions to the viewer, no "follow" or "comment"
 (except in "outro").
 NOT word-for-word.
@@ -45,7 +48,7 @@ Return JSON only.
   "gulabi" not "pink-coloured"). Write big numbers simply ("करीब पचास हज़ार साल", not exact digits).
   Place names: short and in their common Hindi form (लोनार झील, भारत), skip extra region names.
 - "outro" (only if the source has one): the viewer question in Hinglish, then ask them to comment, like and
-  follow in ONE short line, e.g. "...? Comment mein batao, aur follow karo."
+  follow in ONE short line, as a poll: e.g. "Sach-sach batana, ungli se ya paani se? Comment mein likho aur follow karo."
   Spoken version in DEVANAGARI like the other lines.
 - "hook_roman", "body_roman", "cta_roman", "outro_roman": the SAME lines word for word in Roman letters, written the way
   Indians type on WhatsApp, English words in normal English spelling

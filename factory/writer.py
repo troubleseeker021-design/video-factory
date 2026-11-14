@@ -53,6 +53,10 @@ HOOK_STYLES = {
                      'e.g. "Why do pilots dump fuel before an emergency landing?"'),
     "contradiction": ('State something everyone believes, then flip it in the same breath. '
                       'e.g. "Goldfish don\'t have three-second memories. They remember for months."'),
+    "spec_paradox": ('Describe the object by its most extreme spec, then add an unexpected second action. '
+                     'e.g. "A missile designed to drop sixteen bombs, then keep flying." (the hook of a 950K-view reel)'),
+    "daily_habit": ('Start from something the viewer does every day, then reveal the hidden danger or secret. '
+                    'e.g. "That crust in your eyes every morning is a bacteria graveyard."'),
 }
 
 
@@ -122,10 +126,10 @@ STYLE = viral 3D-explainer reels: explain HOW something works, step by step, lik
   or "" when the line needs none. Same order.
 - "thumb": 2 to 4 shocking words for the thumbnail in CAPS that make people stop scrolling,
   e.g. "IT BREATHES OXYGEN?!" or "NOBODY SURVIVED THIS". Never just repeat the title.
-- "question": one interesting question shown at the end of the video so viewers comment. It must be
-  about THIS topic and easy to answer in a word or two - a choice, a dare, a guess or an opinion
-  (e.g. "Would you swim in this lake? Yes or no?", "Guess how old this tree is?",
-  "Which would you rather visit, A or B?"). Max 12 words, no hashtags, no emojis.
+- "question": one interesting question shown at the end of the video so viewers comment. Make it a
+  BINARY choice about THIS topic that people can answer with one word, like a poll (this gets the most
+  comments): e.g. "Would you swim in this lake, yes or no?", "Fingers or water - how did you clean it today?",
+  "Genius or crazy?", "Would you fly in it, yes or no?". Max 12 words, no hashtags, no emojis.
 - "confidence": "high" only if EVERY fact is well documented; otherwise "medium" or "low".
 - "doubts": the facts you are not fully sure about (empty list if none).
 {viewer}{insights}
