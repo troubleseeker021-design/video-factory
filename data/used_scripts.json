@@ -224,5 +224,14 @@
     "hook_style": "why_question",
     "hook": "Why does the bloodworm hunt with jaws of solid copper?",
     "date": "2026-11-14"
+  },
+  {
+    "id": "the-silent-lake-that-wiped-out-a-valley",
+    "title": "The Silent Lake That Wiped Out a Valley",
+    "theme": "dark",
+    "format": "standard",
+    "hook_style": "bold_fact",
+    "hook": "Lake Nyos suffocated seventeen hundred people with an invisible cloud.",
+    "date": "2026-11-14"
   }
 ]
