@@ -233,5 +233,14 @@
     "hook_style": "bold_fact",
     "hook": "Lake Nyos suffocated seventeen hundred people with an invisible cloud.",
     "date": "2026-11-14"
+  },
+  {
+    "id": "unreal-places-ep6",
+    "title": "This Ice Looks Photoshopped",
+    "theme": "places",
+    "format": "places",
+    "hook_style": "",
+    "hook": "This ice looks edited. It isn't.",
+    "date": "2026-11-14"
   }
 ]
