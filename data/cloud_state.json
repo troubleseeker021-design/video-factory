@@ -82,6 +82,47 @@
       "message_id": 315,
       "created": "2026-11-13T22:32:03.416808",
       "scheduled": true
+    },
+    "2dfa1f48cf": {
+      "vid": "20261114-011941-why-this-creature-has-jaws-made-of-pure-copper-hi",
+      "post": {
+        "title": "Copper Ke Daanton Wala Anokha Worm",
+        "created": "2026-11-14T01:29:58",
+        "source": "gemini:gemini-3.6-flash",
+        "theme": "animals",
+        "hook": "Dekho yeh bloodworm shikar karne ke liye pure copper ke daant use karta hai.",
+        "series": "Anokhe Jeev #6",
+        "question": "Kya tum copper ke daant wale worm ko chhooge?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "why_question",
+        "youtube": {
+          "title": "Copper Ke Daanton Wala Anokha Worm | Anokhe Jeev #6 #shorts",
+          "description": "Yeh samundari worm body mein copper ke daant banata hai! 🪱\n\n👇 Kya tum copper ke daant wale worm ko chhooge?\n\n#science #animals #nature #deepsea #biology #weirdfacts #shorts\n\nImage credits:\nPhoto: Deepak Chauhan · Unsplash\nPhoto: Francesca Pieleanu · Unsplash\nPhoto: Ged Mullen-Buick · Unsplash\nPhoto: Kate Wells · Unsplash\nPhoto: Kelsey Todd · Unsplash\nPhoto: Muradi · Unsplash\nPhoto: Ritz · Unsplash\nVideo: Pixabay",
+          "tags": [
+            "science",
+            "animals",
+            "nature",
+            "deepsea",
+            "biology",
+            "weirdfacts",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Yeh samundari worm body mein copper ke daant banata hai! 🪱 #science #animals #nature #deepsea #biology #weirdfacts #fyp #facts",
+        "instagram": "Anokhe Jeev #6 🔎 Yeh samundari worm body mein copper ke daant banata hai! 🪱\n\n👇 Kya tum copper ke daant wale worm ko chhooge?\n.\n.\n#science #animals #nature #deepsea #biology #weirdfacts #reels #facts #didyouknow",
+        "facebook": "Anokhe Jeev #6 🔎 Yeh samundari worm body mein copper ke daant banata hai! 🪱\n\n👇 Kya tum copper ke daant wale worm ko chhooge?\n\n#science #animals #nature #deepsea #biology #weirdfacts",
+        "script": "Dekho yeh bloodworm shikar karne ke liye pure copper ke daant use karta hai. Samundar ki mitti mein yeh khatarnak worm pandrah inch tak lamba hota hai. Pehle shikar pakadne ke liye yeh apna poora pet bahar nikal deta hai. Iske aage das percent pure copper se bane char nukile daant hote hain. Ab socho yeh ek natural sui ki tarah hai jo metal se bani ho. Scientists ne dekha ki yeh worm mitti se direct copper nikal kar daant banata hai. Aur yahin twist hai yeh copper actually iske venom ka asar badha deta hai. Isliye shikar ki body mein zahar turant bahut tez kaam karta hai. Matlab yeh gale ke andar chhupi metal ki khanjaron se shikar karta hai. Kya tum copper ke daant wale worm ko chhooge? Comment mein batao aur follow karo.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBP2r3uh2CPLYRLI6H3dzP20CrohWQAAJQCgACA7DBRyEoF2VTIULrPQQ",
+      "channel": "hi",
+      "message_id": 319,
+      "created": "2026-11-14T01:32:14.387534",
+      "scheduled": true
     }
   },
   "history": [
@@ -1106,9 +1147,40 @@
       "channel": "en",
       "ig_tries": 1,
       "ig_fix": true
+    },
+    {
+      "title": "Why This Creature Has Jaws Made of Pure Copper",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/kPY-iZqnC_0",
+        "Facebook": "https://www.facebook.com/reel/988648980980405",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-14T01:22:04",
+      "theme": "animals",
+      "hook": "Why does the bloodworm hunt with jaws of solid copper?",
+      "series": "Animal Oddities #6",
+      "hook_style": "why_question",
+      "file_id": "BAACAgEAAxkDAAIBPGr3uZnD2-SAf7lngQqtNBxd6QdCAAJLCgACA7DBR_IGebt4-VtcPQQ",
+      "youtube": {
+        "title": "Why This Creature Has Jaws Made of Pure Copper | Animal Oddities #6 #shorts",
+        "description": "This sea worm builds actual copper daggers inside its body to hunt prey! 🪱\n\n👇 Would you touch a worm with copper teeth? Yes or no?\n\n#science #animals #nature #deepsea #biology #weirdfacts #shorts\n\nImage credits:\nPhoto: Deepak Chauhan · Unsplash\nPhoto: Francesca Pieleanu · Unsplash\nPhoto: Ged Mullen-Buick · Unsplash\nPhoto: Kate Wells · Unsplash\nPhoto: Kelsey Todd · Unsplash\nPhoto: Muradi · Unsplash\nPhoto: Ritz · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "science",
+          "animals",
+          "nature",
+          "deepsea",
+          "biology",
+          "weirdfacts",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Animal Oddities #6 🔎 This sea worm builds actual copper daggers inside its body to hunt prey! 🪱\n\n👇 Would you touch a worm with copper teeth? Yes or no?\n.\n.\n#science #animals #nature #deepsea #biology #weirdfacts #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-13 16:15",
+  "last_slot": "2026-11-13 19:15",
   "stats_day": "2026-11-13",
   "stats_problems": {},
   "followers": {

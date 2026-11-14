@@ -215,5 +215,14 @@
     "hook_style": "contradiction",
     "hook": "Polyphasic sleepers divide sleep into six daily naps.",
     "date": "2026-11-13"
+  },
+  {
+    "id": "why-this-creature-has-jaws-made-of-pure-copper",
+    "title": "Why This Creature Has Jaws Made of Pure Copper",
+    "theme": "animals",
+    "format": "standard",
+    "hook_style": "why_question",
+    "hook": "Why does the bloodworm hunt with jaws of solid copper?",
+    "date": "2026-11-14"
   }
 ]
