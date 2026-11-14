@@ -1,47 +1,6 @@
 {
   "offset": 41248576,
   "pending": {
-    "8931d2e686": {
-      "vid": "20261113-222437-the-sleep-hack-that-stole-your-dreams-hi",
-      "post": {
-        "title": "2 Ghante Ki Neend Ka Hack",
-        "created": "2026-11-13T22:29:59",
-        "source": "gemini:gemini-flash-lite-latest",
-        "theme": "mind",
-        "hook": "Kuch log raat bhar sone ke bajaye din mein chhe chhote naps lete hain",
-        "series": "Science Ke Sach #1",
-        "question": "Kya aap din mein sirf do ghante sokar reh sakte hain?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "standard",
-        "hook_style": "contradiction",
-        "youtube": {
-          "title": "2 Ghante Ki Neend Ka Hack | Science Ke Sach #1 #shorts",
-          "description": "Kya 20 minute ke naps par zinda reh sakte ho? ⏰\n\n👇 Kya aap din mein sirf do ghante sokar reh sakte hain?\n\n#science #neend #brainhacks #facts #hindi #shorts #shorts",
-          "tags": [
-            "science",
-            "neend",
-            "brainhacks",
-            "facts",
-            "hindi",
-            "shorts",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "Kya 20 minute ke naps par zinda reh sakte ho? ⏰ #science #neend #brainhacks #facts #hindi #shorts #fyp #facts",
-        "instagram": "Science Ke Sach #1 🔎 Kya 20 minute ke naps par zinda reh sakte ho? ⏰\n\n👇 Kya aap din mein sirf do ghante sokar reh sakte hain?\n.\n.\n#science #neend #brainhacks #facts #hindi #shorts #reels #facts #didyouknow",
-        "facebook": "Science Ke Sach #1 🔎 Kya 20 minute ke naps par zinda reh sakte ho? ⏰\n\n👇 Kya aap din mein sirf do ghante sokar reh sakte hain?\n\n#science #neend #brainhacks #facts #hindi #shorts",
-        "script": "Kuch log raat bhar sone ke bajaye din mein chhe chhote naps lete hain Hum sab sochte hain ki har raat lagatar aath ghante sona normal hai Lekin polyphasic sleep mein har chaar ghante baad bas bees minute sona hota hai Isse brain halki neend ko chhodkar seedhe gehre REM cycle mein kood jata hai Aur twist ye hai ki body khud ko chalane ke liye stress hormones release karti hai Kuch hafte toh full energy lagti hai phir achanak brain ka reaction time crash kar jata hai Matlab jaise kisi sports car ko lagatar overspeed par bhagate rehna Aakhir mein poora system overheat hota hai aur body ko lambi recovery neend chahiye hoti hai Brain biology ko zyada din tak dhokha nahi de sakta Kya aap din mein sirf do ghante sokar reh sakte hain? Comment mein batao aur follow karo",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAIBO2r3j-L4M7cT_1dpfe2wWTTJ3_u3AAKcCAAC8oq5R1xj3ubD3T44PQQ",
-      "channel": "hi",
-      "message_id": 315,
-      "created": "2026-11-13T22:32:03.416808",
-      "scheduled": true
-    },
     "2dfa1f48cf": {
       "vid": "20261114-011941-why-this-creature-has-jaws-made-of-pure-copper-hi",
       "post": {
@@ -1153,7 +1112,7 @@
   "comments_day": "2026-11-13",
   "compile_week": "2026-W45",
   "report_week": "2026-W45",
-  "last_hi_slot": "2026-11-14 08:00",
+  "last_hi_slot": "2026-11-14 13:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -1747,6 +1706,37 @@
         ]
       },
       "instagram": "Vigyan Ke Khel #2 🔎 FLIP ship samandar mein poora 90 degree ghum jata hai! Jaaniye yeh anokhi science kaise kaam karti hai. 🚢\n\n👇 Kya aap aise ship par rehna chahoge?\n.\n.\n#tech #science #kyaaapjantehain #amazingfacts #ocean #shorts #reels #facts #didyouknow",
+      "channel": "hi"
+    },
+    {
+      "title": "2 Ghante Ki Neend Ka Hack",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/rMx0B-FbpBI",
+        "Facebook": "https://www.facebook.com/reel/1857922712301207",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-13T22:29:59",
+      "theme": "mind",
+      "hook": "Kuch log raat bhar sone ke bajaye din mein chhe chhote naps lete hain",
+      "series": "Science Ke Sach #1",
+      "hook_style": "contradiction",
+      "file_id": "BAACAgEAAxkDAAIBO2r3j-L4M7cT_1dpfe2wWTTJ3_u3AAKcCAAC8oq5R1xj3ubD3T44PQQ",
+      "youtube": {
+        "title": "2 Ghante Ki Neend Ka Hack | Science Ke Sach #1 #shorts",
+        "description": "Kya 20 minute ke naps par zinda reh sakte ho? ⏰\n\n👇 Kya aap din mein sirf do ghante sokar reh sakte hain?\n\n#science #neend #brainhacks #facts #hindi #shorts #shorts",
+        "tags": [
+          "science",
+          "neend",
+          "brainhacks",
+          "facts",
+          "hindi",
+          "shorts",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Science Ke Sach #1 🔎 Kya 20 minute ke naps par zinda reh sakte ho? ⏰\n\n👇 Kya aap din mein sirf do ghante sokar reh sakte hain?\n.\n.\n#science #neend #brainhacks #facts #hindi #shorts #reels #facts #didyouknow",
       "channel": "hi"
     }
   ],
