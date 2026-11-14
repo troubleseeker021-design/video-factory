@@ -1071,7 +1071,7 @@
       },
       "instagram": "How It Works #2 🔎 The R/P FLIP ship literally rotates ninety degrees in open water to become a 300-foot underwater column. 🚢\n\n👇 Would you live on a ship that flips vertically? Yes or no?\n.\n.\n#tech #engineering #ships #ocean #science #howitworks #reels #facts #didyouknow",
       "channel": "en",
-      "ig_tries": 2,
+      "ig_tries": 3,
       "ig_fix": true
     },
     {
@@ -1080,7 +1080,7 @@
       "links": {
         "YouTube": "https://youtube.com/shorts/1-OW7kban88",
         "Facebook": "https://www.facebook.com/reel/1018701311262665",
-        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+        "Instagram": "https://www.instagram.com/reel/DfthDyyiWkI/"
       },
       "created": "2026-11-13T22:28:01",
       "theme": "mind",
@@ -1104,7 +1104,7 @@
       },
       "instagram": "Mind Games #1 🔎 Could you survive on twenty minute naps? ⏰\n\n👇 Could you survive on only two hours of sleep a day?\n.\n.\n#science #psychology #sleep #brain #health #facts #reels #facts #didyouknow",
       "channel": "en",
-      "ig_tries": 1,
+      "ig_tries": 2,
       "ig_fix": true
     },
     {
@@ -1136,7 +1136,9 @@
         ]
       },
       "instagram": "Animal Oddities #6 🔎 This sea worm builds actual copper daggers inside its body to hunt prey! 🪱\n\n👇 Would you touch a worm with copper teeth? Yes or no?\n.\n.\n#science #animals #nature #deepsea #biology #weirdfacts #reels #facts #didyouknow",
-      "channel": "en"
+      "channel": "en",
+      "ig_tries": 1,
+      "ig_fix": true
     }
   ],
   "last_slot": "2026-11-13 19:15",
@@ -1750,5 +1752,5 @@
   ],
   "stats_day_hi": "2026-11-13",
   "stats_problems_history_hi": {},
-  "ig_retry_block": "2026-11-13-3"
+  "ig_retry_block": "2026-11-14-0"
 }
