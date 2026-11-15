@@ -242,5 +242,14 @@
     "hook_style": "",
     "hook": "This ice looks edited. It isn't.",
     "date": "2026-11-14"
+  },
+  {
+    "id": "why-the-sr-71-blackbird-leaks-fuel-on-purpose",
+    "title": "Why the SR-71 Blackbird Leaks Fuel on Purpose",
+    "theme": "tech",
+    "format": "standard",
+    "hook_style": "spec_paradox",
+    "hook": "The Blackbird flies Mach three, but leaks fuel when parked.",
+    "date": "2026-11-15"
   }
 ]
