@@ -41,6 +41,47 @@
       "message_id": 348,
       "created": "2026-11-15T17:25:45.858922",
       "scheduled": true
+    },
+    "466312548c": {
+      "vid": "20261115-221814-why-eating-only-rabbit-meat-can-starve-you-hi",
+      "post": {
+        "title": "Sirf Rabbit Meat Khaane Se Maut Kaise Ho Sakti Hai",
+        "created": "2026-11-15T22:27:46",
+        "source": "gemini:gemini-flash-latest",
+        "theme": "survival",
+        "hook": "Sirf rabbit ka meat khakar aapki body bhookh se mar sakti hai",
+        "series": "Gajab Science #1",
+        "question": "Jaan bachane ke liye bone marrow khaoge, haan ya na?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "you_body",
+        "youtube": {
+          "title": "Sirf Rabbit Meat Khaane Se Maut Kaise Ho Sakti Hai | Gajab Science #1 #shorts",
+          "description": "Bina fat ke sirf lean meat khane se body starve ho sakti hai. 🐇\n\n👇 Jaan bachane ke liye bone marrow khaoge, haan ya na?\n\n#sciencefacts #bodyfacts #survival #gyan #shorts #facts #shorts\n\nImage credits:\nPhoto: 2 Bro’s Media · Unsplash\nPhoto: Chris Bird · Unsplash\nPhoto: Corbin Miller · Unsplash\nPhoto: Dasha Petsiukevich · Unsplash\nPhoto: Europeana · Unsplash\nPhoto: Lea Genshofer · Unsplash\nVideo: Pixabay",
+          "tags": [
+            "sciencefacts",
+            "bodyfacts",
+            "survival",
+            "gyan",
+            "shorts",
+            "facts",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Bina fat ke sirf lean meat khane se body starve ho sakti hai. 🐇 #sciencefacts #bodyfacts #survival #gyan #shorts #facts #fyp #facts",
+        "instagram": "Gajab Science #1 🔎 Bina fat ke sirf lean meat khane se body starve ho sakti hai. 🐇\n\n👇 Jaan bachane ke liye bone marrow khaoge, haan ya na?\n.\n.\n#sciencefacts #bodyfacts #survival #gyan #shorts #facts #reels #facts #didyouknow",
+        "facebook": "Gajab Science #1 🔎 Bina fat ke sirf lean meat khane se body starve ho sakti hai. 🐇\n\n👇 Jaan bachane ke liye bone marrow khaoge, haan ya na?\n\n#sciencefacts #bodyfacts #survival #gyan #shorts #facts",
+        "script": "Sirf rabbit ka meat khakar aapki body bhookh se mar sakti hai Jungle mein phasne par rabbit ka shikar sabse aasan khana lagta hai Lekin twist yeh hai ki wild rabbit mein body fat bilkul zero hota hai Hamara liver ek din mein sirf three hundred gram protein hi process kar sakta hai Bina fat aur carbs ke khoon mein toxic ammonia tezi se bharne lagta hai Phir kya hota hai khana pachane ke liye body apne hi organs jalane lagti hai Aur sabse ajeeb baat har baar pet bharkar khane ke baad bhookh aur badh jaati hai Kuchh hi hafton mein puraane explorers ke saare organs buri tarah fail ho gaye Isliye zinda rehne ke liye puraane hunters meat se pehle hamesha bone marrow khate the Jaan bachane ke liye bone marrow khaoge haan ya na comment mein batao aur follow karo",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBYWr6MoaXtzuGyajxCipqJiV2aFwbAAJ6CQACuKjRR__5-sWZ1MwJPQQ",
+      "channel": "hi",
+      "message_id": 353,
+      "created": "2026-11-15T22:30:31.678657",
+      "scheduled": true
     }
   },
   "history": [
@@ -1316,9 +1357,40 @@
         "YouTube": "https://youtube.com/watch?v=jRkGavHqRro"
       },
       "created": "2026-11-15T20:03:24"
+    },
+    {
+      "title": "Why Eating Only Rabbit Meat Can Starve You",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/FjrMB-Wj948",
+        "Facebook": "https://www.facebook.com/reel/2697573407340717",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-15T22:21:35",
+      "theme": "survival",
+      "hook": "Your body can starve to death eating only rabbit meat.",
+      "series": "Survival Science #1",
+      "hook_style": "you_body",
+      "file_id": "BAACAgEAAxkDAAIBXmr6MeUoTC4GNNfbX5kajs_MwgTDAAJ3CQACuKjRR8-zV2DbNM0dPQQ",
+      "youtube": {
+        "title": "Why Eating Only Rabbit Meat Can Starve You | Survival Science #1 #shorts",
+        "description": "Eating lean meat without fat can actually cause severe starvation. 🐇\n\n👇 Would you eat bone marrow to survive, yes or no?\n\n#survival #biology #humanbody #sciencefacts #learnontiktok #medicalhistory #shorts\n\nImage credits:\nPhoto: 2 Bro’s Media · Unsplash\nPhoto: Chris Bird · Unsplash\nPhoto: Corbin Miller · Unsplash\nPhoto: Dasha Petsiukevich · Unsplash\nPhoto: Europeana · Unsplash\nPhoto: Lea Genshofer · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "survival",
+          "biology",
+          "humanbody",
+          "sciencefacts",
+          "learnontiktok",
+          "medicalhistory",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Survival Science #1 🔎 Eating lean meat without fat can actually cause severe starvation. 🐇\n\n👇 Would you eat bone marrow to survive, yes or no?\n.\n.\n#survival #biology #humanbody #sciencefacts #learnontiktok #medicalhistory #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-15 11:15",
+  "last_slot": "2026-11-15 16:15",
   "stats_day": "2026-11-15",
   "stats_problems": {},
   "followers": {

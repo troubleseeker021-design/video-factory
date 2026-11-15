@@ -260,5 +260,14 @@
     "hook_style": "daily_habit",
     "hook": "Venting your daily anger actually rewires your brain for rage.",
     "date": "2026-11-15"
+  },
+  {
+    "id": "why-eating-only-rabbit-meat-can-starve-you",
+    "title": "Why Eating Only Rabbit Meat Can Starve You",
+    "theme": "survival",
+    "format": "standard",
+    "hook_style": "you_body",
+    "hook": "Your body can starve to death eating only rabbit meat.",
+    "date": "2026-11-15"
   }
 ]
