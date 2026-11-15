@@ -1,48 +1,6 @@
 {
   "offset": 41248576,
-  "pending": {
-    "819d5c553d": {
-      "vid": "20261115-011653-why-the-sr-71-blackbird-leaks-fuel-on-purpose-hi",
-      "post": {
-        "title": "Kyu yeh plane zameen par fuel leak karta hai",
-        "created": "2026-11-15T01:28:37",
-        "source": "gemini:gemini-flash-latest",
-        "theme": "tech",
-        "hook": "Blackbird mach teen ki speed se udta hai lekin park hone par fuel leak karta hai",
-        "series": "Gzb Technology #3",
-        "question": "Would you fly in a plane that leaks fuel, yes or no?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "standard",
-        "hook_style": "spec_paradox",
-        "youtube": {
-          "title": "Kyu yeh plane zameen par fuel leak karta hai | Gzb Technology #3 #shorts",
-          "description": "The SR-71 Blackbird flew faster than a rifle bullet, but it couldn't sit on the runway without dripping fuel. Here is the genius engineering behind it. ✈️\n\n👇 Would you fly in a plane that leaks fuel, yes or no?\n\n#aviation #engineering #sr71 #military #shorts #howitworks #shorts",
-          "tags": [
-            "aviation",
-            "engineering",
-            "sr71",
-            "military",
-            "shorts",
-            "howitworks",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "The SR-71 Blackbird flew faster than a rifle bullet, but it couldn't sit on the runway without dripping fuel. Here is the genius engineering behind it. ✈️ #aviation #engineering #sr71 #military #shorts #howitworks #fyp #facts",
-        "instagram": "Gzb Technology #3 🔎 The SR-71 Blackbird flew faster than a rifle bullet, but it couldn't sit on the runway without dripping fuel. Here is the genius engineering behind it. ✈️\n\n👇 Would you fly in a plane that leaks fuel, yes or no?\n.\n.\n#aviation #engineering #sr71 #military #shorts #howitworks #reels #facts #didyouknow",
-        "facebook": "Gzb Technology #3 🔎 The SR-71 Blackbird flew faster than a rifle bullet, but it couldn't sit on the runway without dripping fuel. Here is the genius engineering behind it. ✈️\n\n👇 Would you fly in a plane that leaks fuel, yes or no?\n\n#aviation #engineering #sr71 #military #shorts #howitworks",
-        "script": "Blackbird mach teen ki speed se udta hai lekin park hone par fuel leak karta hai Mach teen ki raftaar par hawa ki ragad se jet ka taapmaan teen sau degree se upar chala jata hai Normal metals is garmi mein mudkar poore aircraft ko tod dete Isliye engineers ne titanium ki body mein jaan boojh kar gaps chhode hain jinse tarmac par fuel tapakta hai Jaise hi jet speed pakadta hai metal फैलता hai aur saare tanks poori tarah seal ho jaate hain Ab iske engine ka sabse bada twist suno Top speed par ek bada spike andar ki taraf chhabbees inches peeche khisak jata hai Chhah tubes turbine ko poori tarah bypass karke jet engine ko ramjet bana deti hain Yeh cockpit ko thanda rakhne ke liye khud apna fuel jalata hai Sach sach batana, isme safar karoge ya nahi? Comment mein likho aur follow karo",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAIBUmr5C0f0ltKiAaPEHQABCgNbuLDVIgACNgwAAgOwyUcOQAhT0AABbSY9BA",
-      "channel": "hi",
-      "message_id": 338,
-      "created": "2026-11-15T01:30:48.442122",
-      "scheduled": true
-    }
-  },
+  "pending": {},
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -1289,7 +1247,7 @@
   "comments_day": "2026-11-14",
   "compile_week": "2026-W45",
   "report_week": "2026-W45",
-  "last_hi_slot": "2026-11-15 13:00",
+  "last_hi_slot": "2026-11-15 20:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -2100,6 +2058,37 @@
         }
       },
       "stats_at": "2026-11-15T11:00:46"
+    },
+    {
+      "title": "Kyu yeh plane zameen par fuel leak karta hai",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/vsZ3jdH_PUk",
+        "Facebook": "https://www.facebook.com/reel/2232544674057644",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-15T01:28:37",
+      "theme": "tech",
+      "hook": "Blackbird mach teen ki speed se udta hai lekin park hone par fuel leak karta hai",
+      "series": "Gzb Technology #3",
+      "hook_style": "spec_paradox",
+      "file_id": "BAACAgEAAxkDAAIBUmr5C0f0ltKiAaPEHQABCgNbuLDVIgACNgwAAgOwyUcOQAhT0AABbSY9BA",
+      "youtube": {
+        "title": "Kyu yeh plane zameen par fuel leak karta hai | Gzb Technology #3 #shorts",
+        "description": "The SR-71 Blackbird flew faster than a rifle bullet, but it couldn't sit on the runway without dripping fuel. Here is the genius engineering behind it. ✈️\n\n👇 Would you fly in a plane that leaks fuel, yes or no?\n\n#aviation #engineering #sr71 #military #shorts #howitworks #shorts",
+        "tags": [
+          "aviation",
+          "engineering",
+          "sr71",
+          "military",
+          "shorts",
+          "howitworks",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Gzb Technology #3 🔎 The SR-71 Blackbird flew faster than a rifle bullet, but it couldn't sit on the runway without dripping fuel. Here is the genius engineering behind it. ✈️\n\n👇 Would you fly in a plane that leaks fuel, yes or no?\n.\n.\n#aviation #engineering #sr71 #military #shorts #howitworks #reels #facts #didyouknow",
+      "channel": "hi"
     }
   ],
   "stats_day_hi": "2026-11-15",
