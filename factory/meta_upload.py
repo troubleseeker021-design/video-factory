@@ -146,7 +146,7 @@ def _instagram_from_url(video_url, caption, ig_user_id, token):
     return _wait_and_publish(c["id"], ig_user_id, token)
 
 
-IG_MAX_S = 50.0  # our reels longer than ~55 s keep failing on Instagram (ProcessingFailedError / 2207076)
+IG_MAX_S = 45.0  # Instagram keeps rejecting many of our reels (ProcessingFailedError / 2207076)
 
 
 def _duration(path):
@@ -159,22 +159,23 @@ def _duration(path):
 
 
 def _fit_for_instagram(path):
-    """Instagram copy only: if the video is long, play it a little faster (max 1.3x) so it fits
-    ~50 s, re-encoded with Instagram's safest settings. YouTube/Facebook keep the original."""
+    """Instagram copy only: ALWAYS re-encode to a small, plain file (H.264 Main, constant 30 fps, ~1.5 Mbps,
+    AAC 128k), and if the video is long, play it a little faster (max 1.3x) so it fits ~45 s.
+    YouTube/Facebook keep the original. (Experiment: our big files keep failing with 2207076.)"""
     import subprocess
     from .common import ffmpeg_exe
     dur = _duration(path)
-    if not dur or dur <= IG_MAX_S + 2:
-        return path
-    f = min(1.3, dur / IG_MAX_S)
+    f = min(1.3, dur / IG_MAX_S) if dur and dur > IG_MAX_S + 1 else 1.0
     out = os.path.splitext(path)[0] + "_ig.mp4"
-    subprocess.run([ffmpeg_exe(), "-y", "-loglevel", "error", "-i", path,
-                    "-vf", f"setpts=PTS/{f:.4f},fps=30", "-af", f"atempo={f:.4f}",
-                    "-c:v", "libx264", "-profile:v", "main", "-level", "4.0", "-pix_fmt", "yuv420p",
-                    "-b:v", "4M", "-maxrate", "4M", "-bufsize", "8M", "-g", "60",
+    vf = (f"setpts=PTS/{f:.4f}," if f > 1 else "") + "scale=1080:1920,fps=30"
+    af = ["-af", f"atempo={f:.4f}"] if f > 1 else []
+    subprocess.run([ffmpeg_exe(), "-y", "-loglevel", "error", "-i", path, "-vf", vf, *af,
+                    "-c:v", "libx264", "-preset", "medium", "-profile:v", "main", "-level", "4.0", "-pix_fmt", "yuv420p",
+                    "-crf", "24", "-maxrate", "1500k", "-bufsize", "3000k", "-g", "60", "-r", "30",
                     "-c:a", "aac", "-b:a", "128k", "-ar", "44100", "-ac", "2", "-movflags", "+faststart", out],
                    check=True, timeout=600)
-    log(f"  Instagram copy: {dur:.0f}s -> {dur / f:.0f}s (played {f:.2f}x faster)")
+    mb = os.path.getsize(out) / 1e6
+    log(f"  Instagram copy: {dur:.0f}s -> {dur / f:.0f}s, {mb:.1f} MB" + (f" (played {f:.2f}x faster)" if f > 1 else ""))
     return out
 
 
