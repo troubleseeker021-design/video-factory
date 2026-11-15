@@ -251,5 +251,14 @@
     "hook_style": "spec_paradox",
     "hook": "The Blackbird flies Mach three, but leaks fuel when parked.",
     "date": "2026-11-15"
+  },
+  {
+    "id": "why-venting-your-anger-makes-it-ten-times-worse",
+    "title": "Why Venting Your Anger Makes It Ten Times Worse",
+    "theme": "mind",
+    "format": "myth",
+    "hook_style": "daily_habit",
+    "hook": "Venting your daily anger actually rewires your brain for rage.",
+    "date": "2026-11-15"
   }
 ]
