@@ -1210,7 +1210,7 @@
       },
       "instagram": "Dark History #1 🔎 In 1986, an entire African valley fell silent overnight due to a rare lake phenomenon 🌋\n\n👇 Would you live near a volcanic lake? Yes or no?\n.\n.\n#history #darkhistory #sciencefacts #geology #lake-nyos #mystery #reels #facts #didyouknow",
       "channel": "en",
-      "ig_tries": 2,
+      "ig_tries": 3,
       "ig_fix": true
     },
     {
@@ -1273,7 +1273,9 @@
         ]
       },
       "instagram": "How It Works #3 🔎 The SR-71 Blackbird flew faster than a rifle bullet, but it couldn't sit on the runway without dripping fuel. Here is the genius engineering behind it. ✈️\n\n👇 Would you fly in a plane that leaks fuel, yes or no?\n.\n.\n#aviation #engineering #sr71 #military #aircraft #howitworks #reels #facts #didyouknow",
-      "channel": "en"
+      "channel": "en",
+      "ig_tries": 1,
+      "ig_fix": true
     }
   ],
   "last_slot": "2026-11-14 19:15",
@@ -2021,10 +2023,12 @@
         ]
       },
       "instagram": "Vigyan Ke Rahasya #1 🔎 1986 mein ek lake ne poore gaon ko chupchap khatam kar diya 🌋\n\n👇 Kya aap kisi volcanic lake ke paas rahoge?\n.\n.\n#sciencefacts #geology #history #lakenyos #mystery #shorts #reels #facts #didyouknow",
-      "channel": "hi"
+      "channel": "hi",
+      "ig_tries": 1,
+      "ig_fix": true
     }
   ],
   "stats_day_hi": "2026-11-14",
   "stats_problems_history_hi": {},
-  "ig_retry_block": "2026-11-14-3"
+  "ig_retry_block": "2026-11-15-0"
 }
