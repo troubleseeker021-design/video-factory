@@ -1,47 +1,6 @@
 {
   "offset": 41248576,
   "pending": {
-    "061c4164a7": {
-      "vid": "20261114-172333-the-silent-lake-that-wiped-out-a-valley-hi",
-      "post": {
-        "title": "Ek Invisible Gas Ne Poori Valley Khatam Kar Di",
-        "created": "2026-11-14T17:35:06",
-        "source": "gemini:gemini-3.6-flash",
-        "theme": "dark",
-        "hook": "Lake Nyos ki ek adrishya gas ne satrah sau logon ki jaan le li",
-        "series": "Vigyan Ke Rahasya #1",
-        "question": "Kya aap kisi volcanic lake ke paas rahoge?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "standard",
-        "hook_style": "bold_fact",
-        "youtube": {
-          "title": "Ek Invisible Gas Ne Poori Valley Khatam Kar Di | Vigyan Ke Rahasya #1 #shorts",
-          "description": "1986 mein ek lake ne poore gaon ko chupchap khatam kar diya 🌋\n\n👇 Kya aap kisi volcanic lake ke paas rahoge?\n\n#sciencefacts #geology #history #lakenyos #mystery #shorts #shorts",
-          "tags": [
-            "sciencefacts",
-            "geology",
-            "history",
-            "lakenyos",
-            "mystery",
-            "shorts",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "1986 mein ek lake ne poore gaon ko chupchap khatam kar diya 🌋 #sciencefacts #geology #history #lakenyos #mystery #shorts #fyp #facts",
-        "instagram": "Vigyan Ke Rahasya #1 🔎 1986 mein ek lake ne poore gaon ko chupchap khatam kar diya 🌋\n\n👇 Kya aap kisi volcanic lake ke paas rahoge?\n.\n.\n#sciencefacts #geology #history #lakenyos #mystery #shorts #reels #facts #didyouknow",
-        "facebook": "Vigyan Ke Rahasya #1 🔎 1986 mein ek lake ne poore gaon ko chupchap khatam kar diya 🌋\n\n👇 Kya aap kisi volcanic lake ke paas rahoge?\n\n#sciencefacts #geology #history #lakenyos #mystery #shorts",
-        "script": "Lake Nyos ki ek adrishya gas ne satrah sau logon ki jaan le li Cameroon ki is lake ke neeche magma bhaari carbon dioxide chhod raha tha Paani ka high pressure us gas ko neeche shaant dabaakar rakhta tha Phir unnees sau chhiyaasi mein landslide ne hilaaye hue soda bottle jaisa kaam kiya Ab socho ek lakh ton se zyaada gas achanak baahar nikal aai Yeh gas hawa se bhaari thi isliye neeche aakar poore gaon mein phail gayi Aur yahin twist hai scientists ne lake mein pipe daalkar ise safe banaya Ab yeh system dangerous gas ko lagaataar baahar nikaalta rehta hai Kya aap aisi lake ke paas rahoge comment mein batao aur follow karo",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAIBSmr4nE17Ok-LuqDTJmB3lbfegyEtAAKhCwACA7DJRycPrkWBW3rlPQQ",
-      "channel": "hi",
-      "message_id": 330,
-      "created": "2026-11-14T17:37:18.049966",
-      "scheduled": true
-    },
     "a7a340d20b": {
       "vid": "20261114-221532-unreal-places-ep6-hi",
       "post": {
@@ -1329,7 +1288,7 @@
   "comments_day": "2026-11-14",
   "compile_week": "2026-W45",
   "report_week": "2026-W45",
-  "last_hi_slot": "2026-11-14 20:00",
+  "last_hi_slot": "2026-11-15 08:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -2031,6 +1990,37 @@
         ]
       },
       "instagram": "Anokhe Jeev #6 🔎 Yeh samundari worm body mein copper ke daant banata hai! 🪱\n\n👇 Kya tum copper ke daant wale worm ko chhooge?\n.\n.\n#science #animals #nature #deepsea #biology #weirdfacts #reels #facts #didyouknow",
+      "channel": "hi"
+    },
+    {
+      "title": "Ek Invisible Gas Ne Poori Valley Khatam Kar Di",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/pjrOGOLEC0M",
+        "Facebook": "https://www.facebook.com/reel/1527912975882953",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-14T17:35:06",
+      "theme": "dark",
+      "hook": "Lake Nyos ki ek adrishya gas ne satrah sau logon ki jaan le li",
+      "series": "Vigyan Ke Rahasya #1",
+      "hook_style": "bold_fact",
+      "file_id": "BAACAgEAAxkDAAIBSmr4nE17Ok-LuqDTJmB3lbfegyEtAAKhCwACA7DJRycPrkWBW3rlPQQ",
+      "youtube": {
+        "title": "Ek Invisible Gas Ne Poori Valley Khatam Kar Di | Vigyan Ke Rahasya #1 #shorts",
+        "description": "1986 mein ek lake ne poore gaon ko chupchap khatam kar diya 🌋\n\n👇 Kya aap kisi volcanic lake ke paas rahoge?\n\n#sciencefacts #geology #history #lakenyos #mystery #shorts #shorts",
+        "tags": [
+          "sciencefacts",
+          "geology",
+          "history",
+          "lakenyos",
+          "mystery",
+          "shorts",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Vigyan Ke Rahasya #1 🔎 1986 mein ek lake ne poore gaon ko chupchap khatam kar diya 🌋\n\n👇 Kya aap kisi volcanic lake ke paas rahoge?\n.\n.\n#sciencefacts #geology #history #lakenyos #mystery #shorts #reels #facts #didyouknow",
       "channel": "hi"
     }
   ],
