@@ -1308,6 +1308,14 @@
       "channel": "en",
       "ig_tries": 1,
       "ig_fix": true
+    },
+    {
+      "title": "10 Mind-Blowing Facts You've Never Heard | Hidden Facts HQ Weekly",
+      "status": "weekly",
+      "links": {
+        "YouTube": "https://youtube.com/watch?v=jRkGavHqRro"
+      },
+      "created": "2026-11-15T20:03:24"
     }
   ],
   "last_slot": "2026-11-15 11:15",
@@ -1320,7 +1328,7 @@
   },
   "repost_block": "2026-11-09-1",
   "comments_day": "2026-11-14",
-  "compile_week": "2026-W45",
+  "compile_week": "2026-W46",
   "report_week": "2026-W45",
   "last_hi_slot": "2026-11-15 20:00",
   "history_hi": [
