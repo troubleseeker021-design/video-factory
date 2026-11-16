@@ -49,8 +49,6 @@ HOOK_STYLES = {
                  'e.g. "Your brain deletes a tenth of everything you see."'),
     "secret": ('Reveal something hidden that someone keeps quiet, naming who and what. '
                'e.g. "Casinos hide every clock so you lose track of time."'),
-    "why_question": ('Ask one concrete "why" question about a named thing that viewers cannot answer. '
-                     'e.g. "Why do pilots dump fuel before an emergency landing?"'),
     "contradiction": ('State something everyone believes, then flip it in the same breath. '
                       'e.g. "Goldfish don\'t have three-second memories. They remember for months."'),
     "spec_paradox": ('Describe the object by its most extreme spec, then add an unexpected second action. '
@@ -203,11 +201,11 @@ def _plan(used):
     last_theme = used[-1].get("theme") if used else None
     last_format = used[-1].get("format") if used else None
     since_places = next((i for i, u in enumerate(reversed(used)) if u.get("theme") == "places"), len(used))
-    want_places = since_places >= 4 and last_theme != "places"
+    want_places = False  # Unreal Places paused: our worst series on YouTube (6-24% stayed to watch, Nov 16 data)
     since_tech = next((i for i, u in enumerate(reversed(used)) if u.get("theme") == "tech"), len(used))
-    _plan.want_tech = (not want_places) and since_tech >= 4 and last_theme != "tech"
+    _plan.want_tech = (not want_places) and since_tech >= 8 and last_theme != "tech"  # weapons/tech: 11-19% stayed - rare
     since_grown = next((i for i, u in enumerate(reversed(used)) if u.get("theme") in GROWNUP), len(used))
-    _plan.want_grownup = (not want_places) and (not _plan.want_tech) and since_grown >= 1
+    _plan.want_grownup = (not want_places) and (not _plan.want_tech) and since_grown >= 2  # 1 in 3 until proven
     fmt = "places" if want_places else random.choice(["standard", "standard", "standard", "myth"])  # one-subject stories hold viewers best
     return want_places, fmt, last_theme
 
@@ -227,12 +225,14 @@ def _gemini(cfg, used, want_places, fmt, last_theme):
                       'true story, the trick being played on them. Keep it factual and respectful: no gore, no sexual '
                       'content, no graphic violence, no naming private people, nothing that teaches crime or scams - '
                       'explain how they work so viewers can spot them.')
-    elif last_theme not in HOOKY and random.random() < 0.5:
+    elif last_theme not in HOOKY and random.random() < 0.25:
         theme_rule = ('The "theme" MUST be one of "whatif", "survival" or "food" (pick the most gripping topic, '
                       'and not "' + str(last_theme) + '").')
-    else:
-        theme_rule = (f'The "theme" must NOT be "{last_theme}" (we never post the same series twice in a row) '
-                      'and must not be "places".' if last_theme else 'The "theme" must not be "places".')
+    else:  # our proven winners: ONE amazing living thing or natural wonder (gold trees 70%, loneliest whale 58%)
+        theme_rule = ('The "theme" MUST be one of "nature", "animals", "ocean" or "space"'
+                      + (f', but not "{last_theme}"' if last_theme else '') + '. Pick ONE single living thing or natural '
+                      'wonder with one jaw-dropping, visual fact (like "Trees That Feed on Pure Gold" or "The Loneliest '
+                      'Whale in the World"). Never a list of several things.')
     viewer = ""
     vq = read_json(QUESTIONS_FILE, [])
     if vq and random.random() < 0.35 and not want_places:
