@@ -18,6 +18,7 @@ from .common import DATA, FONTS, ffmpeg_exe, log, read_json
 W, H, FPS = 1920, 1080, 30
 WORK = os.path.join(DATA, "_doc")
 ENC = ["-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-pix_fmt", "yuv420p", "-r", str(FPS)]
+FAST = ["-c:v", "libx264", "-preset", "ultrafast", "-crf", "16", "-pix_fmt", "yuv420p", "-r", str(FPS)]  # in-between files
 
 PROMPT = """You are the head writer of a nature & science documentary series in the style of Discovery Channel,
 Animal Planet and BBC Earth, for the YouTube channel Hidden Facts HQ.
@@ -31,7 +32,8 @@ Style rules:
 - Calm, warm, curious narrator voice. Vivid "picture this" storytelling: places, times, sounds, scale.
 - Open with a cold open (a gripping moment), then 5 chapters, then a reflective ending that ties back to the
   opening image.
-- Every chapter ends with a line that pulls the viewer into the next one (a question, a reveal, a turn).
+- Every chapter ends with one short cliffhanger line that pulls the viewer into the next one, often a quiet
+  question ("But will anyone answer?", "So where did it all go?").
 - Simple words, short and medium sentences, concrete numbers, real names and places. 100% verified facts only;
   say "scientists think" when uncertain. No exclamation marks, no "..." pauses, no "in this video", no
   "like and subscribe".
@@ -239,7 +241,7 @@ def _shot_clip(still, secs, out, k):
     ]
     vf = (f"scale=2880:1620,zoompan={moves[k % 4]}:d={n}:s={W}x{H}:fps={FPS},"
           f"format=yuv420p")
-    _run(["-i", still, "-vf", vf, "-frames:v", str(n), *ENC, "-an", out])
+    _run(["-i", still, "-vf", vf, "-frames:v", str(n), *FAST, "-an", out])
 
 
 def make(st, cfg, privacy="public", seed_item=None, upload=True):
@@ -270,19 +272,38 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
     text = " ".join(p["text"].strip() for p in parts)
     log(f"  script: {len(parts)} parts, {len(text.split())} words - {script['title']}")
 
-    # 2. the narrator (calm documentary voice)
-    wav, vdur, words = voice.narrate(text, cfg, WORK,
-                                     voices=[cfg.get("doc_voice", "en-GB-RyanNeural"), "en-US-AndrewMultilingualNeural"],
-                                     rate=cfg.get("doc_voice_speed", "-4%"), pitch="-2Hz")
-    from .render import align
-    align(words, [p["text"].strip() for p in parts])
-    starts = []
-    for i in range(len(parts)):
-        ws = [w for w in words if w.get("sid") == i]
-        starts.append(ws[0]["start"] if ws else (starts[-1] + 6 if starts else 0.0))
+    # 2. the narrator: calm and unhurried - each paragraph read separately, with real pauses between them
+    #    (about 1 s, and 2 s before a new chapter) so the story can breathe, BBC-documentary style
+    import wave
+    import numpy as np
+    voices = [cfg.get("doc_voice", "en-GB-RyanNeural"), "en-US-AndrewMultilingualNeural"]
+    rate = cfg.get("doc_voice_speed", "-12%")
+    pieces, offsets, t, sr = [], [], 0.0, 44100
+    for i, p in enumerate(parts):
+        pdir = os.path.join(WORK, f"v{i:02d}")
+        os.makedirs(pdir, exist_ok=True)
+        pw, pdur, _ = voice.narrate(p["text"].strip(), cfg, pdir, voices=voices, rate=rate, pitch="-2Hz")
+        with wave.open(pw, "rb") as w:
+            sr = w.getframerate()
+            audio = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).reshape(-1, 2)
+        nxt = parts[i + 1] if i + 1 < len(parts) else None
+        new_chapter = bool(nxt and (nxt.get("chapter") or "").strip()
+                           and (nxt.get("chapter") or "").strip().lower() != (p.get("chapter") or "").strip().lower())
+        gap = 2.0 if new_chapter else 1.0
+        offsets.append(t)
+        pieces += [audio, np.zeros((int(sr * gap), 2), dtype=np.int16)]
+        t += len(audio) / sr + gap
+    wav = os.path.join(WORK, "narration.wav")
+    with wave.open(wav, "wb") as w:
+        w.setnchannels(2)
+        w.setsampwidth(2)
+        w.setframerate(sr)
+        w.writeframes(np.concatenate(pieces).tobytes())
+    vdur = t
+    log(f"  narration: {len(parts)} paragraphs, {vdur / 60:.1f} min with pauses")
     intro = 4.0  # title card over the first shot, before the voice starts
-    starts = [0.0] + [s + intro for s in starts[1:]]
-    total = vdur + intro + 3.0
+    starts = [0.0] + [o + intro for o in offsets[1:]]
+    total = vdur + intro + 2.0
     durs = [max(3.0, b - a) for a, b in zip(starts, starts[1:] + [total])]
 
     # 3. pictures: real photos sprinkled between AI cinematic stills
@@ -333,7 +354,7 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
         last = f"[x{i}]"
     film = os.path.join(WORK, "film.mp4")
     _run([*inputs, "-filter_complex", ";".join(chain) or "[0:v]null[x0]", "-map", last if chain else "[x0]",
-          *ENC, film], timeout=3000)
+          *FAST, film], timeout=3000)
 
     # 5. title card + chapter lower-thirds + narrator + music
     _title_card(script["title"], os.path.join(WORK, "title.png"))
@@ -360,7 +381,7 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
         cur = f"[v{k}]"
     vi, mi = len(over) + 1, len(over) + 2
     fc.append(f"[{vi}:a]adelay={int(intro * 1000)}|{int(intro * 1000)}[vo]")
-    fc.append(f"[{mi}:a]volume=0.22,afade=t=out:st={total - 3:.2f}:d=3[mu]")
+    fc.append(f"[{mi}:a]volume=0.15,afade=t=out:st={total - 3:.2f}:d=3[mu]")
     fc.append("[vo][mu]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95[a]")
     out = os.path.join(DATA, "documentary.mp4")
     _run([*args, "-filter_complex", ";".join(fc), "-map", cur, "-map", "[a]", "-t", f"{total:.2f}",
