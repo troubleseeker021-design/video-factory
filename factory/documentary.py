@@ -20,8 +20,9 @@ WORK = os.path.join(DATA, "_doc")
 ENC = ["-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-pix_fmt", "yuv420p", "-r", str(FPS)]
 FAST = ["-c:v", "libx264", "-preset", "ultrafast", "-crf", "16", "-pix_fmt", "yuv420p", "-r", str(FPS)]  # in-between files
 
-PROMPT = """You are the head writer of a nature & science documentary series in the style of Discovery Channel,
-Animal Planet and BBC Earth, for the YouTube channel Hidden Facts HQ.
+PROMPT = """You are the head writer of a premium, award-winning nature & science documentary series in the style of
+BBC Earth, National Geographic and Discovery Channel, for the YouTube channel Hidden Facts HQ. The writing must be
+broadcast quality: elegant, emotional, precise and full of wonder - never cheesy, never clickbait.
 
 Write ONE documentary episode (6 to 8 minutes of narration) that grows out of this topic that our viewers loved:
 "{seed_title}" ({seed_hook}).
@@ -94,8 +95,55 @@ def _landscape(img):
     img = img.resize((max(tw, int(img.width * r + 0.5)), max(th, int(img.height * r + 0.5))), Image.LANCZOS)
     x, y = (img.width - tw) // 2, (img.height - th) // 2
     img = img.crop((x, y, x + tw, y + th))
-    img = ImageEnhance.Contrast(img).enhance(1.05)
-    return ImageEnhance.Color(img).enhance(1.06)
+    return _grade(img)
+
+
+def _grade(img):
+    """Broadcast look: crisp detail, gentle cinematic teal-and-warm grade and a soft vignette."""
+    import numpy as np
+    from PIL import Image, ImageEnhance, ImageFilter
+    img = img.filter(ImageFilter.UnsharpMask(radius=2, percent=60, threshold=2))
+    img = ImageEnhance.Contrast(img).enhance(1.08)
+    img = ImageEnhance.Color(img).enhance(1.05)
+    a = np.asarray(img).astype(np.float32) / 255.0
+    lum = a.mean(axis=2, keepdims=True)
+    shadows, highs = (1 - lum) ** 2, lum ** 2
+    a += shadows * np.array([-0.015, 0.01, 0.03]) + highs * np.array([0.03, 0.012, -0.02])  # teal shadows, warm highlights
+    yy, xx = np.mgrid[0:a.shape[0], 0:a.shape[1]]
+    r = np.sqrt(((xx - a.shape[1] / 2) / (a.shape[1] / 2)) ** 2 + ((yy - a.shape[0] / 2) / (a.shape[0] / 2)) ** 2)
+    a *= (1 - 0.28 * np.clip(r - 0.55, 0, 1) ** 1.6)[..., None]  # vignette
+    return Image.fromarray((np.clip(a, 0, 1) * 255).astype("uint8"))
+
+
+def _logo_bug(path):
+    """Small see-through channel logo in the corner, like a TV network."""
+    from PIL import Image, ImageDraw
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    logo_path = os.path.join(os.path.dirname(DATA), "docs", "logo.png")
+    try:
+        lg = Image.open(logo_path).convert("RGBA").resize((86, 86), Image.LANCZOS)
+        mask = Image.new("L", lg.size, 0)
+        ImageDraw.Draw(mask).ellipse([0, 0, 85, 85], fill=150)
+        lg.putalpha(mask)
+        img.alpha_composite(lg, (W - 150, H - 140))
+    except Exception:
+        pass
+    d = ImageDraw.Draw(img)
+    d.text((W - 160, H - 97), "HIDDEN FACTS HQ", font=_font("Poppins-Bold.ttf", 22), fill=(255, 255, 255, 140), anchor="rm")
+    img.save(path)
+
+
+def _end_card(title, path):
+    from PIL import Image, ImageDraw
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.rectangle([0, 0, W, H], fill=(4, 6, 14, 220))
+    d.text((W / 2, H / 2 - 120), "THANKS FOR WATCHING", font=_font("Anton-Regular.ttf", 110), fill=(255, 255, 255, 255), anchor="mm")
+    d.text((W / 2, H / 2 + 10), "A new Hidden Facts HQ documentary every Sunday", font=_font("Poppins-Bold.ttf", 44),
+           fill=(255, 196, 0, 255), anchor="mm")
+    d.rounded_rectangle([W / 2 - 230, H / 2 + 90, W / 2 + 230, H / 2 + 170], radius=40, fill=(230, 33, 23, 255))
+    d.text((W / 2, H / 2 + 130), "SUBSCRIBE", font=_font("Poppins-Bold.ttf", 44), fill=(255, 255, 255, 255), anchor="mm")
+    img.save(path)
 
 
 def _ai_still(prompt, path, seed):
@@ -435,7 +483,7 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
     log(f"  narration: {len(parts)} paragraphs, {vdur / 60:.1f} min with pauses")
     intro = 4.0  # title card over the first shot, before the voice starts
     starts = [0.0] + [o + intro for o in offsets[1:]]
-    total = vdur + intro + 2.0
+    total = vdur + intro + 7.0  # 7 s at the end for the closing card
     durs = [max(3.0, b - a) for a, b in zip(starts, starts[1:] + [total])]
 
     # 3. pictures: real photos sprinkled between AI cinematic stills
@@ -490,7 +538,10 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
 
     # 5. title card + chapter lower-thirds + narrator + music
     _title_card(script["title"], os.path.join(WORK, "title.png"))
-    over, chapters, n, last_ch = [("title.png", 0.3, intro + 0.6)], [("0:00", "Cold open")], 0, ""
+    _logo_bug(os.path.join(WORK, "bug.png"))
+    _end_card(script["title"], os.path.join(WORK, "end.png"))
+    over, chapters, n, last_ch = [("title.png", 0.3, intro + 0.6), ("bug.png", intro + 1.0, total - 6.5),
+                                  ("end.png", total - 6.2, total)], [("0:00", "Cold open")], 0, ""
     for i, p in enumerate(parts):
         ch = (p.get("chapter") or "").strip()
         if ch and ch.lower() != last_ch.lower():  # a NEW chapter starts (not every paragraph)
