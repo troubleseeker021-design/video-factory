@@ -1347,7 +1347,7 @@
       },
       "instagram": "Mind Games #2 🔎 Why venting your anger doesn't work, according to neuroscience 🧠\n\n👇 Do you vent or stay silent when angry?\n.\n.\n#psychology #sciencefacts #brainpower #mentalhealth #neuroscience #mindset #reels #facts #didyouknow",
       "channel": "en",
-      "ig_tries": 2,
+      "ig_tries": 3,
       "ig_fix": true
     },
     {
@@ -1364,7 +1364,7 @@
       "links": {
         "YouTube": "https://youtube.com/shorts/FjrMB-Wj948",
         "Facebook": "https://www.facebook.com/reel/2697573407340717",
-        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+        "Instagram": "https://www.instagram.com/reel/Dfyq16FCXo6/"
       },
       "created": "2026-11-15T22:21:35",
       "theme": "survival",
@@ -1388,7 +1388,7 @@
       },
       "instagram": "Survival Science #1 🔎 Eating lean meat without fat can actually cause severe starvation. 🐇\n\n👇 Would you eat bone marrow to survive, yes or no?\n.\n.\n#survival #biology #humanbody #sciencefacts #learnontiktok #medicalhistory #reels #facts #didyouknow",
       "channel": "en",
-      "ig_tries": 1,
+      "ig_tries": 2,
       "ig_fix": true
     },
     {
@@ -2277,7 +2277,7 @@
       },
       "instagram": "Gzb Technology #3 🔎 The SR-71 Blackbird flew faster than a rifle bullet, but it couldn't sit on the runway without dripping fuel. Here is the genius engineering behind it. ✈️\n\n👇 Would you fly in a plane that leaks fuel, yes or no?\n.\n.\n#aviation #engineering #sr71 #military #shorts #howitworks #reels #facts #didyouknow",
       "channel": "hi",
-      "ig_tries": 2,
+      "ig_tries": 3,
       "ig_fix": true
     },
     {
@@ -2309,12 +2309,14 @@
         ]
       },
       "instagram": "Dimaag Ka Khel #2 🔎 Gussa nikalne se dimaag shant nahi balki aur hyper hota hai 🧠\n\n👇 Gussa aane par chillate ho ya shaant rehte ho?\n.\n.\n#dimaag #sciencefacts #psychologyhindi #shorts #mindset #gussa #reels #facts #didyouknow",
-      "channel": "hi"
+      "channel": "hi",
+      "ig_tries": 1,
+      "ig_fix": true
     }
   ],
   "stats_day_hi": "2026-11-15",
   "stats_problems_history_hi": {},
-  "ig_retry_block": "2026-11-15-3",
+  "ig_retry_block": "2026-11-16-0",
   "report_week_hi": "2026-W46",
   "followers_history_hi": {
     "YouTube": 1,
