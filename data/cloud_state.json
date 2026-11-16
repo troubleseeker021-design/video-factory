@@ -1,6 +1,48 @@
 {
   "offset": 41248576,
-  "pending": {},
+  "pending": {
+    "46c105be4e": {
+      "vid": "20261116-171524-unreal-places-ep7-hi",
+      "post": {
+        "title": "Dusre Planet Ke Ped",
+        "created": "2026-11-16T17:20:57",
+        "source": "bank:unreal-places",
+        "theme": "places",
+        "hook": "Ye ped dekhkar lagta hai jaise ye alien planets ke hon.",
+        "series": "Anokhi Kudrat Ep 7",
+        "question": "Inme se kaun si jagah jaana chahoge?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "places",
+        "hook_style": "",
+        "youtube": {
+          "title": "Dusre Planet Ke Ped | Anokhi Kudrat Ep 7 #shorts",
+          "description": "Dusre Planet Ke Ped 🌍 Inme se kahan jaana chahoge: 1, 2 ya 3?\n\n👇 Inme se kaun si jagah jaana chahoge?\n\n#anokheped #nature #facts #shorts #travel #amazingplaces #shorts",
+          "tags": [
+            "anokheped",
+            "nature",
+            "facts",
+            "shorts",
+            "travel",
+            "amazingplaces",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Dusre Planet Ke Ped 🌍 Inme se kahan jaana chahoge: 1, 2 ya 3? #anokheped #nature #facts #shorts #travel #amazingplaces #fyp #facts",
+        "instagram": "Anokhi Kudrat Ep 7 🔎 Dusre Planet Ke Ped 🌍 Inme se kahan jaana chahoge: 1, 2 ya 3?\n\n👇 Inme se kaun si jagah jaana chahoge?\n.\n.\n#anokheped #nature #facts #shorts #travel #amazingplaces #reels #facts #didyouknow",
+        "facebook": "Anokhi Kudrat Ep 7 🔎 Dusre Planet Ke Ped 🌍 Inme se kahan jaana chahoge: 1, 2 ya 3?\n\n👇 Inme se kaun si jagah jaana chahoge?\n\n#anokheped #nature #facts #shorts #travel #amazingplaces",
+        "script": "Ye ped dekhkar lagta hai jaise ye alien planets ke hon. Pehla Yemen ke Socotra ka dragon blood tree jo chhata jaisa dikhta hai aur lal ras bahata hai. Doosra rainbow eucalyptus jiski chhaal nikalati hai to hara neela aur narangi rang dikhta hai. Teesra Meghalaya ka living root bridge jise saalon mein pedon ki jadon se banaya gaya hai. Ab socho inme se kaun sa ped sabse zyada ajeeb hai. Sach sach batana kis jagah jaana chahoge comment mein batao aur follow karo.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBcmr7O_7V24de5k9YAAETqLfPWhqTDgACrA0AArio2UehnBx9M-3uDD0E",
+      "channel": "hi",
+      "message_id": 370,
+      "created": "2026-11-16T17:23:11.533851",
+      "scheduled": true
+    }
+  },
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -1382,9 +1424,40 @@
         }
       },
       "stats_at": "2026-11-16T11:00:35"
+    },
+    {
+      "title": "Trees From Another Planet",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/x6IbNNeUgZs",
+        "Facebook": "https://www.facebook.com/reel/2213679146159778",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-16T17:18:20",
+      "theme": "places",
+      "hook": "These look like alien plants.",
+      "series": "Unreal Places Ep 7",
+      "hook_style": "",
+      "file_id": "BAACAgEAAxkDAAIBb2r7O3sgEuDN7OQo2iInWwUnCctiAAKrDQACuKjZRxHgriLWLkZ7PQQ",
+      "youtube": {
+        "title": "Trees From Another Planet | Unreal Places Ep 7 #shorts",
+        "description": "Trees From Another Planet 🌍 Which one would you visit: 1, 2 or 3?\n\n👇 Which one of these would you visit?\n\n#nature #trees #unrealplaces #shorts #travel #amazingplaces #shorts",
+        "tags": [
+          "nature",
+          "trees",
+          "unrealplaces",
+          "shorts",
+          "travel",
+          "amazingplaces",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Unreal Places Ep 7 🔎 Trees From Another Planet 🌍 Which one would you visit: 1, 2 or 3?\n\n👇 Which one of these would you visit?\n.\n.\n#nature #trees #unrealplaces #shorts #travel #amazingplaces #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-15 19:15",
+  "last_slot": "2026-11-16 11:15",
   "stats_day": "2026-11-16",
   "stats_problems": {},
   "followers": {

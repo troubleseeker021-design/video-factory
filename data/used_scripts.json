@@ -278,5 +278,14 @@
     "hook_style": "contradiction",
     "hook": "Blindness means seeing nothing, but blindsight patients dodge flying objects.",
     "date": "2026-11-16"
+  },
+  {
+    "id": "unreal-places-ep7",
+    "title": "Trees From Another Planet",
+    "theme": "places",
+    "format": "places",
+    "hook_style": "",
+    "hook": "These look like alien plants.",
+    "date": "2026-11-16"
   }
 ]
