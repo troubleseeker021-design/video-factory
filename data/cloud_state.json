@@ -2325,7 +2325,7 @@
       },
       "instagram": "Dimaag Ka Khel #2 🔎 Gussa nikalne se dimaag shant nahi balki aur hyper hota hai 🧠\n\n👇 Gussa aane par chillate ho ya shaant rehte ho?\n.\n.\n#dimaag #sciencefacts #psychologyhindi #shorts #mindset #gussa #reels #facts #didyouknow",
       "channel": "hi",
-      "ig_tries": 1,
+      "ig_tries": 2,
       "ig_fix": true,
       "stats": {
         "YouTube": {
@@ -2381,12 +2381,14 @@
           "comments": 0
         }
       },
-      "stats_at": "2026-11-16T11:00:53"
+      "stats_at": "2026-11-16T11:00:53",
+      "ig_tries": 1,
+      "ig_fix": true
     }
   ],
   "stats_day_hi": "2026-11-16",
   "stats_problems_history_hi": {},
-  "ig_retry_block": "2026-11-16-0",
+  "ig_retry_block": "2026-11-16-1",
   "report_week_hi": "2026-W46",
   "followers_history_hi": {
     "YouTube": 1,
