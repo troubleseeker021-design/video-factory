@@ -269,5 +269,14 @@
     "hook_style": "you_body",
     "hook": "Your body can starve to death eating only rabbit meat.",
     "date": "2026-11-15"
+  },
+  {
+    "id": "the-blind-people-who-can-still-see",
+    "title": "The Blind People Who Can Still See",
+    "theme": "mind",
+    "format": "standard",
+    "hook_style": "contradiction",
+    "hook": "Blindness means seeing nothing, but blindsight patients dodge flying objects.",
+    "date": "2026-11-16"
   }
 ]

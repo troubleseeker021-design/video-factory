@@ -82,6 +82,47 @@
       "message_id": 353,
       "created": "2026-11-15T22:30:31.678657",
       "scheduled": true
+    },
+    "15b0aa8148": {
+      "vid": "20261116-011734-the-blind-people-who-can-still-see-hi",
+      "post": {
+        "title": "Andhe Hokar Bhi Sab Dikhna",
+        "created": "2026-11-16T01:23:24",
+        "source": "gemini:gemini-flash-latest",
+        "theme": "mind",
+        "hook": "Andhe hone ka matlab kuch na dikhna par ye mareez udti cheezein pakad lete hain",
+        "series": "Dimaag Ke Rahasya #3",
+        "question": "Kya humara hosh sach mein sab control karta hai, haan ya na?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "contradiction",
+        "youtube": {
+          "title": "Andhe Hokar Bhi Sab Dikhna | Dimaag Ke Rahasya #3 #shorts",
+          "description": "Blindsight ke mareez legally andhe hokar bhi udti cheezein pakad lete hain, dekho brain ka subconscious feature! 🧠\n\n👇 Kya humara hosh sach mein sab control karta hai, haan ya na?\n\n#dimaagkesach #brainfacts #sciencefacts #shorts #hindiscience #ajabgajab #shorts",
+          "tags": [
+            "dimaagkesach",
+            "brainfacts",
+            "sciencefacts",
+            "shorts",
+            "hindiscience",
+            "ajabgajab",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Blindsight ke mareez legally andhe hokar bhi udti cheezein pakad lete hain, dekho brain ka subconscious feature! 🧠 #dimaagkesach #brainfacts #sciencefacts #shorts #hindiscience #ajabgajab #fyp #facts",
+        "instagram": "Dimaag Ke Rahasya #3 🔎 Blindsight ke mareez legally andhe hokar bhi udti cheezein pakad lete hain, dekho brain ka subconscious feature! 🧠\n\n👇 Kya humara hosh sach mein sab control karta hai, haan ya na?\n.\n.\n#dimaagkesach #brainfacts #sciencefacts #shorts #hindiscience #ajabgajab #reels #facts #didyouknow",
+        "facebook": "Dimaag Ke Rahasya #3 🔎 Blindsight ke mareez legally andhe hokar bhi udti cheezein pakad lete hain, dekho brain ka subconscious feature! 🧠\n\n👇 Kya humara hosh sach mein sab control karta hai, haan ya na?\n\n#dimaagkesach #brainfacts #sciencefacts #shorts #hindiscience #ajabgajab",
+        "script": "Andhe hone ka matlab kuch na dikhna par ye mareez udti cheezein pakad lete hain Jab kisi chot se brain ka visual cortex kharab hota hai toh dikhna band ho jata hai Par asal mein aankhein brain ko do alag raaston se signal bhejti hain Naya raasta humein tasveerein dikhata hai jabki purana raasta hosh se bilkul alag rehta hai Yeh purana raasta saara data seedhe aapki body ke reflex ko bhej deta hai Isliye jab doctor in mareezon ki taraf ball phenkte hain toh inhe sirf andhera dikhta hai Phir bhi inka haath apne aap aage badhta hai aur ball ko hawa mein lapak leta hai Aur poochne par ye mareez maante hain ki yeh sirf inki kismat thi Aapka brain aapko khabar hone se bahut pehle hi cheezein dekh leta hai Kya humara hosh sach mein sab control karta hai haan ya na comment mein batao aur follow karo",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBZ2r6W1gL2aXWop16_zcs_cLohcR9AALXCQACuKjRR5WmAcbxq2GwPQQ",
+      "channel": "hi",
+      "message_id": 359,
+      "created": "2026-11-16T01:24:41.289507",
+      "scheduled": true
     }
   },
   "history": [
@@ -1390,9 +1431,40 @@
       "channel": "en",
       "ig_tries": 1,
       "ig_fix": true
+    },
+    {
+      "title": "The Blind People Who Can Still See",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/K-9f46WKkes",
+        "Facebook": "https://www.facebook.com/reel/28980250358284051",
+        "Instagram": "https://www.instagram.com/reel/DfyKxdLiWzy/"
+      },
+      "created": "2026-11-16T01:20:56",
+      "theme": "mind",
+      "hook": "Blindness means seeing nothing, but blindsight patients dodge flying objects.",
+      "series": "Mind Games #3",
+      "hook_style": "contradiction",
+      "file_id": "BAACAgEAAxkDAAIBZGr6Ww76AWdz5C0zhMHvB2eL_ZY8AALVCQACuKjRR_i6K2WcBvL8PQQ",
+      "youtube": {
+        "title": "The Blind People Who Can Still See | Mind Games #3 #shorts",
+        "description": "People with blindsight are clinically blind, yet their subconscious can catch flying objects. 🧠\n\n👇 Is consciousness really in control, yes or no?\n\n#psychology #neuroscience #brainfacts #humanbody #sciencefacts #mindblown #shorts",
+        "tags": [
+          "psychology",
+          "neuroscience",
+          "brainfacts",
+          "humanbody",
+          "sciencefacts",
+          "mindblown",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Mind Games #3 🔎 People with blindsight are clinically blind, yet their subconscious can catch flying objects. 🧠\n\n👇 Is consciousness really in control, yes or no?\n.\n.\n#psychology #neuroscience #brainfacts #humanbody #sciencefacts #mindblown #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-15 16:15",
+  "last_slot": "2026-11-15 19:15",
   "stats_day": "2026-11-15",
   "stats_problems": {},
   "followers": {
