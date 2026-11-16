@@ -1457,6 +1457,15 @@
       "channel": "en",
       "ig_tries": 1,
       "ig_fix": true
+    },
+    {
+      "title": "The Trees That Drink Pure Gold from Deep Underground",
+      "status": "weekly",
+      "links": {
+        "YouTube": "https://youtube.com/watch?v=qgm4rF46EyY"
+      },
+      "theme": "documentary",
+      "created": "2026-11-16T21:50:58"
     }
   ],
   "last_slot": "2026-11-16 11:15",
