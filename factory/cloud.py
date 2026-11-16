@@ -285,8 +285,28 @@ def _auto_post(st, short, local_path=None):
     tg.send_message(CHAT, f"🤖 Autopilot posted: {item['post'].get('title')}\n\n" + "\n".join(lines) +
                     "\n\n📱 TikTok caption 👇")
     tg.send_message(CHAT, item["post"].get("tiktok", ""))
-    _hist(st, item).append(_record(item, "auto-posted", results))
+    rec = _record(item, "auto-posted", results)
+    if _ig_manual(item, results):
+        rec["ig_manual"] = True  # you post it by hand - so the factory won't retry it (no double posts)
+    _hist(st, item).append(rec)
     write_json(STATE_PATH, st)
+
+
+def _ig_manual(item, results):
+    """Instagram refused the automatic upload: send the video + ready caption to Telegram for a 30-second
+    manual post. Returns True when the message was sent."""
+    if not str(results.get("Instagram", "")).startswith("FAILED") or not CHAT:
+        return False
+    acct = "@kya_sach_hai.facts" if item.get("channel") == "hi" else "@hiddenfacts.hq"
+    msg = (f"📲 POST THIS ON INSTAGRAM ({acct})\nInstagram refused the automatic upload. "
+            "Save this video, open Instagram > + > Reel, and paste the caption from the next message.")
+    try:
+        tg.call("sendVideo", chat_id=CHAT, video=item["file_id"], caption=msg[:1000], supports_streaming=True)
+    except Exception as e:
+        log(f"  (could not resend the video for manual Instagram posting: {str(e)[:120]})")
+        tg.send_message(CHAT, msg.replace("Save this video", "Save the video from the preview above"))
+    tg.send_message(CHAT, item["post"].get("instagram", ""))
+    return True
 
 
 def _retry_approved(st):
@@ -527,6 +547,8 @@ def retry_instagram(st):
         for h in st.get(key, [])[-12:]:
             links = h.get("links") or {}
             if not str(links.get("Instagram", "")).startswith("FAILED") or not str(links.get("Facebook", "")).startswith("http"):
+                continue
+            if h.get("ig_manual"):  # sent to you to post by hand - never auto-post it too
                 continue
             if h.get("ig_tries", 0) >= 3 and h.get("ig_fix"):  # one extra try with the new re-encode fix
                 continue
