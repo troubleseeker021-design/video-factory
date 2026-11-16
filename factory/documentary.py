@@ -50,9 +50,19 @@ Return JSON only:
     {{"chapter": "" for the cold open, otherwise a short chapter title,
       "text": "1 paragraph of narration, 2 to 4 sentences",
       "shot": "one cinematic landscape 16:9 shot that shows exactly this paragraph (subject, action, setting,
-               light, camera), photorealistic documentary still, no text"}}
+               light, camera), photorealistic documentary still, no text. When the paragraph explains HOW
+               something works, make it a clear cut-away / cross-section 3D illustration of the inside",
+      "graphic": an on-screen teaching graphic that EXPLAINS this paragraph like a teacher at a whiteboard, or null.
+        One of:
+        {{"type": "steps", "title": "how it works", "items": ["step 1", "step 2", "step 3"]}}  (2-4 steps, max 6 words each)
+        {{"type": "number", "value": "40 m", "label": "how deep the roots reach", "compare": "as tall as a 13-storey building"}}
+        {{"type": "compare", "title": "", "items": [{{"label": "", "value": 40, "unit": "m"}}, {{"label": "", "value": 10, "unit": "m"}}]}}
+        {{"type": "facts", "title": "", "items": ["short fact", "short fact", "short fact"]}}  (2-3 facts, max 7 words each)
+      }}
   ]}}
 Use 22 to 30 parts in total (about 40 words each). The cold open is the first 2-3 parts with chapter "".
+Give a "graphic" to about half of the parts - every part that explains a process, a size, a number or a
+comparison. Numbers in graphics must be real and match the narration. Use null for purely emotional moments.
 """
 
 DOC_STYLE = ("photorealistic nature documentary still, BBC Earth cinematography, natural light, rich detail, "
@@ -229,6 +239,128 @@ def _thumbnail(still, text, path):
     img.save(path, quality=92)
 
 
+# ------------------------------------------------------------------ teaching graphics
+PANEL = (1150, 150, 1860, 930)  # right side of the screen - the picture stays visible on the left
+GOLD, WHITE, DIM = (255, 196, 0, 255), (255, 255, 255, 255), (170, 176, 196, 255)
+
+
+def _canvas():
+    from PIL import Image, ImageDraw
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    x0, y0, x1, y1 = PANEL
+    d.rounded_rectangle([x0, y0, x1, y1], radius=28, fill=(8, 12, 24, 222), outline=(255, 196, 0, 120), width=3)
+    return img, d
+
+
+def _wrap(d, text, font, width):
+    words, lines, cur = str(text).split(), [], ""
+    for w in words:
+        t = (cur + " " + w).strip()
+        if d.textlength(t, font=font) > width and cur:
+            lines.append(cur)
+            cur = w
+        else:
+            cur = t
+    return lines + ([cur] if cur else [])
+
+
+def _steps_img(title, items, active):
+    img, d = _canvas()
+    x0, y0, x1, y1 = PANEL
+    ft, fi, fn = _font("Poppins-Bold.ttf", 40), _font("Poppins-Bold.ttf", 34), _font("Anton-Regular.ttf", 40)
+    d.text((x0 + 40, y0 + 30), (title or "How it works").upper(), font=ft, fill=GOLD)
+    n = len(items)
+    step_h = (y1 - y0 - 140) / max(1, n)
+    for j, it in enumerate(items):
+        cy = y0 + 130 + j * step_h + step_h / 2
+        on, done = j == active, j < active
+        col = GOLD if on else (WHITE if done else DIM)
+        d.ellipse([x0 + 40, cy - 34, x0 + 108, cy + 34], fill=(255, 196, 0, 255) if on else (40, 46, 70, 255),
+                  outline=col, width=3)
+        d.text((x0 + 74, cy), str(j + 1), font=fn, fill=(10, 10, 20, 255) if on else col, anchor="mm")
+        lines = _wrap(d, it, fi, x1 - x0 - 190)[:2]
+        for k, ln in enumerate(lines):
+            d.text((x0 + 135, cy - 22 * len(lines) + 4 + k * 44), ln, font=fi, fill=WHITE if (on or done) else DIM)
+        if j < n - 1:  # arrow down to the next step
+            ay = cy + 40
+            d.line([(x0 + 74, ay), (x0 + 74, ay + step_h - 82)], fill=(255, 196, 0, 160), width=4)
+            d.polygon([(x0 + 64, ay + step_h - 90), (x0 + 84, ay + step_h - 90), (x0 + 74, ay + step_h - 76)],
+                      fill=(255, 196, 0, 200))
+    return img
+
+
+def _number_img(value, label, compare):
+    img, d = _canvas()
+    x0, y0, x1, y1 = PANEL
+    cx = (x0 + x1) / 2
+    fv = _font("Anton-Regular.ttf", 170)
+    while d.textlength(str(value), font=fv) > x1 - x0 - 80 and fv.size > 60:
+        fv = _font("Anton-Regular.ttf", fv.size - 10)
+    d.text((cx, y0 + 260), str(value), font=fv, fill=GOLD, anchor="mm")
+    fl, fc = _font("Poppins-Bold.ttf", 40), _font("Poppins-Bold.ttf", 32)
+    for k, ln in enumerate(_wrap(d, label or "", fl, x1 - x0 - 100)[:3]):
+        d.text((cx, y0 + 420 + k * 54), ln, font=fl, fill=WHITE, anchor="mm")
+    if compare:
+        d.line([(x0 + 120, y0 + 600), (x1 - 120, y0 + 600)], fill=(255, 196, 0, 120), width=2)
+        for k, ln in enumerate(_wrap(d, compare, fc, x1 - x0 - 120)[:3]):
+            d.text((cx, y0 + 650 + k * 44), ln, font=fc, fill=DIM, anchor="mm")
+    return img
+
+
+def _compare_img(title, items, grow=1.0):
+    img, d = _canvas()
+    x0, y0, x1, y1 = PANEL
+    d.text((x0 + 40, y0 + 30), (title or "Compare").upper(), font=_font("Poppins-Bold.ttf", 40), fill=GOLD)
+    vals = [float(it.get("value") or 0) for it in items][:4]
+    top = max(vals) or 1
+    fl, fv = _font("Poppins-Bold.ttf", 32), _font("Anton-Regular.ttf", 44)
+    row = (y1 - y0 - 150) / max(1, len(vals))
+    for j, (it, v) in enumerate(zip(items, vals)):
+        y = y0 + 140 + j * row
+        d.text((x0 + 40, y), str(it.get("label", ""))[:28], font=fl, fill=WHITE)
+        bw = (x1 - x0 - 240) * (v / top) * grow
+        d.rounded_rectangle([x0 + 40, y + 50, x0 + 40 + max(8, bw), y + 100], radius=12,
+                            fill=(255, 196, 0, 255) if j == 0 else (120, 160, 255, 255))
+        val = f"{v:g} {it.get('unit', '')}".strip()
+        d.text((x0 + 56 + max(8, bw), y + 75), val, font=fv, fill=WHITE, anchor="lm")
+    return img
+
+
+def _facts_img(title, items, shown):
+    img, d = _canvas()
+    x0, y0, x1, y1 = PANEL
+    d.text((x0 + 40, y0 + 30), (title or "Did you know").upper(), font=_font("Poppins-Bold.ttf", 40), fill=GOLD)
+    fi = _font("Poppins-Bold.ttf", 36)
+    y = y0 + 140
+    for j, it in enumerate(items[:shown]):
+        d.rectangle([x0 + 40, y + 10, x0 + 52, y + 50], fill=GOLD)
+        for k, ln in enumerate(_wrap(d, it, fi, x1 - x0 - 140)[:3]):
+            d.text((x0 + 75, y + k * 48), ln, font=fi, fill=WHITE)
+        y += 48 * min(3, len(_wrap(d, it, fi, x1 - x0 - 140))) + 50
+    return img
+
+
+def _graphic_frames(g, a, b):
+    """-> [(image, start, end)]: the graphic builds up step by step while the narrator explains."""
+    t = g.get("type")
+    if t == "steps" and g.get("items"):
+        items = [str(x) for x in g["items"]][:4]
+        seg = (b - a) / len(items)
+        return [(_steps_img(g.get("title"), items, k), a + k * seg, a + (k + 1) * seg + 0.05) for k in range(len(items))]
+    if t == "facts" and g.get("items"):
+        items = [str(x) for x in g["items"]][:3]
+        seg = (b - a) / len(items)
+        return [(_facts_img(g.get("title"), items, k + 1), a + k * seg, a + (k + 1) * seg + 0.05) for k in range(len(items))]
+    if t == "number" and g.get("value"):
+        return [(_number_img(g["value"], g.get("label"), g.get("compare")), a, b)]
+    if t == "compare" and len(g.get("items") or []) >= 2:
+        return [(_compare_img(g.get("title"), g["items"], 0.35), a, a + 0.35),
+                (_compare_img(g.get("title"), g["items"], 0.7), a + 0.3, a + 0.65),
+                (_compare_img(g.get("title"), g["items"], 1.0), a + 0.6, b)]
+    return []
+
+
 # ------------------------------------------------------------------ the film
 def _shot_clip(still, secs, out, k):
     """Slow documentary camera move on a still (alternating push-in / pull-out / pans)."""
@@ -369,15 +501,39 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
             over.append((png, starts[i] + 0.4, starts[i] + 5.0))
             sec = int(starts[i])
             chapters.append((f"{sec // 60}:{sec % 60:02d}", p["chapter"].strip()))
+    gfx = 0  # teaching graphics, timed to the paragraph the narrator is reading
+    for i, p in enumerate(parts):
+        g = p.get("graphic")
+        if not isinstance(g, dict) or not g.get("type"):
+            continue
+        a = starts[i] + 0.8
+        b = (starts[i + 1] if i + 1 < len(starts) else total) - 0.4
+        if b - a < 2.5:
+            continue
+        try:
+            frames = _graphic_frames(g, a, b)
+            for k, (png_img, ga, gb) in enumerate(frames):
+                png = f"g{i:02d}_{k}.png"
+                png_img.save(os.path.join(WORK, png))
+                over.append((png, ga, gb, (k == 0, k == len(frames) - 1)))
+            gfx += 1
+        except Exception as e:
+            log(f"  (graphic skipped: {str(e)[:100]})")
+    log(f"  teaching graphics: {gfx}")
     mus = music.pick_music(total, seed, WORK)
     args = ["-i", film]
-    for png, _, _ in over:
-        args += ["-loop", "1", "-i", os.path.join(WORK, png)]
+    for o in over:  # each picture overlay only exists for its own few seconds (keeps the render fast)
+        args += ["-loop", "1", "-framerate", str(FPS), "-t", f"{max(0.2, o[2] - o[1]):.2f}", "-i", os.path.join(WORK, o[0])]
     args += ["-i", wav, "-i", mus]
     fc, cur = [], "[0:v]"
-    for k, (_, a, b) in enumerate(over, 1):
-        fc.append(f"[{k}:v]format=rgba,fade=t=in:st={a:.2f}:d=0.6:alpha=1,fade=t=out:st={b - 0.6:.2f}:d=0.6:alpha=1[o{k}]")
-        fc.append(f"{cur}[o{k}]overlay=0:0:enable='between(t,{a:.2f},{b:.2f})'[v{k}]")
+    for k, o in enumerate(over, 1):
+        _, a, b = o[:3]
+        dur = max(0.2, b - a)
+        fin, fout = o[3] if len(o) > 3 else (True, True)  # build-up steps switch without fading in between
+        fades = (["fade=t=in:st=0:d=0.5:alpha=1"] if fin else []) + \
+                ([f"fade=t=out:st={max(0.0, dur - 0.5):.2f}:d=0.5:alpha=1"] if fout else [])
+        fc.append(f"[{k}:v]" + ",".join(["format=rgba", *fades, f"setpts=PTS-STARTPTS+{a:.2f}/TB"]) + f"[o{k}]")
+        fc.append(f"{cur}[o{k}]overlay=0:0:eof_action=pass[v{k}]")
         cur = f"[v{k}]"
     vi, mi = len(over) + 1, len(over) + 2
     fc.append(f"[{vi}:a]adelay={int(intro * 1000)}|{int(intro * 1000)}[vo]")
