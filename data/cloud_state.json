@@ -1431,7 +1431,7 @@
       "links": {
         "YouTube": "https://youtube.com/shorts/x6IbNNeUgZs",
         "Facebook": "https://www.facebook.com/reel/2213679146159778",
-        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+        "Instagram": "https://www.instagram.com/reel/Dfz866pjz2z/"
       },
       "created": "2026-11-16T17:18:20",
       "theme": "places",
@@ -1454,7 +1454,9 @@
         ]
       },
       "instagram": "Unreal Places Ep 7 🔎 Trees From Another Planet 🌍 Which one would you visit: 1, 2 or 3?\n\n👇 Which one of these would you visit?\n.\n.\n#nature #trees #unrealplaces #shorts #travel #amazingplaces #reels #facts #didyouknow",
-      "channel": "en"
+      "channel": "en",
+      "ig_tries": 1,
+      "ig_fix": true
     }
   ],
   "last_slot": "2026-11-16 11:15",
@@ -2356,7 +2358,7 @@
       },
       "instagram": "Dimaag Ka Khel #2 🔎 Gussa nikalne se dimaag shant nahi balki aur hyper hota hai 🧠\n\n👇 Gussa aane par chillate ho ya shaant rehte ho?\n.\n.\n#dimaag #sciencefacts #psychologyhindi #shorts #mindset #gussa #reels #facts #didyouknow",
       "channel": "hi",
-      "ig_tries": 2,
+      "ig_tries": 3,
       "ig_fix": true,
       "stats": {
         "YouTube": {
@@ -2413,7 +2415,7 @@
         }
       },
       "stats_at": "2026-11-16T11:00:53",
-      "ig_tries": 1,
+      "ig_tries": 2,
       "ig_fix": true
     },
     {
@@ -2445,12 +2447,14 @@
         ]
       },
       "instagram": "Dimaag Ke Rahasya #3 🔎 Blindsight ke mareez legally andhe hokar bhi udti cheezein pakad lete hain, dekho brain ka subconscious feature! 🧠\n\n👇 Kya humara hosh sach mein sab control karta hai, haan ya na?\n.\n.\n#dimaagkesach #brainfacts #sciencefacts #shorts #hindiscience #ajabgajab #reels #facts #didyouknow",
-      "channel": "hi"
+      "channel": "hi",
+      "ig_tries": 1,
+      "ig_fix": true
     }
   ],
   "stats_day_hi": "2026-11-16",
   "stats_problems_history_hi": {},
-  "ig_retry_block": "2026-11-16-1",
+  "ig_retry_block": "2026-11-16-2",
   "report_week_hi": "2026-W46",
   "followers_history_hi": {
     "YouTube": 1,
