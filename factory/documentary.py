@@ -43,6 +43,7 @@ Return JSON only:
   "tags": ["8 search tags"],
   "thumb": "2 to 4 word thumbnail text in CAPS",
   "wiki": ["2-4 exact English Wikipedia article titles for real photos"],
+  "keywords": ["4 short stock-photo search phrases for beautiful real photos of this story (e.g. eucalyptus forest)"],
   "parts": [
     {{"chapter": "" for the cold open, otherwise a short chapter title,
       "text": "1 paragraph of narration, 2 to 4 sentences",
@@ -117,6 +118,36 @@ def _real_photos(titles, limit=6):
                 pass
             if len(out) >= limit:
                 return out
+    return out
+
+
+def _unsplash_landscape(queries, limit=12):
+    """Beautiful real landscape photos from Unsplash (used when the free AI pictures are used up)."""
+    import urllib.parse
+    from . import media
+    key = os.environ.get("UNSPLASH_ACCESS_KEY", "").strip()
+    if not key:
+        return []
+    hdr = {"Authorization": f"Client-ID {key}", "Accept-Version": "v1"}
+    out = []
+    for q in queries[:4]:
+        try:
+            qs = urllib.parse.urlencode({"query": q, "orientation": "landscape", "per_page": 4, "content_filter": "high"})
+            for p in media._get_json(f"https://api.unsplash.com/search/photos?{qs}", hdr).get("results", []):
+                raw = (p.get("urls") or {}).get("raw")
+                if not raw:
+                    continue
+                path = media._download(raw + "&w=1920&h=1080&fit=crop&q=85&fm=jpg", ".jpg")
+                try:
+                    media._get_json((p.get("links") or {}).get("download_location"), hdr)  # Unsplash rule
+                except Exception:
+                    pass
+                name = ((p.get("user") or {}).get("name") or "Unsplash")[:40]
+                out.append({"path": path, "credit": f"{name} / Unsplash"})
+                if len(out) >= limit:
+                    return out
+        except Exception as e:
+            log(f"  unsplash search failed for '{q}': {str(e)[:100]}")
     return out
 
 
@@ -256,6 +287,7 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
 
     # 3. pictures: real photos sprinkled between AI cinematic stills
     real = _real_photos(script.get("wiki") or [])
+    stock, si = None, 0  # Unsplash photos, fetched only if the AI pictures run out
     stills = []
     ri = 0
     for i, p in enumerate(parts):
@@ -266,7 +298,16 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
             _landscape(Image.open(real[ri]["path"])).save(path, quality=93)
             ri += 1
         elif not _ai_still(p.get("shot") or p["text"], path, seed + i):
-            if real and ri < len(real):
+            if stock is None:
+                stock = _unsplash_landscape((script.get("keywords") or []) + (script.get("wiki") or []))
+                log(f"  AI pictures unavailable - using {len(stock)} real Unsplash photos instead")
+            if stock and si < len(stock):
+                from PIL import Image
+                _landscape(Image.open(stock[si]["path"])).save(path, quality=93)
+                real.append(stock[si])
+                si += 1
+                ri += 1
+            elif real and ri < len(real):
                 from PIL import Image
                 _landscape(Image.open(real[ri]["path"])).save(path, quality=93)
                 ri += 1
@@ -296,9 +337,11 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
 
     # 5. title card + chapter lower-thirds + narrator + music
     _title_card(script["title"], os.path.join(WORK, "title.png"))
-    over, chapters, n = [("title.png", 0.3, intro + 0.6)], [("0:00", "Cold open")], 0
+    over, chapters, n, last_ch = [("title.png", 0.3, intro + 0.6)], [("0:00", "Cold open")], 0, ""
     for i, p in enumerate(parts):
-        if (p.get("chapter") or "").strip():
+        ch = (p.get("chapter") or "").strip()
+        if ch and ch.lower() != last_ch.lower():  # a NEW chapter starts (not every paragraph)
+            last_ch = ch
             n += 1
             png = f"ch{n}.png"
             _lower_third(n, p["chapter"].strip(), os.path.join(WORK, png))
@@ -324,7 +367,7 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
           *ENC, "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-movflags", "+faststart", out], timeout=3000)
     thumb = os.path.join(WORK, "thumb.jpg")
     _thumbnail(stills[min(2, len(stills) - 1)], script.get("thumb") or script["title"], thumb)
-    credits = sorted({r["credit"] for r in real[:ri]})
+    credits = sorted({r["credit"] for r in real})
     desc = (f"{script.get('description', '')}\n\nChapters:\n" + "\n".join(f"{a} {b}" for a, b in chapters) +
             "\n\nA Hidden Facts HQ documentary. New Shorts every day and a new documentary every Sunday - "
             "subscribe so you don't miss one." + ("\n\nPhotos: " + "; ".join(credits) if credits else "") +

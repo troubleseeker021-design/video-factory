@@ -779,7 +779,8 @@ def _growth_jobs(cfg):
         jobs.append(("ig_retry_block", block, lambda: retry_instagram(st)))
     if st.get("comments_day") != today and now.hour >= 17:
         jobs.append(("comments_day", today, lambda: growth.comment_digest(st, CHAT)))
-    if now.weekday() == 6 and now.hour >= 14 and st.get("compile_week") != week and cfg.get("weekly_video", True):
+    # early Sunday (after 1 AM): the free AI-picture allowance is still fresh for the documentary
+    if now.weekday() == 6 and now.hour >= 1 and st.get("compile_week") != week and cfg.get("weekly_video", True):
         privacy = os.environ.get("YOUTUBE_PRIVACY") or cfg.get("youtube_privacy", "public")
         jobs.append(("compile_week", week, lambda: growth.compilation(st, CHAT, privacy)))
     if st.get("report_now"):
