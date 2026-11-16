@@ -41,11 +41,23 @@ def _create(ig_user_id, data):
     return _check(requests.post(f"{G}/{ig_user_id}/media", data=data, timeout=60))
 
 
-def _instagram_once(video_path, caption, ig_user_id, token):
+def _plain(caption):
+    """Diagnostic variant: first sentence only - no hashtags, emojis or line breaks."""
+    import re
+    first = re.split(r"\n", caption.strip())[0]
+    first = re.sub(r"#\w+", "", first)
+    first = re.sub(r"[^\w\s.,!?'’:;()\-]", "", first)
+    return re.sub(r"\s{2,}", " ", first).strip()[:150] or "New video"
+
+
+def _instagram_once(video_path, caption, ig_user_id, token, plain=False):
     size = os.path.getsize(video_path)
-    c = _create(ig_user_id, {
-        "media_type": "REELS", "upload_type": "resumable", "caption": caption[:2200], "thumb_offset": "0",
-        "share_to_feed": "true", "access_token": token})
+    data = {"media_type": "REELS", "upload_type": "resumable", "caption": caption[:2200], "thumb_offset": "0",
+            "share_to_feed": "true", "access_token": token}
+    if plain:  # no cover offset, simple caption
+        data.pop("thumb_offset")
+        data["caption"] = _plain(caption)
+    c = _create(ig_user_id, data)
     cid = c["id"]
     with open(video_path, "rb") as f:
         _check(requests.post(f"https://rupload.facebook.com/ig-api-upload/{VER}/{cid}", data=f, timeout=600, headers={
@@ -123,7 +135,7 @@ def instagram_reencoded(video_url, caption, ig_user_id, token):
                    check=True, timeout=600)
     trial, TRIAL = TRIAL, False
     try:
-        return _instagram_once(_fit_for_instagram(out), caption, ig_user_id, token)
+        return _instagram_once(_fit_for_instagram(out), caption, ig_user_id, token, plain=True)
     finally:
         TRIAL = trial
 
@@ -188,11 +200,14 @@ def instagram_reel(video_path, caption, ig_user_id, token, tries=2, fallback_url
     except Exception as e:
         log(f"  (could not shorten the Instagram copy: {str(e)[:120]})")
     for i in range(tries):
+        plain = i == tries - 1  # last try: plain caption + no cover offset (tells us if those are the cause)
         try:
-            return _instagram_once(video_path, caption, ig_user_id, token)
+            url = _instagram_once(video_path, caption, ig_user_id, token, plain=plain)
+            log(f"  Instagram worked with the {'PLAIN caption, no cover offset' if plain else 'normal settings'}")
+            return url
         except Exception as e:
             last = e
-            log(f"  Instagram direct upload {i + 1}/{tries} failed: {str(e)[:160]}")
+            log(f"  Instagram direct upload {i + 1}/{tries}{' (plain caption)' if plain else ''} failed: {str(e)[:160]}")
             time.sleep(15)
     if fallback_url:
         try:
