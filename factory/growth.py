@@ -4,8 +4,8 @@
                        Instagram and Facebook (stored in data/cloud_state.json history)
   - insights(st)       a short "what works on this channel" note for the Writer
   - weekly_report(st)  Sunday evening: report in Telegram (best video, views, followers)
-  - compilation(st)    Sunday afternoon: the week's best Shorts joined into one long
-                       YouTube video with chapters (long videos count toward monetization)
+  - compilation(st)    Sunday: a story-driven documentary (16:9) built from the week's best topics
+                       (falls back to the best-of Shorts video if anything fails)
 Everything here is best-effort: if a step fails, the normal factory keeps running."""
 import datetime as dt
 import os
@@ -383,6 +383,13 @@ def compilation(st, chat, privacy="public"):
         log(f"Weekly compilation skipped: only {len(items)} videos with saved copies this week.")
         return None
     items.sort(key=lambda h: (score(h), h.get("created", "")), reverse=True)
+    try:  # a connected, story-driven documentary built from this week's best topics
+        from . import documentary
+        from .common import load_config
+        note("editor", "Writing this week's documentary from our best topics...")
+        return documentary.make_and_upload(st, chat, items[:8], load_config(), _yt(), privacy)
+    except Exception as e:
+        log(f"Documentary failed ({str(e)[:200]}) - making the classic best-of video instead.")
     items = items[:10]
     note("editor", f"Putting together this week's best-of: {len(items)} videos in one long video...")
     out = os.path.join(DATA, "weekly.mp4")

@@ -696,6 +696,18 @@ KIDS_SAMPLE = {
 }
 
 
+def doc_preview():
+    """Run workflow > task: doc_preview - makes this week's documentary now as an UNLISTED YouTube video
+    (only people with the link can watch it) and sends the link to Telegram, so you can judge it first."""
+    from . import documentary, growth
+    st = _state()
+    week_ago = dt.datetime.now() - dt.timedelta(days=8)
+    items = [h for h in growth._posted(st) if (growth._created(h) or dt.datetime.min) >= week_ago]
+    items.sort(key=lambda h: (growth.score(h), h.get("created", "")), reverse=True)
+    documentary.make_and_upload(st, CHAT, items[:8], load_config(), growth._yt(), "unlisted")
+    write_json(STATE_PATH, st)
+
+
 def kids_sample():
     """One sample storybook video for a kids channel - sent to Telegram only, never posted."""
     import random as _r
@@ -795,6 +807,6 @@ def _growth_jobs(cfg):
 
 
 if __name__ == "__main__":
-    {"make": make, "poll": poll, "tick": tick, "repost": repost, "clear": clear_pending, "hindi_test": hindi_test, "voices": voices, "check": check, "kids_sample": kids_sample,
+    {"make": make, "poll": poll, "tick": tick, "repost": repost, "clear": clear_pending, "hindi_test": hindi_test, "voices": voices, "check": check, "kids_sample": kids_sample, "doc_preview": doc_preview,
      "comments": lambda: __import__("factory.growth", fromlist=["x"]).comment_digest(_state(), CHAT), "stats": lambda: _growth_now("stats"),
      "weekly": lambda: _growth_now("weekly"), "report": lambda: _growth_now("report")}[sys.argv[1]]()
