@@ -41,6 +41,47 @@
       "message_id": 370,
       "created": "2026-11-16T17:23:11.533851",
       "scheduled": true
+    },
+    "71178240bf": {
+      "vid": "20261116-221623-why-raw-cashews-are-never-actually-raw-hi",
+      "post": {
+        "title": "Raw Kaju Ka Bada Sach",
+        "created": "2026-11-16T22:21:05",
+        "source": "gemini:gemini-3.6-flash",
+        "theme": "food",
+        "hook": "Kaju ki companies aapse ek khatarnak zahar chipati hain",
+        "series": "Khane Ka Sach #2",
+        "question": "Kya aap kabhi sach mein kacha kaju khana chahoge?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "secret",
+        "youtube": {
+          "title": "Raw Kaju Ka Bada Sach | Khane Ka Sach #2 #shorts",
+          "description": "Pantry mein rakha raw kaju asal mein raw nahi hai 🌰 dekho poison ivy ka sach!\n\n👇 Kya aap kabhi sach mein kacha kaju khana chahoge?\n\n#kaju #foodfacts #sciencefacts #hindi #shorts #curiosity #shorts\n\nImage credits:\nPhoto: Anup Ediga · Unsplash\nPhoto: Avinash Kumar · Unsplash\nPhoto: Ivana Djudic · Unsplash\nPhoto: Ivett M · Unsplash\nPhoto: Kischmisch · Unsplash\nPhoto: Maja Vujic · Unsplash\nPhoto: Syed Hussaini · Unsplash\nVideo: Pixabay",
+          "tags": [
+            "kaju",
+            "foodfacts",
+            "sciencefacts",
+            "hindi",
+            "shorts",
+            "curiosity",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Pantry mein rakha raw kaju asal mein raw nahi hai 🌰 dekho poison ivy ka sach! #kaju #foodfacts #sciencefacts #hindi #shorts #curiosity #fyp #facts",
+        "instagram": "Khane Ka Sach #2 🔎 Pantry mein rakha raw kaju asal mein raw nahi hai 🌰 dekho poison ivy ka sach!\n\n👇 Kya aap kabhi sach mein kacha kaju khana chahoge?\n.\n.\n#kaju #foodfacts #sciencefacts #hindi #shorts #curiosity #reels #facts #didyouknow",
+        "facebook": "Khane Ka Sach #2 🔎 Pantry mein rakha raw kaju asal mein raw nahi hai 🌰 dekho poison ivy ka sach!\n\n👇 Kya aap kabhi sach mein kacha kaju khana chahoge?\n\n#kaju #foodfacts #sciencefacts #hindi #shorts #curiosity",
+        "script": "Kaju ki companies aapse ek khatarnak zahar chipati hain Kaju asal mein ek phal ke neeche latka hua ugta hai Iske double chilke ke andar urushiol naam ka toxic oil hota hai Yeh har kaju par lipta hua liquid zahar jaisa hai Ise kacha choote hi skin par khatarnak phode nikal aayenge Isliye factory workers is oil ko khatam karne ke liye kaju roast karte hain Aur yahin sabse bada twist aata hai Dukaan ka har kacha kaju aapko bachane ke liye pehle hi pakaya ja chuka hai Bina us heat ke mutthi bhar kaju aapko zahreela bana sakte hain Sach sach batana kya aap kabhi kacha kaju khayenge comment mein batao aur follow karo",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBemr7gmPBY7Vberx0oCzj8DhhGIBuAAJDCwACuKjhR6_PJfEL_KoOPQQ",
+      "channel": "hi",
+      "message_id": 378,
+      "created": "2026-11-16T22:23:32.779042",
+      "scheduled": true
     }
   },
   "history": [
@@ -1466,9 +1507,41 @@
       },
       "theme": "documentary",
       "created": "2026-11-16T21:50:58"
+    },
+    {
+      "title": "Why 'Raw' Cashews Are Never Actually Raw",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/b6gK7r38TQI",
+        "Facebook": "https://www.facebook.com/reel/1794428795193372",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-16T22:18:45",
+      "theme": "food",
+      "hook": "Cashew processors hide the deadly toxin packed inside raw shells.",
+      "series": "Food Secrets #2",
+      "hook_style": "secret",
+      "file_id": "BAACAgEAAxkDAAIBdWr7gdSSzk5MBIOog3ueefsMdO1tAAJBCwACuKjhR0VL1vFx1-Q3PQQ",
+      "youtube": {
+        "title": "Why 'Raw' Cashews Are Never Actually Raw | Food Secrets #2 #shorts",
+        "description": "That package of 'raw' cashews in your pantry is lying to you 🌰 toxic secret explained!\n\n👇 Would you eat a truly raw cashew, yes or no?\n\n#cashews #foodfacts #sciencefacts #mindblowingfacts #curiosity #didyouknow #shorts\n\nImage credits:\nPhoto: Anup Ediga · Unsplash\nPhoto: Avinash Kumar · Unsplash\nPhoto: Ivana Djudic · Unsplash\nPhoto: Ivett M · Unsplash\nPhoto: Kischmisch · Unsplash\nPhoto: Maja Vujic · Unsplash\nPhoto: Syed Hussaini · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "cashews",
+          "foodfacts",
+          "sciencefacts",
+          "mindblowingfacts",
+          "curiosity",
+          "didyouknow",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Food Secrets #2 🔎 That package of 'raw' cashews in your pantry is lying to you 🌰 toxic secret explained!\n\n👇 Would you eat a truly raw cashew, yes or no?\n.\n.\n#cashews #foodfacts #sciencefacts #mindblowingfacts #curiosity #didyouknow #reels #facts #didyouknow",
+      "channel": "en",
+      "ig_manual": true
     }
   ],
-  "last_slot": "2026-11-16 11:15",
+  "last_slot": "2026-11-16 16:15",
   "stats_day": "2026-11-16",
   "stats_problems": {},
   "followers": {

@@ -287,5 +287,14 @@
     "hook_style": "",
     "hook": "These look like alien plants.",
     "date": "2026-11-16"
+  },
+  {
+    "id": "why-raw-cashews-are-never-actually-raw",
+    "title": "Why 'Raw' Cashews Are Never Actually Raw",
+    "theme": "food",
+    "format": "standard",
+    "hook_style": "secret",
+    "hook": "Cashew processors hide the deadly toxin packed inside raw shells.",
+    "date": "2026-11-16"
   }
 ]
