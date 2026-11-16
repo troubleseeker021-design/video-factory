@@ -1396,14 +1396,14 @@
   "stats_day": "2026-11-15",
   "stats_problems": {},
   "followers": {
-    "YouTube": 8,
-    "Instagram": 0,
+    "YouTube": 19,
+    "Instagram": 1,
     "Facebook": 0
   },
   "repost_block": "2026-11-09-1",
   "comments_day": "2026-11-15",
   "compile_week": "2026-W46",
-  "report_week": "2026-W45",
+  "report_week": "2026-W46",
   "last_hi_slot": "2026-11-15 20:00",
   "history_hi": [
     {
@@ -2252,5 +2252,11 @@
   ],
   "stats_day_hi": "2026-11-15",
   "stats_problems_history_hi": {},
-  "ig_retry_block": "2026-11-15-3"
+  "ig_retry_block": "2026-11-15-3",
+  "report_week_hi": "2026-W46",
+  "followers_history_hi": {
+    "YouTube": 1,
+    "Instagram": 1,
+    "Facebook": 0
+  }
 }
