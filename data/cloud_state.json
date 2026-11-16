@@ -1,48 +1,6 @@
 {
   "offset": 41248576,
-  "pending": {
-    "15b0aa8148": {
-      "vid": "20261116-011734-the-blind-people-who-can-still-see-hi",
-      "post": {
-        "title": "Andhe Hokar Bhi Sab Dikhna",
-        "created": "2026-11-16T01:23:24",
-        "source": "gemini:gemini-flash-latest",
-        "theme": "mind",
-        "hook": "Andhe hone ka matlab kuch na dikhna par ye mareez udti cheezein pakad lete hain",
-        "series": "Dimaag Ke Rahasya #3",
-        "question": "Kya humara hosh sach mein sab control karta hai, haan ya na?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "standard",
-        "hook_style": "contradiction",
-        "youtube": {
-          "title": "Andhe Hokar Bhi Sab Dikhna | Dimaag Ke Rahasya #3 #shorts",
-          "description": "Blindsight ke mareez legally andhe hokar bhi udti cheezein pakad lete hain, dekho brain ka subconscious feature! 🧠\n\n👇 Kya humara hosh sach mein sab control karta hai, haan ya na?\n\n#dimaagkesach #brainfacts #sciencefacts #shorts #hindiscience #ajabgajab #shorts",
-          "tags": [
-            "dimaagkesach",
-            "brainfacts",
-            "sciencefacts",
-            "shorts",
-            "hindiscience",
-            "ajabgajab",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "Blindsight ke mareez legally andhe hokar bhi udti cheezein pakad lete hain, dekho brain ka subconscious feature! 🧠 #dimaagkesach #brainfacts #sciencefacts #shorts #hindiscience #ajabgajab #fyp #facts",
-        "instagram": "Dimaag Ke Rahasya #3 🔎 Blindsight ke mareez legally andhe hokar bhi udti cheezein pakad lete hain, dekho brain ka subconscious feature! 🧠\n\n👇 Kya humara hosh sach mein sab control karta hai, haan ya na?\n.\n.\n#dimaagkesach #brainfacts #sciencefacts #shorts #hindiscience #ajabgajab #reels #facts #didyouknow",
-        "facebook": "Dimaag Ke Rahasya #3 🔎 Blindsight ke mareez legally andhe hokar bhi udti cheezein pakad lete hain, dekho brain ka subconscious feature! 🧠\n\n👇 Kya humara hosh sach mein sab control karta hai, haan ya na?\n\n#dimaagkesach #brainfacts #sciencefacts #shorts #hindiscience #ajabgajab",
-        "script": "Andhe hone ka matlab kuch na dikhna par ye mareez udti cheezein pakad lete hain Jab kisi chot se brain ka visual cortex kharab hota hai toh dikhna band ho jata hai Par asal mein aankhein brain ko do alag raaston se signal bhejti hain Naya raasta humein tasveerein dikhata hai jabki purana raasta hosh se bilkul alag rehta hai Yeh purana raasta saara data seedhe aapki body ke reflex ko bhej deta hai Isliye jab doctor in mareezon ki taraf ball phenkte hain toh inhe sirf andhera dikhta hai Phir bhi inka haath apne aap aage badhta hai aur ball ko hawa mein lapak leta hai Aur poochne par ye mareez maante hain ki yeh sirf inki kismat thi Aapka brain aapko khabar hone se bahut pehle hi cheezein dekh leta hai Kya humara hosh sach mein sab control karta hai haan ya na comment mein batao aur follow karo",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAIBZ2r6W1gL2aXWop16_zcs_cLohcR9AALXCQACuKjRR5WmAcbxq2GwPQQ",
-      "channel": "hi",
-      "message_id": 359,
-      "created": "2026-11-16T01:24:41.289507",
-      "scheduled": true
-    }
-  },
+  "pending": {},
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -1438,7 +1396,7 @@
   "comments_day": "2026-11-15",
   "compile_week": "2026-W46",
   "report_week": "2026-W46",
-  "last_hi_slot": "2026-11-16 13:00",
+  "last_hi_slot": "2026-11-16 20:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -2384,6 +2342,37 @@
       "stats_at": "2026-11-16T11:00:53",
       "ig_tries": 1,
       "ig_fix": true
+    },
+    {
+      "title": "Andhe Hokar Bhi Sab Dikhna",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/jzASctTJh0U",
+        "Facebook": "https://www.facebook.com/reel/1367941198602623",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-16T01:23:24",
+      "theme": "mind",
+      "hook": "Andhe hone ka matlab kuch na dikhna par ye mareez udti cheezein pakad lete hain",
+      "series": "Dimaag Ke Rahasya #3",
+      "hook_style": "contradiction",
+      "file_id": "BAACAgEAAxkDAAIBZ2r6W1gL2aXWop16_zcs_cLohcR9AALXCQACuKjRR5WmAcbxq2GwPQQ",
+      "youtube": {
+        "title": "Andhe Hokar Bhi Sab Dikhna | Dimaag Ke Rahasya #3 #shorts",
+        "description": "Blindsight ke mareez legally andhe hokar bhi udti cheezein pakad lete hain, dekho brain ka subconscious feature! 🧠\n\n👇 Kya humara hosh sach mein sab control karta hai, haan ya na?\n\n#dimaagkesach #brainfacts #sciencefacts #shorts #hindiscience #ajabgajab #shorts",
+        "tags": [
+          "dimaagkesach",
+          "brainfacts",
+          "sciencefacts",
+          "shorts",
+          "hindiscience",
+          "ajabgajab",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Dimaag Ke Rahasya #3 🔎 Blindsight ke mareez legally andhe hokar bhi udti cheezein pakad lete hain, dekho brain ka subconscious feature! 🧠\n\n👇 Kya humara hosh sach mein sab control karta hai, haan ya na?\n.\n.\n#dimaagkesach #brainfacts #sciencefacts #shorts #hindiscience #ajabgajab #reels #facts #didyouknow",
+      "channel": "hi"
     }
   ],
   "stats_day_hi": "2026-11-16",
