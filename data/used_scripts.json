@@ -305,5 +305,14 @@
     "hook_style": "never_seen",
     "hook": "You've never seen a tiny drill bit swallow an entire lake.",
     "date": "2026-11-17"
+  },
+  {
+    "id": "the-trees-that-bleed-bright-red-resin",
+    "title": "The Trees That Bleed Bright Red Resin",
+    "theme": "nature",
+    "format": "standard",
+    "hook_style": "daily_habit",
+    "hook": "You use dragon's blood trees every time you varnish a violin.",
+    "date": "2026-11-17"
   }
 ]
