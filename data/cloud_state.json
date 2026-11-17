@@ -1,48 +1,6 @@
 {
   "offset": 41248576,
-  "pending": {
-    "dcfa1862c8": {
-      "vid": "20261117-012500-the-day-a-tiny-drill-bit-swallowed-a-lake-hi",
-      "post": {
-        "title": "Ek Chhote Drill Bit Ne Poori Jheel Nigal Li",
-        "created": "2026-11-17T01:33:11",
-        "source": "gemini:gemini-3.6-flash",
-        "theme": "dark",
-        "hook": "Ek chhote se drill bit ne poori ki poori jheel nigal li.",
-        "series": "Hairatangez Ghatnayein #2",
-        "question": "Kya aap is disaster se bach paate, haan ya na?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "standard",
-        "hook_style": "never_seen",
-        "youtube": {
-          "title": "Ek Chhote Drill Bit Ne Poori Jheel Nigal Li | Hairatangez Ghatnayein #2 #shorts",
-          "description": "1980 ki ek chhoti si galti ne poori jheel ko gayab kar diya 🌊\n\n👇 Kya aap is disaster se bach paate, haan ya na?\n\n#sciencefacts #shorts #disaster #itihas #anokhaduniya #geology #shorts",
-          "tags": [
-            "sciencefacts",
-            "shorts",
-            "disaster",
-            "itihas",
-            "anokhaduniya",
-            "geology",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "1980 ki ek chhoti si galti ne poori jheel ko gayab kar diya 🌊 #sciencefacts #shorts #disaster #itihas #anokhaduniya #geology #fyp #facts",
-        "instagram": "Hairatangez Ghatnayein #2 🔎 1980 ki ek chhoti si galti ne poori jheel ko gayab kar diya 🌊\n\n👇 Kya aap is disaster se bach paate, haan ya na?\n.\n.\n#sciencefacts #shorts #disaster #itihas #anokhaduniya #geology #reels #facts #didyouknow",
-        "facebook": "Hairatangez Ghatnayein #2 🔎 1980 ki ek chhoti si galti ne poori jheel ko gayab kar diya 🌊\n\n👇 Kya aap is disaster se bach paate, haan ya na?\n\n#sciencefacts #shorts #disaster #itihas #anokhaduniya #geology",
-        "script": "Ek chhote se drill bit ne poori ki poori jheel nigal li. Unnis sau assi mein tel dhoondhte workers galti se ek namak ki khadan mein drill kar baithe. Wo drill sirf chaudah inch chauda tha lekin jheel ka paani turant usmein ghusne laga. Ab dekho hota kya hai meetha paani namak ko bahut tezi se gholta hai. Kuch hi minute mein wo chhota chhed vishal ban gaya aur paani ka bhanwar shuru ho gaya. Isne poora drilling platform gyarah naavein aur kareeb painsath acre zameen nigal li. Khinchav itna khatarnak tha ki paas ki nadi ulti behkar samandar se bharne lagi. Kuch hi ghanton mein das foot gehri jheel do sau foot gehre khaare paani ka gaddha ban gayi. Sach batana kya aap wahan se bach paate haan ya na comment mein likho aur follow karo.",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAIBfmr7ry-Khw-F28xz7xNglIVbptUPAAJeCgACpqDYRw1q-0d2msuWPQQ",
-      "channel": "hi",
-      "message_id": 382,
-      "created": "2026-11-17T01:34:40.315116",
-      "scheduled": true
-    }
-  },
+  "pending": {},
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -1587,7 +1545,7 @@
   "comments_day": "2026-11-16",
   "compile_week": "2026-W46",
   "report_week": "2026-W46",
-  "last_hi_slot": "2026-11-17 13:00",
+  "last_hi_slot": "2026-11-17 20:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -2676,6 +2634,38 @@
         }
       },
       "stats_at": "2026-11-17T11:00:54"
+    },
+    {
+      "title": "Ek Chhote Drill Bit Ne Poori Jheel Nigal Li",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/e-L9AN7fyBo",
+        "Facebook": "https://www.facebook.com/reel/993458513283621",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-17T01:33:11",
+      "theme": "dark",
+      "hook": "Ek chhote se drill bit ne poori ki poori jheel nigal li.",
+      "series": "Hairatangez Ghatnayein #2",
+      "hook_style": "never_seen",
+      "file_id": "BAACAgEAAxkDAAIBfmr7ry-Khw-F28xz7xNglIVbptUPAAJeCgACpqDYRw1q-0d2msuWPQQ",
+      "youtube": {
+        "title": "Ek Chhote Drill Bit Ne Poori Jheel Nigal Li | Hairatangez Ghatnayein #2 #shorts",
+        "description": "1980 ki ek chhoti si galti ne poori jheel ko gayab kar diya 🌊\n\n👇 Kya aap is disaster se bach paate, haan ya na?\n\n#sciencefacts #shorts #disaster #itihas #anokhaduniya #geology #shorts",
+        "tags": [
+          "sciencefacts",
+          "shorts",
+          "disaster",
+          "itihas",
+          "anokhaduniya",
+          "geology",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Hairatangez Ghatnayein #2 🔎 1980 ki ek chhoti si galti ne poori jheel ko gayab kar diya 🌊\n\n👇 Kya aap is disaster se bach paate, haan ya na?\n.\n.\n#sciencefacts #shorts #disaster #itihas #anokhaduniya #geology #reels #facts #didyouknow",
+      "channel": "hi",
+      "ig_manual": true
     }
   ],
   "stats_day_hi": "2026-11-17",
