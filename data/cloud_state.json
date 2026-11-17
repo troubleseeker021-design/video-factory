@@ -1,47 +1,6 @@
 {
   "offset": 41248576,
   "pending": {
-    "46c105be4e": {
-      "vid": "20261116-171524-unreal-places-ep7-hi",
-      "post": {
-        "title": "Dusre Planet Ke Ped",
-        "created": "2026-11-16T17:20:57",
-        "source": "bank:unreal-places",
-        "theme": "places",
-        "hook": "Ye ped dekhkar lagta hai jaise ye alien planets ke hon.",
-        "series": "Anokhi Kudrat Ep 7",
-        "question": "Inme se kaun si jagah jaana chahoge?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "places",
-        "hook_style": "",
-        "youtube": {
-          "title": "Dusre Planet Ke Ped | Anokhi Kudrat Ep 7 #shorts",
-          "description": "Dusre Planet Ke Ped 🌍 Inme se kahan jaana chahoge: 1, 2 ya 3?\n\n👇 Inme se kaun si jagah jaana chahoge?\n\n#anokheped #nature #facts #shorts #travel #amazingplaces #shorts",
-          "tags": [
-            "anokheped",
-            "nature",
-            "facts",
-            "shorts",
-            "travel",
-            "amazingplaces",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "Dusre Planet Ke Ped 🌍 Inme se kahan jaana chahoge: 1, 2 ya 3? #anokheped #nature #facts #shorts #travel #amazingplaces #fyp #facts",
-        "instagram": "Anokhi Kudrat Ep 7 🔎 Dusre Planet Ke Ped 🌍 Inme se kahan jaana chahoge: 1, 2 ya 3?\n\n👇 Inme se kaun si jagah jaana chahoge?\n.\n.\n#anokheped #nature #facts #shorts #travel #amazingplaces #reels #facts #didyouknow",
-        "facebook": "Anokhi Kudrat Ep 7 🔎 Dusre Planet Ke Ped 🌍 Inme se kahan jaana chahoge: 1, 2 ya 3?\n\n👇 Inme se kaun si jagah jaana chahoge?\n\n#anokheped #nature #facts #shorts #travel #amazingplaces",
-        "script": "Ye ped dekhkar lagta hai jaise ye alien planets ke hon. Pehla Yemen ke Socotra ka dragon blood tree jo chhata jaisa dikhta hai aur lal ras bahata hai. Doosra rainbow eucalyptus jiski chhaal nikalati hai to hara neela aur narangi rang dikhta hai. Teesra Meghalaya ka living root bridge jise saalon mein pedon ki jadon se banaya gaya hai. Ab socho inme se kaun sa ped sabse zyada ajeeb hai. Sach sach batana kis jagah jaana chahoge comment mein batao aur follow karo.",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAIBcmr7O_7V24de5k9YAAETqLfPWhqTDgACrA0AArio2UehnBx9M-3uDD0E",
-      "channel": "hi",
-      "message_id": 370,
-      "created": "2026-11-16T17:23:11.533851",
-      "scheduled": true
-    },
     "71178240bf": {
       "vid": "20261116-221623-why-raw-cashews-are-never-actually-raw-hi",
       "post": {
@@ -1625,7 +1584,7 @@
   "comments_day": "2026-11-16",
   "compile_week": "2026-W46",
   "report_week": "2026-W46",
-  "last_hi_slot": "2026-11-16 20:00",
+  "last_hi_slot": "2026-11-17 08:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -2604,6 +2563,37 @@
       "channel": "hi",
       "ig_tries": 2,
       "ig_fix": true
+    },
+    {
+      "title": "Dusre Planet Ke Ped",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/7PynmUdHNgY",
+        "Facebook": "https://www.facebook.com/reel/1115353294464672",
+        "Instagram": "https://www.instagram.com/reel/Df03QS0jTDu/"
+      },
+      "created": "2026-11-16T17:20:57",
+      "theme": "places",
+      "hook": "Ye ped dekhkar lagta hai jaise ye alien planets ke hon.",
+      "series": "Anokhi Kudrat Ep 7",
+      "hook_style": "",
+      "file_id": "BAACAgEAAxkDAAIBcmr7O_7V24de5k9YAAETqLfPWhqTDgACrA0AArio2UehnBx9M-3uDD0E",
+      "youtube": {
+        "title": "Dusre Planet Ke Ped | Anokhi Kudrat Ep 7 #shorts",
+        "description": "Dusre Planet Ke Ped 🌍 Inme se kahan jaana chahoge: 1, 2 ya 3?\n\n👇 Inme se kaun si jagah jaana chahoge?\n\n#anokheped #nature #facts #shorts #travel #amazingplaces #shorts",
+        "tags": [
+          "anokheped",
+          "nature",
+          "facts",
+          "shorts",
+          "travel",
+          "amazingplaces",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Anokhi Kudrat Ep 7 🔎 Dusre Planet Ke Ped 🌍 Inme se kahan jaana chahoge: 1, 2 ya 3?\n\n👇 Inme se kaun si jagah jaana chahoge?\n.\n.\n#anokheped #nature #facts #shorts #travel #amazingplaces #reels #facts #didyouknow",
+      "channel": "hi"
     }
   ],
   "stats_day_hi": "2026-11-16",
