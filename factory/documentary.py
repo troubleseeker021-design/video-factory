@@ -50,9 +50,11 @@ Return JSON only:
   "parts": [
     {{"chapter": "" for the cold open, otherwise a short chapter title,
       "text": "1 paragraph of narration, 2 to 4 sentences",
-      "shot": "one cinematic landscape 16:9 shot that shows exactly this paragraph (subject, action, setting,
-               light, camera), photorealistic documentary still, no text. When the paragraph explains HOW
-               something works, make it a clear cut-away / cross-section 3D illustration of the inside",
+      "shots": ["one picture PER SENTENCE, in the same order as the sentences, so the picture on screen always
+               matches the exact words being spoken at that moment. Each: a cinematic landscape 16:9 shot that
+               shows exactly that sentence (subject, action, setting, light, camera), photorealistic
+               documentary still, no text. When the sentence explains HOW something works, make it a clear
+               cut-away / cross-section 3D illustration of the inside"],
       "graphic": an on-screen teaching graphic that EXPLAINS this paragraph like a teacher at a whiteboard, or null.
         One of:
         {{"type": "steps", "title": "how it works", "items": ["step 1", "step 2", "step 3"]}}  (2-4 steps, max 6 words each)
@@ -181,7 +183,7 @@ def _real_photos(titles, limit=6):
     return out
 
 
-def _unsplash_landscape(queries, limit=12):
+def _unsplash_landscape(queries, limit=40):
     """Beautiful real landscape photos from Unsplash (used when the free AI pictures are used up)."""
     import urllib.parse
     from . import media
@@ -190,9 +192,9 @@ def _unsplash_landscape(queries, limit=12):
         return []
     hdr = {"Authorization": f"Client-ID {key}", "Accept-Version": "v1"}
     out = []
-    for q in queries[:4]:
+    for q in queries[:6]:
         try:
-            qs = urllib.parse.urlencode({"query": q, "orientation": "landscape", "per_page": 4, "content_filter": "high"})
+            qs = urllib.parse.urlencode({"query": q, "orientation": "landscape", "per_page": 8, "content_filter": "high"})
             for p in media._get_json(f"https://api.unsplash.com/search/photos?{qs}", hdr).get("results", []):
                 raw = (p.get("urls") or {}).get("raw")
                 if not raw:
@@ -458,11 +460,11 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
     import numpy as np
     voices = [cfg.get("doc_voice", "en-GB-RyanNeural"), "en-US-AndrewMultilingualNeural"]
     rate = cfg.get("doc_voice_speed", "-12%")
-    pieces, offsets, t, sr = [], [], 0.0, 44100
+    pieces, offsets, t, sr, part_words = [], [], 0.0, 44100, []
     for i, p in enumerate(parts):
         pdir = os.path.join(WORK, f"v{i:02d}")
         os.makedirs(pdir, exist_ok=True)
-        pw, pdur, _ = voice.narrate(p["text"].strip(), cfg, pdir, voices=voices, rate=rate, pitch="-2Hz")
+        pw, pdur, pwords = voice.narrate(p["text"].strip(), cfg, pdir, voices=voices, rate=rate, pitch="-2Hz")
         with wave.open(pw, "rb") as w:
             sr = w.getframerate()
             audio = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).reshape(-1, 2)
@@ -471,6 +473,7 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
                            and (nxt.get("chapter") or "").strip().lower() != (p.get("chapter") or "").strip().lower())
         gap = 2.0 if new_chapter else 1.0
         offsets.append(t)
+        part_words.append(pwords or [])
         pieces += [audio, np.zeros((int(sr * gap), 2), dtype=np.int16)]
         t += len(audio) / sr + gap
     wav = os.path.join(WORK, "narration.wav")
@@ -484,21 +487,55 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
     intro = 4.0  # title card over the first shot, before the voice starts
     starts = [0.0] + [o + intro for o in offsets[1:]]
     total = vdur + intro + 7.0  # 7 s at the end for the closing card
-    durs = [max(3.0, b - a) for a, b in zip(starts, starts[1:] + [total])]
 
-    # 3. pictures: real photos sprinkled between AI cinematic stills
-    real = _real_photos(script.get("wiki") or [])
+    # 3. pictures: one picture per sentence, cut exactly when the narrator starts that sentence
+    import re
+    shots = []  # (prompt, start time)
+    for i, p in enumerate(parts):
+        prompts = p.get("shots") if isinstance(p.get("shots"), list) else []
+        prompts = [str(x).strip() for x in prompts if str(x).strip()] or [p.get("shot") or p["text"]]
+        sents = [x for x in re.split(r"(?<=[.!?])\s+", p["text"].strip()) if x.strip()]
+        ws = part_words[i]
+        k = len(prompts)
+        if len(sents) == k:  # cut on each sentence's first word
+            idx, c = [], 0
+            for x in sents:
+                idx.append(c)
+                c += len(x.split())
+            total_w = max(1, c)
+        else:  # spread evenly over the paragraph
+            total_w = 1
+            idx = [j / k for j in range(k)]
+        base = starts[i]
+        last_t = None
+        for j, pr in enumerate(prompts):
+            if j == 0 or not ws:
+                tt = base
+            else:
+                w = min(len(ws) - 1, int(round(idx[j] / total_w * len(ws))))
+                tt = offsets[i] + intro + float(ws[w]["start"])
+            nxt_t = starts[i + 1] if i + 1 < len(starts) else total
+            if last_t is not None and (tt - last_t < 3.5 or nxt_t - tt < 3.5):  # never flash a picture by too quickly
+                continue
+            shots.append((pr, tt))
+            last_t = tt
+    starts_s = [s for _, s in shots]
+    durs = [max(3.0, b - a) for a, b in zip(starts_s, starts_s[1:] + [total])]
+
+    real = _real_photos(script.get("wiki") or [], limit=10)
     stock, si = None, 0  # Unsplash photos, fetched only if the AI pictures run out
     stills = []
-    ri = 0
-    for i, p in enumerate(parts):
+    ri = ai = 0
+    for i, (prompt, _) in enumerate(shots):
         path = os.path.join(WORK, f"s{i:02d}.jpg")
-        use_real = real and ri < len(real) and i % 5 == 3
+        use_real = real and ri < len(real) and i % 6 == 4
         if use_real:
             from PIL import Image
             _landscape(Image.open(real[ri]["path"])).save(path, quality=93)
             ri += 1
-        elif not _ai_still(p.get("shot") or p["text"], path, seed + i):
+        elif _ai_still(prompt, path, seed + i):
+            ai += 1
+        else:
             if stock is None:
                 stock = _unsplash_landscape((script.get("keywords") or []) + (script.get("wiki") or []))
                 log(f"  AI pictures unavailable - using {len(stock)} real Unsplash photos instead")
@@ -512,12 +549,12 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
                 from PIL import Image
                 _landscape(Image.open(real[ri]["path"])).save(path, quality=93)
                 ri += 1
-            elif stills:
-                shutil.copy(stills[-1], path)
+            elif len(stills) >= 3:
+                shutil.copy(stills[(i * 7) % (len(stills) - 1)], path)  # reuse an earlier picture, not the last one
             else:
-                _fallback_still(p["text"], path, seed + i)
+                _fallback_still(prompt, path, seed + i)
         stills.append(path)
-    log(f"  pictures: {len(stills)} shots ({ri} real photos)")
+    log(f"  pictures: {len(stills)} shots for {len(parts)} paragraphs ({ai} AI, {ri} real photos)")
 
     # 4. one clip per shot, joined with soft 1-second dissolves
     clips = []
