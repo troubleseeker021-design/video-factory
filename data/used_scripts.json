@@ -296,5 +296,14 @@
     "hook_style": "secret",
     "hook": "Cashew processors hide the deadly toxin packed inside raw shells.",
     "date": "2026-11-16"
+  },
+  {
+    "id": "the-day-a-tiny-drill-bit-swallowed-a-lake",
+    "title": "The Day a Tiny Drill Bit Swallowed a Lake",
+    "theme": "dark",
+    "format": "standard",
+    "hook_style": "never_seen",
+    "hook": "You've never seen a tiny drill bit swallow an entire lake.",
+    "date": "2026-11-17"
   }
 ]

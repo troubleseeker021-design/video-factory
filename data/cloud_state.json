@@ -82,6 +82,47 @@
       "message_id": 378,
       "created": "2026-11-16T22:23:32.779042",
       "scheduled": true
+    },
+    "dcfa1862c8": {
+      "vid": "20261117-012500-the-day-a-tiny-drill-bit-swallowed-a-lake-hi",
+      "post": {
+        "title": "Ek Chhote Drill Bit Ne Poori Jheel Nigal Li",
+        "created": "2026-11-17T01:33:11",
+        "source": "gemini:gemini-3.6-flash",
+        "theme": "dark",
+        "hook": "Ek chhote se drill bit ne poori ki poori jheel nigal li.",
+        "series": "Hairatangez Ghatnayein #2",
+        "question": "Kya aap is disaster se bach paate, haan ya na?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "never_seen",
+        "youtube": {
+          "title": "Ek Chhote Drill Bit Ne Poori Jheel Nigal Li | Hairatangez Ghatnayein #2 #shorts",
+          "description": "1980 ki ek chhoti si galti ne poori jheel ko gayab kar diya 🌊\n\n👇 Kya aap is disaster se bach paate, haan ya na?\n\n#sciencefacts #shorts #disaster #itihas #anokhaduniya #geology #shorts",
+          "tags": [
+            "sciencefacts",
+            "shorts",
+            "disaster",
+            "itihas",
+            "anokhaduniya",
+            "geology",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "1980 ki ek chhoti si galti ne poori jheel ko gayab kar diya 🌊 #sciencefacts #shorts #disaster #itihas #anokhaduniya #geology #fyp #facts",
+        "instagram": "Hairatangez Ghatnayein #2 🔎 1980 ki ek chhoti si galti ne poori jheel ko gayab kar diya 🌊\n\n👇 Kya aap is disaster se bach paate, haan ya na?\n.\n.\n#sciencefacts #shorts #disaster #itihas #anokhaduniya #geology #reels #facts #didyouknow",
+        "facebook": "Hairatangez Ghatnayein #2 🔎 1980 ki ek chhoti si galti ne poori jheel ko gayab kar diya 🌊\n\n👇 Kya aap is disaster se bach paate, haan ya na?\n\n#sciencefacts #shorts #disaster #itihas #anokhaduniya #geology",
+        "script": "Ek chhote se drill bit ne poori ki poori jheel nigal li. Unnis sau assi mein tel dhoondhte workers galti se ek namak ki khadan mein drill kar baithe. Wo drill sirf chaudah inch chauda tha lekin jheel ka paani turant usmein ghusne laga. Ab dekho hota kya hai meetha paani namak ko bahut tezi se gholta hai. Kuch hi minute mein wo chhota chhed vishal ban gaya aur paani ka bhanwar shuru ho gaya. Isne poora drilling platform gyarah naavein aur kareeb painsath acre zameen nigal li. Khinchav itna khatarnak tha ki paas ki nadi ulti behkar samandar se bharne lagi. Kuch hi ghanton mein das foot gehri jheel do sau foot gehre khaare paani ka gaddha ban gayi. Sach batana kya aap wahan se bach paate haan ya na comment mein likho aur follow karo.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBfmr7ry-Khw-F28xz7xNglIVbptUPAAJeCgACpqDYRw1q-0d2msuWPQQ",
+      "channel": "hi",
+      "message_id": 382,
+      "created": "2026-11-17T01:34:40.315116",
+      "scheduled": true
     }
   },
   "history": [
@@ -1539,9 +1580,40 @@
       "instagram": "Food Secrets #2 🔎 That package of 'raw' cashews in your pantry is lying to you 🌰 toxic secret explained!\n\n👇 Would you eat a truly raw cashew, yes or no?\n.\n.\n#cashews #foodfacts #sciencefacts #mindblowingfacts #curiosity #didyouknow #reels #facts #didyouknow",
       "channel": "en",
       "ig_manual": true
+    },
+    {
+      "title": "The Day a Tiny Drill Bit Swallowed a Lake",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/CPIKRACFA_I",
+        "Facebook": "https://www.facebook.com/reel/1491936306374712",
+        "Instagram": "https://www.instagram.com/reel/Df0wt0rjcft/"
+      },
+      "created": "2026-11-17T01:28:11",
+      "theme": "dark",
+      "hook": "You've never seen a tiny drill bit swallow an entire lake.",
+      "series": "Dark History #2",
+      "hook_style": "never_seen",
+      "file_id": "BAACAgEAAxkDAAIBe2r7rtoj2rThoJ8YxKHf_yeHFpPrAAJdCgACpqDYR8LeKFpuIk0kPQQ",
+      "youtube": {
+        "title": "The Day a Tiny Drill Bit Swallowed a Lake | Dark History #2 #shorts",
+        "description": "A single drilling mistake in 1980 drained an entire lake into an underground salt mine 🌊\n\n👇 Would you have survived this disaster, yes or no?\n\n#history #science #geology #disaster #louisiana #mindblowing #shorts",
+        "tags": [
+          "history",
+          "science",
+          "geology",
+          "disaster",
+          "louisiana",
+          "mindblowing",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Dark History #2 🔎 A single drilling mistake in 1980 drained an entire lake into an underground salt mine 🌊\n\n👇 Would you have survived this disaster, yes or no?\n.\n.\n#history #science #geology #disaster #louisiana #mindblowing #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-16 16:15",
+  "last_slot": "2026-11-16 19:15",
   "stats_day": "2026-11-16",
   "stats_problems": {},
   "followers": {
