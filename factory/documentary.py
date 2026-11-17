@@ -411,6 +411,78 @@ def _graphic_frames(g, a, b):
     return []
 
 
+# ------------------------------------------------------------------ subtitles (Netflix style)
+SUB_H = 300  # subtitle strip at the bottom of the frame
+
+
+def _sub_cues(parts, part_words, offsets, intro, end_at):
+    """Short 1-2 line subtitle cues, timed to the narrator's words."""
+    cues = []
+    for i, p in enumerate(parts):
+        ws = part_words[i] or []
+        toks = p["text"].split()
+        if not ws:
+            continue
+        names = toks if len(toks) == len(ws) else [str(w.get("word", "")) for w in ws]
+        base = offsets[i] + intro
+        cur = []
+        for k, w in enumerate(ws):
+            cur.append(k)
+            txt = " ".join(names[j] for j in cur)
+            end_sent = names[k][-1:] in ".?!"
+            soft = names[k][-1:] in ",;:" and len(txt) > 42
+            if len(txt) > 64 or (end_sent and len(cur) >= 2) or soft or k == len(ws) - 1:
+                a = base + float(ws[cur[0]]["start"])
+                b = base + float(ws[cur[-1]].get("end", ws[cur[-1]]["start"] + 0.4)) + 0.35
+                if a < end_at:
+                    cues.append([a, min(b, end_at), txt])
+                cur = []
+    for c, n in zip(cues, cues[1:]):  # never overlap the next line
+        c[1] = min(c[1], n[0] - 0.04)
+    return [c for c in cues if c[1] - c[0] > 0.3]
+
+
+def _sub_img(text, high, path):
+    from PIL import Image, ImageDraw, ImageFilter
+    img = Image.new("RGBA", (W, SUB_H), (0, 0, 0, 0))
+    if text:
+        f = _font("Poppins-Medium.ttf", 40)
+        d = ImageDraw.Draw(img)
+        lines = _wrap(d, text, f, 1150)[:2]
+        lh = 54
+        y0 = (40 if high else SUB_H - 40 - lh * len(lines))
+        shadow = Image.new("RGBA", img.size, (0, 0, 0, 0))
+        sd = ImageDraw.Draw(shadow)
+        for k, ln in enumerate(lines):
+            sd.text((W / 2 + 2, y0 + k * lh + 3), ln, font=f, fill=(0, 0, 0, 200), anchor="ma")
+        img.alpha_composite(shadow.filter(ImageFilter.GaussianBlur(4)))
+        d = ImageDraw.Draw(img)
+        for k, ln in enumerate(lines):
+            d.text((W / 2, y0 + k * lh), ln, font=f, fill=(255, 255, 255, 255), anchor="ma",
+                   stroke_width=2, stroke_fill=(0, 0, 0, 170))
+    img.save(path)
+
+
+def _subtitle_track(cues, busy, total):
+    """All subtitles as ONE image-sequence input (fast): a concat list of strips with their durations."""
+    blank = os.path.join(WORK, "sub_blank.png")
+    _sub_img("", False, blank)
+    lines, t = [], 0.0
+    for n, (a, b, txt) in enumerate(cues):
+        if a > t:
+            lines += [f"file '{blank}'", f"duration {a - t:.3f}"]
+        png = os.path.join(WORK, f"sub{n:03d}.png")
+        high = any(x < b and a < y for x, y in busy)  # move up while a chapter title is on screen
+        _sub_img(txt, high, png)
+        lines += [f"file '{png}'", f"duration {b - a:.3f}"]
+        t = b
+    lines += [f"file '{blank}'", f"duration {max(0.5, total - t):.3f}", f"file '{blank}'"]
+    lst = os.path.join(WORK, "subs.txt")
+    with open(lst, "w") as fh:
+        fh.write("\n".join(lines) + "\n")
+    return lst
+
+
 # ------------------------------------------------------------------ the film
 def _shot_clip(still, secs, out, k):
     """Slow documentary camera move on a still (alternating push-in / pull-out / pans)."""
@@ -608,10 +680,15 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
         except Exception as e:
             log(f"  (graphic skipped: {str(e)[:100]})")
     log(f"  teaching graphics: {gfx}")
+    busy = [(o[1], o[2]) for o in over if str(o[0]).startswith("ch")]
+    cues = _sub_cues(parts, part_words, offsets, intro, total - 6.5) if cfg.get("doc_subtitles", True) else []
+    log(f"  subtitles: {len(cues)} lines")
     mus = music.pick_music(total, seed, WORK)
     args = ["-i", film]
     for o in over:  # each picture overlay only exists for its own few seconds (keeps the render fast)
         args += ["-loop", "1", "-framerate", str(FPS), "-t", f"{max(0.2, o[2] - o[1]):.2f}", "-i", os.path.join(WORK, o[0])]
+    if cues:
+        args += ["-f", "concat", "-safe", "0", "-i", _subtitle_track(cues, busy, total)]
     args += ["-i", wav, "-i", mus]
     fc, cur = [], "[0:v]"
     for k, o in enumerate(over, 1):
@@ -623,7 +700,12 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
         fc.append(f"[{k}:v]" + ",".join(["format=rgba", *fades, f"setpts=PTS-STARTPTS+{a:.2f}/TB"]) + f"[o{k}]")
         fc.append(f"{cur}[o{k}]overlay=0:0:eof_action=pass[v{k}]")
         cur = f"[v{k}]"
-    vi, mi = len(over) + 1, len(over) + 2
+    if cues:
+        si_ = len(over) + 1
+        fc.append(f"[{si_}:v]fps={FPS},format=rgba[subs]")
+        fc.append(f"{cur}[subs]overlay=0:{H - SUB_H}:eof_action=pass[vs]")
+        cur = "[vs]"
+    vi, mi = len(over) + 1 + bool(cues), len(over) + 2 + bool(cues)
     fc.append(f"[{vi}:a]adelay={int(intro * 1000)}|{int(intro * 1000)}[vo]")
     fc.append(f"[{mi}:a]volume=0.15,afade=t=out:st={total - 3:.2f}:d=3[mu]")
     fc.append("[vo][mu]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95[a]")
