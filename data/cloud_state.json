@@ -82,6 +82,47 @@
       "message_id": 400,
       "created": "2026-11-17T22:28:42.828298",
       "scheduled": true
+    },
+    "8160afebf9": {
+      "vid": "20261118-012412-how-elevators-physically-cannot-plunge-hi",
+      "post": {
+        "title": "Lift Kabhi Kyun Nahi Girti",
+        "created": "2026-11-18T01:35:09",
+        "source": "gemini:gemini-3.7-flash",
+        "theme": "tech",
+        "hook": "Aap roz lift use karte hain lekin steel ke wedges ise kabhi girne nahi dete",
+        "series": "Kaise Karta Hai Kaam #4",
+        "question": "Kya aapko iss safety brake par bharosa hai?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "daily_habit",
+        "youtube": {
+          "title": "Lift Kabhi Kyun Nahi Girti | Kaise Karta Hai Kaam #4 #shorts",
+          "description": "Har passenger elevator mein ek aisi mechanical safety hoti hai jo bina electricity ke lift ko rok leti hai\n\n👇 Kya aapko iss safety brake par bharosa hai?\n\n#liftfacts #sciencefacts #shorts #hindifacts #desiscience #howitworks #shorts\n\nImage credits:\nPhoto: Adrien Olichon · Unsplash\nPhoto: Cai Fang · Unsplash\nPhoto: Georg Eiermann · Unsplash\nPhoto: Lasse Møller · Unsplash\nPhoto: Nguyen Tony · Unsplash\nPhoto: Pawan Kawan · Unsplash\nPhoto: Raquel Ming · Unsplash\nPhoto: Soham Rathod · Unsplash\nPhoto: Zoli Bukta · Unsplash\nVideo: Pixabay",
+          "tags": [
+            "liftfacts",
+            "sciencefacts",
+            "shorts",
+            "hindifacts",
+            "desiscience",
+            "howitworks",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Har passenger elevator mein ek aisi mechanical safety hoti hai jo bina electricity ke lift ko rok leti hai #liftfacts #sciencefacts #shorts #hindifacts #desiscience #howitworks #fyp #facts",
+        "instagram": "Kaise Karta Hai Kaam #4 🔎 Har passenger elevator mein ek aisi mechanical safety hoti hai jo bina electricity ke lift ko rok leti hai\n\n👇 Kya aapko iss safety brake par bharosa hai?\n.\n.\n#liftfacts #sciencefacts #shorts #hindifacts #desiscience #howitworks #reels #facts #didyouknow",
+        "facebook": "Kaise Karta Hai Kaam #4 🔎 Har passenger elevator mein ek aisi mechanical safety hoti hai jo bina electricity ke lift ko rok leti hai\n\n👇 Kya aapko iss safety brake par bharosa hai?\n\n#liftfacts #sciencefacts #shorts #hindifacts #desiscience #howitworks",
+        "script": "Aap roz lift use karte hain lekin steel ke wedges ise kabhi girne nahi dete Agar saare ke saare cables ek saath toot bhi jaayein tab bhi aap neeche nahi girenge Dekho hota kya hai upar ek ghoomta hua mechanical governor laga hota hai Aur jab lift tez girti hai toh centrifugal force uske weights ko bahar phenk deta hai Isliye ye weights turant ek pahiye mein phans kar use poori tarah lock kar dete hain Iss jhatke se lift ke neeche bandhi ek alag safety cable khinch jaati hai Aur ye bhaari steel ke wedges ko seedhe side ki lohe ki rails mein ghusa deta hai Aur yahin twist hai lift ka apna wazan hi in wedges ko aur zor se daba deta hai Bina kisi bijli ke sirf friction tees ton ki lift ko wahin rok deta hai Sach batana iss safety brake par bharosa hai haan ya naa comment mein likho aur follow karo",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBlGr9ASoDgYjGZphuKhhGjornNZ3UAAL6BwACpqDoR_XZQT0IeknBPQQ",
+      "channel": "hi",
+      "message_id": 404,
+      "created": "2026-11-18T01:36:42.941026",
+      "scheduled": true
     }
   },
   "history": [
@@ -1685,9 +1726,40 @@
       },
       "instagram": "Ocean Mysteries #3 🔎 Meet the Antarctic crocodile icefish, the only vertebrate on Earth with transparent blood. ❄️\n\n👇 Could you survive Antarctic water for one minute, yes or no?\n.\n.\n#oceanlife #marinebiology #antarctica #wildlife #sciencefacts #naturewonders #reels #facts #didyouknow",
       "channel": "en"
+    },
+    {
+      "title": "How Elevators Physically Cannot Plunge",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/Jy6NFgIhUCE",
+        "Facebook": "https://www.facebook.com/reel/1613544719924427",
+        "Instagram": "https://www.instagram.com/reel/Df3VvQxDHpA/"
+      },
+      "created": "2026-11-18T01:27:28",
+      "theme": "tech",
+      "hook": "You ride elevators daily, but steel wedges prevent free falls.",
+      "series": "How It Works #4",
+      "hook_style": "daily_habit",
+      "file_id": "BAACAgEAAxkDAAIBkWr9AAHReinLRt8P6lFzV0Q9A51OFwAC-AcAAqag6EemmX1s_jjUiz0E",
+      "youtube": {
+        "title": "How Elevators Physically Cannot Plunge | How It Works #4 #shorts",
+        "description": "Every passenger elevator has a purely mechanical fail-safe that stops free falls without any electricity 🛗\n\n👇 Would you trust this safety brake, yes or no?\n\n#engineering #howitworks #elevator #techfacts #physics #safety #shorts\n\nImage credits:\nPhoto: Adrien Olichon · Unsplash\nPhoto: Cai Fang · Unsplash\nPhoto: Georg Eiermann · Unsplash\nPhoto: Lasse Møller · Unsplash\nPhoto: Nguyen Tony · Unsplash\nPhoto: Pawan Kawan · Unsplash\nPhoto: Raquel Ming · Unsplash\nPhoto: Soham Rathod · Unsplash\nPhoto: Zoli Bukta · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "engineering",
+          "howitworks",
+          "elevator",
+          "techfacts",
+          "physics",
+          "safety",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "How It Works #4 🔎 Every passenger elevator has a purely mechanical fail-safe that stops free falls without any electricity 🛗\n\n👇 Would you trust this safety brake, yes or no?\n.\n.\n#engineering #howitworks #elevator #techfacts #physics #safety #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-17 16:15",
+  "last_slot": "2026-11-17 19:15",
   "stats_day": "2026-11-17",
   "stats_problems": {},
   "followers": {

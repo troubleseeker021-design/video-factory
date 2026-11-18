@@ -323,5 +323,14 @@
     "hook_style": "never_seen",
     "hook": "You've never seen a fish with completely clear blood.",
     "date": "2026-11-17"
+  },
+  {
+    "id": "how-elevators-physically-cannot-plunge",
+    "title": "How Elevators Physically Cannot Plunge",
+    "theme": "tech",
+    "format": "standard",
+    "hook_style": "daily_habit",
+    "hook": "You ride elevators daily, but steel wedges prevent free falls.",
+    "date": "2026-11-18"
   }
 ]
