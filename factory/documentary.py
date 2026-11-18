@@ -837,6 +837,8 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
         ws = part_words[i]
         if 1 <= len(prompts) < len(sents) <= 6:  # the writer gave fewer pictures than sentences: add the missing ones
             prompts += [f"{prompts[0].split('.')[0]}, showing: {x}" for x in sents[len(prompts):]]
+        if len(prompts) > len(sents) >= 1:  # more pictures than sentences: one per sentence, in order
+            prompts = prompts[:len(sents)]
         k = len(prompts)
         if len(sents) == k:  # cut on each sentence's first word
             idx, c = [], 0
@@ -856,9 +858,10 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
                 w = min(len(ws) - 1, int(round(idx[j] / total_w * len(ws))))
                 tt = offsets[i] + intro + float(ws[w]["start"])
             nxt_t = starts[i + 1] if i + 1 < len(starts) else total
-            if last_t is not None and (tt - last_t < 3.5 or nxt_t - tt < 3.5):  # never flash a picture by too quickly
+            if last_t is not None and (tt - last_t < 3.0 or nxt_t - tt < 3.0):  # never flash a picture by too quickly
                 continue
-            shots.append((pr, tt, i))
+            # the picture dissolves in just BEFORE its sentence is spoken, so it is fully on screen as the words start
+            shots.append((pr, max(0.0, tt - 0.7) if shots else tt, i))
             last_t = tt
     starts_s = [s[1] for s in shots]
     durs = [max(3.0, b - a) for a, b in zip(starts_s, starts_s[1:] + [total])]
