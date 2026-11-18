@@ -438,13 +438,42 @@ def _pixabay_clip(query, used):
         for size in ("large", "medium"):
             v = vids.get(size) or {}
             if v.get("url") and (v.get("width") or 0) >= 1280 and (v.get("width") or 0) > (v.get("height") or 1):
+                if (v.get("size") or 0) > 70 * (1 << 20):
+                    continue  # huge 4K-sized file: use the smaller version of the same clip
                 try:
-                    path = media._download(v["url"], ".mp4")
+                    path = media._download(v["url"], ".mp4", max_mb=120)
                 except Exception as e:
-                    log(f"  pixabay download failed: {str(e)[:100]}")
-                    break
+                    log(f"  pixabay {size} clip skipped: {str(e)[:80]}")
+                    continue  # too big? try the smaller version of the same clip
                 used.add(h.get("id"))
                 return path
+    return None
+
+
+def _pixabay_photo(query, used):
+    """A real landscape photo from Pixabay that matches this paragraph (when the AI pictures are used up)."""
+    import urllib.parse
+    from . import media
+    key = os.environ.get("PIXABAY_API_KEY", "").strip()
+    if not key or not query:
+        return None
+    qs = urllib.parse.urlencode({"key": key, "q": str(query)[:90], "image_type": "photo", "orientation": "horizontal",
+                                 "per_page": 12, "safesearch": "true", "min_width": 1280})
+    try:
+        hits = media._get_json(f"https://pixabay.com/api/?{qs}").get("hits", [])
+    except Exception as e:
+        log(f"  pixabay photo search failed for '{query}': {str(e)[:100]}")
+        return None
+    for h in hits[:8]:
+        url = h.get("largeImageURL")
+        if not url or h.get("id") in used:
+            continue
+        try:
+            path = media._download(url, ".jpg")
+        except Exception:
+            continue
+        used.add(h.get("id"))
+        return path
     return None
 
 
@@ -507,27 +536,37 @@ def _sound_design(parts, starts, total, sfx_events, path, sr=44100):
             segs[-1][1] = b
         else:
             segs.append([a, b, q])
-    cache, used, found = {}, set(), 0
-    for a, b, q in segs:
-        if not q:
-            continue
-        if q not in cache:
+    from concurrent.futures import ThreadPoolExecutor
+    uniq = list(dict.fromkeys(q for _, _, q in segs if q))[:10]
+    used, found = set(), 0
+
+    def fetch(q):
+        try:
             mp3 = _freesound(q, used)
-            cache[q] = _load_audio(mp3) if mp3 else None
-        src = cache[q]
+            return q, (_load_audio(mp3) if mp3 else None)
+        except Exception:
+            return q, None
+    with ThreadPoolExecutor(5) as ex:
+        cache = dict(ex.map(fetch, uniq))
+    last = None
+    for a, b, q in segs:
+        src = cache.get(q) if q else None
+        if src is None and q:
+            src = last  # an 11th different sound, or one that failed: keep the previous scene's sound
+        last = src if src is not None else last
         if src is None or len(src) < sr * 2:
             continue
         found += 1
-        L = int((b - a + 2.0) * sr)
+        L = int((b - a + 0.5) * sr)  # starts just before its scene and is gone when the scene ends
         reps = int(np.ceil(L / len(src)))
         seg = np.tile(src, (reps, 1))[:L].copy()
         rms = float(np.sqrt(np.mean(seg ** 2))) or 1.0
-        seg *= 0.045 / rms  # always a quiet bed, whatever the recording's loudness
-        f = min(int(2.0 * sr), L // 3)
+        seg *= 0.016 / rms  # a soft bed far under the narrator, whatever the recording's loudness
+        f = min(int(1.2 * sr), L // 3)
         ramp = np.linspace(0, 1, f, dtype=np.float32)[:, None]
         seg[:f] *= ramp
         seg[-f:] *= ramp[::-1]
-        i0 = int(max(0, a - 1.0) * sr)
+        i0 = int(max(0, a - 0.5) * sr)
         m = min(L, n - i0)
         if m > 0:
             bed[i0:i0 + m] += seg[:m]
@@ -836,7 +875,7 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
         seen.add(pi)
     stills, media_ = [], []
     ri = ai = vc = 0
-    used_clips = set()
+    used_clips, used_photos = set(), set()
     for i, (prompt, _, pi) in enumerate(shots):
         path = os.path.join(WORK, f"s{i:02d}.jpg")
         if i in want_clip and i > 0:
@@ -852,6 +891,10 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
             ri += 1
         elif _ai_still(prompt, path, seed + i):
             ai += 1
+        elif (pp := _pixabay_photo(parts[pi].get("footage") or parts[pi].get("ambience"), used_photos)):
+            from PIL import Image
+            _landscape(Image.open(pp)).save(path, quality=93)
+            ri += 1
         else:
             if stock is None:
                 stock = _unsplash_landscape((script.get("keywords") or []) + (script.get("wiki") or []))
@@ -943,13 +986,13 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
     cues = _sub_cues(parts, part_words, offsets, intro, total - 6.5) if cfg.get("doc_subtitles", True) else []
     log(f"  subtitles: {len(cues)} lines")
     mus = music.pick_music(total, seed, WORK)
-    events = [(0.3, "impact", 0.35), (total - 6.2, "ding", 0.3)]
+    events = [(0.3, "impact", 0.22), (total - 6.2, "ding", 0.18)]
     for o in over:
         name = str(o[0])
         if name.startswith("ch"):
-            events.append((o[1], "whoosh", 0.3))
+            events.append((o[1], "whoosh", 0.16))
         elif name.startswith("g"):
-            events.append((o[1] + 0.1, "pop", 0.18))
+            events.append((o[1] + 0.1, "pop", 0.09))
     fx = None
     try:
         fx = _sound_design(parts, starts, total, events, os.path.join(WORK, "fx.wav"))
@@ -977,13 +1020,18 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
         fc.append(f"{cur}[subs]overlay=0:{H - SUB_H}:eof_action=pass[vs]")
         cur = "[vs]"
     vi, mi = len(over) + 1 + bool(cues), len(over) + 2 + bool(cues)
-    fc.append(f"[{vi}:a]adelay={int(intro * 1000)}|{int(intro * 1000)}[vo]")
-    fc.append(f"[{mi}:a]volume=0.15,afade=t=out:st={total - 3:.2f}:d=3[mu]")
+    # the narrator always comes first: louder, clearer (a little presence boost), and the music + nature
+    # sounds automatically dip down whenever he speaks (broadcast "ducking")
+    fc.append(f"[{vi}:a]adelay={int(intro * 1000)}|{int(intro * 1000)},highpass=f=70,"
+              "equalizer=f=3200:t=q:w=1.2:g=3,loudnorm=I=-14:TP=-1.5:LRA=9,asplit=2[vo][vkey]")
+    fc.append(f"[{mi}:a]volume=0.09,afade=t=out:st={total - 3:.2f}:d=3[mu]")
     if fx:
         fc.append(f"[{mi + 1}:a]volume=1.0[fx]")
-        fc.append("[vo][mu][fx]amix=inputs=3:duration=longest:normalize=0,alimiter=limit=0.95[a]")
+        fc.append("[mu][fx]amix=inputs=2:duration=longest:normalize=0[bed]")
     else:
-        fc.append("[vo][mu]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95[a]")
+        fc.append("[mu]anull[bed]")
+    fc.append("[bed][vkey]sidechaincompress=threshold=0.02:ratio=8:attack=15:release=500[duck]")
+    fc.append("[vo][duck]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95[a]")
     out = os.path.join(DATA, "documentary.mp4")
     _run([*args, "-filter_complex", ";".join(fc), "-map", cur, "-map", "[a]", "-t", f"{total:.2f}",
           *ENC, "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-movflags", "+faststart", out], timeout=3000)
