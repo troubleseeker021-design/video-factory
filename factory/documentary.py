@@ -55,6 +55,10 @@ Return JSON only:
                shows exactly that sentence (subject, action, setting, light, camera), photorealistic
                documentary still, no text. When the sentence explains HOW something works, make it a clear
                cut-away / cross-section 3D illustration of the inside"],
+      "footage": "2-3 word stock VIDEO search for real moving footage that shows this paragraph (e.g. 'waterfall aerial',
+                  'underwater current', 'earth rotating', 'eucalyptus forest'), or null",
+      "ambience": "1-3 word nature sound of this paragraph's setting (e.g. 'waterfall', 'underwater', 'forest birds',
+                   'desert wind', 'ocean waves', 'rain', 'cave drips')",
       "graphic": an on-screen teaching graphic that EXPLAINS this paragraph like a teacher at a whiteboard, or null.
         One of:
         {{"type": "steps", "title": "how it works", "items": ["step 1", "step 2", "step 3"]}}  (2-4 steps, max 6 words each)
@@ -411,6 +415,141 @@ def _graphic_frames(g, a, b):
     return []
 
 
+# ------------------------------------------------------------------ real footage + sound (free)
+def _pixabay_clip(query, used):
+    """A real landscape video clip from Pixabay (free for YouTube, no credit needed)."""
+    import urllib.parse
+    from . import media
+    key = os.environ.get("PIXABAY_API_KEY", "").strip()
+    if not key or not query:
+        return None
+    qs = urllib.parse.urlencode({"key": key, "q": str(query)[:90], "per_page": 20, "safesearch": "true"})
+    try:
+        hits = media._get_json(f"https://pixabay.com/api/videos/?{qs}").get("hits", [])
+    except Exception as e:
+        log(f"  pixabay search failed for '{query}': {str(e)[:100]}")
+        return None
+    top = hits[:8]
+    random.shuffle(top)
+    for h in top:
+        if h.get("id") in used or (h.get("duration") or 0) < 4:
+            continue
+        vids = h.get("videos") or {}
+        for size in ("large", "medium"):
+            v = vids.get(size) or {}
+            if v.get("url") and (v.get("width") or 0) >= 1280 and (v.get("width") or 0) > (v.get("height") or 1):
+                try:
+                    path = media._download(v["url"], ".mp4")
+                except Exception as e:
+                    log(f"  pixabay download failed: {str(e)[:100]}")
+                    break
+                used.add(h.get("id"))
+                return path
+    return None
+
+
+def _video_clip(src, secs, out):
+    """Real footage, filled to 16:9, graded like the stills, looped if it is shorter than the shot."""
+    vf = (f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS},"
+          "eq=contrast=1.06:saturation=1.08,vignette=PI/5,format=yuv420p")
+    _run(["-stream_loop", "-1", "-i", src, "-t", f"{secs:.3f}", "-vf", vf, *FAST, "-an", out])
+
+
+def _freesound(query, used):
+    """A free CC0 nature sound from Freesound (no credit needed). Returns a local mp3 path."""
+    import urllib.parse
+    from . import media
+    key = os.environ.get("FREESOUND_API_KEY", "").strip()
+    if not key or not query:
+        return None
+    qs = urllib.parse.urlencode({"query": str(query)[:60], "token": key, "page_size": 10,
+                                 "filter": 'license:"Creative Commons 0" duration:[15 TO 600]',
+                                 "fields": "id,name,previews,duration"})
+    try:
+        res = media._get_json(f"https://freesound.org/apiv2/search/text/?{qs}").get("results", [])
+    except Exception as e:
+        log(f"  freesound search failed for '{query}': {str(e)[:100]}")
+        return None
+    for r in res[:5]:
+        url = (r.get("previews") or {}).get("preview-hq-mp3")
+        if not url or r.get("id") in used:
+            continue
+        try:
+            path = media._download(url, ".mp3")
+        except Exception:
+            continue
+        used.add(r.get("id"))
+        return path
+    return None
+
+
+def _load_audio(path, sr=44100):
+    import numpy as np
+    p = subprocess.run([ffmpeg_exe(), "-loglevel", "error", "-i", path, "-f", "s16le", "-ac", "2", "-ar", str(sr), "-"],
+                       capture_output=True, timeout=300)
+    return np.frombuffer(p.stdout, dtype=np.int16).reshape(-1, 2).astype(np.float32) / 32768.0
+
+
+def _sound_design(parts, starts, total, sfx_events, path, sr=44100):
+    """Quiet nature ambience under each scene (waterfall, wind, ocean...) + soft whooshes and pops on the
+    graphics and chapter titles. One stereo wav, mixed under the narrator."""
+    import wave
+    import numpy as np
+    from . import sfx
+    n = int((total + 1) * sr)
+    bed = np.zeros((n, 2), dtype=np.float32)
+    segs = []  # merge neighbouring paragraphs that share the same sound
+    for i, p in enumerate(parts):
+        q = str(p.get("ambience") or "").strip().lower()
+        a = starts[i]
+        b = starts[i + 1] if i + 1 < len(starts) else total - 6.0
+        if segs and segs[-1][2] == q:
+            segs[-1][1] = b
+        else:
+            segs.append([a, b, q])
+    cache, used, found = {}, set(), 0
+    for a, b, q in segs:
+        if not q:
+            continue
+        if q not in cache:
+            mp3 = _freesound(q, used)
+            cache[q] = _load_audio(mp3) if mp3 else None
+        src = cache[q]
+        if src is None or len(src) < sr * 2:
+            continue
+        found += 1
+        L = int((b - a + 2.0) * sr)
+        reps = int(np.ceil(L / len(src)))
+        seg = np.tile(src, (reps, 1))[:L].copy()
+        rms = float(np.sqrt(np.mean(seg ** 2))) or 1.0
+        seg *= 0.045 / rms  # always a quiet bed, whatever the recording's loudness
+        f = min(int(2.0 * sr), L // 3)
+        ramp = np.linspace(0, 1, f, dtype=np.float32)[:, None]
+        seg[:f] *= ramp
+        seg[-f:] *= ramp[::-1]
+        i0 = int(max(0, a - 1.0) * sr)
+        m = min(L, n - i0)
+        if m > 0:
+            bed[i0:i0 + m] += seg[:m]
+    sounds = {}
+    for t, name, gain in sfx_events:
+        if name not in sounds:
+            sounds[name] = sfx.BANK[name]().astype(np.float32)
+        s = sounds[name] * gain
+        i0 = int(max(0, t) * sr)
+        m = min(len(s), n - i0)
+        if m > 0:
+            bed[i0:i0 + m] += s[:m, None]
+    bed = np.clip(bed, -0.95, 0.95)
+    with wave.open(path, "wb") as w:
+        w.setnchannels(2)
+        w.setsampwidth(2)
+        w.setframerate(sr)
+        w.writeframes((bed * 32767).astype("<i2").tobytes())
+    log(f"  sound design: {found} nature sounds, {len(sfx_events)} effects")
+    return path
+
+
 # ------------------------------------------------------------------ subtitles (Netflix style)
 SUB_H = 300  # subtitle strip at the bottom of the frame
 
@@ -589,17 +728,32 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
             nxt_t = starts[i + 1] if i + 1 < len(starts) else total
             if last_t is not None and (tt - last_t < 3.5 or nxt_t - tt < 3.5):  # never flash a picture by too quickly
                 continue
-            shots.append((pr, tt))
+            shots.append((pr, tt, i))
             last_t = tt
-    starts_s = [s for _, s in shots]
+    starts_s = [s[1] for s in shots]
     durs = [max(3.0, b - a) for a, b in zip(starts_s, starts_s[1:] + [total])]
 
     real = _real_photos(script.get("wiki") or [], limit=10)
     stock, si = None, 0  # Unsplash photos, fetched only if the AI pictures run out
-    stills = []
-    ri = ai = 0
-    for i, (prompt, _) in enumerate(shots):
+    # real moving footage: one clip per paragraph (on its 2nd picture when it has several)
+    want_clip, seen = set(), set()
+    for k, (_, _, pi) in enumerate(shots):
+        if pi in seen or not str(parts[pi].get("footage") or "").strip():
+            continue
+        later = [j for j, s in enumerate(shots) if s[2] == pi]
+        want_clip.add(later[1] if len(later) > 1 else later[0])
+        seen.add(pi)
+    stills, media_ = [], []
+    ri = ai = vc = 0
+    used_clips = set()
+    for i, (prompt, _, pi) in enumerate(shots):
         path = os.path.join(WORK, f"s{i:02d}.jpg")
+        if i in want_clip and i > 0:
+            clip = _pixabay_clip(parts[pi].get("footage"), used_clips)
+            if clip:
+                media_.append(("vid", clip))
+                vc += 1
+                continue
         use_real = real and ri < len(real) and i % 6 == 4
         if use_real:
             from PIL import Image
@@ -626,13 +780,22 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
             else:
                 _fallback_still(prompt, path, seed + i)
         stills.append(path)
-    log(f"  pictures: {len(stills)} shots for {len(parts)} paragraphs ({ai} AI, {ri} real photos)")
+        media_.append(("img", path))
+    log(f"  pictures: {len(media_)} shots for {len(parts)} paragraphs ({vc} real video clips, {ai} AI, {ri} real photos)")
 
     # 4. one clip per shot, joined with soft 1-second dissolves
     clips = []
-    for i, (still, d) in enumerate(zip(stills, durs)):
+    for i, ((kind, src), d) in enumerate(zip(media_, durs)):
         out = os.path.join(WORK, f"c{i:02d}.mp4")
-        _shot_clip(still, d + 1.0, out, i)
+        try:
+            if kind == "vid":
+                _video_clip(src, d + 1.0, out)
+            else:
+                _shot_clip(src, d + 1.0, out, i)
+        except Exception as e:  # a broken download never stops the film: fall back to a still
+            log(f"  (shot {i} fallback: {str(e)[:100]})")
+            _shot_clip(stills[i % len(stills)] if stills else _fallback_still("", os.path.join(WORK, f"f{i}.jpg"), i),
+                       d + 1.0, out, i)
         clips.append(out)
     inputs, chain, last, offset = [], [], "[0:v]", 0.0
     for c in clips:
@@ -684,12 +847,24 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
     cues = _sub_cues(parts, part_words, offsets, intro, total - 6.5) if cfg.get("doc_subtitles", True) else []
     log(f"  subtitles: {len(cues)} lines")
     mus = music.pick_music(total, seed, WORK)
+    events = [(0.3, "impact", 0.35), (total - 6.2, "ding", 0.3)]
+    for o in over:
+        name = str(o[0])
+        if name.startswith("ch"):
+            events.append((o[1], "whoosh", 0.3))
+        elif name.startswith("g"):
+            events.append((o[1] + 0.1, "pop", 0.18))
+    fx = None
+    try:
+        fx = _sound_design(parts, starts, total, events, os.path.join(WORK, "fx.wav"))
+    except Exception as e:
+        log(f"  (sound design skipped: {str(e)[:120]})")
     args = ["-i", film]
     for o in over:  # each picture overlay only exists for its own few seconds (keeps the render fast)
         args += ["-loop", "1", "-framerate", str(FPS), "-t", f"{max(0.2, o[2] - o[1]):.2f}", "-i", os.path.join(WORK, o[0])]
     if cues:
         args += ["-f", "concat", "-safe", "0", "-i", _subtitle_track(cues, busy, total)]
-    args += ["-i", wav, "-i", mus]
+    args += ["-i", wav, "-i", mus] + (["-i", fx] if fx else [])
     fc, cur = [], "[0:v]"
     for k, o in enumerate(over, 1):
         _, a, b = o[:3]
@@ -708,7 +883,11 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
     vi, mi = len(over) + 1 + bool(cues), len(over) + 2 + bool(cues)
     fc.append(f"[{vi}:a]adelay={int(intro * 1000)}|{int(intro * 1000)}[vo]")
     fc.append(f"[{mi}:a]volume=0.15,afade=t=out:st={total - 3:.2f}:d=3[mu]")
-    fc.append("[vo][mu]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95[a]")
+    if fx:
+        fc.append(f"[{mi + 1}:a]volume=1.0[fx]")
+        fc.append("[vo][mu][fx]amix=inputs=3:duration=longest:normalize=0,alimiter=limit=0.95[a]")
+    else:
+        fc.append("[vo][mu]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95[a]")
     out = os.path.join(DATA, "documentary.mp4")
     _run([*args, "-filter_complex", ";".join(fc), "-map", cur, "-map", "[a]", "-t", f"{total:.2f}",
           *ENC, "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-movflags", "+faststart", out], timeout=3000)
