@@ -41,6 +41,47 @@
       "message_id": 414,
       "created": "2026-11-18T17:33:25.463765",
       "scheduled": true
+    },
+    "c637a1dab9": {
+      "vid": "20261118-221543-the-ghost-army-that-fooled-hitler-hi",
+      "post": {
+        "title": "The Ghost Army That Fooled Hitler",
+        "created": "2026-11-18T22:25:45",
+        "source": "gemini:gemini-flash-lite-latest",
+        "theme": "dark",
+        "hook": "Ameriki army ne second world war jeetne ke liye hawa wale tanks use kiye the.",
+        "series": "Anokhi Kahaniyan #3",
+        "question": "Would this trick fool you, yes or no?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "myth",
+        "hook_style": "contradiction",
+        "youtube": {
+          "title": "The Ghost Army That Fooled Hitler | Anokhi Kahaniyan #3 #shorts",
+          "description": "An entire US Army division made entirely of rubber tanks and actors. 🎭\n\n👇 Would this trick fool you, yes or no?\n\n#history #worldwar2 #military #facts #curiosity #ghostarmy #shorts\n\nImage credits:\nPhoto: Anna Huemer · Unsplash\nPhoto: Dillon Kydd · Unsplash\nPhoto: Josh Frenette · Unsplash\nPhoto: Matias Luge · Unsplash\nPhoto: Museums Victoria · Unsplash\nPhoto: Vadim Shevyrin · Unsplash\nVideo: Pixabay",
+          "tags": [
+            "history",
+            "worldwar2",
+            "military",
+            "facts",
+            "curiosity",
+            "ghostarmy",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "An entire US Army division made entirely of rubber tanks and actors. 🎭 #history #worldwar2 #military #facts #curiosity #ghostarmy #fyp #facts",
+        "instagram": "Anokhi Kahaniyan #3 🔎 An entire US Army division made entirely of rubber tanks and actors. 🎭\n\n👇 Would this trick fool you, yes or no?\n.\n.\n#history #worldwar2 #military #facts #curiosity #ghostarmy #reels #facts #didyouknow",
+        "facebook": "Anokhi Kahaniyan #3 🔎 An entire US Army division made entirely of rubber tanks and actors. 🎭\n\n👇 Would this trick fool you, yes or no?\n\n#history #worldwar2 #military #facts #curiosity #ghostarmy",
+        "script": "Ameriki army ne second world war jeetne ke liye hawa wale tanks use kiye the. unnees sau chalees mein soldiers ne enemy ko dhokha dene ke liye rubber ke tanks phulaye phir unhone bade speakers par fake radio chatter chalayi german planes ne upar se dekha aur socha ki ek bada division niche khada hai aur yahin twist hai ki inmein se zyada taraf soldiers artists aur fashion designers the matlab ye poora system actual weapons ke bina bas theatrical illusions par chal raha hai Kabhi-kabhi sabse bada weapon ek simple stage prop hota hai. Sach-sach batana, ye trick tumhe dhokha de sakti thi, yes or no? Comment mein likho aur follow karo.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBpGr-JkEuBDzCNj1osl5Y5kDzqFBsAALsCQACbNfwR8_G7ypmtT6mPQQ",
+      "channel": "hi",
+      "message_id": 420,
+      "created": "2026-11-18T22:27:14.663685",
+      "scheduled": true
     }
   },
   "history": [
@@ -1772,9 +1813,40 @@
       },
       "theme": "documentary",
       "created": "2026-11-18T21:51:39"
+    },
+    {
+      "title": "The Ghost Army That Fooled Hitler",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/ioDAFeQfFYI",
+        "Facebook": "https://www.facebook.com/reel/1150623670794771",
+        "Instagram": "https://www.instagram.com/reel/Df5k2aGDJaM/"
+      },
+      "created": "2026-11-18T22:18:00",
+      "theme": "dark",
+      "hook": "The US Army deployed inflatable tanks to win World War Two.",
+      "series": "Dark History #3",
+      "hook_style": "contradiction",
+      "file_id": "BAACAgEAAxkDAAIBoWr-JesVAQYfYZX-aOVi8kBdooX9AALrCQACbNfwR2My7hC8KEAXPQQ",
+      "youtube": {
+        "title": "The Ghost Army That Fooled Hitler | Dark History #3 #shorts",
+        "description": "An entire US Army division made entirely of rubber tanks and actors. 🎭\n\n👇 Would this trick fool you, yes or no?\n\n#history #worldwar2 #military #facts #curiosity #ghostarmy #shorts\n\nImage credits:\nPhoto: Anna Huemer · Unsplash\nPhoto: Dillon Kydd · Unsplash\nPhoto: Josh Frenette · Unsplash\nPhoto: Matias Luge · Unsplash\nPhoto: Museums Victoria · Unsplash\nPhoto: Vadim Shevyrin · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "history",
+          "worldwar2",
+          "military",
+          "facts",
+          "curiosity",
+          "ghostarmy",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Dark History #3 🔎 An entire US Army division made entirely of rubber tanks and actors. 🎭\n\n👇 Would this trick fool you, yes or no?\n.\n.\n#history #worldwar2 #military #facts #curiosity #ghostarmy #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-18 11:15",
+  "last_slot": "2026-11-18 16:15",
   "stats_day": "2026-11-18",
   "stats_problems": {},
   "followers": {

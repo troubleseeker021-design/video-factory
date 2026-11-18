@@ -341,5 +341,14 @@
     "hook_style": "",
     "hook": "Cleopatra lived closer in time to the Moon landing than to the pyramids.",
     "date": "2026-11-18"
+  },
+  {
+    "id": "the-ghost-army-that-fooled-hitler",
+    "title": "The Ghost Army That Fooled Hitler",
+    "theme": "dark",
+    "format": "myth",
+    "hook_style": "contradiction",
+    "hook": "The US Army deployed inflatable tanks to win World War Two.",
+    "date": "2026-11-18"
   }
 ]
