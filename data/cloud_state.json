@@ -1,6 +1,48 @@
 {
   "offset": 41248576,
-  "pending": {},
+  "pending": {
+    "c04101786a": {
+      "vid": "20261118-171950-classic-cleopatra-moon-hi",
+      "post": {
+        "title": "Cleopatra Ka Time",
+        "created": "2026-11-18T17:32:10",
+        "source": "bank",
+        "theme": "history",
+        "hook": "Cleopatra chaand par insano ke utarne ke jitne kareeb thi usse bahut baad mein pyramid bane the.",
+        "series": "History Facts #3",
+        "question": "Kis time mein jeena chahte the?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "",
+        "youtube": {
+          "title": "Cleopatra Ka Time | History Facts #3 #shorts",
+          "description": "Time is actually very weird.\n\n👇 Kis time mein jeena chahte the?\n\n#history #egypt #cleopatra #didyouknow #historyfacts #shorts #shorts",
+          "tags": [
+            "history",
+            "egypt",
+            "cleopatra",
+            "didyouknow",
+            "historyfacts",
+            "shorts",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Time is actually very weird. #history #egypt #cleopatra #didyouknow #historyfacts #shorts #fyp #facts",
+        "instagram": "History Facts #3 🔎 Time is actually very weird.\n\n👇 Kis time mein jeena chahte the?\n.\n.\n#history #egypt #cleopatra #didyouknow #historyfacts #shorts #reels #facts #didyouknow",
+        "facebook": "History Facts #3 🔎 Time is actually very weird.\n\n👇 Kis time mein jeena chahte the?\n\n#history #egypt #cleopatra #didyouknow #historyfacts #shorts",
+        "script": "Cleopatra chaand par insano ke utarne ke jitne kareeb thi usse bahut baad mein pyramid bane the. Giza ka Great Pyramid kareeb dhai hazaar eesa purv bana tha. Cleopatra ne eesa purv pachaas ke aaspass raaj kiya jo iske dhai hazaar saal baad hua. Chand par landing nineteen sixty nine mein hui jo Cleopatra ke bhi do hazaar saal baad ki baat hai. Matlab unke liye pyramid kisi bahut purani rahasyamayi duniya ki tarah the. Follow karo aise dimaag hila dene wale history ke facts ke liye. Sach-sach batana kis time mein jeena chahte the? Comment mein likho aur follow karo.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBnmr94WRFQS8eitpfQa-qhlkQDLsrAAJYCQACbNfwRzzl73WDl8SNPQQ",
+      "channel": "hi",
+      "message_id": 414,
+      "created": "2026-11-18T17:33:25.463765",
+      "scheduled": true
+    }
+  },
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -1681,9 +1723,40 @@
         }
       },
       "stats_at": "2026-11-18T11:00:31"
+    },
+    {
+      "title": "Cleopatra Lived Closer to the Moon Landing Than the Pyramids",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/oNbSXyBhzcg",
+        "Facebook": "https://www.facebook.com/reel/1127017696773291",
+        "Instagram": "https://www.instagram.com/reel/Df5DOuOjVOA/"
+      },
+      "created": "2026-11-18T17:21:53",
+      "theme": "history",
+      "hook": "Cleopatra lived closer in time to the Moon landing than to the pyramids.",
+      "series": "Lost History #3",
+      "hook_style": "",
+      "file_id": "BAACAgEAAxkDAAIBm2r94RyTAAEw-JKn3tSFNQGvB8WqOAACVwkAAmzX8EcLH0p6qyLWMz0E",
+      "youtube": {
+        "title": "Cleopatra Lived Closer to the Moon Landing Than the Pyramids | Lost History #3 #shorts",
+        "description": "Time is weird 🏛️🚀\n\n👇 Would you want to see this in person?\n\n#history #egypt #cleopatra #didyouknow #historyfacts #pyramids #shorts",
+        "tags": [
+          "history",
+          "egypt",
+          "cleopatra",
+          "didyouknow",
+          "historyfacts",
+          "pyramids",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Lost History #3 🔎 Time is weird 🏛️🚀\n\n👇 Would you want to see this in person?\n.\n.\n#history #egypt #cleopatra #didyouknow #historyfacts #pyramids #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-17 19:15",
+  "last_slot": "2026-11-18 11:15",
   "stats_day": "2026-11-18",
   "stats_problems": {},
   "followers": {

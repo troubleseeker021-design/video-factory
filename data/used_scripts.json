@@ -332,5 +332,14 @@
     "hook_style": "daily_habit",
     "hook": "You ride elevators daily, but steel wedges prevent free falls.",
     "date": "2026-11-18"
+  },
+  {
+    "id": "classic-cleopatra-moon",
+    "title": "Cleopatra Lived Closer to the Moon Landing Than the Pyramids",
+    "theme": "history",
+    "format": "standard",
+    "hook_style": "",
+    "hook": "Cleopatra lived closer in time to the Moon landing than to the pyramids.",
+    "date": "2026-11-18"
   }
 ]
