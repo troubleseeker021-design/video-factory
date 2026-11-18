@@ -622,6 +622,95 @@ def _subtitle_track(cues, busy, total):
     return lst
 
 
+# ------------------------------------------------------------------ 3D photo effect (depth parallax)
+DEPTH_URL = "https://huggingface.co/onnx-community/depth-anything-v2-small/resolve/main/onnx/model.onnx"
+_DEPTH = {}
+
+
+def _depth_session():
+    """Free open-source AI (Depth Anything V2, small) that guesses how far away each part of a picture is."""
+    if "s" in _DEPTH:
+        return _DEPTH["s"]
+    _DEPTH["s"] = None
+    try:
+        import onnxruntime as ort
+        from . import media
+        mdir = os.path.join(DATA, "_models")
+        os.makedirs(mdir, exist_ok=True)
+        path = os.path.join(mdir, "depth_anything_v2_small.onnx")
+        if not os.path.exists(path) or os.path.getsize(path) < 10_000_000:
+            tmp = media._download(DEPTH_URL, ".onnx", max_mb=200)
+            shutil.move(tmp, path)
+        _DEPTH["s"] = ort.InferenceSession(path, providers=["CPUExecutionProvider"])
+        log("  3D photo effect: depth model ready")
+    except Exception as e:
+        log(f"  (3D photo effect off: {str(e)[:120]})")
+    return _DEPTH["s"]
+
+
+def _depth_map(rgb):
+    """rgb: HxWx3 uint8 -> HxW float32 0..1 (1 = nearest). None if the model is unavailable."""
+    import cv2
+    import numpy as np
+    sess = _depth_session()
+    if sess is None:
+        return None
+    x = cv2.resize(rgb, (518, 518), interpolation=cv2.INTER_AREA).astype(np.float32) / 255.0
+    x = (x - np.array([0.485, 0.456, 0.406], np.float32)) / np.array([0.229, 0.224, 0.225], np.float32)
+    x = x.transpose(2, 0, 1)[None].astype(np.float32)
+    d = np.asarray(sess.run(None, {sess.get_inputs()[0].name: x})[0], dtype=np.float32).squeeze()
+    d = cv2.resize(d, (rgb.shape[1], rgb.shape[0]), interpolation=cv2.INTER_CUBIC)
+    lo, hi = np.percentile(d, 2), np.percentile(d, 98)
+    d = np.clip((d - lo) / max(hi - lo, 1e-6), 0, 1)
+    return cv2.GaussianBlur(d, (0, 0), 6).astype(np.float32)
+
+
+def _parallax_clip(still, secs, out, k, depth_fn=None):
+    """A slow 3D camera move through a still picture: near things move more than far things."""
+    import cv2
+    import numpy as np
+    n = max(2, int(secs * FPS))
+    img = cv2.cvtColor(cv2.imread(still), cv2.COLOR_BGR2RGB)
+    over = 1.14  # a little extra picture around the edges, so the move never shows an empty border
+    BW, BH = int(W * over), int(H * over)
+    s = max(BW / img.shape[1], BH / img.shape[0])
+    img = cv2.resize(img, (int(img.shape[1] * s + 0.5), int(img.shape[0] * s + 0.5)), interpolation=cv2.INTER_AREA)
+    y0, x0 = (img.shape[0] - BH) // 2, (img.shape[1] - BW) // 2
+    img = np.ascontiguousarray(img[y0:y0 + BH, x0:x0 + BW])
+    d = (depth_fn or _depth_map)(img)
+    if d is None:
+        raise RuntimeError("no depth")
+    d = cv2.resize(d, (W, H), interpolation=cv2.INTER_AREA)  # depth at output size (approximation)
+    X, Y = np.meshgrid(np.arange(W, dtype=np.float32), np.arange(H, dtype=np.float32))
+    cx, cy = W / 2, H / 2
+    move = k % 4  # dolly in, dolly out, truck right, truck left
+    p = subprocess.Popen([ffmpeg_exe(), "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
+                          "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", *FAST, "-an", out], stdin=subprocess.PIPE)
+    try:
+        for f in range(n):
+            t = f / (n - 1)
+            e = t * t * (3 - 2 * t)  # ease in/out
+            if move in (0, 1):
+                z = e if move == 0 else 1 - e
+                scale = 1.0 + z * (0.05 + 0.09 * d)  # nearer = grows faster
+                sx = cx + (X - cx) / scale
+                sy = cy + (Y - cy) / scale
+            else:
+                dirn = 1 if move == 2 else -1
+                shift = dirn * (e - 0.5) * (40 + 70 * d)  # nearer = slides further
+                sx = X + shift
+                sy = Y + (e - 0.5) * 10 * d
+            mx = (sx + (BW - W) / 2).astype(np.float32)
+            my = (sy + (BH - H) / 2).astype(np.float32)
+            frame = cv2.remap(img, mx, my, interpolation=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
+            p.stdin.write(frame.tobytes())
+    finally:
+        p.stdin.close()
+        p.wait()
+    if p.returncode:
+        raise RuntimeError("ffmpeg failed (parallax)")
+
+
 # ------------------------------------------------------------------ the film
 def _shot_clip(still, secs, out, k):
     """Slow documentary camera move on a still (alternating push-in / pull-out / pans)."""
@@ -707,6 +796,8 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
         prompts = [str(x).strip() for x in prompts if str(x).strip()] or [p.get("shot") or p["text"]]
         sents = [x for x in re.split(r"(?<=[.!?])\s+", p["text"].strip()) if x.strip()]
         ws = part_words[i]
+        if 1 <= len(prompts) < len(sents) <= 6:  # the writer gave fewer pictures than sentences: add the missing ones
+            prompts += [f"{prompts[0].split('.')[0]}, showing: {x}" for x in sents[len(prompts):]]
         k = len(prompts)
         if len(sents) == k:  # cut on each sentence's first word
             idx, c = [], 0
@@ -784,12 +875,15 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
     log(f"  pictures: {len(media_)} shots for {len(parts)} paragraphs ({vc} real video clips, {ai} AI, {ri} real photos)")
 
     # 4. one clip per shot, joined with soft 1-second dissolves
-    clips = []
+    clips, px = [], 0
     for i, ((kind, src), d) in enumerate(zip(media_, durs)):
         out = os.path.join(WORK, f"c{i:02d}.mp4")
         try:
             if kind == "vid":
                 _video_clip(src, d + 1.0, out)
+            elif cfg.get("doc_parallax", True) and _depth_session() is not None:
+                _parallax_clip(src, d + 1.0, out, i)
+                px += 1
             else:
                 _shot_clip(src, d + 1.0, out, i)
         except Exception as e:  # a broken download never stops the film: fall back to a still
@@ -797,6 +891,8 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
             _shot_clip(stills[i % len(stills)] if stills else _fallback_still("", os.path.join(WORK, f"f{i}.jpg"), i),
                        d + 1.0, out, i)
         clips.append(out)
+    if px:
+        log(f"  3D photo effect: {px} shots")
     inputs, chain, last, offset = [], [], "[0:v]", 0.0
     for c in clips:
         inputs += ["-i", c]
