@@ -359,5 +359,14 @@
     "hook_style": "you_body",
     "hook": "The aquatic bladderwort plant vacuum-sucks live prey in milliseconds.",
     "date": "2026-11-19"
+  },
+  {
+    "id": "the-fish-with-a-transparent-head",
+    "title": "The Fish with a Transparent Head",
+    "theme": "ocean",
+    "format": "standard",
+    "hook_style": "contradiction",
+    "hook": "The barreleye fish looks at prey through its transparent skull.",
+    "date": "2026-11-19"
   }
 ]
