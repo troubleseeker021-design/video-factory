@@ -1,48 +1,6 @@
 {
   "offset": 41248576,
-  "pending": {
-    "7b6fb08103": {
-      "vid": "20261119-012158-the-plant-that-hunts-with-underwater-traps-hi",
-      "post": {
-        "title": "Paani Ke Andar Ka Shikaari Paudha",
-        "created": "2026-11-19T01:32:43",
-        "source": "gemini:gemini-flash-lite-latest",
-        "theme": "nature",
-        "hook": "Paani ke andar yeh paudha zinda shikaar ko milliseconds mein vacuum se kheench leta hai",
-        "series": "Adbhut Nature #4",
-        "question": "Kya aap is shikaari paudhe ko ghar mein rakhna chahenge?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "myth",
-        "hook_style": "you_body",
-        "youtube": {
-          "title": "Paani Ke Andar Ka Shikaari Paudha | Adbhut Nature #4 #shorts",
-          "description": "Yeh paani ke andar rehne wala paudha high speed vacuum trap se shikaar karta hai 🌿\n\n👇 Kya aap is shikaari paudhe ko ghar mein rakhna chahenge?\n\n#science #facts #nature #biology #shorts #hindi #shorts\n\nImage credits:\nPhoto: Benjamin L. Jones · Unsplash\nPhoto: Christian Ang · Unsplash\nPhoto: Duy Le Duc · Unsplash\nPhoto: Jean Vella · Unsplash\nPhoto: Lisa Yount · Unsplash\nPhoto: Liz Pullan Pattathy · Unsplash\nPhoto: Shakib Uzzaman · Unsplash\nVideo: Pixabay",
-          "tags": [
-            "science",
-            "facts",
-            "nature",
-            "biology",
-            "shorts",
-            "hindi",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "Yeh paani ke andar rehne wala paudha high speed vacuum trap se shikaar karta hai 🌿 #science #facts #nature #biology #shorts #hindi #fyp #facts",
-        "instagram": "Adbhut Nature #4 🔎 Yeh paani ke andar rehne wala paudha high speed vacuum trap se shikaar karta hai 🌿\n\n👇 Kya aap is shikaari paudhe ko ghar mein rakhna chahenge?\n.\n.\n#science #facts #nature #biology #shorts #hindi #reels #facts #didyouknow",
-        "facebook": "Adbhut Nature #4 🔎 Yeh paani ke andar rehne wala paudha high speed vacuum trap se shikaar karta hai 🌿\n\n👇 Kya aap is shikaari paudhe ko ghar mein rakhna chahenge?\n\n#science #facts #nature #biology #shorts #hindi",
-        "script": "Paani ke andar yeh paudha zinda shikaar ko milliseconds mein vacuum se kheench leta hai Gamle ke paudhe bas baithe rehte hain lekin yeh paani ki species sach mein shikaar karti hai Iske tanon par chhote khokhale bags hote hain jinse paani poori tarah baahar nikal jata hai Aur yahin twist hai yeh apne chhote darwazon ko bhaari pressure mein band rakhta hai Jaise hi koi keeda iske baalon se takraata hai darwaza turant khul jata hai Do milliseconds mein paani andar bharta hai aur shikaar seedhe trap ke andar chala jata hai Aur sabse badi baat kya hai yeh band chamber mein us jaanwar ko zinda pacha leta hai Yeh poori duniya ka sabse tez aur khatarnaak natural trap hai Kya aap is shikaari paudhe ko ghar mein rakhenge haan ya naa comment mein likho aur follow karo",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAIBqWr-UhkmUi5bWyuZJ7m6_cspWTkUAAI4CgACbNfwR1gqY_GRaY57PQQ",
-      "channel": "hi",
-      "message_id": 425,
-      "created": "2026-11-19T01:34:18.376123",
-      "scheduled": true
-    }
-  },
+  "pending": {},
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -1914,7 +1872,7 @@
   "comments_day": "2026-11-18",
   "compile_week": "2026-W46",
   "report_week": "2026-W46",
-  "last_hi_slot": "2026-11-19 13:00",
+  "last_hi_slot": "2026-11-19 20:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -3282,6 +3240,38 @@
         }
       },
       "stats_at": "2026-11-19T11:00:58"
+    },
+    {
+      "title": "Paani Ke Andar Ka Shikaari Paudha",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/TYSkRWFGvCc",
+        "Facebook": "https://www.facebook.com/reel/2036651563710158",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-19T01:32:43",
+      "theme": "nature",
+      "hook": "Paani ke andar yeh paudha zinda shikaar ko milliseconds mein vacuum se kheench leta hai",
+      "series": "Adbhut Nature #4",
+      "hook_style": "you_body",
+      "file_id": "BAACAgEAAxkDAAIBqWr-UhkmUi5bWyuZJ7m6_cspWTkUAAI4CgACbNfwR1gqY_GRaY57PQQ",
+      "youtube": {
+        "title": "Paani Ke Andar Ka Shikaari Paudha | Adbhut Nature #4 #shorts",
+        "description": "Yeh paani ke andar rehne wala paudha high speed vacuum trap se shikaar karta hai 🌿\n\n👇 Kya aap is shikaari paudhe ko ghar mein rakhna chahenge?\n\n#science #facts #nature #biology #shorts #hindi #shorts\n\nImage credits:\nPhoto: Benjamin L. Jones · Unsplash\nPhoto: Christian Ang · Unsplash\nPhoto: Duy Le Duc · Unsplash\nPhoto: Jean Vella · Unsplash\nPhoto: Lisa Yount · Unsplash\nPhoto: Liz Pullan Pattathy · Unsplash\nPhoto: Shakib Uzzaman · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "science",
+          "facts",
+          "nature",
+          "biology",
+          "shorts",
+          "hindi",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Adbhut Nature #4 🔎 Yeh paani ke andar rehne wala paudha high speed vacuum trap se shikaar karta hai 🌿\n\n👇 Kya aap is shikaari paudhe ko ghar mein rakhna chahenge?\n.\n.\n#science #facts #nature #biology #shorts #hindi #reels #facts #didyouknow",
+      "channel": "hi",
+      "ig_manual": true
     }
   ],
   "stats_day_hi": "2026-11-19",
