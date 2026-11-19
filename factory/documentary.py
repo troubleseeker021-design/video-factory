@@ -44,7 +44,9 @@ Return JSON only:
 {{"title": "documentary YouTube title, under 70 characters, curiosity-driven, no hashtags",
   "description": "2-3 sentence YouTube description",
   "tags": ["8 search tags"],
-  "thumb": "2 to 4 word thumbnail text in CAPS",
+  "thumb": {{"top": "1-3 word white hook line in CAPS (e.g. A WATERFALL)",
+            "main": "1-3 word yellow punch line in CAPS that completes it (e.g. UNDER THE OCEAN)",
+            "number": "a short shocking REAL number from the story for a red badge (e.g. 3.5 KM DROP, 370 KM/H, 10,000 YEARS OLD), or null"}},
   "wiki": ["2-4 exact English Wikipedia article titles for real photos"],
   "keywords": ["4 short stock-photo search phrases for beautiful real photos of this story (e.g. eucalyptus forest)"],
   "parts": [
@@ -272,25 +274,62 @@ def _title_card(title, path):
 
 
 def _thumbnail(still, text, path):
-    from PIL import Image, ImageDraw, ImageEnhance
-    img = ImageEnhance.Contrast(Image.open(still).convert("RGB").resize((1280, 720))).enhance(1.15)
-    d = ImageDraw.Draw(img, "RGBA")
-    for x in range(700):
-        d.line([(x, 0), (x, 720)], fill=(0, 0, 0, int(170 * (1 - x / 700))))
-    f = _font("Anton-Regular.ttf", 120)
-    words, lines, cur = text.upper().split(), [], ""
-    for w in words:
-        t = (cur + " " + w).strip()
-        if f.getlength(t) > 620 and cur:
-            lines.append(cur)
-            cur = w
-        else:
-            cur = t
-    lines.append(cur)
-    for i, ln in enumerate(lines[:3]):
-        fill = (255, 196, 0) if i == len(lines[:3]) - 1 else (255, 255, 255)
-        d.text((50, 120 + i * 140), ln, font=f, fill=fill, stroke_width=6, stroke_fill=(0, 0, 0))
-    img.save(path, quality=92)
+    """Click-worthy thumbnail: one dramatic real photo, a 2-line headline (white + yellow) and a red
+    number badge - e.g. "A WATERFALL / UNDER THE OCEAN" + "3.5 KM DROP"."""
+    from PIL import Image, ImageDraw, ImageEnhance, ImageFilter
+    if isinstance(text, dict):
+        top, main, num = (str(text.get(k) or "").strip().upper() for k in ("top", "main", "number"))
+    else:
+        words = str(text).upper().split()
+        cut = max(1, len(words) // 2)
+        top, main, num = " ".join(words[:cut]), " ".join(words[cut:]), ""
+    if not main:
+        top, main = "", top
+    TW, TH = 1280, 720
+    src = Image.open(still).convert("RGB")
+    r = max(TW / src.width, TH / src.height) * 1.04
+    src = src.resize((int(src.width * r + 0.5), int(src.height * r + 0.5)), Image.LANCZOS)
+    x, y = (src.width - TW) // 2, (src.height - TH) // 2
+    img = src.crop((x, y, x + TW, y + TH))
+    img = ImageEnhance.Color(ImageEnhance.Contrast(img).enhance(1.18)).enhance(1.15)
+    shade = Image.new("RGBA", (TW, TH), (0, 0, 0, 0))
+    d = ImageDraw.Draw(shade)
+    for yy in range(TH):  # dark at the top (headline) and the bottom (badge), clear in the middle
+        a = 150 * max(0.0, 1 - yy / 330) + 150 * max(0.0, (yy - 470) / 250)
+        d.line([(0, yy), (TW, yy)], fill=(0, 4, 20, int(min(200, a))))
+    img = Image.alpha_composite(img.convert("RGBA"), shade)
+
+    def fit(t, size, width):
+        f = _font("Anton-Regular.ttf", size)
+        while f.getlength(t) > width and size > 48:
+            size -= 4
+            f = _font("Anton-Regular.ttf", size)
+        return f
+
+    def headline(t, y, size, fill):
+        if not t:
+            return
+        f = fit(t, size, TW - 100)
+        glow = Image.new("RGBA", (TW, TH), (0, 0, 0, 0))
+        ImageDraw.Draw(glow).text((TW / 2, y), t, font=f, fill=(0, 0, 0, 230), anchor="ma",
+                                  stroke_width=16, stroke_fill=(0, 0, 0, 230))
+        img.alpha_composite(glow.filter(ImageFilter.GaussianBlur(14)))
+        ImageDraw.Draw(img).text((TW / 2, y), t, font=f, fill=fill, anchor="ma", stroke_width=10, stroke_fill=(0, 0, 0))
+
+    headline(top, 40, 128, (255, 255, 255))
+    headline(main, 175 if top else 90, 128, (255, 212, 0))
+    if num:
+        f = fit(num, 76, 600)
+        w = int(f.getlength(num)) + 70
+        bx, by = TW - w - 40, TH - 140
+        badge = Image.new("RGBA", (TW, TH), (0, 0, 0, 0))
+        bd = ImageDraw.Draw(badge)
+        bd.rounded_rectangle([bx, by, bx + w, by + 104], radius=20, fill=(255, 45, 45, 255), outline=(0, 0, 0), width=5)
+        img.alpha_composite(badge.filter(ImageFilter.GaussianBlur(10)))  # soft red glow
+        img.alpha_composite(badge)
+        ImageDraw.Draw(img).text((bx + w / 2, by + 52), num, font=f, fill=(255, 255, 255), anchor="mm",
+                                 stroke_width=4, stroke_fill=(0, 0, 0))
+    img.convert("RGB").save(path, quality=93)
 
 
 # ------------------------------------------------------------------ teaching graphics
@@ -1041,7 +1080,13 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
     _run([*args, "-filter_complex", ";".join(fc), "-map", cur, "-map", "[a]", "-t", f"{total:.2f}",
           *ENC, "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-movflags", "+faststart", out], timeout=3000)
     thumb = os.path.join(WORK, "thumb.jpg")
-    _thumbnail(stills[min(2, len(stills) - 1)], script.get("thumb") or script["title"], thumb)
+    # the thumbnail uses a REAL photo of the subject when we have one (they win clicks), else a strong still
+    thumb_src = next((r["path"] for r in real if os.path.exists(r.get("path", ""))), None) or stills[min(2, len(stills) - 1)]
+    try:
+        _thumbnail(thumb_src, script.get("thumb") or script["title"], thumb)
+    except Exception as e:
+        log(f"  (thumbnail fallback: {str(e)[:100]})")
+        _thumbnail(stills[min(2, len(stills) - 1)], script["title"], thumb)
     credits = sorted({r["credit"] for r in real})
     desc = (f"{script.get('description', '')}\n\nChapters:\n" + "\n".join(f"{a} {b}" for a, b in chapters) +
             "\n\nA Hidden Facts HQ documentary. New Shorts every day and a new documentary every Sunday - "
