@@ -1079,6 +1079,7 @@ def make_and_upload(st, chat, items, cfg, yt, privacy="public"):
         tg.send_message(chat, f"{tag}: {post['youtube']['title']} ({mins} min, {len(chapters) - 1} chapters)\n{url}")
     st.setdefault("history", []).append({"title": post["youtube"]["title"], "status": "weekly",
                                          "links": {"YouTube": url}, "theme": "documentary",
+                                         "seed": (seed_item or {}).get("title"),
                                          "created": dt.datetime.now().isoformat(timespec="seconds")})
     os.remove(path)
     shutil.rmtree(WORK, ignore_errors=True)

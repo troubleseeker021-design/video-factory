@@ -701,9 +701,7 @@ def doc_preview():
     (only people with the link can watch it) and sends the link to Telegram, so you can judge it first."""
     from . import documentary, growth
     st = _state()
-    week_ago = dt.datetime.now() - dt.timedelta(days=8)
-    items = [h for h in growth._posted(st) if (growth._created(h) or dt.datetime.min) >= week_ago]
-    items.sort(key=lambda h: (growth.score(h), h.get("created", "")), reverse=True)
+    items = growth.doc_candidates(st)
     documentary.make_and_upload(st, CHAT, items[:8], load_config(), growth._yt(), "unlisted")
     write_json(STATE_PATH, st)
 
@@ -780,7 +778,9 @@ def _growth_jobs(cfg):
     if st.get("comments_day") != today and now.hour >= 17:
         jobs.append(("comments_day", today, lambda: growth.comment_digest(st, CHAT)))
     # early Sunday (after 1 AM): the free AI-picture allowance is still fresh for the documentary
-    if now.weekday() == 6 and now.hour >= 1 and st.get("compile_week") != week and cfg.get("weekly_video", True):
+    # 2026-W47 skipped: two hand-picked documentaries (waterfall + torpedo) were scheduled for this week instead
+    if (now.weekday() == 6 and now.hour >= 1 and st.get("compile_week") != week and cfg.get("weekly_video", True)
+            and week not in ("2026-W47",)):
         privacy = os.environ.get("YOUTUBE_PRIVACY") or cfg.get("youtube_privacy", "public")
         jobs.append(("compile_week", week, lambda: growth.compilation(st, CHAT, privacy)))
     if st.get("report_now"):

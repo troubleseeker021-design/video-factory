@@ -67,6 +67,29 @@ def score(item):
     return views + 25 * eng
 
 
+# the documentary grows out of a topic people WATCHED (single nature wonders hold 50-70% of viewers;
+# tech/weapons, place lists and "3 animals" lists only 6-20%), never one that already had a documentary
+DOC_THEME_WEIGHT = {"nature": 1.6, "ocean": 1.5, "animals": 1.4, "space": 1.4, "body": 1.2, "science": 1.2,
+                    "history": 1.0, "tech": 0.3, "places": 0.3}
+DOC_DONE = {"The World's Largest Waterfall Is Underwater", "How a Torpedo Flies in an Underwater Bubble"}
+
+
+def doc_rank(h):
+    w = DOC_THEME_WEIGHT.get(h.get("theme"), 0.8)
+    if re.match(r"\s*\d", h.get("title") or ""):
+        w *= 0.5  # "3 Animals That..." lists lose viewers
+    return score(h) * w
+
+
+def doc_candidates(st, days=8):
+    """This week's Shorts, best documentary topic first."""
+    done = DOC_DONE | {h.get("seed") for h in st.get("history", []) if h.get("status") == "weekly"}
+    since = dt.datetime.now() - dt.timedelta(days=days)
+    items = [h for h in _posted(st) if (_created(h) or dt.datetime.min) >= since and h.get("title") not in done]
+    items.sort(key=lambda h: (doc_rank(h), h.get("created", "")), reverse=True)
+    return items
+
+
 def _posted(st, key="history"):
     return [h for h in st.get(key, []) if h.get("status") in ("posted", "auto-posted")]
 
@@ -387,7 +410,7 @@ def compilation(st, chat, privacy="public"):
         from . import documentary
         from .common import load_config
         note("editor", "Writing this week's documentary from our best topics...")
-        return documentary.make_and_upload(st, chat, items[:8], load_config(), _yt(), privacy)
+        return documentary.make_and_upload(st, chat, doc_candidates(st)[:8] or items[:8], load_config(), _yt(), privacy)
     except Exception as e:
         log(f"Documentary failed ({str(e)[:200]}) - making the classic best-of video instead.")
     items = items[:10]
