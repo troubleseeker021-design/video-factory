@@ -158,7 +158,7 @@ def _ai_still(prompt, path, seed):
     from io import BytesIO
     from PIL import Image
     from . import aiart
-    data = aiart._cloudflare(f"{prompt.strip().rstrip('.')}. {DOC_STYLE}", seed)
+    data = aiart._cloudflare(f"{prompt.strip().rstrip('.')}. {DOC_STYLE}", seed, force=True)
     if not data:
         return None
     try:

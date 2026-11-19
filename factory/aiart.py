@@ -64,7 +64,12 @@ def _gemini(prompt, key):
 CF_MODELS = [("@cf/black-forest-labs/flux-1-schnell", {"steps": 8})]
 
 
-def _cloudflare(prompt, seed):
+RESERVE = False  # True on documentary day: Shorts leave the free AI pictures for the documentary
+
+
+def _cloudflare(prompt, seed, force=False):
+    if RESERVE and not force:
+        return None
     acct, tok = os.environ.get("CF_ACCOUNT_ID", "").strip(), os.environ.get("CF_API_TOKEN", "").strip()
     if not acct or not tok:
         return None

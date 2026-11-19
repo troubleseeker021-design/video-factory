@@ -807,7 +807,23 @@ def _growth_jobs(cfg):
         diary.flush()
 
 
+def _reserve_ai_for_doc():
+    """From the daily reset of the free AI pictures (00:00 UTC = Saturday evening in Alberta) until the Sunday
+    documentary is made, the Shorts use real photos and clips, so the documentary gets fresh AI pictures."""
+    try:
+        from zoneinfo import ZoneInfo
+        from . import aiart
+        week = dt.datetime.now(ZoneInfo(load_config().get("timezone", "America/Edmonton"))).strftime("%G-W%V")
+        if (dt.datetime.utcnow().weekday() == 6 and _state().get("compile_week") != week
+                and week not in ("2026-W47",)):
+            aiart.RESERVE = True
+            log("Documentary day: Shorts use real photos/clips, the free AI pictures are kept for the documentary.")
+    except Exception as e:
+        log(f"(AI reserve check skipped: {str(e)[:100]})")
+
+
 if __name__ == "__main__":
+    _reserve_ai_for_doc()
     {"make": make, "poll": poll, "tick": tick, "repost": repost, "clear": clear_pending, "hindi_test": hindi_test, "voices": voices, "check": check, "kids_sample": kids_sample, "doc_preview": doc_preview,
      "comments": lambda: __import__("factory.growth", fromlist=["x"]).comment_digest(_state(), CHAT), "stats": lambda: _growth_now("stats"),
      "weekly": lambda: _growth_now("weekly"), "report": lambda: _growth_now("report")}[sys.argv[1]]()
