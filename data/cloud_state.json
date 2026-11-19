@@ -41,6 +41,47 @@
       "message_id": 438,
       "created": "2026-11-19T17:30:17.302395",
       "scheduled": true
+    },
+    "7948c51c48": {
+      "vid": "20261119-221719-the-brain-glitch-that-makes-loved-ones-impostors-hi",
+      "post": {
+        "title": "Dimag Ka Aisa Glitch Jo Apno Ko Bahrupiya Bana De",
+        "created": "2026-11-19T22:24:56",
+        "source": "gemini:gemini-flash-latest",
+        "theme": "mind",
+        "hook": "Capgras syndrome mein dimag apno ko hi hamshakal bahrupiya samajhne lagta hai.",
+        "series": "Dimag Ke Khel #4",
+        "question": "Aankhein ya kaan, kis par zyada bharosa hai?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "bold_fact",
+        "youtube": {
+          "title": "Dimag Ka Aisa Glitch Jo Apno Ko Bahrupiya Bana De | Dimag Ke Khel #4 #shorts",
+          "description": "Jab dimag ka emotional wire disconnect ho jaye toh apne hi log bahrupiye lagne lagte hain. 🧠\n\n👇 Aankhein ya kaan, kis par zyada bharosa hai?\n\n#sciencefacts #dimagkikahani #psychologyfacts #shorts #hindi #humanbrain #shorts",
+          "tags": [
+            "sciencefacts",
+            "dimagkikahani",
+            "psychologyfacts",
+            "shorts",
+            "hindi",
+            "humanbrain",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Jab dimag ka emotional wire disconnect ho jaye toh apne hi log bahrupiye lagne lagte hain. 🧠 #sciencefacts #dimagkikahani #psychologyfacts #shorts #hindi #humanbrain #fyp #facts",
+        "instagram": "Dimag Ke Khel #4 🔎 Jab dimag ka emotional wire disconnect ho jaye toh apne hi log bahrupiye lagne lagte hain. 🧠\n\n👇 Aankhein ya kaan, kis par zyada bharosa hai?\n.\n.\n#sciencefacts #dimagkikahani #psychologyfacts #shorts #hindi #humanbrain #reels #facts #didyouknow",
+        "facebook": "Dimag Ke Khel #4 🔎 Jab dimag ka emotional wire disconnect ho jaye toh apne hi log bahrupiye lagne lagte hain. 🧠\n\n👇 Aankhein ya kaan, kis par zyada bharosa hai?\n\n#sciencefacts #dimagkikahani #psychologyfacts #shorts #hindi #humanbrain",
+        "script": "Capgras syndrome mein dimag apno ko hi hamshakal bahrupiya samajhne lagta hai. Normally hamara dimag jaane pehchane chehro ko do alag raasto se process karta hai. Ek hissa chehre ke features pehchanta hai aur doosra emotional connection banata hai. Yahi chhota sa emotional signal batata hai ki yeh insaan aapka bahut kareebi hai. Lekin sir par chot lagne se yeh emotion wala wire kat sakta hai. Matlab aap maa ka chehra to pehchanenge par koi feeling mehsoos nahi hogi. Is khaalipan ko samajhne ke liye dimag sochta hai ki wo unka hamshakal hai. Aur sabse bada twist phone par baat karte hi yeh waham turant gayab ho jaata hai. Kyunki aawaz ka raasta bilkul safe tha jisse connection turant wapas jud gaya. Sach batana aankhein ya kaan kis par zyada bharosa hai comment mein likho aur follow karo.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBumr_d4z0udV7EkGSlQIJFHnAfMbRAAKgCgACbNf4R7k3JpQNgcZNPQQ",
+      "channel": "hi",
+      "message_id": 442,
+      "created": "2026-11-19T22:26:21.308974",
+      "scheduled": true
     }
   },
   "history": [
@@ -1931,9 +1972,40 @@
       },
       "instagram": "Ocean Mysteries #4 🔎 The barreleye fish has glowing green eyes locked inside a fully transparent fluid-filled skull 🐟\n\n👇 Would you dive 2,000 feet to see this fish, yes or no?\n.\n.\n#ocean #marinebiology #deepsea #weirdanimals #sciencefacts #nature #reels #facts #didyouknow",
       "channel": "en"
+    },
+    {
+      "title": "The Brain Glitch That Makes Loved Ones Impostors",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/EB0qhEZX8uY",
+        "Facebook": "https://www.facebook.com/reel/29542066545479415",
+        "Instagram": "https://www.instagram.com/reel/Df8JjNJjSbR/"
+      },
+      "created": "2026-11-19T22:21:47",
+      "theme": "mind",
+      "hook": "Capgras syndrome makes you think loved ones are identical impostors.",
+      "series": "Mind Games #4",
+      "hook_style": "bold_fact",
+      "file_id": "BAACAgEAAxkDAAIBt2r_dzrafq0bvK8bZpMWmQIixSIXAAKeCgACbNf4R3z2UL1zSJ3NPQQ",
+      "youtube": {
+        "title": "The Brain Glitch That Makes Loved Ones Impostors | Mind Games #4 #shorts",
+        "description": "When the brain's emotional wire snaps, familiar faces suddenly look like complete strangers disguised as your family. 🧠\n\n👇 Eyes or ears - which sense do you trust more?\n\n#psychology #neuroscience #brainfacts #mindblown #sciencefacts #mystery #shorts",
+        "tags": [
+          "psychology",
+          "neuroscience",
+          "brainfacts",
+          "mindblown",
+          "sciencefacts",
+          "mystery",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Mind Games #4 🔎 When the brain's emotional wire snaps, familiar faces suddenly look like complete strangers disguised as your family. 🧠\n\n👇 Eyes or ears - which sense do you trust more?\n.\n.\n#psychology #neuroscience #brainfacts #mindblown #sciencefacts #mystery #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-19 11:15",
+  "last_slot": "2026-11-19 16:15",
   "stats_day": "2026-11-19",
   "stats_problems": {},
   "followers": {

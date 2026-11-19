@@ -368,5 +368,14 @@
     "hook_style": "contradiction",
     "hook": "The barreleye fish looks at prey through its transparent skull.",
     "date": "2026-11-19"
+  },
+  {
+    "id": "the-brain-glitch-that-makes-loved-ones-impostors",
+    "title": "The Brain Glitch That Makes Loved Ones Impostors",
+    "theme": "mind",
+    "format": "standard",
+    "hook_style": "bold_fact",
+    "hook": "Capgras syndrome makes you think loved ones are identical impostors.",
+    "date": "2026-11-19"
   }
 ]
