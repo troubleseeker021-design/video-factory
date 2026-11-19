@@ -561,7 +561,7 @@ def _sound_design(parts, starts, total, sfx_events, path, sr=44100):
         reps = int(np.ceil(L / len(src)))
         seg = np.tile(src, (reps, 1))[:L].copy()
         rms = float(np.sqrt(np.mean(seg ** 2))) or 1.0
-        seg *= 0.016 / rms  # a soft bed far under the narrator, whatever the recording's loudness
+        seg *= 0.028 / rms  # clearly audible but under the narrator, whatever the recording's loudness
         f = min(int(1.2 * sr), L // 3)
         ramp = np.linspace(0, 1, f, dtype=np.float32)[:, None]
         seg[:f] *= ramp
@@ -1026,15 +1026,17 @@ def make(st, cfg, privacy="public", seed_item=None, upload=True):
     # the narrator always comes first: louder, clearer (a little presence boost), and the music + nature
     # sounds automatically dip down whenever he speaks (broadcast "ducking")
     fc.append(f"[{vi}:a]adelay={int(intro * 1000)}|{int(intro * 1000)},highpass=f=70,"
-              "equalizer=f=3200:t=q:w=1.2:g=3,loudnorm=I=-14:TP=-1.5:LRA=9,asplit=2[vo][vkey]")
+              "equalizer=f=3200:t=q:w=1.2:g=3,loudnorm=I=-14:TP=-1.5:LRA=9,asplit=3[vo][vkey][vkey2]")
     fc.append(f"[{mi}:a]volume=0.09,afade=t=out:st={total - 3:.2f}:d=3[mu]")
+    # music dips a lot under the voice; the nature sounds only dip a little, so you can still hear them
+    fc.append("[mu][vkey]sidechaincompress=threshold=0.02:ratio=8:attack=15:release=500[mud]")
     if fx:
         fc.append(f"[{mi + 1}:a]volume=1.0[fx]")
-        fc.append("[mu][fx]amix=inputs=2:duration=longest:normalize=0[bed]")
+        fc.append("[fx][vkey2]sidechaincompress=threshold=0.03:ratio=2:attack=30:release=600[fxd]")
+        fc.append("[vo][mud][fxd]amix=inputs=3:duration=longest:normalize=0,alimiter=limit=0.95[a]")
     else:
-        fc.append("[mu]anull[bed]")
-    fc.append("[bed][vkey]sidechaincompress=threshold=0.02:ratio=8:attack=15:release=500[duck]")
-    fc.append("[vo][duck]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95[a]")
+        fc.append("[vkey2]anullsink")
+        fc.append("[vo][mud]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95[a]")
     out = os.path.join(DATA, "documentary.mp4")
     _run([*args, "-filter_complex", ";".join(fc), "-map", cur, "-map", "[a]", "-t", f"{total:.2f}",
           *ENC, "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-movflags", "+faststart", out], timeout=3000)
