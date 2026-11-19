@@ -82,6 +82,47 @@
       "message_id": 420,
       "created": "2026-11-18T22:27:14.663685",
       "scheduled": true
+    },
+    "7b6fb08103": {
+      "vid": "20261119-012158-the-plant-that-hunts-with-underwater-traps-hi",
+      "post": {
+        "title": "Paani Ke Andar Ka Shikaari Paudha",
+        "created": "2026-11-19T01:32:43",
+        "source": "gemini:gemini-flash-lite-latest",
+        "theme": "nature",
+        "hook": "Paani ke andar yeh paudha zinda shikaar ko milliseconds mein vacuum se kheench leta hai",
+        "series": "Adbhut Nature #4",
+        "question": "Kya aap is shikaari paudhe ko ghar mein rakhna chahenge?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "myth",
+        "hook_style": "you_body",
+        "youtube": {
+          "title": "Paani Ke Andar Ka Shikaari Paudha | Adbhut Nature #4 #shorts",
+          "description": "Yeh paani ke andar rehne wala paudha high speed vacuum trap se shikaar karta hai 🌿\n\n👇 Kya aap is shikaari paudhe ko ghar mein rakhna chahenge?\n\n#science #facts #nature #biology #shorts #hindi #shorts\n\nImage credits:\nPhoto: Benjamin L. Jones · Unsplash\nPhoto: Christian Ang · Unsplash\nPhoto: Duy Le Duc · Unsplash\nPhoto: Jean Vella · Unsplash\nPhoto: Lisa Yount · Unsplash\nPhoto: Liz Pullan Pattathy · Unsplash\nPhoto: Shakib Uzzaman · Unsplash\nVideo: Pixabay",
+          "tags": [
+            "science",
+            "facts",
+            "nature",
+            "biology",
+            "shorts",
+            "hindi",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Yeh paani ke andar rehne wala paudha high speed vacuum trap se shikaar karta hai 🌿 #science #facts #nature #biology #shorts #hindi #fyp #facts",
+        "instagram": "Adbhut Nature #4 🔎 Yeh paani ke andar rehne wala paudha high speed vacuum trap se shikaar karta hai 🌿\n\n👇 Kya aap is shikaari paudhe ko ghar mein rakhna chahenge?\n.\n.\n#science #facts #nature #biology #shorts #hindi #reels #facts #didyouknow",
+        "facebook": "Adbhut Nature #4 🔎 Yeh paani ke andar rehne wala paudha high speed vacuum trap se shikaar karta hai 🌿\n\n👇 Kya aap is shikaari paudhe ko ghar mein rakhna chahenge?\n\n#science #facts #nature #biology #shorts #hindi",
+        "script": "Paani ke andar yeh paudha zinda shikaar ko milliseconds mein vacuum se kheench leta hai Gamle ke paudhe bas baithe rehte hain lekin yeh paani ki species sach mein shikaar karti hai Iske tanon par chhote khokhale bags hote hain jinse paani poori tarah baahar nikal jata hai Aur yahin twist hai yeh apne chhote darwazon ko bhaari pressure mein band rakhta hai Jaise hi koi keeda iske baalon se takraata hai darwaza turant khul jata hai Do milliseconds mein paani andar bharta hai aur shikaar seedhe trap ke andar chala jata hai Aur sabse badi baat kya hai yeh band chamber mein us jaanwar ko zinda pacha leta hai Yeh poori duniya ka sabse tez aur khatarnaak natural trap hai Kya aap is shikaari paudhe ko ghar mein rakhenge haan ya naa comment mein likho aur follow karo",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBqWr-UhkmUi5bWyuZJ7m6_cspWTkUAAI4CgACbNfwR1gqY_GRaY57PQQ",
+      "channel": "hi",
+      "message_id": 425,
+      "created": "2026-11-19T01:34:18.376123",
+      "scheduled": true
     }
   },
   "history": [
@@ -1853,9 +1894,40 @@
       },
       "theme": "documentary",
       "created": "2026-11-19T00:39:03"
+    },
+    {
+      "title": "The Plant That Hunts With Underwater Traps",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/hvHKiubECJY",
+        "Facebook": "https://www.facebook.com/reel/4656374944644000",
+        "Instagram": "https://www.instagram.com/reel/Df56QnIjP6i/"
+      },
+      "created": "2026-11-19T01:25:38",
+      "theme": "nature",
+      "hook": "The aquatic bladderwort plant vacuum-sucks live prey in milliseconds.",
+      "series": "Nature's Weirdest #4",
+      "hook_style": "you_body",
+      "file_id": "BAACAgEAAxkDAAIBpmr-Ub2Gog6N1cvQXXSelR_Q6WyNAAI3CgACbNfwR4ep9_6VVj3hPQQ",
+      "youtube": {
+        "title": "The Plant That Hunts With Underwater Traps | Nature's Weirdest #4 #shorts",
+        "description": "This underwater plant uses a high-speed vacuum trap to catch its meals 🌿\n\n👇 Would you keep this carnivorous plant at home, yes or no?\n\n#nature #plants #science #biology #wildlife #curiosity #shorts\n\nImage credits:\nPhoto: Benjamin L. Jones · Unsplash\nPhoto: Christian Ang · Unsplash\nPhoto: Duy Le Duc · Unsplash\nPhoto: Jean Vella · Unsplash\nPhoto: Lisa Yount · Unsplash\nPhoto: Liz Pullan Pattathy · Unsplash\nPhoto: Shakib Uzzaman · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "nature",
+          "plants",
+          "science",
+          "biology",
+          "wildlife",
+          "curiosity",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Nature's Weirdest #4 🔎 This underwater plant uses a high-speed vacuum trap to catch its meals 🌿\n\n👇 Would you keep this carnivorous plant at home, yes or no?\n.\n.\n#nature #plants #science #biology #wildlife #curiosity #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-18 16:15",
+  "last_slot": "2026-11-18 19:15",
   "stats_day": "2026-11-18",
   "stats_problems": {},
   "followers": {
