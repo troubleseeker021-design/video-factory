@@ -1,6 +1,48 @@
 {
   "offset": 41248576,
-  "pending": {},
+  "pending": {
+    "a4c58ad7a8": {
+      "vid": "20261120-171725-deep-ocean-rocks-generate-pure-oxygen-in-pitch-bla-hi",
+      "post": {
+        "title": "Samundar Ke Patthar Bana Rahe Hain Oxygen",
+        "created": "2026-11-20T17:25:54",
+        "source": "gemini:gemini-3.6-flash",
+        "theme": "ocean",
+        "hook": "Samundar ki sabse gehri jagah jahan bilkul andhera hai wahan ke patthar oxygen bana rahe hain",
+        "series": "Vigyan Ke Rahasya #5",
+        "question": "Kya patthar bhi oxygen bana sakte hain?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "bold_fact",
+        "youtube": {
+          "title": "Samundar Ke Patthar Bana Rahe Hain Oxygen | Vigyan Ke Rahasya #5 #shorts",
+          "description": "Scientists ne dhundhe aise metallic rocks jo bina sun light ke oxygen banate hain 🔋\n\n👇 Kya patthar bhi oxygen bana sakte hain?\n\n#sciencefacts #hinglish #deepsea #darkoxygen #facts #shorts #shorts\n\nImage credits:\nPhoto: Christina Spiliotopoulou · Unsplash\nPhoto: Daniel Newman · Unsplash\nPhoto: David Boca · Unsplash\nPhoto: Francisco Jesús Navarro Hernández · Unsplash\nPhoto: Inja Pavlić · Unsplash\nPhoto: Stanislav Stelmakhovich · Unsplash\nVideo: Pixabay",
+          "tags": [
+            "sciencefacts",
+            "hinglish",
+            "deepsea",
+            "darkoxygen",
+            "facts",
+            "shorts",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Scientists ne dhundhe aise metallic rocks jo bina sun light ke oxygen banate hain 🔋 #sciencefacts #hinglish #deepsea #darkoxygen #facts #shorts #fyp #facts",
+        "instagram": "Vigyan Ke Rahasya #5 🔎 Scientists ne dhundhe aise metallic rocks jo bina sun light ke oxygen banate hain 🔋\n\n👇 Kya patthar bhi oxygen bana sakte hain?\n.\n.\n#sciencefacts #hinglish #deepsea #darkoxygen #facts #shorts #reels #facts #didyouknow",
+        "facebook": "Vigyan Ke Rahasya #5 🔎 Scientists ne dhundhe aise metallic rocks jo bina sun light ke oxygen banate hain 🔋\n\n👇 Kya patthar bhi oxygen bana sakte hain?\n\n#sciencefacts #hinglish #deepsea #darkoxygen #facts #shorts",
+        "script": "Samundar ki sabse gehri jagah jahan bilkul andhera hai wahan ke patthar oxygen bana rahe hain Char hazaar meter niche samundar mein suraj ki roshni bilkul nahi pahunchti Isliye scientists sochte the ki Earth par sari oxygen bas plants banate hain Lekin oceanographers ko samundar ke floor par kale metallic nodules mile Aur yahin twist hai yeh aloo jitne chhote patthar natural batteries ki tarah kaam karte hain Inke surface par lagbhag ek volt ka electrical charge hota hai Jab yeh sath milte hain to pani ko break karke hydrogen aur oxygen bana dete hain Aur sabse badi baat kya hai yeh millions of years se deep sea ecosystem ko energy de rahe hain Matlab plants ke aane se bahut pehle se dharti par oxygen ban rahi thi Kya aapko pata tha patthar bhi oxygen bana sakte hain comment mein batao aur follow karo",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIByGsAAYMjrEwIG5ktVwGfITcpXEJu3gACpAgAAhmxAURKOJb-wk-o-D0E",
+      "channel": "hi",
+      "message_id": 456,
+      "created": "2026-11-20T17:28:03.955800",
+      "scheduled": true
+    }
+  },
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -1999,9 +2041,40 @@
         }
       },
       "stats_at": "2026-11-20T11:00:35"
+    },
+    {
+      "title": "Deep Ocean Rocks Generate Pure Oxygen in Pitch Black",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/FNPlos56Zsc",
+        "Facebook": "https://www.facebook.com/reel/1701290401604048",
+        "Instagram": "https://www.instagram.com/reel/Df-MNVyAQYm/"
+      },
+      "created": "2026-11-20T17:20:35",
+      "theme": "ocean",
+      "hook": "Deep ocean rocks produce pure oxygen in total darkness.",
+      "series": "Ocean Mysteries #5",
+      "hook_style": "bold_fact",
+      "file_id": "BAACAgEAAxkDAAIBxWsAAYKlHB3wNfVevdg1BdWfY9QKyAACowgAAhmxAUSdXYcsZMvxHT0E",
+      "youtube": {
+        "title": "Deep Ocean Rocks Generate Pure Oxygen in Pitch Black | Ocean Mysteries #5 #shorts",
+        "description": "Scientists just discovered that metallic rocks 13,000 feet underwater create their own oxygen without sunlight 🔋\n\n👇 Did you know rocks could make oxygen, yes or no?\n\n#oceanography #sciencefacts #deepsea #earthscience #darkoxygen #naturewonders #shorts\n\nImage credits:\nPhoto: Christina Spiliotopoulou · Unsplash\nPhoto: Daniel Newman · Unsplash\nPhoto: David Boca · Unsplash\nPhoto: Francisco Jesús Navarro Hernández · Unsplash\nPhoto: Inja Pavlić · Unsplash\nPhoto: Stanislav Stelmakhovich · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "oceanography",
+          "sciencefacts",
+          "deepsea",
+          "earthscience",
+          "darkoxygen",
+          "naturewonders",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Ocean Mysteries #5 🔎 Scientists just discovered that metallic rocks 13,000 feet underwater create their own oxygen without sunlight 🔋\n\n👇 Did you know rocks could make oxygen, yes or no?\n.\n.\n#oceanography #sciencefacts #deepsea #earthscience #darkoxygen #naturewonders #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-19 19:15",
+  "last_slot": "2026-11-20 11:15",
   "stats_day": "2026-11-20",
   "stats_problems": {},
   "followers": {

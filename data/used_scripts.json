@@ -386,5 +386,14 @@
     "hook_style": "contradiction",
     "hook": "All animals breathe oxygen, but Henneguya salminicola never does.",
     "date": "2026-11-20"
+  },
+  {
+    "id": "deep-ocean-rocks-generate-pure-oxygen-in-pitch-bla",
+    "title": "Deep Ocean Rocks Generate Pure Oxygen in Pitch Black",
+    "theme": "ocean",
+    "format": "standard",
+    "hook_style": "bold_fact",
+    "hook": "Deep ocean rocks produce pure oxygen in total darkness.",
+    "date": "2026-11-20"
   }
 ]
