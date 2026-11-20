@@ -41,6 +41,47 @@
       "message_id": 456,
       "created": "2026-11-20T17:28:03.955800",
       "scheduled": true
+    },
+    "b015aab1b9": {
+      "vid": "20261120-221748-why-your-brain-defends-choices-you-didn-t-make-hi",
+      "post": {
+        "title": "Dimag Ka Sabse Bada Jhoot",
+        "created": "2026-11-20T22:26:19",
+        "source": "gemini:gemini-flash-latest",
+        "theme": "mind",
+        "hook": "Dekho kaise aapka dimag aapko hi bewakoof banata hai.",
+        "series": "Dimag Ki Batti #5",
+        "question": "Aapka dimag bhi aapke sath aisi chalaki karta hai kya?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "never_seen",
+        "youtube": {
+          "title": "Dimag Ka Sabse Bada Jhoot | Dimag Ki Batti #5 #shorts",
+          "description": "Scientists ne bina bataye logon ki choice badal di aur kisi ko pata bhi nahi chala. 🧠\n\n👇 Aapka dimag bhi aapke sath aisi chalaki karta hai kya?\n\n#psychology #sciencefacts #mindblown #brainfacts #humanbrain #shorts #shorts\n\nImage credits:\nPhoto: Alina Grubnyak · Unsplash\nPhoto: Gabrielle Wright · Unsplash\nPhoto: Julius Drost · Unsplash\nPhoto: Klim Musalimov · Unsplash\nPhoto: Luke Jones · Unsplash\nPhoto: TSD Studio · Unsplash\nPhoto: Thalia Karr · Unsplash\nPhoto: The New York Public Library · Unsplash\nVideo: Pixabay",
+          "tags": [
+            "psychology",
+            "sciencefacts",
+            "mindblown",
+            "brainfacts",
+            "humanbrain",
+            "shorts",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Scientists ne bina bataye logon ki choice badal di aur kisi ko pata bhi nahi chala. 🧠 #psychology #sciencefacts #mindblown #brainfacts #humanbrain #shorts #fyp #facts",
+        "instagram": "Dimag Ki Batti #5 🔎 Scientists ne bina bataye logon ki choice badal di aur kisi ko pata bhi nahi chala. 🧠\n\n👇 Aapka dimag bhi aapke sath aisi chalaki karta hai kya?\n.\n.\n#psychology #sciencefacts #mindblown #brainfacts #humanbrain #shorts #reels #facts #didyouknow",
+        "facebook": "Dimag Ki Batti #5 🔎 Scientists ne bina bataye logon ki choice badal di aur kisi ko pata bhi nahi chala. 🧠\n\n👇 Aapka dimag bhi aapke sath aisi chalaki karta hai kya?\n\n#psychology #sciencefacts #mindblown #brainfacts #humanbrain #shorts",
+        "script": "Dekho kaise aapka dimag aapko hi bewakoof banata hai. Pehle scientists ne ek experiment mein logon ko do alag alag chehre dikhaye. Logon ne ek chehra chuna aur researcher ne woh card unhe de diya. Aur yahin twist hai ki hath ki safai se card badal diya gaya. Sau mein se sattar percent logon ko pata hi nahi chala ki unke hath mein galat chehra hai. Aur sabse badi baat kya hai ki unhone turant wahi safai dena shuru kar di ki unhone wahi kyu chuna tha. Ek ne toh un earrings ki tareef bhi kar di jo sirf doosre chehre par thin. Science isko choice blindness bolti hai aur yeh elections mein bhi hota hai. Hamein lagta hai humne sooch samajh kar faisla liya hai lekin dimag baad mein kahani banata hai. Aapka dimag bhi aapke sath aisi chalaki karta hai kya? Comment mein likho aur follow karo.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIBzGsAAcle6WxIqW-wAYztfl7CwHHgDgACDwkAAhmxAUT3msjKfr8-Vz0E",
+      "channel": "hi",
+      "message_id": 460,
+      "created": "2026-11-20T22:27:42.299761",
+      "scheduled": true
     }
   },
   "history": [
@@ -2072,9 +2113,40 @@
       },
       "instagram": "Ocean Mysteries #5 🔎 Scientists just discovered that metallic rocks 13,000 feet underwater create their own oxygen without sunlight 🔋\n\n👇 Did you know rocks could make oxygen, yes or no?\n.\n.\n#oceanography #sciencefacts #deepsea #earthscience #darkoxygen #naturewonders #reels #facts #didyouknow",
       "channel": "en"
+    },
+    {
+      "title": "Why Your Brain Defends Choices You Didn't Make",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/HYFi3SmoNe8",
+        "Facebook": "https://www.facebook.com/reel/1169119822272637",
+        "Instagram": "https://www.instagram.com/reel/Df-ugDmoWvz/"
+      },
+      "created": "2026-11-20T22:20:35",
+      "theme": "mind",
+      "hook": "You've never seen your brain defend choices you didn't make.",
+      "series": "Mind Games #5",
+      "hook_style": "never_seen",
+      "file_id": "BAACAgEAAxkDAAIByWsAAckObGJAfpatdg1i66M50g9SpwACDgkAAhmxAURBb59X-yoSjj0E",
+      "youtube": {
+        "title": "Why Your Brain Defends Choices You Didn't Make | Mind Games #5 #shorts",
+        "description": "Scientists swapped people's choices right under their noses, and almost nobody caught on. 🧠\n\n👇 Could your brain be tricked like this, yes or no?\n\n#psychology #sciencefacts #mindblown #brainfacts #humanbrain #curiosity #shorts\n\nImage credits:\nPhoto: Alina Grubnyak · Unsplash\nPhoto: Gabrielle Wright · Unsplash\nPhoto: Julius Drost · Unsplash\nPhoto: Klim Musalimov · Unsplash\nPhoto: Luke Jones · Unsplash\nPhoto: TSD Studio · Unsplash\nPhoto: Thalia Karr · Unsplash\nPhoto: The New York Public Library · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "psychology",
+          "sciencefacts",
+          "mindblown",
+          "brainfacts",
+          "humanbrain",
+          "curiosity",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Mind Games #5 🔎 Scientists swapped people's choices right under their noses, and almost nobody caught on. 🧠\n\n👇 Could your brain be tricked like this, yes or no?\n.\n.\n#psychology #sciencefacts #mindblown #brainfacts #humanbrain #curiosity #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-20 11:15",
+  "last_slot": "2026-11-20 16:15",
   "stats_day": "2026-11-20",
   "stats_problems": {},
   "followers": {

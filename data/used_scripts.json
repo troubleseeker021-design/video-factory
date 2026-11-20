@@ -395,5 +395,14 @@
     "hook_style": "bold_fact",
     "hook": "Deep ocean rocks produce pure oxygen in total darkness.",
     "date": "2026-11-20"
+  },
+  {
+    "id": "why-your-brain-defends-choices-you-didn-t-make",
+    "title": "Why Your Brain Defends Choices You Didn't Make",
+    "theme": "mind",
+    "format": "standard",
+    "hook_style": "never_seen",
+    "hook": "You've never seen your brain defend choices you didn't make.",
+    "date": "2026-11-20"
   }
 ]
