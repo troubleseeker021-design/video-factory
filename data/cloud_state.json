@@ -1,6 +1,48 @@
 {
   "offset": 41248576,
-  "pending": {},
+  "pending": {
+    "d0e6e55aad": {
+      "vid": "20261121-172051-why-sea-otters-keep-a-secret-pocket-hi",
+      "post": {
+        "title": "Otters Ke Paas Secret Pocket Kyun Hoti Hai",
+        "created": "2026-11-21T17:25:27",
+        "source": "gemini:gemini-3.6-flash",
+        "theme": "animals",
+        "hook": "Sea otter apne baayein haath ke neeche ek secret pocket chhupate hain.",
+        "series": "Kudarat Ke Raaz #8",
+        "question": "Kya aapko otters ki pocket ke baare mein pata tha, haan ya naa?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "myth",
+        "hook_style": "secret",
+        "youtube": {
+          "title": "Otters Ke Paas Secret Pocket Kyun Hoti Hai | Kudarat Ke Raaz #8 #shorts",
+          "description": "Sea otters ke paas ek secret pocket aur favorite patthar hota hai! 🦦\n\n👇 Kya aapko otters ki pocket ke baare mein pata tha, haan ya naa?\n\n#seaotter #animalfacts #sciencefacts #hindi #shorts #curiosity #shorts\n\nImage credits:\nPhoto: Abigail Lynn · Unsplash\nPhoto: Ali Kazal · Unsplash\nPhoto: Mazin Omron · Unsplash\nPhoto: Yiran Ding · Unsplash\nVideo: Pixabay",
+          "tags": [
+            "seaotter",
+            "animalfacts",
+            "sciencefacts",
+            "hindi",
+            "shorts",
+            "curiosity",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Sea otters ke paas ek secret pocket aur favorite patthar hota hai! 🦦 #seaotter #animalfacts #sciencefacts #hindi #shorts #curiosity #fyp #facts",
+        "instagram": "Kudarat Ke Raaz #8 🔎 Sea otters ke paas ek secret pocket aur favorite patthar hota hai! 🦦\n\n👇 Kya aapko otters ki pocket ke baare mein pata tha, haan ya naa?\n.\n.\n#seaotter #animalfacts #sciencefacts #hindi #shorts #curiosity #reels #facts #didyouknow",
+        "facebook": "Kudarat Ke Raaz #8 🔎 Sea otters ke paas ek secret pocket aur favorite patthar hota hai! 🦦\n\n👇 Kya aapko otters ki pocket ke baare mein pata tha, haan ya naa?\n\n#seaotter #animalfacts #sciencefacts #hindi #shorts #curiosity",
+        "script": "Sea otter apne baayein haath ke neeche ek secret pocket chhupate hain. Humein lagta hai otter samundar se koi bhi random patthar utha lete hain. Lekin scientists ne dekha ki ye actually ek khas patthar hamesha paas rakhte hain. Dekho hota kya hai inke baayein armpit ke neeche ek secret skin pocket hoti hai. Is natural pocket mein ye apna favorite patthar rakhte hain jo shellfish todta hai. Deep dive karte waqt ye khana aur wahi patthar hamesha nikalte hain. Aur yahin twist hai is patthar ke bina inke daant clams par toot jayenge. Toh ye chhoti pocket thande samundar mein inke survival ki chaabi hai. Kya aapko otters ki pocket ke baare mein pata tha haan ya naa? Comment mein likho aur follow karo.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIB3msB1E49qEN7zfy-ob9FHTjEYlLpAAJjCQACCo8IROgNMjPnGyvCPQQ",
+      "channel": "hi",
+      "message_id": 478,
+      "created": "2026-11-21T17:26:39.582119",
+      "scheduled": true
+    }
+  },
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -2140,9 +2182,40 @@
         }
       },
       "stats_at": "2026-11-21T11:00:41"
+    },
+    {
+      "title": "Why Sea Otters Keep a Secret Pocket",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/qwa3sPLg048",
+        "Facebook": "https://www.facebook.com/reel/1182885404168945",
+        "Instagram": "https://www.instagram.com/reel/DgAw2CAEXtK/"
+      },
+      "created": "2026-11-21T17:23:39",
+      "theme": "animals",
+      "hook": "Sea otters hide a secret pocket under their left arm.",
+      "series": "Animal Oddities #8",
+      "hook_style": "secret",
+      "file_id": "BAACAgEAAxkDAAIB22sB1AodjvOXS5CIDSksC-hJNBghAAJhCQACCo8IRLJrWqu6UEaDPQQ",
+      "youtube": {
+        "title": "Why Sea Otters Keep a Secret Pocket | Animal Oddities #8 #shorts",
+        "description": "Sea otters have built-in pockets and carry a favorite rock for life! 🦦\n\n👇 Did you know otters had pockets, yes or no?\n\n#seaotter #animalfacts #nature #oceanlife #wildlife #curiosity #shorts\n\nImage credits:\nPhoto: Abigail Lynn · Unsplash\nPhoto: Ali Kazal · Unsplash\nPhoto: Mazin Omron · Unsplash\nPhoto: Yiran Ding · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "seaotter",
+          "animalfacts",
+          "nature",
+          "oceanlife",
+          "wildlife",
+          "curiosity",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Animal Oddities #8 🔎 Sea otters have built-in pockets and carry a favorite rock for life! 🦦\n\n👇 Did you know otters had pockets, yes or no?\n.\n.\n#seaotter #animalfacts #nature #oceanlife #wildlife #curiosity #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-20 19:15",
+  "last_slot": "2026-11-21 11:15",
   "stats_day": "2026-11-21",
   "stats_problems": {},
   "followers": {

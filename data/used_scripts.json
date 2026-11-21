@@ -413,5 +413,14 @@
     "hook_style": "bold_fact",
     "hook": "Tank sabot rounds pierce heavy steel without using any explosives.",
     "date": "2026-11-21"
+  },
+  {
+    "id": "why-sea-otters-keep-a-secret-pocket",
+    "title": "Why Sea Otters Keep a Secret Pocket",
+    "theme": "animals",
+    "format": "myth",
+    "hook_style": "secret",
+    "hook": "Sea otters hide a secret pocket under their left arm.",
+    "date": "2026-11-21"
   }
 ]
