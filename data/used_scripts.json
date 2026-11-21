@@ -404,5 +404,14 @@
     "hook_style": "never_seen",
     "hook": "You've never seen your brain defend choices you didn't make.",
     "date": "2026-11-20"
+  },
+  {
+    "id": "how-tank-sabot-darts-pierce-armor-without-explosiv",
+    "title": "How Tank Sabot Darts Pierce Armor Without Explosives",
+    "theme": "tech",
+    "format": "standard",
+    "hook_style": "bold_fact",
+    "hook": "Tank sabot rounds pierce heavy steel without using any explosives.",
+    "date": "2026-11-21"
   }
 ]
