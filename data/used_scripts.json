@@ -422,5 +422,14 @@
     "hook_style": "secret",
     "hook": "Sea otters hide a secret pocket under their left arm.",
     "date": "2026-11-21"
+  },
+  {
+    "id": "why-lie-detectors-are-a-complete-lie",
+    "title": "Why Lie Detectors Are a Complete Lie",
+    "theme": "mind",
+    "format": "myth",
+    "hook_style": "bold_fact",
+    "hook": "Lie detector machines cannot physically detect lies at all.",
+    "date": "2026-11-21"
   }
 ]
