@@ -1,48 +1,6 @@
 {
   "offset": 41248576,
-  "pending": {
-    "4a2e38d59b": {
-      "vid": "20261122-011749-how-this-fish-survives-buried-alive-for-years-hi",
-      "post": {
-        "title": "Zameen Ke Andar Zinda Rehne Wali Machhli",
-        "created": "2026-11-22T01:22:48",
-        "source": "gemini:gemini-flash-latest",
-        "theme": "survival",
-        "hook": "Humein lagta hai machhli paani ke bina mar jati hai lekin lungfish saalon tak zameen ke andar zinda rehti hai",
-        "series": "Adbhut Jeev #2",
-        "question": "Kya aap zameen ke andar aise reh sakte hain?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "standard",
-        "hook_style": "contradiction",
-        "youtube": {
-          "title": "Zameen Ke Andar Zinda Rehne Wali Machhli | Adbhut Jeev #2 #shorts",
-          "description": "Jab Africa ki jheelein sookh jati hain toh lungfish zameen ke andar saalon tak zinda rehti hai 🐟\n\n👇 Kya aap zameen ke andar aise reh sakte hain?\n\n#lungfish #sciencefacts #hindi #wildlife #shorts #facts #shorts\n\nImage credits:\nPhoto: Aleksei / Алексей Simonenko / Симоненко · Unsplash\nPhoto: Bret Little · Unsplash\nPhoto: David Boca · Unsplash\nPhoto: Elijah Lopes · Unsplash\nPhoto: Jametlene Reskp · Unsplash\nPhoto: Janine Robinson · Unsplash\nPhoto: Joshua Brown · Unsplash\nPhoto: José Ignacio Pompé · Unsplash\nPhoto: Ramin Khatibi · Unsplash\nPhoto: The New York Public Library · Unsplash\nVideo: Pixabay",
-          "tags": [
-            "lungfish",
-            "sciencefacts",
-            "hindi",
-            "wildlife",
-            "shorts",
-            "facts",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "Jab Africa ki jheelein sookh jati hain toh lungfish zameen ke andar saalon tak zinda rehti hai 🐟 #lungfish #sciencefacts #hindi #wildlife #shorts #facts #fyp #facts",
-        "instagram": "Adbhut Jeev #2 🔎 Jab Africa ki jheelein sookh jati hain toh lungfish zameen ke andar saalon tak zinda rehti hai 🐟\n\n👇 Kya aap zameen ke andar aise reh sakte hain?\n.\n.\n#lungfish #sciencefacts #hindi #wildlife #shorts #facts #reels #facts #didyouknow",
-        "facebook": "Adbhut Jeev #2 🔎 Jab Africa ki jheelein sookh jati hain toh lungfish zameen ke andar saalon tak zinda rehti hai 🐟\n\n👇 Kya aap zameen ke andar aise reh sakte hain?\n\n#lungfish #sciencefacts #hindi #wildlife #shorts #facts",
-        "script": "Humein lagta hai machhli paani ke bina mar jati hai lekin lungfish saalon tak zameen ke andar zinda rehti hai Africa ki jheelein jab dhoop mein sukhti hain toh yeh geeli mitti mein ghus jati hai Phir yeh apni body se gaadha liquid nikal kar ek kada cover bana leti hai Ab dekho hota kya hai yeh saans lene ke liye ek chhota sa chhed khula rakhti hai Iske gills band ho jate hain aur yeh real lung se direct saans leti hai Phir yeh apna body system zero par laakar ekdam pause kar deti hai Bina khaaye piye yeh apni poonch ki muscles se energy leti rehti hai Aur sabse badi baat kya hai yeh zeharila waste body mein rakhar bhi zinda rehti hai Phir jaise hi baarish hoti hai mitti pighalti hai aur yeh aaram se tairne lagti hai Kya aap zameen ke andar aise reh sakte hain haan ya na? Comment mein likho aur follow karo.",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAIB5msCRD3OzhFHZtX3_etXJRnIF0mnAAKpCwACCo8QREsTE4kbBnFLPQQ",
-      "channel": "hi",
-      "message_id": 486,
-      "created": "2026-11-22T01:24:13.484829",
-      "scheduled": true
-    }
-  },
+  "pending": {},
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -2337,7 +2295,7 @@
   "comments_day": "2026-11-21",
   "compile_week": "2026-W46",
   "report_week": "2026-W46",
-  "last_hi_slot": "2026-11-22 13:00",
+  "last_hi_slot": "2026-11-22 20:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -4119,6 +4077,38 @@
         }
       },
       "stats_at": "2026-11-22T11:00:59"
+    },
+    {
+      "title": "Zameen Ke Andar Zinda Rehne Wali Machhli",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/VPswqLAZSGQ",
+        "Facebook": "https://www.facebook.com/reel/2391128341624956",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-22T01:22:48",
+      "theme": "survival",
+      "hook": "Humein lagta hai machhli paani ke bina mar jati hai lekin lungfish saalon tak zameen ke andar zinda rehti hai",
+      "series": "Adbhut Jeev #2",
+      "hook_style": "contradiction",
+      "file_id": "BAACAgEAAxkDAAIB5msCRD3OzhFHZtX3_etXJRnIF0mnAAKpCwACCo8QREsTE4kbBnFLPQQ",
+      "youtube": {
+        "title": "Zameen Ke Andar Zinda Rehne Wali Machhli | Adbhut Jeev #2 #shorts",
+        "description": "Jab Africa ki jheelein sookh jati hain toh lungfish zameen ke andar saalon tak zinda rehti hai 🐟\n\n👇 Kya aap zameen ke andar aise reh sakte hain?\n\n#lungfish #sciencefacts #hindi #wildlife #shorts #facts #shorts\n\nImage credits:\nPhoto: Aleksei / Алексей Simonenko / Симоненко · Unsplash\nPhoto: Bret Little · Unsplash\nPhoto: David Boca · Unsplash\nPhoto: Elijah Lopes · Unsplash\nPhoto: Jametlene Reskp · Unsplash\nPhoto: Janine Robinson · Unsplash\nPhoto: Joshua Brown · Unsplash\nPhoto: José Ignacio Pompé · Unsplash\nPhoto: Ramin Khatibi · Unsplash\nPhoto: The New York Public Library · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "lungfish",
+          "sciencefacts",
+          "hindi",
+          "wildlife",
+          "shorts",
+          "facts",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Adbhut Jeev #2 🔎 Jab Africa ki jheelein sookh jati hain toh lungfish zameen ke andar saalon tak zinda rehti hai 🐟\n\n👇 Kya aap zameen ke andar aise reh sakte hain?\n.\n.\n#lungfish #sciencefacts #hindi #wildlife #shorts #facts #reels #facts #didyouknow",
+      "channel": "hi",
+      "ig_manual": true
     }
   ],
   "stats_day_hi": "2026-11-22",
