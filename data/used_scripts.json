@@ -440,5 +440,14 @@
     "hook_style": "contradiction",
     "hook": "Fish die out of water, but lungfish survive years underground.",
     "date": "2026-11-22"
+  },
+  {
+    "id": "the-secret-creatures-living-inside-your-face-pores",
+    "title": "The Secret Creatures Living Inside Your Face Pores",
+    "theme": "animals",
+    "format": "myth",
+    "hook_style": "daily_habit",
+    "hook": "Washing your face cannot remove microscopic mites inside your skin.",
+    "date": "2026-11-22"
   }
 ]
