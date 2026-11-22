@@ -41,6 +41,47 @@
       "message_id": 498,
       "created": "2026-11-22T17:23:06.279304",
       "scheduled": true
+    },
+    "06de4a6f99": {
+      "vid": "20261122-221825-why-danger-tricks-your-brain-into-falling-in-love-hi",
+      "post": {
+        "title": "Khatra Aur Pyaar Ka Brain Connection",
+        "created": "2026-11-22T22:25:16",
+        "source": "gemini:gemini-flash-latest",
+        "theme": "love",
+        "hook": "Ek jhulne wala pul aapke brain ko pyar ka dhokha de sakta hai.",
+        "series": "Pyaar Ka Science #1",
+        "question": "Roller coaster ya coffee shop - first date kahan honi chahiye?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "bold_fact",
+        "youtube": {
+          "title": "Khatra Aur Pyaar Ka Brain Connection | Pyaar Ka Science #1 #shorts",
+          "description": "Adrenaline rush aapke brain ko pyar ka dhokha kaise deta hai? 🎢 First date par roller coaster try karoge?\n\n👇 Roller coaster ya coffee shop - first date kahan honi chahiye?\n\n#psychology #relationships #sciencefacts #datingadvice #mindblown #curiosity #shorts",
+          "tags": [
+            "psychology",
+            "relationships",
+            "sciencefacts",
+            "datingadvice",
+            "mindblown",
+            "curiosity",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Adrenaline rush aapke brain ko pyar ka dhokha kaise deta hai? 🎢 First date par roller coaster try karoge? #psychology #relationships #sciencefacts #datingadvice #mindblown #curiosity #fyp #facts",
+        "instagram": "Pyaar Ka Science #1 🔎 Adrenaline rush aapke brain ko pyar ka dhokha kaise deta hai? 🎢 First date par roller coaster try karoge?\n\n👇 Roller coaster ya coffee shop - first date kahan honi chahiye?\n.\n.\n#psychology #relationships #sciencefacts #datingadvice #mindblown #curiosity #reels #facts #didyouknow",
+        "facebook": "Pyaar Ka Science #1 🔎 Adrenaline rush aapke brain ko pyar ka dhokha kaise deta hai? 🎢 First date par roller coaster try karoge?\n\n👇 Roller coaster ya coffee shop - first date kahan honi chahiye?\n\n#psychology #relationships #sciencefacts #datingadvice #mindblown #curiosity",
+        "script": "Ek jhulne wala pul aapke brain ko pyar ka dhokha de sakta hai. Unnis sau chauhattar mein scientists ne Vancouver ke ek khatarnak pul par experiment kiya. Lakdi ka patla rasta do sau feet ki gahrai par tezi se jhul raha tha. Ek attractive ladki beech mein mili aur usne unhein apna phone number diya. Doosra group paani se bas das feet oopar ek shaant pul par chala. Khatarnak pul wale pachas percent ladkon ne use date ke liye call kiya. Lekin safe pul wale kisi ladke ne call nahi kiya. Actually aapka brain khatre ke adrenaline ko pyar ke signal se mix kar deta hai. Isliye first date par roller coaster ride sabse best hoti hai. Roller coaster ya coffee shop, first date kahan honi chahiye? Comment mein likho aur follow karo.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIB9msDbFstGCcLcLSZWuKG2-ICg_vmAAJQCwACCo8YRPP-WD81qtOMPQQ",
+      "channel": "hi",
+      "message_id": 502,
+      "created": "2026-11-22T22:27:39.212897",
+      "scheduled": true
     }
   },
   "history": [
@@ -2354,9 +2395,40 @@
       },
       "instagram": "Animal Oddities #9 🔎 Your daily face wash leaves behind millions of tiny eight-legged roommates living deep in your pores. 🔬\n\n👇 Does knowing this gross you out, yes or no?\n.\n.\n#biology #sciencefacts #humanbody #microscope #nature #mindblowing #reels #facts #didyouknow",
       "channel": "en"
+    },
+    {
+      "title": "Why Danger Tricks Your Brain Into Falling in Love",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/MNlSAJ7ZGxQ",
+        "Facebook": "https://www.facebook.com/reel/2334205574046140",
+        "Instagram": "https://www.instagram.com/reel/DgD4Eq8iQUf/"
+      },
+      "created": "2026-11-22T22:22:12",
+      "theme": "love",
+      "hook": "Suspension bridges can trick your brain into falling in love.",
+      "series": "Attraction Science #1",
+      "hook_style": "bold_fact",
+      "file_id": "BAACAgEAAxkDAAIB82sDa8-DutRAbVPcMQa443OKpBnuAAJPCwACCo8YRIHkZQIaEUAZPQQ",
+      "youtube": {
+        "title": "Why Danger Tricks Your Brain Into Falling in Love | Attraction Science #1 #shorts",
+        "description": "Psychologists discovered that high adrenaline tricks your brain into feeling romantic attraction. 🎢 Would you take a first date on a roller coaster?\n\n👇 Roller coaster or coffee shop - which makes a better first date?\n\n#psychology #relationships #sciencefacts #datingadvice #mindblown #curiosity #shorts",
+        "tags": [
+          "psychology",
+          "relationships",
+          "sciencefacts",
+          "datingadvice",
+          "mindblown",
+          "curiosity",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Attraction Science #1 🔎 Psychologists discovered that high adrenaline tricks your brain into feeling romantic attraction. 🎢 Would you take a first date on a roller coaster?\n\n👇 Roller coaster or coffee shop - which makes a better first date?\n.\n.\n#psychology #relationships #sciencefacts #datingadvice #mindblown #curiosity #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-22 11:15",
+  "last_slot": "2026-11-22 16:15",
   "stats_day": "2026-11-22",
   "stats_problems": {},
   "followers": {

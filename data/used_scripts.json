@@ -449,5 +449,14 @@
     "hook_style": "daily_habit",
     "hook": "Washing your face cannot remove microscopic mites inside your skin.",
     "date": "2026-11-22"
+  },
+  {
+    "id": "why-danger-tricks-your-brain-into-falling-in-love",
+    "title": "Why Danger Tricks Your Brain Into Falling in Love",
+    "theme": "love",
+    "format": "standard",
+    "hook_style": "bold_fact",
+    "hook": "Suspension bridges can trick your brain into falling in love.",
+    "date": "2026-11-22"
   }
 ]
