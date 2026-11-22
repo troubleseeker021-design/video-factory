@@ -431,5 +431,14 @@
     "hook_style": "bold_fact",
     "hook": "Lie detector machines cannot physically detect lies at all.",
     "date": "2026-11-21"
+  },
+  {
+    "id": "how-this-fish-survives-buried-alive-for-years",
+    "title": "How This Fish Survives Buried Alive for Years",
+    "theme": "survival",
+    "format": "standard",
+    "hook_style": "contradiction",
+    "hook": "Fish die out of water, but lungfish survive years underground.",
+    "date": "2026-11-22"
   }
 ]
