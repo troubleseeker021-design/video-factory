@@ -458,5 +458,14 @@
     "hook_style": "bold_fact",
     "hook": "Suspension bridges can trick your brain into falling in love.",
     "date": "2026-11-22"
+  },
+  {
+    "id": "the-animal-that-turns-completely-invisible",
+    "title": "The Animal That Turns Completely Invisible",
+    "theme": "ocean",
+    "format": "standard",
+    "hook_style": "never_seen",
+    "hook": "You've never seen a sea sapphire turn completely invisible.",
+    "date": "2026-11-23"
   }
 ]

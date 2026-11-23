@@ -82,6 +82,47 @@
       "message_id": 502,
       "created": "2026-11-22T22:27:39.212897",
       "scheduled": true
+    },
+    "0ba4ede778": {
+      "vid": "20261123-012453-the-animal-that-turns-completely-invisible-hi",
+      "post": {
+        "title": "Gayab Hone Wala Anokha Jeev",
+        "created": "2026-11-23T01:33:56",
+        "source": "gemini:gemini-3.6-flash",
+        "theme": "ocean",
+        "hook": "Sea sapphire ko poori tarah gayab hote aapne kabhi nahi dekha hoga.",
+        "series": "Vigyan Ke Rahasya #6",
+        "question": "Aapko gayab hone ka suit chahiye ya nahi?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "never_seen",
+        "youtube": {
+          "title": "Gayab Hone Wala Anokha Jeev | Vigyan Ke Rahasya #6 #shorts",
+          "description": "Sea sapphire ek second mein 100 percent gayab ho sakta hai 💎\n\n👇 Aapko gayab hone ka suit chahiye ya nahi?\n\n#sciencefacts #oceanlife #shorts #facts #nature #mindblowing #shorts\n\nImage credits:\nPhoto: Ahmed Saeed · Unsplash\nPhoto: Diana Parkhouse · Unsplash\nPhoto: James Eades · Unsplash\nPhoto: Jonathan Kemper · Unsplash\nPhoto: Nikoletta Stylianou · Unsplash\nPhoto: Scott Goodwill · Unsplash\nVideo: Pixabay",
+          "tags": [
+            "sciencefacts",
+            "oceanlife",
+            "shorts",
+            "facts",
+            "nature",
+            "mindblowing",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Sea sapphire ek second mein 100 percent gayab ho sakta hai 💎 #sciencefacts #oceanlife #shorts #facts #nature #mindblowing #fyp #facts",
+        "instagram": "Vigyan Ke Rahasya #6 🔎 Sea sapphire ek second mein 100 percent gayab ho sakta hai 💎\n\n👇 Aapko gayab hone ka suit chahiye ya nahi?\n.\n.\n#sciencefacts #oceanlife #shorts #facts #nature #mindblowing #reels #facts #didyouknow",
+        "facebook": "Vigyan Ke Rahasya #6 🔎 Sea sapphire ek second mein 100 percent gayab ho sakta hai 💎\n\n👇 Aapko gayab hone ka suit chahiye ya nahi?\n\n#sciencefacts #oceanlife #shorts #facts #nature #mindblowing",
+        "script": "Sea sapphire ko poori tarah gayab hote aapne kabhi nahi dekha hoga. Gahre paani mein yeh chhota sa jeev neon light ki tarah chamakta hai. Lekin khatra aate hi yeh achanak gayab ho jaata hai. Ab socho yeh koi normal chhipne ki trick nahi hai. Iski body mein guanine crystals ki bahut baarik layers hoti hain. Jab light ek khaas angle par padti hai to light waves kat jaati hain. Aur yahin twist hai yeh light ko control karke transparent banta hai. Scientists kehte hain ki tairne ka angle badalte hi yeh gayab ho jaata hai. Yeh duniya ka iklauta jeev hai jiske paas natural gayab hone ka system hai. Sach sach batana aapko gayab hone ka suit chahiye ya nahi comment mein likho aur follow karo.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAIB_msDmKOC1bIom3snRbhJr0V2Lb8xAALGCgAC29MgRNjsELViX6dAPQQ",
+      "channel": "hi",
+      "message_id": 510,
+      "created": "2026-11-23T01:36:36.362422",
+      "scheduled": true
     }
   },
   "history": [
@@ -2426,9 +2467,41 @@
       },
       "instagram": "Attraction Science #1 🔎 Psychologists discovered that high adrenaline tricks your brain into feeling romantic attraction. 🎢 Would you take a first date on a roller coaster?\n\n👇 Roller coaster or coffee shop - which makes a better first date?\n.\n.\n#psychology #relationships #sciencefacts #datingadvice #mindblown #curiosity #reels #facts #didyouknow",
       "channel": "en"
+    },
+    {
+      "title": "The Animal That Turns Completely Invisible",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/dPUC1hT0RNc",
+        "Facebook": "https://www.facebook.com/reel/1147786631127663",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-23T01:28:13",
+      "theme": "ocean",
+      "hook": "You've never seen a sea sapphire turn completely invisible.",
+      "series": "Ocean Mysteries #6",
+      "hook_style": "never_seen",
+      "file_id": "BAACAgEAAxkDAAIB-WsDmAhk2fEvOTPkB4WbWWCvhyYxAALECgAC29MgRG0DpAjENjdxPQQ",
+      "youtube": {
+        "title": "The Animal That Turns Completely Invisible | Ocean Mysteries #6 #shorts",
+        "description": "The sea sapphire can turn 100% invisible in a fraction of a second 💎\n\n👇 Would you wear an invisible cloaking suit, yes or no?\n\n#ocean #marinebiology #sciencefacts #nature #creatures #mindblowing #shorts\n\nImage credits:\nPhoto: Ahmed Saeed · Unsplash\nPhoto: Diana Parkhouse · Unsplash\nPhoto: James Eades · Unsplash\nPhoto: Jonathan Kemper · Unsplash\nPhoto: Nikoletta Stylianou · Unsplash\nPhoto: Scott Goodwill · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "ocean",
+          "marinebiology",
+          "sciencefacts",
+          "nature",
+          "creatures",
+          "mindblowing",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Ocean Mysteries #6 🔎 The sea sapphire can turn 100% invisible in a fraction of a second 💎\n\n👇 Would you wear an invisible cloaking suit, yes or no?\n.\n.\n#ocean #marinebiology #sciencefacts #nature #creatures #mindblowing #reels #facts #didyouknow",
+      "channel": "en",
+      "ig_manual": true
     }
   ],
-  "last_slot": "2026-11-22 16:15",
+  "last_slot": "2026-11-22 19:15",
   "stats_day": "2026-11-22",
   "stats_problems": {},
   "followers": {
