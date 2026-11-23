@@ -467,5 +467,14 @@
     "hook_style": "never_seen",
     "hook": "You've never seen a sea sapphire turn completely invisible.",
     "date": "2026-11-23"
+  },
+  {
+    "id": "why-woodpeckers-don-t-get-concussions",
+    "title": "Why Woodpeckers Don't Get Concussions",
+    "theme": "animals",
+    "format": "standard",
+    "hook_style": "contradiction",
+    "hook": "Woodpeckers don't get concussions. Their tongues wrap around their brains.",
+    "date": "2026-11-23"
   }
 ]

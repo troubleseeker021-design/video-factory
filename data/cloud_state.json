@@ -1,6 +1,48 @@
 {
   "offset": 41248576,
-  "pending": {},
+  "pending": {
+    "7612873ab2": {
+      "vid": "20261123-171631-why-woodpeckers-don-t-get-concussions-hi",
+      "post": {
+        "title": "Woodpecker Ko Concussion Kyun Nahi Hota",
+        "created": "2026-11-23T17:23:45",
+        "source": "gemini:gemini-3.6-flash",
+        "theme": "animals",
+        "hook": "Woodpecker ko concussion kyun nahi hota actually inki tongue brain ke charo taraf lipti hoti hai.",
+        "series": "Kudrat Ke Khel #10",
+        "question": "Kya aapko bhi aisa shock absorber chahiye, haan ya na?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "contradiction",
+        "youtube": {
+          "title": "Woodpecker Ko Concussion Kyun Nahi Hota | Kudrat Ke Khel #10 #shorts",
+          "description": "Woodpecker din bhar ped par sir maarta hai phir bhi brain damage kyun nahi hota? 🐦\n\n👇 Kya aapko bhi aisa shock absorber chahiye, haan ya na?\n\n#woodpecker #sciencefacts #nature #shorts #mindblowing #gyan #shorts\n\nImage credits:\nVideo: Pixabay",
+          "tags": [
+            "woodpecker",
+            "sciencefacts",
+            "nature",
+            "shorts",
+            "mindblowing",
+            "gyan",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Woodpecker din bhar ped par sir maarta hai phir bhi brain damage kyun nahi hota? 🐦 #woodpecker #sciencefacts #nature #shorts #mindblowing #gyan #fyp #facts",
+        "instagram": "Kudrat Ke Khel #10 🔎 Woodpecker din bhar ped par sir maarta hai phir bhi brain damage kyun nahi hota? 🐦\n\n👇 Kya aapko bhi aisa shock absorber chahiye, haan ya na?\n.\n.\n#woodpecker #sciencefacts #nature #shorts #mindblowing #gyan #reels #facts #didyouknow",
+        "facebook": "Kudrat Ke Khel #10 🔎 Woodpecker din bhar ped par sir maarta hai phir bhi brain damage kyun nahi hota? 🐦\n\n👇 Kya aapko bhi aisa shock absorber chahiye, haan ya na?\n\n#woodpecker #sciencefacts #nature #shorts #mindblowing #gyan",
+        "script": "Woodpecker ko concussion kyun nahi hota actually inki tongue brain ke charo taraf lipti hoti hai. Ek woodpecker har second bees baar ped par sir maarta hai. Isse har ek strike par barah sau G force banti hai. Ab dekho insaan ka brain sirf assi G par damage ho jata hai. Isliye nature ne is bird ko ek natural shock absorber diya hai. Iski tongue normal birds ki tarah sirf munh me nahi rehti. Yeh do hisson me bantkar pure brain ke charo taraf lipat jaati hai. Aur jab chonch takraati hai yeh tongue brain ko puri tarah lock kar deti hai. To har hathode jaisa baar iski apni tongue se safe ho jata hai. Kya aapko bhi aisa shock absorber chahiye haan ya na comment me batao aur follow karo.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAICDGsEdvkxq3LHffhcvcYWKyhYuVS_AAIQCwAC29MoRJwGBlhNdWQYPQQ",
+      "channel": "hi",
+      "message_id": 524,
+      "created": "2026-11-23T17:25:14.126451",
+      "scheduled": true
+    }
+  },
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -2419,9 +2461,40 @@
         }
       },
       "stats_at": "2026-11-23T11:00:51"
+    },
+    {
+      "title": "Why Woodpeckers Don't Get Concussions",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/CKlYCzqNqgk",
+        "Facebook": "https://www.facebook.com/reel/2546861235811844",
+        "Instagram": "https://www.instagram.com/reel/DgF6QG9jNC8/"
+      },
+      "created": "2026-11-23T17:21:58",
+      "theme": "animals",
+      "hook": "Woodpeckers don't get concussions. Their tongues wrap around their brains.",
+      "series": "Animal Oddities #10",
+      "hook_style": "contradiction",
+      "file_id": "BAACAgEAAxkDAAICCWsEdqPMGEXqeyjlXU7NjHtzvsWWAAIMCwAC29MoRGcQM_fKO1jcPQQ",
+      "youtube": {
+        "title": "Why Woodpeckers Don't Get Concussions | Animal Oddities #10 #shorts",
+        "description": "How woodpeckers hit trees all day without brain damage 🐦\n\n👇 Would you want a natural shock absorber like this, yes or no?\n\n#woodpecker #animals #science #nature #naturefacts #mindblowing #shorts\n\nImage credits:\nVideo: Pixabay",
+        "tags": [
+          "woodpecker",
+          "animals",
+          "science",
+          "nature",
+          "naturefacts",
+          "mindblowing",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Animal Oddities #10 🔎 How woodpeckers hit trees all day without brain damage 🐦\n\n👇 Would you want a natural shock absorber like this, yes or no?\n.\n.\n#woodpecker #animals #science #nature #naturefacts #mindblowing #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-22 19:15",
+  "last_slot": "2026-11-23 11:15",
   "stats_day": "2026-11-23",
   "stats_problems": {},
   "followers": {
