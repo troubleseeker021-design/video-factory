@@ -2433,13 +2433,13 @@
   "stats_problems": {},
   "followers": {
     "YouTube": 19,
-    "Instagram": 1,
+    "Instagram": 2,
     "Facebook": 0
   },
   "repost_block": "2026-11-09-1",
   "comments_day": "2026-11-22",
   "compile_week": "2026-W46",
-  "report_week": "2026-W46",
+  "report_week": "2026-W47",
   "last_hi_slot": "2026-11-22 20:00",
   "history_hi": [
     {
@@ -4259,9 +4259,9 @@
   "stats_day_hi": "2026-11-22",
   "stats_problems_history_hi": {},
   "ig_retry_block": "2026-11-22-3",
-  "report_week_hi": "2026-W46",
+  "report_week_hi": "2026-W47",
   "followers_history_hi": {
-    "YouTube": 1,
+    "YouTube": 3,
     "Instagram": 1,
     "Facebook": 0
   }
