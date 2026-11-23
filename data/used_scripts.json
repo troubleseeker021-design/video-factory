@@ -476,5 +476,14 @@
     "hook_style": "contradiction",
     "hook": "Woodpeckers don't get concussions. Their tongues wrap around their brains.",
     "date": "2026-11-23"
+  },
+  {
+    "id": "the-glitch-that-makes-you-think-you-re-dead",
+    "title": "The Glitch That Makes You Think You're Dead",
+    "theme": "mind",
+    "format": "standard",
+    "hook_style": "bold_fact",
+    "hook": "Cotard's delusion makes your brain believe you are dead.",
+    "date": "2026-11-23"
   }
 ]
