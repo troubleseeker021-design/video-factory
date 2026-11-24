@@ -485,5 +485,14 @@
     "hook_style": "bold_fact",
     "hook": "Cotard's delusion makes your brain believe you are dead.",
     "date": "2026-11-23"
+  },
+  {
+    "id": "the-mechanical-heart-that-beats-without-electricit",
+    "title": "The Mechanical Heart That Beats Without Electricity",
+    "theme": "tech",
+    "format": "standard",
+    "hook_style": "never_seen",
+    "hook": "You've never seen an artificial heart pump blood with compressed air.",
+    "date": "2026-11-24"
   }
 ]

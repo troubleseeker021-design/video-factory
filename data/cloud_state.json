@@ -82,6 +82,47 @@
       "message_id": 528,
       "created": "2026-11-23T22:26:26.277766",
       "scheduled": true
+    },
+    "9aba6445f9": {
+      "vid": "20261124-011627-the-mechanical-heart-that-beats-without-electricit-hi",
+      "post": {
+        "title": "Hawa Se Dhadakne Wala Mechanical Dil",
+        "created": "2026-11-24T01:20:36",
+        "source": "gemini:gemini-flash-lite-latest",
+        "theme": "tech",
+        "hook": "Aapne hawa ke pressure se dhadakne wala aisa mechanical heart kabhi nahi dekha hoga",
+        "series": "Gajab Science #6",
+        "question": "Kya aap mechanical dil par bharosa karoge haan ya na?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "never_seen",
+        "youtube": {
+          "title": "Hawa Se Dhadakne Wala Mechanical Dil | Gajab Science #6 #shorts",
+          "description": "Yeh machine bina bijli sirf hawa ke pressure se dil ko replace kar deti hai\n\n👇 Kya aap mechanical dil par bharosa karoge haan ya na?\n\n#shorts #sciencefacts #desiengineering #humanbody #hindifacts #techfacts #shorts",
+          "tags": [
+            "shorts",
+            "sciencefacts",
+            "desiengineering",
+            "humanbody",
+            "hindifacts",
+            "techfacts",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Yeh machine bina bijli sirf hawa ke pressure se dil ko replace kar deti hai #shorts #sciencefacts #desiengineering #humanbody #hindifacts #techfacts #fyp #facts",
+        "instagram": "Gajab Science #6 🔎 Yeh machine bina bijli sirf hawa ke pressure se dil ko replace kar deti hai\n\n👇 Kya aap mechanical dil par bharosa karoge haan ya na?\n.\n.\n#shorts #sciencefacts #desiengineering #humanbody #hindifacts #techfacts #reels #facts #didyouknow",
+        "facebook": "Gajab Science #6 🔎 Yeh machine bina bijli sirf hawa ke pressure se dil ko replace kar deti hai\n\n👇 Kya aap mechanical dil par bharosa karoge haan ya na?\n\n#shorts #sciencefacts #desiengineering #humanbody #hindifacts #techfacts",
+        "script": "Aapne hawa ke pressure se dhadakne wala aisa mechanical heart kabhi nahi dekha hoga Dekho hota kya hai ek chhota pneumatic driver iske chambers mein hawa push karta hai Andar plastic ventricles ki membrane har minute theek 70 baar phoolti aur pichakti hain Aur jaise hi mechanical valves band hote hain blood seedha main arteries mein pump hota hai Aur yahin twist hai yeh poora system ek heavy external battery pack se chalta hai Matlab seene ke andar ek real engine chal raha hai jo donor milne tak jaan bachata hai Bina ek bhi natural dhadkan ke yeh body mein blood circulation chalu rakhta hai Kya aap aise mechanical heart par bharosa karoge haan ya na comment mein batao aur follow karo",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAICFGsE5rOh_DqfkuPHVcxMRRikAVEHAAJMDAAC29MoRDlCAAHN0H9D1D0E",
+      "channel": "hi",
+      "message_id": 532,
+      "created": "2026-11-24T01:21:56.550073",
+      "scheduled": true
     }
   },
   "history": [
@@ -2564,9 +2605,40 @@
       },
       "instagram": "Mind Games #7 🔎 Cotard's delusion is one of the strangest neurological glitches in medical history. 🧠\n\n👇 Could your brain ever trick you like this, yes or no?\n.\n.\n#psychology #brain #science #mindblowing #facts #neurology #reels #facts #didyouknow",
       "channel": "en"
+    },
+    {
+      "title": "The Mechanical Heart That Beats Without Electricity",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/-jbHYmPRzzE",
+        "Facebook": "https://www.facebook.com/reel/1554176546616405",
+        "Instagram": "https://www.instagram.com/reel/DgGw0iREQLK/"
+      },
+      "created": "2026-11-24T01:18:50",
+      "theme": "tech",
+      "hook": "You've never seen an artificial heart pump blood with compressed air.",
+      "series": "How It Works #6",
+      "hook_style": "never_seen",
+      "file_id": "BAACAgEAAxkDAAICEWsE5mcsdpYUBbA_wnocGP_AQJsjAAJJDAAC29MoROirq1Tx7wapPQQ",
+      "youtube": {
+        "title": "The Mechanical Heart That Beats Without Electricity | How It Works #6 #shorts",
+        "description": "This machine replaces a human heart using pure air pressure. 🦸\n\n👇 Would you trust a mechanical heart, yes or no?\n\n#medicaltech #science #humanbody #engineering #biotech #health #shorts",
+        "tags": [
+          "medicaltech",
+          "science",
+          "humanbody",
+          "engineering",
+          "biotech",
+          "health",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "How It Works #6 🔎 This machine replaces a human heart using pure air pressure. 🦸\n\n👇 Would you trust a mechanical heart, yes or no?\n.\n.\n#medicaltech #science #humanbody #engineering #biotech #health #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-23 16:15",
+  "last_slot": "2026-11-23 19:15",
   "stats_day": "2026-11-23",
   "stats_problems": {},
   "followers": {
