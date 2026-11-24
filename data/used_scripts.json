@@ -503,5 +503,14 @@
     "hook_style": "",
     "hook": "A woman who died in 1951 still has living cells in labs today.",
     "date": "2026-11-24"
+  },
+  {
+    "id": "why-doorways-wipe-your-short-term-memory",
+    "title": "Why Doorways Wipe Your Short-Term Memory",
+    "theme": "mind",
+    "format": "standard",
+    "hook_style": "contradiction",
+    "hook": "Doorways don't just divide rooms. They erase short-term memory.",
+    "date": "2026-11-24"
   }
 ]
