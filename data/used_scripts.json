@@ -494,5 +494,14 @@
     "hook_style": "never_seen",
     "hook": "You've never seen an artificial heart pump blood with compressed air.",
     "date": "2026-11-24"
+  },
+  {
+    "id": "immortal-cells",
+    "title": "Her Cells Are Still Alive Today",
+    "theme": "body",
+    "format": "myth",
+    "hook_style": "",
+    "hook": "A woman who died in 1951 still has living cells in labs today.",
+    "date": "2026-11-24"
   }
 ]
