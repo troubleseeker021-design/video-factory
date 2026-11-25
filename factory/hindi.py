@@ -78,16 +78,46 @@ def ensure_font():
     return FONT
 
 
+# one fixed Hindi name per series, so the channel looks organised (Gemini used to invent a new name each time)
+HI_SERIES = {"space": "Antariksh Ke Raaz", "ocean": "Samundar Ke Rahasya", "nature": "Kudrat Ke Raaz",
+             "history": "Itihaas Ke Sach", "body": "Shareer Ke Raaz", "science": "Gajab Science",
+             "animals": "Anokhe Jaanwar", "places": "Anokhi Jagahein", "tech": "Kaise Karta Hai Kaam",
+             "mind": "Dimaag Ke Rahasya", "dark": "Kaala Itihaas", "money": "Paise Ke Raaz",
+             "love": "Aakarshan Ka Vigyan", "whatif": "Kya Hota Agar?", "survival": "Zinda Rehne Ka Vigyan",
+             "food": "Khane Ka Sach"}
+_DEVANAGARI = re.compile(r"[\u0900-\u097F]+")
+ROMAN_KEYS = ("title", "caption", "question", "thumb")
+
+
+def _roman_problem(out, script):
+    """Why the on-screen Hinglish is not good enough (Hindi letters mixed in, or the title left in English), or None."""
+    for k in ROMAN_KEYS:
+        if _DEVANAGARI.search(str(out.get(k) or "")):
+            return f"Hindi letters inside the Roman {k}"
+    en = set(re.findall(r"[a-z]+", str(script.get("title", "")).lower()))
+    hi = re.findall(r"[a-z]+", str(out.get("title", "")).lower())
+    if hi and sum(w in en for w in hi) / len(hi) > 0.6:
+        return "title was left in English"
+    return None
+
+
 def translate(script, cfg):
     from . import writer
     keys = ["title", "hook", "body", "cta", "outro", "caption", "hashtags", "question", "thumb", "labels", "facts"]
     src = json.dumps({k: script.get(k) for k in keys}, ensure_ascii=False)
     out = None
-    for _ in range(2):
+    for attempt in range(2):
         out = writer.gemini_json(cfg, PROMPT.format(src=src), temperature=0.7)
         n = len(script["body"])
         if (out and out.get("hook") and out.get("hook_roman") and len(out.get("body") or []) == n
                 and len(out.get("body_roman") or []) == n and out.get("cta_roman")):
+            problem = _roman_problem(out, script)
+            if problem and attempt == 0:
+                log(f"  Hindi translation: {problem} - asking again")
+                continue
+            for k in ROMAN_KEYS:  # never show stray Hindi letters inside Roman text
+                if isinstance(out.get(k), str):
+                    out[k] = re.sub(r"\s{2,}", " ", _DEVANAGARI.sub("", out[k])).strip()
             break
         out = None
     if not out:
@@ -109,7 +139,9 @@ def translate(script, cfg):
         hi["facts"] = script.get("facts") or []
     tag = script.get("series_tag", "")
     num = tag[len(script.get("series", "")):].strip() if tag.startswith(script.get("series", "")) else tag.rsplit(" ", 1)[-1]
-    hi["series_tag"] = f"{out.get('series') or script.get('series', '')} {num}".strip()
+    hi_series = HI_SERIES.get(script.get("theme")) or out.get("series") or script.get("series", "")
+    hi["series"] = hi_series
+    hi["series_tag"] = f"{hi_series} {num}".strip()
     hi["lang"] = "hi"
     return hi
 
