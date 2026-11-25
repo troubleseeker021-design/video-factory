@@ -521,5 +521,14 @@
     "hook_style": "never_seen",
     "hook": "You've never seen a shrimp snap hotter than the sun.",
     "date": "2026-11-25"
+  },
+  {
+    "id": "why-pretzels-are-dipped-in-drain-cleaner-chemical",
+    "title": "Why Pretzels Are Dipped in Drain Cleaner Chemical",
+    "theme": "food",
+    "format": "standard",
+    "hook_style": "secret",
+    "hook": "Bakeries hide that authentic pretzels are dipped in drain cleaner.",
+    "date": "2026-11-25"
   }
 ]
