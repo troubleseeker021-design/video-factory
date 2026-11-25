@@ -512,5 +512,14 @@
     "hook_style": "contradiction",
     "hook": "Doorways don't just divide rooms. They erase short-term memory.",
     "date": "2026-11-24"
+  },
+  {
+    "id": "the-ocean-animal-that-snaps-hotter-than-the-sun",
+    "title": "The Ocean Animal That Snaps Hotter Than the Sun",
+    "theme": "ocean",
+    "format": "standard",
+    "hook_style": "never_seen",
+    "hook": "You've never seen a shrimp snap hotter than the sun.",
+    "date": "2026-11-25"
   }
 ]

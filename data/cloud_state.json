@@ -82,6 +82,47 @@
       "message_id": 546,
       "created": "2026-11-24T22:23:25.611098",
       "scheduled": true
+    },
+    "81123547fa": {
+      "vid": "20261125-011617-the-ocean-animal-that-snaps-hotter-than-the-sun-hi",
+      "post": {
+        "title": "Sooraj Se Bhi Garam Samundari J जीव",
+        "created": "2026-11-25T01:22:10",
+        "source": "gemini:gemini-3.6-flash",
+        "theme": "ocean",
+        "hook": "Dekho samundar ke andar ek aisa shrimp hai jo sooraj se bhi zyada garam blast karta hai.",
+        "series": "Gajab Science #7",
+        "question": "Could you survive a shockwave this powerful underwater, yes or no?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "never_seen",
+        "youtube": {
+          "title": "Sooraj Se Bhi Garam Samundari J जीव | Gajab Science #7 #shorts",
+          "description": "Yeh chhota sa samundari creature sooraj ki surface jitni garmi paida karta hai\n\n👇 Could you survive a shockwave this powerful underwater, yes or no?\n\n#shorts #science #ocean #facts #nature #animals #shorts",
+          "tags": [
+            "shorts",
+            "science",
+            "ocean",
+            "facts",
+            "nature",
+            "animals",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Yeh chhota sa samundari creature sooraj ki surface jitni garmi paida karta hai #shorts #science #ocean #facts #nature #animals #fyp #facts",
+        "instagram": "Gajab Science #7 🔎 Yeh chhota sa samundari creature sooraj ki surface jitni garmi paida karta hai\n\n👇 Could you survive a shockwave this powerful underwater, yes or no?\n.\n.\n#shorts #science #ocean #facts #nature #animals #reels #facts #didyouknow",
+        "facebook": "Gajab Science #7 🔎 Yeh chhota sa samundari creature sooraj ki surface jitni garmi paida karta hai\n\n👇 Could you survive a shockwave this powerful underwater, yes or no?\n\n#shorts #science #ocean #facts #nature #animals",
+        "script": "Dekho samundar ke andar ek aisa shrimp hai jo sooraj se bhi zyada garam blast karta hai. Pehle yeh pistol shrimp apni oversized claw ko aadhi millisecond mein band karta hai. Phir yeh explosive movement paani ka ek fast jet chhodta hai jo sixty miles per hour chalta hai. Aur yahin twist hai ki yeh speed paani ke andar ek cavitation bubble banati hai. Jab aaspaas ka pressure is bubble ko collapse karta hai toh violent energy nikalti hai. Ab sabse badi baat kya hai ki is bubble ke andar temperature eight thousand degrees tak spike hota hai. Is solar heat flash se aisi shockwave banti hai jo aaspaas ki fish ko instantly paralyze kar deti hai. Submarine sonar operators iska underwater snapping noise hazaron mil door se sun lete hain. Sach-sach batana, paani ke andar bach paoge ya nahi? Comment mein likho aur follow karo.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAICJmsGOJLUJw0bwLHmReJSo0jNIrIAA4kHAAL43TFEWUisDMJBA1o9BA",
+      "channel": "hi",
+      "message_id": 550,
+      "created": "2026-11-25T01:23:30.322384",
+      "scheduled": true
     }
   },
   "history": [
@@ -2705,9 +2746,40 @@
       },
       "instagram": "Mind Games #8 🔎 Ever walked into a room and forgot why? It's not your fault, your brain wiped your memory on purpose. 🚪\n\n👇 Have you experienced the doorway effect, yes or no?\n.\n.\n#psychology #brainfacts #science #mindblown #memory #curiosity #reels #facts #didyouknow",
       "channel": "en"
+    },
+    {
+      "title": "The Ocean Animal That Snaps Hotter Than the Sun",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/vSYrmFwgNnI",
+        "Facebook": "https://www.facebook.com/reel/1497254065553522",
+        "Instagram": "https://www.instagram.com/reel/DgJVy5bhTlu/"
+      },
+      "created": "2026-11-25T01:20:05",
+      "theme": "ocean",
+      "hook": "You've never seen a shrimp snap hotter than the sun.",
+      "series": "Ocean Mysteries #7",
+      "hook_style": "never_seen",
+      "file_id": "BAACAgEAAxkDAAICI2sGOEZklhPMC5lm8UXWdT-_VpEzAAKIBwAC-N0xRHQVqD4UoWx1PQQ",
+      "youtube": {
+        "title": "The Ocean Animal That Snaps Hotter Than the Sun | Ocean Mysteries #7 #shorts",
+        "description": "This tiny ocean creature creates temperatures almost as hot as the surface of the sun 🦐\n\n👇 Could you survive a shockwave this powerful underwater, yes or no?\n\n#ocean #marinebiology #sciencefacts #pistolshrimp #nature #deepsea #shorts",
+        "tags": [
+          "ocean",
+          "marinebiology",
+          "sciencefacts",
+          "pistolshrimp",
+          "nature",
+          "deepsea",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Ocean Mysteries #7 🔎 This tiny ocean creature creates temperatures almost as hot as the surface of the sun 🦐\n\n👇 Could you survive a shockwave this powerful underwater, yes or no?\n.\n.\n#ocean #marinebiology #sciencefacts #pistolshrimp #nature #deepsea #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-24 16:15",
+  "last_slot": "2026-11-24 19:15",
   "stats_day": "2026-11-24",
   "stats_problems": {},
   "followers": {
