@@ -1,47 +1,6 @@
 {
   "offset": 41248576,
   "pending": {
-    "72fb63c278": {
-      "vid": "20261124-171856-immortal-cells-hi",
-      "post": {
-        "title": "Unki Cells Aaj Bhi Zinda Hain",
-        "created": "2026-11-24T17:27:21",
-        "source": "bank",
-        "theme": "body",
-        "hook": "1951 mein mari ek aurat ke cells aaj bhi labs mein zinda hain.",
-        "series": "Anokhe Rahasya #1",
-        "question": "Would you want to see this in person?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "myth",
-        "hook_style": "",
-        "youtube": {
-          "title": "Unki Cells Aaj Bhi Zinda Hain | Anokhe Rahasya #1 #shorts",
-          "description": "The woman whose cells never died 🧬\n\n👇 Would you want to see this in person?\n\n#science #history #medicine #biology #didyouknow #shorts #shorts\n\nImage credits:\nPhoto: Akram Huseyn · Unsplash\nPhoto: FlyD · Unsplash\nPhoto: Logan Gutierrez · Unsplash\nPhoto: National Cancer Institute · Unsplash\nPhoto: Pawel Czerwinski · Unsplash\nPhoto: Sharon Pittaway · Unsplash\nPhoto: ThisisEngineering · Unsplash\nVideo: Pixabay",
-          "tags": [
-            "science",
-            "history",
-            "medicine",
-            "biology",
-            "didyouknow",
-            "shorts",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "The woman whose cells never died 🧬 #science #history #medicine #biology #didyouknow #shorts #fyp #facts",
-        "instagram": "Anokhe Rahasya #1 🔎 The woman whose cells never died 🧬\n\n👇 Would you want to see this in person?\n.\n.\n#science #history #medicine #biology #didyouknow #shorts #reels #facts #didyouknow",
-        "facebook": "Anokhe Rahasya #1 🔎 The woman whose cells never died 🧬\n\n👇 Would you want to see this in person?\n\n#science #history #medicine #biology #didyouknow #shorts",
-        "script": "1951 mein mari ek aurat ke cells aaj bhi labs mein zinda hain. Unka naam Henrietta Lacks tha. Cancer ka ilaaj karate wakt doctors ne bina puche unke cells ka sample le liya tha. Normal human cells kuch baar divide hone ke baad mar jaate hain. Lekin unke cells lagataar divide hote gaye. Inhe HeLa cells kaha gaya aur inse polio ki vaccine bani. Unki family ko dashakon tak iske baare mein pata hi nahi chala. Unke cells ne puri science badal di aur unhe kabhi pata hi nahi chala. Sach-sach batana, yeh ajeeb hai ya nahi? Comment mein likho aur follow karo.",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAICHmsFyU3oiqsFheFKI-6iDXFLzBybAALBDgAC-N0pRKjw6kGrJSKKPQQ",
-      "channel": "hi",
-      "message_id": 542,
-      "created": "2026-11-24T17:28:45.866449",
-      "scheduled": true
-    },
     "0707f20667": {
       "vid": "20261124-221649-why-doorways-wipe-your-short-term-memory-hi",
       "post": {
@@ -2791,7 +2750,7 @@
   "comments_day": "2026-11-24",
   "compile_week": "2026-W46",
   "report_week": "2026-W47",
-  "last_hi_slot": "2026-11-24 20:00",
+  "last_hi_slot": "2026-11-25 08:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -4876,6 +4835,37 @@
         ]
       },
       "instagram": "Gajab Science #6 🔎 Yeh machine bina bijli sirf hawa ke pressure se dil ko replace kar deti hai\n\n👇 Kya aap mechanical dil par bharosa karoge haan ya na?\n.\n.\n#shorts #sciencefacts #desiengineering #humanbody #hindifacts #techfacts #reels #facts #didyouknow",
+      "channel": "hi"
+    },
+    {
+      "title": "Unki Cells Aaj Bhi Zinda Hain",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/mrd_WK4EpUs",
+        "Facebook": "https://www.facebook.com/reel/948622741521038",
+        "Instagram": "https://www.instagram.com/reel/DgJdmGxhmmK/"
+      },
+      "created": "2026-11-24T17:27:21",
+      "theme": "body",
+      "hook": "1951 mein mari ek aurat ke cells aaj bhi labs mein zinda hain.",
+      "series": "Anokhe Rahasya #1",
+      "hook_style": "",
+      "file_id": "BAACAgEAAxkDAAICHmsFyU3oiqsFheFKI-6iDXFLzBybAALBDgAC-N0pRKjw6kGrJSKKPQQ",
+      "youtube": {
+        "title": "Unki Cells Aaj Bhi Zinda Hain | Anokhe Rahasya #1 #shorts",
+        "description": "The woman whose cells never died 🧬\n\n👇 Would you want to see this in person?\n\n#science #history #medicine #biology #didyouknow #shorts #shorts\n\nImage credits:\nPhoto: Akram Huseyn · Unsplash\nPhoto: FlyD · Unsplash\nPhoto: Logan Gutierrez · Unsplash\nPhoto: National Cancer Institute · Unsplash\nPhoto: Pawel Czerwinski · Unsplash\nPhoto: Sharon Pittaway · Unsplash\nPhoto: ThisisEngineering · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "science",
+          "history",
+          "medicine",
+          "biology",
+          "didyouknow",
+          "shorts",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Anokhe Rahasya #1 🔎 The woman whose cells never died 🧬\n\n👇 Would you want to see this in person?\n.\n.\n#science #history #medicine #biology #didyouknow #shorts #reels #facts #didyouknow",
       "channel": "hi"
     }
   ],
