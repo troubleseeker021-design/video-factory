@@ -31,8 +31,11 @@ and what it means for us. It must feel like one smooth, connected journey - neve
 
 Style rules:
 - Calm, warm, curious narrator voice. Vivid "picture this" storytelling: places, times, sounds, scale.
-- Open with a cold open (a gripping moment), then 5 chapters, then a reflective ending that ties back to the
-  opening image.
+- Open with a cold open whose VERY FIRST sentence states the single most jaw-dropping fact of the whole story (the
+  reason someone clicked - e.g. "There is a waterfall on Earth three times taller than Angel Falls, and no one has
+  ever seen it."), then a gripping moment, then one line promising what the viewer will understand by the end.
+  Then 5 chapters, then a reflective ending that ties back to the opening image.
+- Viewers decide in the first 30 seconds: no slow scene-setting before the big fact.
 - Every chapter ends with one short cliffhanger line that pulls the viewer into the next one, often a quiet
   question ("But will anyone answer?", "So where did it all go?").
 - Simple words, short and medium sentences, concrete numbers, real names and places. 100% verified facts only;
@@ -41,7 +44,7 @@ Style rules:
 - Total 950 to 1150 words.
 
 Return JSON only:
-{{"title": "documentary YouTube title, under 70 characters, curiosity-driven, no hashtags",
+{{"title": "SHORT YouTube title, 30-50 characters (4-8 words), names the subject + its shocking twist, easy to read on a phone (e.g. 'Earth's Biggest Waterfall Is Hidden Underwater', 'These Trees Grow Real Gold'), no colons, no hashtags",
   "description": "2-3 sentence YouTube description",
   "tags": ["8 search tags"],
   "thumb": {{"top": "1-3 word white hook line in CAPS (e.g. A WATERFALL)",
