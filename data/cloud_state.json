@@ -1,48 +1,6 @@
 {
   "offset": 41248576,
-  "pending": {
-    "81123547fa": {
-      "vid": "20261125-011617-the-ocean-animal-that-snaps-hotter-than-the-sun-hi",
-      "post": {
-        "title": "Sooraj Se Bhi Garam Samundari J जीव",
-        "created": "2026-11-25T01:22:10",
-        "source": "gemini:gemini-3.6-flash",
-        "theme": "ocean",
-        "hook": "Dekho samundar ke andar ek aisa shrimp hai jo sooraj se bhi zyada garam blast karta hai.",
-        "series": "Gajab Science #7",
-        "question": "Could you survive a shockwave this powerful underwater, yes or no?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "standard",
-        "hook_style": "never_seen",
-        "youtube": {
-          "title": "Sooraj Se Bhi Garam Samundari J जीव | Gajab Science #7 #shorts",
-          "description": "Yeh chhota sa samundari creature sooraj ki surface jitni garmi paida karta hai\n\n👇 Could you survive a shockwave this powerful underwater, yes or no?\n\n#shorts #science #ocean #facts #nature #animals #shorts",
-          "tags": [
-            "shorts",
-            "science",
-            "ocean",
-            "facts",
-            "nature",
-            "animals",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "Yeh chhota sa samundari creature sooraj ki surface jitni garmi paida karta hai #shorts #science #ocean #facts #nature #animals #fyp #facts",
-        "instagram": "Gajab Science #7 🔎 Yeh chhota sa samundari creature sooraj ki surface jitni garmi paida karta hai\n\n👇 Could you survive a shockwave this powerful underwater, yes or no?\n.\n.\n#shorts #science #ocean #facts #nature #animals #reels #facts #didyouknow",
-        "facebook": "Gajab Science #7 🔎 Yeh chhota sa samundari creature sooraj ki surface jitni garmi paida karta hai\n\n👇 Could you survive a shockwave this powerful underwater, yes or no?\n\n#shorts #science #ocean #facts #nature #animals",
-        "script": "Dekho samundar ke andar ek aisa shrimp hai jo sooraj se bhi zyada garam blast karta hai. Pehle yeh pistol shrimp apni oversized claw ko aadhi millisecond mein band karta hai. Phir yeh explosive movement paani ka ek fast jet chhodta hai jo sixty miles per hour chalta hai. Aur yahin twist hai ki yeh speed paani ke andar ek cavitation bubble banati hai. Jab aaspaas ka pressure is bubble ko collapse karta hai toh violent energy nikalti hai. Ab sabse badi baat kya hai ki is bubble ke andar temperature eight thousand degrees tak spike hota hai. Is solar heat flash se aisi shockwave banti hai jo aaspaas ki fish ko instantly paralyze kar deti hai. Submarine sonar operators iska underwater snapping noise hazaron mil door se sun lete hain. Sach-sach batana, paani ke andar bach paoge ya nahi? Comment mein likho aur follow karo.",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAICJmsGOJLUJw0bwLHmReJSo0jNIrIAA4kHAAL43TFEWUisDMJBA1o9BA",
-      "channel": "hi",
-      "message_id": 550,
-      "created": "2026-11-25T01:23:30.322384",
-      "scheduled": true
-    }
-  },
+  "pending": {},
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -2757,7 +2715,7 @@
   "comments_day": "2026-11-24",
   "compile_week": "2026-W46",
   "report_week": "2026-W47",
-  "last_hi_slot": "2026-11-25 13:00",
+  "last_hi_slot": "2026-11-25 20:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -4953,6 +4911,38 @@
         }
       },
       "stats_at": "2026-11-25T11:01:20"
+    },
+    {
+      "title": "Sooraj Se Bhi Garam Samundari J जीव",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/s9pxgmuCs9Q",
+        "Facebook": "https://www.facebook.com/reel/1131691589845132",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-25T01:22:10",
+      "theme": "ocean",
+      "hook": "Dekho samundar ke andar ek aisa shrimp hai jo sooraj se bhi zyada garam blast karta hai.",
+      "series": "Gajab Science #7",
+      "hook_style": "never_seen",
+      "file_id": "BAACAgEAAxkDAAICJmsGOJLUJw0bwLHmReJSo0jNIrIAA4kHAAL43TFEWUisDMJBA1o9BA",
+      "youtube": {
+        "title": "Sooraj Se Bhi Garam Samundari J जीव | Gajab Science #7 #shorts",
+        "description": "Yeh chhota sa samundari creature sooraj ki surface jitni garmi paida karta hai\n\n👇 Could you survive a shockwave this powerful underwater, yes or no?\n\n#shorts #science #ocean #facts #nature #animals #shorts",
+        "tags": [
+          "shorts",
+          "science",
+          "ocean",
+          "facts",
+          "nature",
+          "animals",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Gajab Science #7 🔎 Yeh chhota sa samundari creature sooraj ki surface jitni garmi paida karta hai\n\n👇 Could you survive a shockwave this powerful underwater, yes or no?\n.\n.\n#shorts #science #ocean #facts #nature #animals #reels #facts #didyouknow",
+      "channel": "hi",
+      "ig_manual": true
     }
   ],
   "stats_day_hi": "2026-11-25",
