@@ -41,6 +41,47 @@
       "message_id": 564,
       "created": "2026-11-25T17:25:16.839209",
       "scheduled": true
+    },
+    "4dbfb37cbd": {
+      "vid": "20261125-222412-the-beetle-that-shoots-boiling-acid-hi",
+      "post": {
+        "title": "Ubalta Acid Fekne Wala Keeda",
+        "created": "2026-11-25T22:29:03",
+        "source": "gemini:gemini-3.6-flash",
+        "theme": "animals",
+        "hook": "Bombardier beetle apni poonch se ubalte hue chemical ka blast karta hai",
+        "series": "Anokhe Jaanwar #11",
+        "question": "Kya aap ise chhoone ki himmat karoge, haan ya naa?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "spec_paradox",
+        "youtube": {
+          "title": "Ubalta Acid Fekne Wala Keeda | Anokhe Jaanwar #11 #shorts",
+          "description": "Yeh chhota sa keeda apni body ke andar ubalte chemical blasts banata hai! 💣\n\n👇 Kya aap ise chhoone ki himmat karoge, haan ya naa?\n\n#sciencefacts #hindi #shorts #nature #khatarnak #animals #shorts\n\nImage credits:\nPhoto: Levart_Photographer · Unsplash\nPhoto: Prerak Mathur · Unsplash\nPhoto: Salman Rameli · Unsplash\nPhoto: sohrab zia · Unsplash\nPhoto: Егор Камелев · Unsplash\nVideo: Pixabay",
+          "tags": [
+            "sciencefacts",
+            "hindi",
+            "shorts",
+            "nature",
+            "khatarnak",
+            "animals",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Yeh chhota sa keeda apni body ke andar ubalte chemical blasts banata hai! 💣 #sciencefacts #hindi #shorts #nature #khatarnak #animals #fyp #facts",
+        "instagram": "Anokhe Jaanwar #11 🔎 Yeh chhota sa keeda apni body ke andar ubalte chemical blasts banata hai! 💣\n\n👇 Kya aap ise chhoone ki himmat karoge, haan ya naa?\n.\n.\n#sciencefacts #hindi #shorts #nature #khatarnak #animals #reels #facts #didyouknow",
+        "facebook": "Anokhe Jaanwar #11 🔎 Yeh chhota sa keeda apni body ke andar ubalte chemical blasts banata hai! 💣\n\n👇 Kya aap ise chhoone ki himmat karoge, haan ya naa?\n\n#sciencefacts #hindi #shorts #nature #khatarnak #animals",
+        "script": "Bombardier beetle apni poonch se ubalte hue chemical ka blast karta hai Iski body ke andar do alag tanks mein shaant chemicals jama rehte hain Lekin koi khatra dikhte hi yeh dono liquids ko ek chamber mein mila deta hai Wahan turant ek bhayankar reaction hota hai aur liquid seedhe ubalne lagta hai Aur yahin twist hai gas phailne ki wajah se andar bahut zyada pressure banta hai Phir yeh saamne wale shikari par khoulta hua tezaab jaisa acid phenk deta hai Khud ko jalne se bachane ke liye yeh ek second mein paanch sau baar spray chhodta hai Is kamaal ke process se har chhote blast ke beech iska andruni system thanda ho jata hai Sach batana kya aap ise chhoone ki himmat karoge haan ya naa comment mein likho aur follow karo",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAICOGsHYbnrR-mkG6FIRz-6jZSUyzSiAALcCAAC-N05RPtrGw48T5B2PQQ",
+      "channel": "hi",
+      "message_id": 568,
+      "created": "2026-11-25T22:31:22.453753",
+      "scheduled": true
     }
   },
   "history": [
@@ -2775,9 +2816,40 @@
       "instagram": "Food Secrets #3 🔎 Authentic Bavarian pretzels are dipped in corrosive lye before baking. Here is how heat turns a deadly chemical into a delicious crust! 🥨\n\n👇 Would you eat a lye pretzel, yes or no?\n.\n.\n#science #foodfacts #pretzels #chemistry #howitismade #mindblowing #reels #facts #didyouknow",
       "channel": "en",
       "ig_manual": true
+    },
+    {
+      "title": "The Beetle That Shoots Boiling Acid",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/0cCXIl3pRlc",
+        "Facebook": "https://www.facebook.com/reel/1500641155496211",
+        "Instagram": "https://www.instagram.com/reel/DgLm4NqO6e1/"
+      },
+      "created": "2026-11-25T22:26:42",
+      "theme": "animals",
+      "hook": "The bombardier beetle fires boiling chemical explosions from its tail.",
+      "series": "Animal Oddities #11",
+      "hook_style": "spec_paradox",
+      "file_id": "BAACAgEAAxkDAAICNWsHYTLf1_9T13_p9NkManuNKTdzAALaCAAC-N05RKZexfEpuFfoPQQ",
+      "youtube": {
+        "title": "The Beetle That Shoots Boiling Acid | Animal Oddities #11 #shorts",
+        "description": "This tiny insect uses built-in chemistry to create boiling explosions inside its body! 💣\n\n👇 Would you touch this beetle, yes or no?\n\n#animals #science #insects #nature #wildlife #mindblowing #shorts\n\nImage credits:\nPhoto: Levart_Photographer · Unsplash\nPhoto: Prerak Mathur · Unsplash\nPhoto: Salman Rameli · Unsplash\nPhoto: sohrab zia · Unsplash\nPhoto: Егор Камелев · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "animals",
+          "science",
+          "insects",
+          "nature",
+          "wildlife",
+          "mindblowing",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Animal Oddities #11 🔎 This tiny insect uses built-in chemistry to create boiling explosions inside its body! 💣\n\n👇 Would you touch this beetle, yes or no?\n.\n.\n#animals #science #insects #nature #wildlife #mindblowing #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-25 11:15",
+  "last_slot": "2026-11-25 16:15",
   "stats_day": "2026-11-25",
   "stats_problems": {},
   "followers": {

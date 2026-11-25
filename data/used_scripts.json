@@ -530,5 +530,14 @@
     "hook_style": "secret",
     "hook": "Bakeries hide that authentic pretzels are dipped in drain cleaner.",
     "date": "2026-11-25"
+  },
+  {
+    "id": "the-beetle-that-shoots-boiling-acid",
+    "title": "The Beetle That Shoots Boiling Acid",
+    "theme": "animals",
+    "format": "standard",
+    "hook_style": "spec_paradox",
+    "hook": "The bombardier beetle fires boiling chemical explosions from its tail.",
+    "date": "2026-11-25"
   }
 ]
