@@ -69,7 +69,8 @@ PLACES_FORMAT = ("FORMAT: \"Unreal Places\": exactly 3 real places on Earth that
 PROMPT = """You write viral, 100% factually accurate YouTube Shorts / Reels scripts for a curiosity
 channel. Niche: {niche}
 Pick a TRULY little-known, jaw-dropping topic most people have never heard of (not the usual
-"octopus has 3 hearts" style facts). It must NOT repeat any of these past topics: {recent}
+"octopus has 3 hearts" style facts). It must NOT repeat any of these past topics, and never pick the same main SUBJECT (the same animal, plant, place,
+object or natural phenomenon) as any of them, even with different wording: {recent}
 {format}
 {theme_rule}
 Never reuse or closely copy any of these recent hooks: {hooks}
@@ -196,6 +197,37 @@ def _norm_hook(h):
     return " ".join(re.findall(r"[a-z0-9']+", (h or "").lower())[:6])
 
 
+# words that say nothing about WHAT a video is about (ignored when checking for repeat topics)
+_GENERIC = set("""the that this with from into your you are was were what when where which while about after again
+also always animal animals another because before being both could does doing every first have just know like
+made make makes many more most much never only other over real really same secret secrets hidden some such than them
+then there these they thing things those through under very world worlds why how who will would ever actually
+truth true fact facts strange weird weirdest mystery mysteries science inside earth planet people human humans body
+here away until without""".split())
+
+
+def _keywords(title):
+    out = set()
+    for w in re.findall(r"[a-z]+", (title or "").lower()):
+        if len(w) < 4 or w in _GENERIC:
+            continue
+        for suf in ("ing", "es", "s"):
+            if w.endswith(suf) and len(w) - len(suf) >= 4:
+                w = w[: -len(suf)]
+                break
+        out.add(w)
+    return out
+
+
+def _too_close(title, used_titles):
+    """The old title this new one basically repeats (2+ shared subject words), or None."""
+    k = _keywords(title)
+    for t in used_titles:
+        if len(k & _keywords(t)) >= 2:
+            return t
+    return None
+
+
 def _plan(used):
     """Decide series/format for the next video from what was made before."""
     last_theme = used[-1].get("theme") if used else None
@@ -205,13 +237,13 @@ def _plan(used):
     since_tech = next((i for i, u in enumerate(reversed(used)) if u.get("theme") == "tech"), len(used))
     _plan.want_tech = (not want_places) and since_tech >= 8 and last_theme != "tech"  # weapons/tech: 11-19% stayed - rare
     since_grown = next((i for i, u in enumerate(reversed(used)) if u.get("theme") in GROWNUP), len(used))
-    _plan.want_grownup = (not want_places) and (not _plan.want_tech) and since_grown >= 2  # 1 in 3 until proven
+    _plan.want_grownup = (not want_places) and (not _plan.want_tech) and since_grown >= 4  # 1 in 5: Mind/Dark/Love got 0-30 views (Nov 25 data)
     fmt = "places" if want_places else random.choice(["standard", "standard", "standard", "myth"])  # one-subject stories hold viewers best
     return want_places, fmt, last_theme
 
 
 def _gemini(cfg, used, want_places, fmt, last_theme):
-    recent_titles = [u["title"] for u in used][-40:]
+    recent_titles = [u["title"] for u in used][-120:]
     cutoff = (dt.date.today() - dt.timedelta(days=30)).isoformat()
     hooks = [u["hook"] for u in used if u.get("hook") and u.get("date", "") >= cutoff][-60:]
     if want_places:
@@ -251,6 +283,10 @@ def _gemini(cfg, used, want_places, fmt, last_theme):
     for attempt in range(2):
         s = gemini_json(cfg, prompt)
         if not s or not s.get("hook") or not s.get("body"):
+            continue
+        old = _too_close(s.get("title", ""), [u.get("title", "") for u in used])
+        if old:
+            log(f"  topic too close to an old video ('{old}') - " + ("asking again" if attempt == 0 else "using the script bank"))
             continue
         if _norm_hook(s["hook"]) in recent_hooks and attempt == 0:
             log("  hook was too similar to a recent one - asking again")
