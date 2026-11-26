@@ -83,7 +83,8 @@ def make_one(cfg, no_voice=False):
             log(f"  thumbnail failed (video still fine): {e}")
         note("editor", f"Editing {len(scenes)} scenes with captions and 3D graphics...")
         render.render(script, scenes, words, duration, wav, mus, os.path.join(work, "video.mp4"), cfg, seed,
-                      cover_path=None if thumb else os.path.join(work, "cover.jpg"), workdir=work, thumb=thumb)
+                      cover_path=None if thumb else os.path.join(work, "cover.jpg"), workdir=work,
+                      thumb=thumb if cfg.get("cover_frame", False) else None)  # no frozen cover frame: the Short starts moving at once (cover.jpg is still the YouTube thumbnail)
         note("editor", f"Finished! {duration:.0f}-second video rendered", kind="done")
         credits = sorted({sc["media"]["credit"] for sc in scenes if sc.get("media") and sc["media"].get("credit")})
         script["_credits"] = credits

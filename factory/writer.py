@@ -83,7 +83,7 @@ STYLE = viral 3D-explainer reels: explain HOW something works, step by step, lik
   Our worst hooks (most people swiped away): "These look fake." / "Water shouldn't do this." /
   "Nature built these, not people." / "Real or fake? ..." - vague, no subject, no fact. Never write hooks
   like those. Never start with "Did you know", "In this video", "Real or fake" or "Number three".
-- "body": 5 to 7 short sentences (under 16 words each) forming a cause-and-effect chain: "They did X.
+- "body": 3 to 5 short sentences (under 14 words each) forming a cause-and-effect chain: "They did X.
   Then Y. So Z. And when..., ...". Simple everyday metaphors ("your body is made of tiny bags of water").
   Concrete numbers. A twist near the end ("But a little frog in Alaska freezes like this every winter...").
   Write it the way a person TALKS when explaining to a friend, not like an article being read out:
@@ -91,10 +91,12 @@ STYLE = viral 3D-explainer reels: explain HOW something works, step by step, lik
   crazy part.", "Think of it like..."), mix very short punchy sentences with medium ones, use contractions
   (it's, they're, you'd). No exclamation marks, no "..." pauses, no questions asking viewers to comment.
   Only verified facts; hedge with "scientists think" when not certain. No medical/financial advice.
-- Pay off fast: the core reveal must come by the 3rd body sentence; save one extra twist for the end.
+- Pay off fast: the hook IS the fact, and the 1st body sentence already explains it; save one extra twist for the end.
+  Cut every word that does not add a new fact. No warm-up, no "imagine", no "let me explain".
 - "cta": one short, satisfying final line that wraps up the story (a last surprising detail or a punchy
   conclusion). No "follow", no "comment" - that part is added automatically after it.
-- Total spoken length 90 to 120 words (about 30 to 45 seconds). Shorter videos are watched to the end.
+- Total spoken length 55 to 75 words (about 20 to 28 seconds). Shorts of 11-30 seconds get the most views;
+  every extra second loses viewers.
 - "title": catchy, under 60 characters, no hashtags.
 - "caption": 1-2 sentence social caption with 1 emoji.
 - "hashtags": 6 relevant hashtags starting with #.
@@ -235,9 +237,9 @@ def _plan(used):
     since_places = next((i for i, u in enumerate(reversed(used)) if u.get("theme") == "places"), len(used))
     want_places = False  # Unreal Places paused: our worst series on YouTube (6-24% stayed to watch, Nov 16 data)
     since_tech = next((i for i, u in enumerate(reversed(used)) if u.get("theme") == "tech"), len(used))
-    _plan.want_tech = (not want_places) and since_tech >= 8 and last_theme != "tech"  # weapons/tech: 11-19% stayed - rare
+    _plan.want_tech = (not want_places) and since_tech >= 12 and last_theme != "tech"  # weapons/tech: 11-19% stayed - rare
     since_grown = next((i for i, u in enumerate(reversed(used)) if u.get("theme") in GROWNUP), len(used))
-    _plan.want_grownup = (not want_places) and (not _plan.want_tech) and since_grown >= 4  # 1 in 5: Mind/Dark/Love got 0-30 views (Nov 25 data)
+    _plan.want_grownup = (not want_places) and (not _plan.want_tech) and since_grown >= 7  # 1 in 5: Mind/Dark/Love got 0-30 views (Nov 25 data)
     fmt = "places" if want_places else random.choice(["standard", "standard", "standard", "myth"])  # one-subject stories hold viewers best
     return want_places, fmt, last_theme
 
@@ -356,11 +358,11 @@ def next_script(cfg):
             script["question"] = script["question"] if not re.search(r"1, 2,? or 3", script["question"]) \
                 else script["cta"]
             script["q_in_cta"] = True
-            script["outro"] = "Comment below, and follow for more."
+            script["outro"] = ""
         else:
             q = script["question"].strip().rstrip(".")
             q = q if q.endswith("?") else q + "?"
-            script["outro"] = f"{q} Comment below, and follow for more."
+            script["outro"] = q  # just the question: a short ending keeps people to the end (and comments)
     conf = str(script.get("confidence", "high")).lower()
     script["needs_check"] = conf != "high" or bool(script.get("doubts"))
     used.append({"id": script["id"], "title": script["title"], "theme": theme, "format": script["format"],
@@ -370,7 +372,7 @@ def next_script(cfg):
     return script
 
 
-MAX_WORDS = 130  # ~45 s of voice; longer videos get rejected by Instagram and lose viewers
+MAX_WORDS = 85  # ~28 s of voice: Shorts of 11-30 s get the most views (Nov 2026 study of 108k Shorts)
 
 
 def _trim(script):
@@ -379,7 +381,7 @@ def _trim(script):
         return
     def words():
         return sum(len(x.split()) for x in [script["hook"], *script["body"], script["cta"]])
-    while words() > MAX_WORDS and len(script["body"]) > 4:
+    while words() > MAX_WORDS and len(script["body"]) > 3:
         k = len(script["body"]) // 2  # keep the opening chain and the twist near the end
         script["body"] = script["body"][:k] + script["body"][k + 1:]
         for key in ("emojis", "visuals", "labels", "art", "facts"):
