@@ -41,6 +41,47 @@
       "message_id": 586,
       "created": "2026-11-26T17:21:16.644814",
       "scheduled": true
+    },
+    "5e6f848ed0": {
+      "vid": "20261126-222128-the-tree-that-explodes-seeds-like-grenades-hi",
+      "post": {
+        "title": "Grenade Ki Tarah Fatne Wala Ped",
+        "created": "2026-11-26T22:27:43",
+        "source": "gemini:gemini-3.6-flash",
+        "theme": "nature",
+        "hook": "Sandbox tree apne beejon ko bomb ke shrapnel ki tarah hawa mein daagta hai.",
+        "series": "Kudrat Ke Raaz #6",
+        "question": "Kya aap is ped ke paas khade honge, haan ya na?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "myth",
+        "hook_style": "bold_fact",
+        "youtube": {
+          "title": "Grenade Ki Tarah Fatne Wala Ped | Kudrat Ke Raaz #6 #shorts",
+          "description": "Sandbox tree hawa ke bharose nahi rehta yeh apne beejon ko 250 km/h ki speed se blast karta hai! 🌳\n\n👇 Kya aap is ped ke paas khade honge, haan ya na?\n\n#shorts #sciencefacts #kudrat #nature #anokhepede #mindblowing #shorts",
+          "tags": [
+            "shorts",
+            "sciencefacts",
+            "kudrat",
+            "nature",
+            "anokhepede",
+            "mindblowing",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Sandbox tree hawa ke bharose nahi rehta yeh apne beejon ko 250 km/h ki speed se blast karta hai! 🌳 #shorts #sciencefacts #kudrat #nature #anokhepede #mindblowing #fyp #facts",
+        "instagram": "Kudrat Ke Raaz #6 🔎 Sandbox tree hawa ke bharose nahi rehta yeh apne beejon ko 250 km/h ki speed se blast karta hai! 🌳\n\n👇 Kya aap is ped ke paas khade honge, haan ya na?\n.\n.\n#shorts #sciencefacts #kudrat #nature #anokhepede #mindblowing #reels #facts #didyouknow",
+        "facebook": "Kudrat Ke Raaz #6 🔎 Sandbox tree hawa ke bharose nahi rehta yeh apne beejon ko 250 km/h ki speed se blast karta hai! 🌳\n\n👇 Kya aap is ped ke paas khade honge, haan ya na?\n\n#shorts #sciencefacts #kudrat #nature #anokhepede #mindblowing",
+        "script": "Sandbox tree apne beejon ko bomb ke shrapnel ki tarah hawa mein daagta hai. Humein lagta hai ki ped ke beej sirf hawa mein shanti se udte hain. Lekin yahan twist hai yeh ped apne fruit ke andar bhayanak tension paida karta hai. Aur jab fruit poori tarah pak jaata hai toh pistol ki goli ki tarah fat-ta hai. Matlab yeh apne beejon ko dhai sau kilometer per hour ki speed se phenkta hai. Ab socho yeh asal mein kudrat ka apna lakdi wala grenade hai. Kya aap is bomb jaise ped ke paas khade honge haan ya na comment mein batao aur follow karo.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAICTmsIsquxvBqoySlRkkA04n99WKc8AAIFCAACPRJJRIPOZRh4NuOBPQQ",
+      "channel": "hi",
+      "message_id": 590,
+      "created": "2026-11-26T22:29:00.065510",
+      "scheduled": true
     }
   },
   "history": [
@@ -2912,9 +2953,40 @@
       },
       "instagram": "Space Secrets #1 🔎 This dead star spins faster than your kitchen blender. 🌌\n\n👇 Could you survive standing near this star, yes or no?\n.\n.\n#space #astronomy #science #stars #universe #cosmos #reels #facts #didyouknow",
       "channel": "en"
+    },
+    {
+      "title": "The Tree That Explodes Seeds Like Grenades",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/yvbtdXVWT2E",
+        "Facebook": "https://www.facebook.com/reel/1167230972895134",
+        "Instagram": "https://www.instagram.com/reel/DgOLahhopnr/"
+      },
+      "created": "2026-11-26T22:23:46",
+      "theme": "nature",
+      "hook": "The sandbox tree fires its seeds like explosive shrapnel.",
+      "series": "Nature's Weirdest #6",
+      "hook_style": "bold_fact",
+      "file_id": "BAACAgEAAxkDAAICS2sIsmEBpSLs7r87Z2e527y-0DeqAAIECAACPRJJRNZDpp8Zgk6VPQQ",
+      "youtube": {
+        "title": "The Tree That Explodes Seeds Like Grenades | Nature's Weirdest #6 #shorts",
+        "description": "The sandbox tree doesn't rely on wind to spread its seeds—it detonates them at 250 km/h! 🌳\n\n👇 Would you stand near this exploding tree, yes or no?\n\n#nature #plants #sciencefacts #botany #wildlife #mindblowing #shorts",
+        "tags": [
+          "nature",
+          "plants",
+          "sciencefacts",
+          "botany",
+          "wildlife",
+          "mindblowing",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Nature's Weirdest #6 🔎 The sandbox tree doesn't rely on wind to spread its seeds—it detonates them at 250 km/h! 🌳\n\n👇 Would you stand near this exploding tree, yes or no?\n.\n.\n#nature #plants #sciencefacts #botany #wildlife #mindblowing #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-26 11:15",
+  "last_slot": "2026-11-26 16:15",
   "stats_day": "2026-11-26",
   "stats_problems": {},
   "followers": {

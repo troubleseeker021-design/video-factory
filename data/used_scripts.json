@@ -557,5 +557,14 @@
     "hook_style": "spec_paradox",
     "hook": "This dead star spins seven hundred times every single second.",
     "date": "2026-11-26"
+  },
+  {
+    "id": "the-tree-that-explodes-seeds-like-grenades",
+    "title": "The Tree That Explodes Seeds Like Grenades",
+    "theme": "nature",
+    "format": "myth",
+    "hook_style": "bold_fact",
+    "hook": "The sandbox tree fires its seeds like explosive shrapnel.",
+    "date": "2026-11-26"
   }
 ]
