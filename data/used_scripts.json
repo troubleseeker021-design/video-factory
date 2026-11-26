@@ -548,5 +548,14 @@
     "hook_style": "contradiction",
     "hook": "Lake Natron turns dead animals into solid stone statues.",
     "date": "2026-11-26"
+  },
+  {
+    "id": "the-star-that-spins-faster-than-a-blender",
+    "title": "The Star That Spins Faster Than a Blender",
+    "theme": "space",
+    "format": "myth",
+    "hook_style": "spec_paradox",
+    "hook": "This dead star spins seven hundred times every single second.",
+    "date": "2026-11-26"
   }
 ]
