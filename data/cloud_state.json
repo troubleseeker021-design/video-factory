@@ -1,48 +1,6 @@
 {
   "offset": 41248576,
-  "pending": {
-    "57508dde80": {
-      "vid": "20261126-011559-this-lake-turns-everything-it-touches-into-stone-hi",
-      "post": {
-        "title": "Yeh Lake Sab Kuch Patthar Bana Deti Hai",
-        "created": "2026-11-26T01:20:26",
-        "source": "gemini:gemini-flash-lite-latest",
-        "theme": "nature",
-        "hook": "Afrika ki is lake ka paani mara hua jaanwar seedha patthar bana deta hai.",
-        "series": "Kudrat Ke Raaz #5",
-        "question": "Is paani ko touch karoge ya nahi?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "standard",
-        "hook_style": "contradiction",
-        "youtube": {
-          "title": "Yeh Lake Sab Kuch Patthar Bana Deti Hai | Kudrat Ke Raaz #5 #shorts",
-          "description": "Yeh deadly lake pakshiyon ko patthar ki mummies mein badal deti hai. 🗿\n\n👇 Is paani ko touch karoge ya nahi?\n\n#lake #nature #science #geology #africa #mystery #shorts",
-          "tags": [
-            "lake",
-            "nature",
-            "science",
-            "geology",
-            "africa",
-            "mystery",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "Yeh deadly lake pakshiyon ko patthar ki mummies mein badal deti hai. 🗿 #lake #nature #science #geology #africa #mystery #fyp #facts",
-        "instagram": "Kudrat Ke Raaz #5 🔎 Yeh deadly lake pakshiyon ko patthar ki mummies mein badal deti hai. 🗿\n\n👇 Is paani ko touch karoge ya nahi?\n.\n.\n#lake #nature #science #geology #africa #mystery #reels #facts #didyouknow",
-        "facebook": "Kudrat Ke Raaz #5 🔎 Yeh deadly lake pakshiyon ko patthar ki mummies mein badal deti hai. 🗿\n\n👇 Is paani ko touch karoge ya nahi?\n\n#lake #nature #science #geology #africa #mystery",
-        "script": "Afrika ki is lake ka paani mara hua jaanwar seedha patthar bana deta hai. Dekho, is lake ka paani itna alkaline hai ki yeh liquid lye ki tarah kaam karta hai. Pehle jab koi pakshi galti se yahan girta hai toh uska bachna impossible ho jata hai. Phir heavy minerals dheere-dheere uski body ko calcify karke hard rock bana dete hain. Aur yahin twist hai ki yeh sabhi pakshi ek dam safe stone mummies ki tarah bahar aate hain. Matlab is paani ka temperature seth degree tak garam ho jata hai aur sab kuch khatam. Is toxic red paani ke andar koi bhi zinda cheez zinda nahi bach sakti. Sach sach batana is paani ko hath lagana hai ya nahi, comment mein likho aur follow karo.",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAICPGsHiZzn0aSkYVOyy4V4Get27JG5AAIPCQAC-N05RGNYoFNjIbNfPQQ",
-      "channel": "hi",
-      "message_id": 572,
-      "created": "2026-11-26T01:21:33.385289",
-      "scheduled": true
-    }
-  },
+  "pending": {},
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -2895,7 +2853,7 @@
   "comments_day": "2026-11-25",
   "compile_week": "2026-W46",
   "report_week": "2026-W47",
-  "last_hi_slot": "2026-11-26 13:00",
+  "last_hi_slot": "2026-11-26 20:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -5226,6 +5184,38 @@
         }
       },
       "stats_at": "2026-11-26T11:01:36"
+    },
+    {
+      "title": "Yeh Lake Sab Kuch Patthar Bana Deti Hai",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/VdvPSk_kRTA",
+        "Facebook": "https://www.facebook.com/reel/1588031730026810",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-26T01:20:26",
+      "theme": "nature",
+      "hook": "Afrika ki is lake ka paani mara hua jaanwar seedha patthar bana deta hai.",
+      "series": "Kudrat Ke Raaz #5",
+      "hook_style": "contradiction",
+      "file_id": "BAACAgEAAxkDAAICPGsHiZzn0aSkYVOyy4V4Get27JG5AAIPCQAC-N05RGNYoFNjIbNfPQQ",
+      "youtube": {
+        "title": "Yeh Lake Sab Kuch Patthar Bana Deti Hai | Kudrat Ke Raaz #5 #shorts",
+        "description": "Yeh deadly lake pakshiyon ko patthar ki mummies mein badal deti hai. 🗿\n\n👇 Is paani ko touch karoge ya nahi?\n\n#lake #nature #science #geology #africa #mystery #shorts",
+        "tags": [
+          "lake",
+          "nature",
+          "science",
+          "geology",
+          "africa",
+          "mystery",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Kudrat Ke Raaz #5 🔎 Yeh deadly lake pakshiyon ko patthar ki mummies mein badal deti hai. 🗿\n\n👇 Is paani ko touch karoge ya nahi?\n.\n.\n#lake #nature #science #geology #africa #mystery #reels #facts #didyouknow",
+      "channel": "hi",
+      "ig_manual": true
     }
   ],
   "stats_day_hi": "2026-11-26",
