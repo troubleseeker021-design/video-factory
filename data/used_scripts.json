@@ -539,5 +539,14 @@
     "hook_style": "spec_paradox",
     "hook": "The bombardier beetle fires boiling chemical explosions from its tail.",
     "date": "2026-11-25"
+  },
+  {
+    "id": "this-lake-turns-everything-it-touches-into-stone",
+    "title": "This Lake Turns Everything It Touches Into Stone",
+    "theme": "nature",
+    "format": "standard",
+    "hook_style": "contradiction",
+    "hook": "Lake Natron turns dead animals into solid stone statues.",
+    "date": "2026-11-26"
   }
 ]
