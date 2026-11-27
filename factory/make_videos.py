@@ -80,7 +80,7 @@ def make_one(cfg, no_voice=False):
                 try:
                     lines = [script["hook"], *script["body"], script["cta"], *([script["outro"]] if script.get("outro") else [])]
                     wav, vdur, words = voice.gemini_narrate(lines, cfg, work, gem, lang="English",
-                                                            tempo=cfg.get("english_gemini_tempo", 1.2))  # Charon reads slowly; keep Shorts ~20-28 s
+                                                            tempo=cfg.get("english_gemini_tempo", 1.0))  # natural speed (1.2x was too fast to follow, Nov 27)
                 except Exception as e:
                     log(f"  Gemini voice failed ({str(e)[:160]}) - using the Microsoft voice instead")
                     wav = None

@@ -139,9 +139,9 @@ def gemini_narrate(lines, cfg, workdir, voice_name="Kore", lang="Hindi", tempo=N
     except Exception as e:
         log(f"  Gemini model list failed: {type(e).__name__}")
     models = sorted(models, key=lambda n: ("pro" in n, "preview" in n)) or ["gemini-2.5-flash-preview-tts"]
-    prompt = (f"Read this {lang} script aloud like an excited, curious storyteller explaining an amazing fact to a "
-              "friend, at a brisk, energetic pace, with only a very short pause between lines. Read every word exactly as written:\n"
-              + "\n".join(lines))
+    # ONLY the script: Gemini read any style instructions out loud as part of the video (Nov 27 bug)
+    prompt = "\n".join(lines)
+    n_words = len(prompt.split())
     body = {"contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {"responseModalities": ["AUDIO"],
                                  "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice_name}}}}}
@@ -151,9 +151,15 @@ def gemini_narrate(lines, cfg, workdir, voice_name="Kore", lang="Hindi", tempo=N
             r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
                               headers=hdr, json=body, timeout=240)
             pcm = base64.b64decode(r.json()["candidates"][0]["content"]["parts"][0]["inlineData"]["data"])
-            if len(pcm) > 48000:  # at least ~1 second of audio
-                break
-            pcm = None
+            secs = len(pcm) / 48000  # 24 kHz, 16-bit mono
+            if secs < 1:
+                pcm = None
+                continue
+            if secs > n_words / 1.6 + 3:  # far too long for the script = it read something extra
+                last = f"{model}: audio {secs:.0f}s is too long for {n_words} words"
+                pcm = None
+                continue
+            break
         except Exception as e:
             last = f"{model}: {type(e).__name__} {str(e)[:120].replace(key, '***')}"
     if not pcm:
