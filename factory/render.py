@@ -210,12 +210,30 @@ def _glow(size, color):
     return g.filter(ImageFilter.GaussianBlur(size * 0.12))
 
 
-def _hook_banner(title):
+def _hook_font(title, fallback=None):
+    """Anton has no Hindi letters (they showed as boxes): a Devanagari headline gets Noto Sans Devanagari Bold."""
+    if not re.search(r"[\u0900-\u097F]", title or ""):
+        return F_HOOK, title
+    try:
+        from .hindi import ensure_font
+        f = ImageFont.truetype(ensure_font(), 80)
+        try:
+            f.set_variation_by_name("Bold")
+        except Exception:
+            pass
+        return f, title
+    except Exception as e:
+        log(f"  Hindi headline font missing ({e}) - showing the Roman title instead")
+        return F_HOOK, fallback or title
+
+
+def _hook_banner(title, fallback=None):
+    font, title = _hook_font(title, fallback)
     tmp = ImageDraw.Draw(Image.new("RGB", (1, 1)))
     words, lines, cur = title.upper().split(), [], ""
     for w in words:
         t = (cur + " " + w).strip()
-        if tmp.textlength(t, font=F_HOOK) <= 840:
+        if tmp.textlength(t, font=font) <= 840:
             cur = t
         else:
             lines.append(cur)
@@ -231,8 +249,8 @@ def _hook_banner(title):
     y = 30
     for i, l in enumerate(lines):
         col = (255, 214, 10) if i == len(lines) - 1 and len(lines) > 1 else (255, 255, 255)
-        ds.text((bw / 2, y + 6), l, font=F_HOOK, fill=(0, 0, 0, 230), anchor="ma")
-        d.text((bw / 2, y), l, font=F_HOOK, fill=col, anchor="ma", stroke_width=3, stroke_fill=(0, 0, 0))
+        ds.text((bw / 2, y + 6), l, font=font, fill=(0, 0, 0, 230), anchor="ma")
+        d.text((bw / 2, y), l, font=font, fill=col, anchor="ma", stroke_width=3, stroke_fill=(0, 0, 0))
         y += lh
     return Image.alpha_composite(sh.filter(ImageFilter.GaussianBlur(10)), img)
 
@@ -519,7 +537,7 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
     f_on = duration + 99 if not cfg.get("follow_popup") else duration * 0.5  # off: viral explainers have no CTA
     f_tap = f_on + 1.0
     proc_bg = ProceduralBG(script.get("theme", "science"), W, H, seed)
-    hook_img = _hook_banner(script.get("banner") or script["title"])  # Hindi: Devanagari headline
+    hook_img = _hook_banner(script.get("banner") or script["title"], fallback=script["title"])  # Hindi: Devanagari headline
     glow = _glow(700, (255, 255, 255))
     btn_follow, btn_done = _follow_button("follow"), _follow_button("done")
     nudge = _subscribe_nudge(script.get("lang", "en")) if cfg.get("subscribe_nudge", True) else None
