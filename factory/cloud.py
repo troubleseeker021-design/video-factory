@@ -652,7 +652,7 @@ HI_GEMINI_VOICES = [("Charon, male, calm (Google Gemini)", "Charon"), ("Puck, ma
                     ("Kore, female, firm (Google Gemini)", "Kore"), ("Aoede, female, warm (Google Gemini)", "Aoede")]
 
 
-def _gemini_tts(text, voice_name, mp3, key):
+def _gemini_tts(text, voice_name, mp3, key, lang="Hindi"):
     """Google Gemini text-to-speech (free tier with the existing Gemini key). Returns True on success."""
     import base64
     import subprocess
@@ -665,7 +665,7 @@ def _gemini_tts(text, voice_name, mp3, key):
     except Exception as e:
         log(f"Gemini model list failed: {e}")
     models = sorted(models, key=lambda n: ("pro" in n, "preview" in n)) or ["gemini-2.5-flash-preview-tts"]
-    body = {"contents": [{"parts": [{"text": "Read this aloud in Hindi like an excited, curious storyteller "
+    body = {"contents": [{"parts": [{"text": f"Read this aloud in {lang} like an excited, curious storyteller "
                                               "explaining an amazing fact to a friend, at a lively pace: " + text}]}],
             "generationConfig": {"responseModalities": ["AUDIO"],
                                  "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice_name}}}}}
@@ -713,6 +713,47 @@ def hindi_voices():
             tg.send_audio(CHAT, mp3, f"#{n} {label}", title=f"{n} Gemini {v}")
         else:
             tg.send_message(CHAT, f"#{n} {label}: not available on our free Gemini key")
+
+
+EN_SAMPLE = ("This frog hides its own blood. When a glass frog falls asleep, it pulls almost ninety percent of its red "
+             "blood cells into its liver, and its whole body turns nearly see-through. How cool is that?")
+EN_EDGE_VOICES = [("Andrew Multilingual, male (our usual voice)", "en-US-AndrewMultilingualNeural"),
+                  ("Brian Multilingual, male, relaxed (Microsoft)", "en-US-BrianMultilingualNeural"),
+                  ("Andrew, male, clear (Microsoft, current backup)", "en-US-AndrewNeural"),
+                  ("Ryan, male, British narrator (Microsoft)", "en-GB-RyanNeural")]
+EN_GEMINI_VOICES = [("Charon, male, calm storyteller (Google Gemini)", "Charon"),
+                    ("Fenrir, male, excited (Google Gemini)", "Fenrir"),
+                    ("Orus, male, firm documentary (Google Gemini)", "Orus")]
+
+
+def english_voices():
+    """Run workflow > task: english_voices - the same English line read by the best free voices, sent to Telegram
+    so the owner can pick the Hidden Facts HQ voice by ear. Changes nothing by itself."""
+    import asyncio
+    import tempfile
+    from .voice import _tts
+    cfg = load_config()
+    rate = cfg.get("voice_speed", "+4%")
+    tg.send_message(CHAT, "🇬🇧🎙️ English voice audition for Hidden Facts HQ\nSame line, different voices. Listen and tell "
+                          "Claude the number you like best.")
+    n = 0
+    for label, v in EN_EDGE_VOICES:
+        n += 1
+        mp3 = os.path.join(tempfile.gettempdir(), f"en_sample_{n}.mp3")
+        try:
+            asyncio.run(_tts(EN_SAMPLE, v, rate, cfg.get("voice_pitch", "+0Hz"), mp3))
+            tg.send_audio(CHAT, mp3, f"#{n} {label}", title=f"{n} {v}")
+        except Exception as e:
+            log(f"English sample {v} failed: {e}")
+            tg.send_message(CHAT, f"#{n} {label}: could not be made right now ({str(e)[:80]})")
+    key = cfg.get("gemini_api_key", "").strip()
+    for label, v in EN_GEMINI_VOICES:
+        n += 1
+        mp3 = os.path.join(tempfile.gettempdir(), f"en_sample_{n}.mp3")
+        if key and _gemini_tts(EN_SAMPLE, v, mp3, key, lang="English"):
+            tg.send_audio(CHAT, mp3, f"#{n} {label}", title=f"{n} Gemini {v}")
+        else:
+            tg.send_message(CHAT, f"#{n} {label}: not available right now")
 
 
 def check():
@@ -907,6 +948,6 @@ def _reserve_ai_for_doc():
 
 if __name__ == "__main__":
     _reserve_ai_for_doc()
-    {"make": make, "poll": poll, "tick": tick, "repost": repost, "clear": clear_pending, "hindi_test": hindi_test, "voices": voices, "hindi_voices": hindi_voices, "check": check, "kids_sample": kids_sample, "doc_preview": doc_preview,
+    {"make": make, "poll": poll, "tick": tick, "repost": repost, "clear": clear_pending, "hindi_test": hindi_test, "voices": voices, "hindi_voices": hindi_voices, "english_voices": english_voices, "check": check, "kids_sample": kids_sample, "doc_preview": doc_preview,
      "comments": lambda: __import__("factory.growth", fromlist=["x"]).comment_digest(_state(), CHAT), "stats": lambda: _growth_now("stats"),
      "weekly": lambda: _growth_now("weekly"), "report": lambda: _growth_now("report")}[sys.argv[1]]()
