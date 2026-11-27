@@ -82,6 +82,47 @@
       "message_id": 590,
       "created": "2026-11-26T22:29:00.065510",
       "scheduled": true
+    },
+    "8c93b607f8": {
+      "vid": "20261127-011647-the-worms-that-melt-whale-bones-with-acid-hi",
+      "post": {
+        "title": "Whale Ki Haddiyan Pighlane Wale Keede",
+        "created": "2026-11-27T01:23:04",
+        "source": "gemini:gemini-flash-latest",
+        "theme": "ocean",
+        "hook": "Samandar ki gehrai mein aise keede rehte hain jo whale ki haddiyon ko acid se pighla dete hain",
+        "series": "Samundar Ke Rahasya #8",
+        "question": "Darawna laga ya kamaal ka?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "never_seen",
+        "youtube": {
+          "title": "Whale Ki Haddiyan Pighlane Wale Keede | Samundar Ke Rahasya #8 #shorts",
+          "description": "Samandar ke andhere mein zombie worms acid se poori whale ki haddiyan pighla dete hain. Dekhiye yeh ajeeb creature kaise khate hain.\n\n👇 Darawna laga ya kamaal ka?\n\n#samandar #sciencefacts #oceanlife #shorts #hindi #weirdnature #shorts\n\nImage credits:\nPhoto: David Clode · Unsplash\nPhoto: The New York Public Library · Unsplash\nPhoto: isabelle sivieri zampieri · Unsplash",
+          "tags": [
+            "samandar",
+            "sciencefacts",
+            "oceanlife",
+            "shorts",
+            "hindi",
+            "weirdnature",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Samandar ke andhere mein zombie worms acid se poori whale ki haddiyan pighla dete hain. Dekhiye yeh ajeeb creature kaise khate hain. #samandar #sciencefacts #oceanlife #shorts #hindi #weirdnature #fyp #facts",
+        "instagram": "Samundar Ke Rahasya #8 🔎 Samandar ke andhere mein zombie worms acid se poori whale ki haddiyan pighla dete hain. Dekhiye yeh ajeeb creature kaise khate hain.\n\n👇 Darawna laga ya kamaal ka?\n.\n.\n#samandar #sciencefacts #oceanlife #shorts #hindi #weirdnature #reels #facts #didyouknow",
+        "facebook": "Samundar Ke Rahasya #8 🔎 Samandar ke andhere mein zombie worms acid se poori whale ki haddiyan pighla dete hain. Dekhiye yeh ajeeb creature kaise khate hain.\n\n👇 Darawna laga ya kamaal ka?\n\n#samandar #sciencefacts #oceanlife #shorts #hindi #weirdnature",
+        "script": "Samandar ki gehrai mein aise keede rehte hain jo whale ki haddiyon ko acid se pighla dete hain Teen kilometer neeche yeh zombie keede bina munh ya pet ke whale ke kankaal par kabza kar lete hain Darasal inke shareer se hari jadein nikalti hain jo seedhe thos haddi mein chhed kar deti hain Aur yahin twist hai yeh jadein asal mein acid chhodkar sakht haddi ko pighla deti hain Phir jadon mein maujood bacteria haddi ka sara fat khakar in keedon ko energy dete hain Aur har female keede ke andar saikdon chhote male keede parasite bankar rehte hain Yeh aapko darawna laga ya kamaal ka comment mein batao aur follow karo",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAICUmsI28JxIbP7m2gdkJK0h9Fo3JubAAIzCAACPRJJRIHUGGyZ1vwpPQQ",
+      "channel": "hi",
+      "message_id": 594,
+      "created": "2026-11-27T01:24:19.398260",
+      "scheduled": true
     }
   },
   "history": [
@@ -2984,9 +3025,40 @@
       },
       "instagram": "Nature's Weirdest #6 🔎 The sandbox tree doesn't rely on wind to spread its seeds—it detonates them at 250 km/h! 🌳\n\n👇 Would you stand near this exploding tree, yes or no?\n.\n.\n#nature #plants #sciencefacts #botany #wildlife #mindblowing #reels #facts #didyouknow",
       "channel": "en"
+    },
+    {
+      "title": "The Worms That Melt Whale Bones With Acid",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/YVj4oRNMAQE",
+        "Facebook": "https://www.facebook.com/reel/4200042526963492",
+        "Instagram": "https://www.instagram.com/reel/DgOfe94BceL/"
+      },
+      "created": "2026-11-27T01:19:48",
+      "theme": "ocean",
+      "hook": "You've never seen deep-sea worms dissolve whale bones with acid.",
+      "series": "Ocean Mysteries #8",
+      "hook_style": "never_seen",
+      "file_id": "BAACAgEAAxkDAAICT2sI23u2Ek7TgGbeDfXALZX3uc96AAIyCAACPRJJRFDbUg0Sb3NdPQQ",
+      "youtube": {
+        "title": "The Worms That Melt Whale Bones With Acid | Ocean Mysteries #8 #shorts",
+        "description": "Zombie worms survive thousands of feet beneath the sea by melting solid skeletons with acid. Here is how nature's weirdest scavengers eat. 🦴\n\n👇 Creepy or fascinating?\n\n#deepsea #oceanlife #marinebiology #sciencefacts #weirdnature #oceanmysteries #shorts\n\nImage credits:\nPhoto: David Clode · Unsplash\nPhoto: The New York Public Library · Unsplash\nPhoto: isabelle sivieri zampieri · Unsplash",
+        "tags": [
+          "deepsea",
+          "oceanlife",
+          "marinebiology",
+          "sciencefacts",
+          "weirdnature",
+          "oceanmysteries",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Ocean Mysteries #8 🔎 Zombie worms survive thousands of feet beneath the sea by melting solid skeletons with acid. Here is how nature's weirdest scavengers eat. 🦴\n\n👇 Creepy or fascinating?\n.\n.\n#deepsea #oceanlife #marinebiology #sciencefacts #weirdnature #oceanmysteries #reels #facts #didyouknow",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-26 16:15",
+  "last_slot": "2026-11-26 19:15",
   "stats_day": "2026-11-26",
   "stats_problems": {},
   "followers": {

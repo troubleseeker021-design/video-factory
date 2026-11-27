@@ -566,5 +566,14 @@
     "hook_style": "bold_fact",
     "hook": "The sandbox tree fires its seeds like explosive shrapnel.",
     "date": "2026-11-26"
+  },
+  {
+    "id": "the-worms-that-melt-whale-bones-with-acid",
+    "title": "The Worms That Melt Whale Bones With Acid",
+    "theme": "ocean",
+    "format": "standard",
+    "hook_style": "never_seen",
+    "hook": "You've never seen deep-sea worms dissolve whale bones with acid.",
+    "date": "2026-11-27"
   }
 ]
