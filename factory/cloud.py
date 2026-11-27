@@ -640,6 +640,81 @@ def voices():
             log(f"sample {v} failed: {e}")
 
 
+HI_SAMPLE = ("यह मेंढक सोते समय अपना खून छुपा लेता है। जब ग्लास फ्रॉग सोता है, तो उसकी लगभग नब्बे प्रतिशत लाल "
+             "कोशिकाएँ लिवर में चली जाती हैं, और उसका शरीर लगभग कांच जैसा पारदर्शी हो जाता है। है ना कमाल?")
+HI_EDGE_VOICES = [("Swara, female (Microsoft Hindi)", "hi-IN-SwaraNeural"),
+                  ("Madhur, male (Microsoft Hindi)", "hi-IN-MadhurNeural"),
+                  ("Andrew, male (Microsoft multilingual)", "en-US-AndrewMultilingualNeural"),
+                  ("Brian, male (Microsoft multilingual)", "en-US-BrianMultilingualNeural"),
+                  ("Ava, female (Microsoft multilingual)", "en-US-AvaMultilingualNeural"),
+                  ("Emma, female (Microsoft multilingual)", "en-US-EmmaMultilingualNeural")]
+HI_GEMINI_VOICES = [("Charon, male, calm (Google Gemini)", "Charon"), ("Puck, male, upbeat (Google Gemini)", "Puck"),
+                    ("Kore, female, firm (Google Gemini)", "Kore"), ("Aoede, female, warm (Google Gemini)", "Aoede")]
+
+
+def _gemini_tts(text, voice_name, mp3, key):
+    """Google Gemini text-to-speech (free tier with the existing Gemini key). Returns True on success."""
+    import base64
+    import subprocess
+    import tempfile
+    from .common import ffmpeg_exe
+    models = []
+    try:
+        r = requests.get("https://generativelanguage.googleapis.com/v1beta/models?pageSize=200", headers={"x-goog-api-key": key}, timeout=30)
+        models = [m["name"].split("/")[-1] for m in r.json().get("models", []) if "tts" in m.get("name", "")]
+    except Exception as e:
+        log(f"Gemini model list failed: {e}")
+    models = sorted(models, key=lambda n: ("pro" in n, "preview" in n)) or ["gemini-2.5-flash-preview-tts"]
+    body = {"contents": [{"parts": [{"text": "Read this aloud in Hindi like an excited, curious storyteller "
+                                              "explaining an amazing fact to a friend, at a lively pace: " + text}]}],
+            "generationConfig": {"responseModalities": ["AUDIO"],
+                                 "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice_name}}}}}
+    for model in models[:3]:
+        try:
+            r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                              headers={"x-goog-api-key": key}, json=body, timeout=120)
+            data = r.json()["candidates"][0]["content"]["parts"][0]["inlineData"]["data"]
+            pcm = os.path.join(tempfile.gettempdir(), "gemini_voice.pcm")
+            with open(pcm, "wb") as f:
+                f.write(base64.b64decode(data))
+            subprocess.run([ffmpeg_exe(), "-y", "-loglevel", "error", "-f", "s16le", "-ar", "24000", "-ac", "1", "-i", pcm,
+                            "-b:a", "128k", mp3], check=True)
+            return True
+        except Exception as e:
+            log(f"Gemini voice {voice_name} with {model} failed: {type(e).__name__} {str(e)[:150].replace(key, '***')}")
+    return False
+
+
+def hindi_voices():
+    """Run workflow > task: hindi_voices - the same Hindi line read by every free Hindi-capable voice, sent to
+    Telegram so the owner can pick the Kya Sach Hai? voice by ear. Changes nothing by itself."""
+    import asyncio
+    import tempfile
+    from .voice import _tts
+    cfg = load_config()
+    rate = cfg.get("hindi_voice_speed", "+18%")
+    tg.send_message(CHAT, "🇮🇳🎙️ Hindi voice audition for Kya Sach Hai?\nSame line, different voices. Listen and tell "
+                          f"Claude the number you like best. (Now in use: {cfg.get('hindi_voice', 'hi-IN-MadhurNeural')})")
+    n = 0
+    for label, v in HI_EDGE_VOICES:
+        n += 1
+        mp3 = os.path.join(tempfile.gettempdir(), f"hi_sample_{n}.mp3")
+        try:
+            asyncio.run(_tts(HI_SAMPLE, v, rate, "+0Hz", mp3))
+            tg.send_audio(CHAT, mp3, f"#{n} {label}", title=f"{n} {v}")
+        except Exception as e:
+            log(f"Hindi sample {v} failed: {e}")
+            tg.send_message(CHAT, f"#{n} {label}: could not be made ({str(e)[:80]})")
+    key = cfg.get("gemini_api_key", "").strip()
+    for label, v in HI_GEMINI_VOICES:
+        n += 1
+        mp3 = os.path.join(tempfile.gettempdir(), f"hi_sample_{n}.mp3")
+        if key and _gemini_tts(HI_SAMPLE, v, mp3, key):
+            tg.send_audio(CHAT, mp3, f"#{n} {label}", title=f"{n} Gemini {v}")
+        else:
+            tg.send_message(CHAT, f"#{n} {label}: not available on our free Gemini key")
+
+
 def check():
     """Shows which YouTube channel, Facebook Page and Instagram account each channel will post to."""
     from . import growth, youtube_upload
@@ -832,6 +907,6 @@ def _reserve_ai_for_doc():
 
 if __name__ == "__main__":
     _reserve_ai_for_doc()
-    {"make": make, "poll": poll, "tick": tick, "repost": repost, "clear": clear_pending, "hindi_test": hindi_test, "voices": voices, "check": check, "kids_sample": kids_sample, "doc_preview": doc_preview,
+    {"make": make, "poll": poll, "tick": tick, "repost": repost, "clear": clear_pending, "hindi_test": hindi_test, "voices": voices, "hindi_voices": hindi_voices, "check": check, "kids_sample": kids_sample, "doc_preview": doc_preview,
      "comments": lambda: __import__("factory.growth", fromlist=["x"]).comment_digest(_state(), CHAT), "stats": lambda: _growth_now("stats"),
      "weekly": lambda: _growth_now("weekly"), "report": lambda: _growth_now("report")}[sys.argv[1]]()
