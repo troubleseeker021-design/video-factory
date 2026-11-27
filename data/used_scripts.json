@@ -575,5 +575,14 @@
     "hook_style": "never_seen",
     "hook": "You've never seen deep-sea worms dissolve whale bones with acid.",
     "date": "2026-11-27"
+  },
+  {
+    "id": "classic-oxford-aztec",
+    "title": "Oxford University Is Older Than the Aztec Empire",
+    "theme": "history",
+    "format": "standard",
+    "hook_style": "",
+    "hook": "Oxford University is older than the Aztec Empire.",
+    "date": "2026-11-27"
   }
 ]
