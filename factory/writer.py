@@ -403,6 +403,7 @@ def next_script(cfg):
     if script is None:
         fresh = [s for s in bank if s["id"] not in used_ids and s.get("theme") != last_theme
                  and (s.get("theme") == "places") == want_places]
+        fresh = [s for s in fresh if s.get("theme") in ("nature", "animals", "ocean", "space")] or fresh  # niche lock
         fresh = fresh or [s for s in bank if s["id"] not in used_ids] or bank
         if not [s for s in bank if s["id"] not in used_ids]:
             log("Script bank is used up - starting over. Add a free Gemini key for unlimited new scripts.")
