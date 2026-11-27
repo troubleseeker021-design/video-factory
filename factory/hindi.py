@@ -57,6 +57,8 @@ Return JSON only.
 - "facts": the small on-screen fact boxes in short Roman Hinglish, keep the numbers ("" stays "").
 - "title", "caption", "question", "thumb", "labels": in Hindi written in Roman letters (labels and
   thumb in CAPS; place names stay as they are, e.g. "LAKE HILLIER, AUSTRALIA").
+- "banner": the big opening headline shown on screen in the first 3 seconds, in DEVANAGARI, 3 to 6 words,
+  stating the jaw-dropping fact itself with any number in digits (e.g. "सूरज से भी गरम जीव", "30 लाख डिग्री का कोर").
 - "hashtags": 6 hashtags mixing Hindi in Roman letters and popular ones (#shorts, #travel).
 - "series": the series name in short Hindi in Roman letters, e.g. "Anokhi Jagahein" for Unreal Places.
 
@@ -130,6 +132,9 @@ def translate(script, cfg):
     if "outro" not in lines:
         hi.pop("outro", None)
     hi["spoken"] = {k: out[k] for k in lines}  # Devanagari, for the voice only
+    banner = str(out.get("banner") or "").strip()
+    if banner and _DEVANAGARI.search(banner) and len(banner) <= 60:  # Hindi breakouts open on a Devanagari headline
+        hi["banner"] = banner
     for k in lines:  # on screen everything is Roman Hinglish
         hi[k] = out[f"{k}_roman"]
     labels = out.get("labels") or []

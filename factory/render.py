@@ -519,7 +519,7 @@ def render(script, scenes, words, duration, voice_wav, music_path, out_path, cfg
     f_on = duration + 99 if not cfg.get("follow_popup") else duration * 0.5  # off: viral explainers have no CTA
     f_tap = f_on + 1.0
     proc_bg = ProceduralBG(script.get("theme", "science"), W, H, seed)
-    hook_img = _hook_banner(script["title"])
+    hook_img = _hook_banner(script.get("banner") or script["title"])  # Hindi: Devanagari headline
     glow = _glow(700, (255, 255, 255))
     btn_follow, btn_done = _follow_button("follow"), _follow_button("done")
     nudge = _subscribe_nudge(script.get("lang", "en")) if cfg.get("subscribe_nudge", True) else None
