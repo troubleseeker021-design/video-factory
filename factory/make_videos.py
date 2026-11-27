@@ -74,7 +74,18 @@ def make_one(cfg, no_voice=False):
             words, duration = voice.estimate_timings(text)
             wav = None
         else:
-            wav, vdur, words = voice.narrate(text, cfg, work)
+            wav = None
+            gem = cfg.get("english_gemini_voice", "Charon")  # owner's pick from the Nov 27 voice audition (#5); "" = Microsoft
+            if gem:
+                try:
+                    lines = [script["hook"], *script["body"], script["cta"], *([script["outro"]] if script.get("outro") else [])]
+                    wav, vdur, words = voice.gemini_narrate(lines, cfg, work, gem, lang="English",
+                                                            tempo=cfg.get("english_gemini_tempo", 1.0))
+                except Exception as e:
+                    log(f"  Gemini voice failed ({str(e)[:160]}) - using the Microsoft voice instead")
+                    wav = None
+            if wav is None:
+                wav, vdur, words = voice.narrate(text, cfg, work)
             duration = vdur + 0.8
             note("narrator", f"Recorded the voice-over: {len(words)} words, {vdur:.0f} seconds")
         mus = music.pick_music(duration, seed, work)

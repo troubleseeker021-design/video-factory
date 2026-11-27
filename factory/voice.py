@@ -123,7 +123,7 @@ def _place_lines(lines, wav, dur):
     return words
 
 
-def gemini_narrate(lines, cfg, workdir, voice_name="Kore"):
+def gemini_narrate(lines, cfg, workdir, voice_name="Kore", lang="Hindi", tempo=None):
     """Hindi voice from Google Gemini text-to-speech (the owner's pick, Nov 27: voice "Kore").
     One call per video; Gemini returns no word timings, so lines are placed on the voice's pauses."""
     import base64
@@ -139,7 +139,7 @@ def gemini_narrate(lines, cfg, workdir, voice_name="Kore"):
     except Exception as e:
         log(f"  Gemini model list failed: {type(e).__name__}")
     models = sorted(models, key=lambda n: ("pro" in n, "preview" in n)) or ["gemini-2.5-flash-preview-tts"]
-    prompt = ("Read this Hindi script aloud like an excited, curious storyteller explaining an amazing fact to a "
+    prompt = (f"Read this {lang} script aloud like an excited, curious storyteller explaining an amazing fact to a "
               "friend, at a lively pace, with a short pause after each line. Read every word exactly as written:\n"
               + "\n".join(lines))
     body = {"contents": [{"parts": [{"text": prompt}]}],
@@ -161,7 +161,7 @@ def gemini_narrate(lines, cfg, workdir, voice_name="Kore"):
     raw, wav = os.path.join(workdir, "voice.pcm"), os.path.join(workdir, "voice.wav")
     with open(raw, "wb") as f:
         f.write(pcm)
-    tempo = float(cfg.get("hindi_gemini_tempo", 1.0))
+    tempo = float(tempo if tempo is not None else cfg.get("hindi_gemini_tempo", 1.0))
     af = ["-af", f"atempo={tempo:.3f}"] if abs(tempo - 1.0) > 0.01 else []
     subprocess.run([ffmpeg_exe(), "-y", "-loglevel", "error", "-f", "s16le", "-ar", "24000", "-ac", "1", "-i", raw,
                     *af, "-ar", "44100", "-ac", "2", wav], check=True)
