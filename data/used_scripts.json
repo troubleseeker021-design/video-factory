@@ -584,5 +584,14 @@
     "hook_style": "",
     "hook": "Oxford University is older than the Aztec Empire.",
     "date": "2026-11-27"
+  },
+  {
+    "id": "classic-wombat-cubes",
+    "title": "Wombats Poop Cubes",
+    "theme": "animals",
+    "format": "standard",
+    "hook_style": "",
+    "hook": "There's an animal on Earth that poops perfect cubes.",
+    "date": "2026-11-27"
   }
 ]
