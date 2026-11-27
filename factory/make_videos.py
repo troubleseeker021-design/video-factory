@@ -14,6 +14,16 @@ from . import writer, voice, music, media, render, thumbnail
 from .diary import note
 
 
+def _ig_tags(script, extra="#facts"):
+    """Only 3 hashtags on Instagram (limit is 5): the 2 most popular topic tags + #facts."""
+    seen, out = set(), []
+    for h in script.get("hashtags", []):
+        h = "#" + str(h).lstrip("#").strip()
+        if len(h) > 1 and h.lower() not in seen and h.lower() != extra:
+            seen.add(h.lower()); out.append(h)
+    return " ".join(out[:2] + [extra])
+
+
 def build_post_pack(script, cfg):
     tags = " ".join(script.get("hashtags", []))
     credits = ("\n\nImage credits:\n" + "\n".join(script["_credits"])) if script.get("_credits") else ""
@@ -41,7 +51,8 @@ def build_post_pack(script, cfg):
             "tags": [h.lstrip("#") for h in script.get("hashtags", [])] + ["shorts", "facts"],
         },
         "tiktok": f"{script['caption']} {tags} #fyp #facts",
-        "instagram": (f"{series} 🔎 " if series else "") + f"{script['caption']}{ask}\n.\n.\n{tags} #reels #facts #didyouknow",
+        # Instagram allows max 5 hashtags (Dec 2025); we use 3. Searchable title first: IG search reads captions.
+        "instagram": f"{script['title']}\n\n{script['caption']}{ask}\n\n{_ig_tags(script)}",
         "facebook": (f"{series} 🔎 " if series else "") + f"{script['caption']}{ask}\n\n{tags}",
         "script": writer.spoken_text(script),
         "status": "review",

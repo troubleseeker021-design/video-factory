@@ -99,7 +99,8 @@ STYLE = viral 3D-explainer reels: explain HOW something works, step by step, lik
   every extra second loses viewers.
 - "title": catchy, under 60 characters, no hashtags.
 - "caption": 1-2 sentence social caption with 1 emoji.
-- "hashtags": 6 relevant hashtags starting with #.
+- "hashtags": 6 relevant hashtags starting with #, ordered from the most popular and most searched
+  (big, widely used tags like #animals, #ocean, #space) to the most specific.
 - "keywords": 3 simple stock-footage search terms (e.g. "ocean", "octopus underwater").
 - "theme": one of space, ocean, nature, history, body, science, animals, places, tech, mind, dark, money, love,
   whatif, survival, food
