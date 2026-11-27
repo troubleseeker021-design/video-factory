@@ -222,9 +222,18 @@ def make(vid, cfg, seed=None):
         hcfg = dict(cfg, channel_name=os.environ.get("HI_CHANNEL_NAME", "").strip())
         sp = script.pop("spoken")
         spoken = [_smooth(x) for x in [sp["hook"], *sp["body"], sp["cta"], *([sp["outro"]] if sp.get("outro") else [])]]
-        wav, vdur, dev_words = voice.narrate(" ".join(spoken), hcfg, work,
-                                             voices=[cfg.get("hindi_voice") or VOICE, "hi-IN-MadhurNeural"],
-                                             rate=cfg.get("hindi_voice_speed", "+6%"), pitch=cfg.get("hindi_voice_pitch", "+0Hz"))
+        wav = None
+        gem = cfg.get("hindi_gemini_voice", "Kore")  # owner's pick from the Nov 27 voice audition (#9); "" = Microsoft
+        if gem:
+            try:
+                wav, vdur, dev_words = voice.gemini_narrate(spoken, hcfg, work, gem)
+            except Exception as e:
+                log(f"  Gemini Hindi voice failed ({str(e)[:160]}) - using the Microsoft voice instead")
+                wav = None
+        if wav is None:
+            wav, vdur, dev_words = voice.narrate(" ".join(spoken), hcfg, work,
+                                                 voices=[cfg.get("hindi_voice") or VOICE, "hi-IN-MadhurNeural"],
+                                                 rate=cfg.get("hindi_voice_speed", "+6%"), pitch=cfg.get("hindi_voice_pitch", "+0Hz"))
         duration = vdur + 0.8
         note("narrator", f"Recorded the Hindi voice-over: {duration:.0f} seconds")
         words = roman_timings(dev_words, spoken, [script["hook"], *script["body"], script["cta"],
