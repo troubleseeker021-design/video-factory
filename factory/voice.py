@@ -140,7 +140,7 @@ def gemini_narrate(lines, cfg, workdir, voice_name="Kore", lang="Hindi", tempo=N
         log(f"  Gemini model list failed: {type(e).__name__}")
     models = sorted(models, key=lambda n: ("pro" in n, "preview" in n)) or ["gemini-2.5-flash-preview-tts"]
     prompt = (f"Read this {lang} script aloud like an excited, curious storyteller explaining an amazing fact to a "
-              "friend, at a lively pace, with a short pause after each line. Read every word exactly as written:\n"
+              "friend, at a brisk, energetic pace, with only a very short pause between lines. Read every word exactly as written:\n"
               + "\n".join(lines))
     body = {"contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {"responseModalities": ["AUDIO"],
@@ -162,7 +162,9 @@ def gemini_narrate(lines, cfg, workdir, voice_name="Kore", lang="Hindi", tempo=N
     with open(raw, "wb") as f:
         f.write(pcm)
     tempo = float(tempo if tempo is not None else cfg.get("hindi_gemini_tempo", 1.0))
-    af = ["-af", f"atempo={tempo:.3f}"] if abs(tempo - 1.0) > 0.01 else []
+    # Gemini leaves long gaps between lines: cut every pause down to ~0.3 s, then speed up if asked
+    flt = "silenceremove=start_periods=1:start_threshold=-40dB:stop_periods=-1:stop_duration=0.25:stop_threshold=-40dB:stop_silence=0.22"
+    af = ["-af", flt + (f",atempo={tempo:.3f}" if abs(tempo - 1.0) > 0.01 else "")]
     subprocess.run([ffmpeg_exe(), "-y", "-loglevel", "error", "-f", "s16le", "-ar", "24000", "-ac", "1", "-i", raw,
                     *af, "-ar", "44100", "-ac", "2", wav], check=True)
     os.remove(raw)
