@@ -14,6 +14,7 @@ import json
 import os
 import random
 import re
+import urllib.parse
 import urllib.request
 
 from .common import DATA, log, read_json, write_json
@@ -238,9 +239,9 @@ def _plan(used):
     since_places = next((i for i, u in enumerate(reversed(used)) if u.get("theme") == "places"), len(used))
     want_places = False  # Unreal Places paused: our worst series on YouTube (6-24% stayed to watch, Nov 16 data)
     since_tech = next((i for i, u in enumerate(reversed(used)) if u.get("theme") == "tech"), len(used))
-    _plan.want_tech = (not want_places) and since_tech >= 12 and last_theme != "tech"  # weapons/tech: 11-19% stayed - rare
+    _plan.want_tech = False  # Nov 27 niche lock: only animals, ocean, nature, space (machines held 11-19%)
     since_grown = next((i for i, u in enumerate(reversed(used)) if u.get("theme") in GROWNUP), len(used))
-    _plan.want_grownup = (not want_places) and (not _plan.want_tech) and since_grown >= 7  # 1 in 5: Mind/Dark/Love got 0-30 views (Nov 25 data)
+    _plan.want_grownup = False  # Nov 27 niche lock: Mind/Dark/Love got 0-30 views (Nov 25 data)
     fmt = "places" if want_places else random.choice(["standard", "standard", "standard", "myth"])  # one-subject stories hold viewers best
     return want_places, fmt, last_theme
 
@@ -260,7 +261,7 @@ def _gemini(cfg, used, want_places, fmt, last_theme):
                       'true story, the trick being played on them. Keep it factual and respectful: no gore, no sexual '
                       'content, no graphic violence, no naming private people, nothing that teaches crime or scams - '
                       'explain how they work so viewers can spot them.')
-    elif last_theme not in HOOKY and random.random() < 0.25:
+    elif False:  # Nov 27 niche lock: What If / Survival / Food paused for the 90-day test
         theme_rule = ('The "theme" MUST be one of "whatif", "survival" or "food" (pick the most gripping topic, '
                       'and not "' + str(last_theme) + '").')
     else:  # our proven winners: ONE amazing living thing or natural wonder (gold trees 70%, loneliest whale 58%)
@@ -283,7 +284,7 @@ def _gemini(cfg, used, want_places, fmt, last_theme):
                            format=PLACES_FORMAT if want_places else FORMATS[fmt], theme_rule=theme_rule,
                            hooks="; ".join(hooks) or "none", viewer=viewer, insights=cfg.get("_insights", ""))
     recent_hooks = {_norm_hook(h) for h in hooks}
-    for attempt in range(2):
+    for attempt in range(3):
         s = gemini_json(cfg, prompt)
         if not s or not s.get("hook") or not s.get("body"):
             continue
@@ -298,10 +299,91 @@ def _gemini(cfg, used, want_places, fmt, last_theme):
                 and s.get("theme") in (last_theme, "places") and attempt == 0):
             log("  same series as last video - asking again")
             continue
+        if not _fact_check(cfg, s):
+            continue
         s["source"] = f"gemini:{s.pop('_model', '')}"
         s["hook_style"] = "places" if want_places else style
         return s
     return None
+
+
+FACT_PROMPT = """You are a strict fact-checker for a science facts channel. Below are SOURCE extracts from
+Wikipedia and the numbered LINES of a short video script. For EACH line decide whether every factual claim in it
+(numbers, names, dates, superlatives like "only", "first", "largest", "never", and cause and effect) is supported
+by the SOURCE, or is basic, uncontroversial knowledge any encyclopedia would confirm. Connecting phrases
+("Here's the crazy part"), questions and harmless comparisons count as supported. Be strict with numbers and
+superlatives: a number that differs from the source, or an exaggeration, is NOT supported.
+Reply JSON only, one entry per line with the same numbering:
+{{"lines":[{{"i":0,"ok":true,"why":""}}]}}
+
+SOURCE:
+{src}
+
+LINES:
+{lines}"""
+
+
+def _wiki_text(titles, limit=12000):
+    """Plain text of up to 3 English Wikipedia articles (the independent source for the fact-check)."""
+    out = []
+    for t in titles[:3]:
+        q = urllib.parse.urlencode({"action": "query", "format": "json", "formatversion": "2", "redirects": "1",
+                                    "prop": "extracts", "explaintext": "1", "titles": t})
+        try:
+            req = urllib.request.Request(f"https://en.wikipedia.org/w/api.php?{q}", headers={
+                "User-Agent": "FacelessVideoFactory/2.0 (personal hobby project; python urllib)"})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                data = json.loads(r.read())
+            for p in data.get("query", {}).get("pages", []):
+                txt = (p.get("extract") or "").strip()
+                if txt:
+                    out.append(f"== {p.get('title')} ==\n{txt[:limit]}")
+        except Exception as e:
+            log(f"  fact-check: could not read Wikipedia '{t}': {e}")
+    return "\n\n".join(out)
+
+
+def _fact_check(cfg, s):
+    """Independent check (Nov 27): every spoken claim must be backed by the Wikipedia articles the script names.
+    Unsupported middle lines are cut; an unsupported hook or ending, too many bad lines, or no source at all
+    rejects the topic (the writer then tries another one)."""
+    src = _wiki_text([str(t) for t in (s.get("wiki") or []) if t])
+    if len(src) < 500:
+        log("  fact-check: no Wikipedia source found for this topic - trying another topic")
+        return False
+    lines = [s["hook"], *s["body"], s["cta"]]
+    n = len(lines)
+    res = gemini_json(cfg, FACT_PROMPT.format(src=src[:30000], lines="\n".join(f"{i}. {x}" for i, x in enumerate(lines))),
+                      temperature=0.1)
+    rows = res.get("lines") if isinstance(res, dict) else None
+    if not isinstance(rows, list):
+        log("  fact-check: the checker did not answer - the video will wait for the owner's approval")
+        s["confidence"] = "medium"
+        s["doubts"] = [*(s.get("doubts") or []), "automatic fact-check could not run"]
+        return True
+    bad = {}
+    for x in rows:
+        try:
+            if isinstance(x, dict) and x.get("ok") is False:
+                bad[int(x.get("i"))] = str(x.get("why", ""))[:120]
+        except (TypeError, ValueError):
+            pass
+    if 0 in bad or (n - 1) in bad:
+        log(f"  fact-check: hook or ending not supported ({bad.get(0) or bad.get(n - 1)}) - trying another topic")
+        return False
+    drop = sorted(i for i in bad if 0 < i < n - 1)
+    if len(s["body"]) - len(drop) < 3:
+        log(f"  fact-check: {len(drop)} unsupported lines - trying another topic")
+        return False
+    per_line = [k for k in ("emojis", "visuals", "labels", "art", "facts") if isinstance(s.get(k), list) and len(s[k]) == n]
+    for i in reversed(drop):
+        log(f"  fact-check: cut an unsupported line: {lines[i][:80]} ({bad[i]})")
+        del s["body"][i - 1]
+        for k in per_line:
+            del s[k][i]
+    s["fact_checked"] = True
+    log(f"  fact-check passed ({n - len(drop)} of {n} lines confirmed by Wikipedia)")
+    return True
 
 
 def next_script(cfg):

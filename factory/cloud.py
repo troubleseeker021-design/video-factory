@@ -780,7 +780,7 @@ def _growth_jobs(cfg):
     # early Sunday (after 1 AM): the free AI-picture allowance is still fresh for the documentary
     # 2026-W47 skipped: two hand-picked documentaries (waterfall + torpedo) were scheduled for this week instead
     if (now.weekday() == 6 and now.hour >= 1 and st.get("compile_week") != week and cfg.get("weekly_video", True)
-            and week not in ("2026-W47",)):
+            and _doc_week(week)):
         privacy = os.environ.get("YOUTUBE_PRIVACY") or cfg.get("youtube_privacy", "public")
         jobs.append(("compile_week", week, lambda: growth.compilation(st, CHAT, privacy)))
     if st.get("report_now"):
@@ -807,6 +807,14 @@ def _growth_jobs(cfg):
         diary.flush()
 
 
+def _doc_week(week):
+    """Documentary every second week (Nov 27 audit): even ISO weeks only (2026-W48 = Sun Nov 29, then W50, ...)."""
+    try:
+        return week != "2026-W47" and int(week.split("-W")[1]) % 2 == 0
+    except (IndexError, ValueError):
+        return True
+
+
 def _reserve_ai_for_doc():
     """From the daily reset of the free AI pictures (00:00 UTC = Saturday evening in Alberta) until the Sunday
     documentary is made, the Shorts use real photos and clips, so the documentary gets fresh AI pictures."""
@@ -815,7 +823,7 @@ def _reserve_ai_for_doc():
         from . import aiart
         week = dt.datetime.now(ZoneInfo(load_config().get("timezone", "America/Edmonton"))).strftime("%G-W%V")
         if (dt.datetime.utcnow().weekday() == 6 and _state().get("compile_week") != week
-                and week not in ("2026-W47",)):
+                and _doc_week(week)):
             aiart.RESERVE = True
             log("Documentary day: Shorts use real photos/clips, the free AI pictures are kept for the documentary.")
     except Exception as e:
