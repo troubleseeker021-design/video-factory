@@ -1,47 +1,6 @@
 {
   "offset": 41248576,
   "pending": {
-    "cb1e4cc844": {
-      "vid": "20261126-171553-the-star-that-spins-faster-than-a-blender-hi",
-      "post": {
-        "title": "Ek Aisa Tara Jo Blender Se Bhi Tez Ghumta Hai",
-        "created": "2026-11-26T17:19:26",
-        "source": "gemini:gemini-flash-lite-latest",
-        "theme": "space",
-        "hook": "Yeh mara hua tara ek second mein saat sau baar ghumta hai.",
-        "series": "Antariksh Ke Raaz #1",
-        "question": "Could you survive standing near this star, yes or no?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "myth",
-        "hook_style": "spec_paradox",
-        "youtube": {
-          "title": "Ek Aisa Tara Jo Blender Se Bhi Tez Ghumta Hai | Antariksh Ke Raaz #1 #shorts",
-          "description": "This dead star spins faster than your kitchen blender. 🌌\n\n👇 Could you survive standing near this star, yes or no?\n\n#space #astronomy #science #stars #universe #cosmos #shorts",
-          "tags": [
-            "space",
-            "astronomy",
-            "science",
-            "stars",
-            "universe",
-            "cosmos",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "This dead star spins faster than your kitchen blender. 🌌 #space #astronomy #science #stars #universe #cosmos #fyp #facts",
-        "instagram": "Antariksh Ke Raaz #1 🔎 This dead star spins faster than your kitchen blender. 🌌\n\n👇 Could you survive standing near this star, yes or no?\n.\n.\n#space #astronomy #science #stars #universe #cosmos #reels #facts #didyouknow",
-        "facebook": "Antariksh Ke Raaz #1 🔎 This dead star spins faster than your kitchen blender. 🌌\n\n👇 Could you survive standing near this star, yes or no?\n\n#space #astronomy #science #stars #universe #cosmos",
-        "script": "Yeh mara hua tara ek second mein saat sau baar ghumta hai. Isme hamare sooraj jitna mass sirf bees meel ke area mein fit hai. Gravity iske atoms ko itna tight squeeze karti hai ki electrons seedhe protons ban jaate hain. Ab yeh space mein radiation ke tez lighthouse beams fekta hai. Yeh actually deep space mein ghumta hua ek bade shehar jitna atomic nucleus hai. Sach-sach batana, paas khade reh sakte ho kya, yes ya no? Comment mein likho aur follow karo.",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAICSmsIaouWRf38v2OXwvrQtqzxb0Y5AAJqBwACPRJBRMoQXg3W5suHPQQ",
-      "channel": "hi",
-      "message_id": 586,
-      "created": "2026-11-26T17:21:16.644814",
-      "scheduled": true
-    },
     "5e6f848ed0": {
       "vid": "20261126-222128-the-tree-that-explodes-seeds-like-grenades-hi",
       "post": {
@@ -3070,7 +3029,7 @@
   "comments_day": "2026-11-26",
   "compile_week": "2026-W46",
   "report_week": "2026-W47",
-  "last_hi_slot": "2026-11-26 20:00",
+  "last_hi_slot": "2026-11-27 08:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -5433,6 +5392,37 @@
       "instagram": "Kudrat Ke Raaz #5 🔎 Yeh deadly lake pakshiyon ko patthar ki mummies mein badal deti hai. 🗿\n\n👇 Is paani ko touch karoge ya nahi?\n.\n.\n#lake #nature #science #geology #africa #mystery #reels #facts #didyouknow",
       "channel": "hi",
       "ig_manual": true
+    },
+    {
+      "title": "Ek Aisa Tara Jo Blender Se Bhi Tez Ghumta Hai",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/omqMa8YgFtg",
+        "Facebook": "https://www.facebook.com/reel/1462326222633159",
+        "Instagram": "https://www.instagram.com/reel/DgOnNBphZKV/"
+      },
+      "created": "2026-11-26T17:19:26",
+      "theme": "space",
+      "hook": "Yeh mara hua tara ek second mein saat sau baar ghumta hai.",
+      "series": "Antariksh Ke Raaz #1",
+      "hook_style": "spec_paradox",
+      "file_id": "BAACAgEAAxkDAAICSmsIaouWRf38v2OXwvrQtqzxb0Y5AAJqBwACPRJBRMoQXg3W5suHPQQ",
+      "youtube": {
+        "title": "Ek Aisa Tara Jo Blender Se Bhi Tez Ghumta Hai | Antariksh Ke Raaz #1 #shorts",
+        "description": "This dead star spins faster than your kitchen blender. 🌌\n\n👇 Could you survive standing near this star, yes or no?\n\n#space #astronomy #science #stars #universe #cosmos #shorts",
+        "tags": [
+          "space",
+          "astronomy",
+          "science",
+          "stars",
+          "universe",
+          "cosmos",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Antariksh Ke Raaz #1 🔎 This dead star spins faster than your kitchen blender. 🌌\n\n👇 Could you survive standing near this star, yes or no?\n.\n.\n#space #astronomy #science #stars #universe #cosmos #reels #facts #didyouknow",
+      "channel": "hi"
     }
   ],
   "stats_day_hi": "2026-11-26",
