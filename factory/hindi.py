@@ -26,6 +26,12 @@ experiment, signal, energy, percent, numbers). Fluent, fast, confident, curious 
 amazing to a friend - TALKING, not reading out an article. Explain HOW it works step by step ("Pehle..., phir...,
 isliye..., aur jab..."), with spoken connectors like "Ab socho...", "Dekho, hota kya hai...", "Aur yahin
 twist hai...", "Matlab...", "Hamein lagta hai... lekin...", "Aur sabse badi baat kya hai?", "Solution simple hai:".
+Sound like a young Indian YouTuber in 2026, NOT a news anchor or a textbook: whenever people normally say the
+English word, use the English word, never formal "shuddh" Hindi. Say percent (not pratishat), cells (not koshikayen),
+transparent (not pardarshi), temperature (not taapmaan), oxygen, liver, planet, species, degree, million, process,
+"bahut zyada" (not atyadhik), "bahut bada" (not vishaal), "kamaal" or "amazing" (not adbhut), "pata chala"
+(not gyaat hua), "matlab" (not arthaat). Example of the right style: "Yeh frog sote time apna 90 percent blood
+liver mein chhupa leta hai, aur iski body almost transparent ho jaati hai."
 Turn dry science into vivid desi images (dead cells -> "yeh asal mein ek kabristan hai").
 If the topic touches daily life, open the hook from a habit everyone has ("Subah uthte hi jab aap...").
 Mix very short punchy sentences with medium ones.
@@ -40,11 +46,12 @@ Return JSON only.
 - "hook", "body", "cta": the spoken lines in DEVANAGARI script (used for the voice). EVERY word must be
   in Devanagari - the English words too, spelled as Indians say them (साइंस, नॉर्मल, एक्चुअली, सिस्टम) -
   and place names (लेक हिलियर, ऑस्ट्रेलिया).
-  Write numbers and symbols as spoken words (100% -> सौ प्रतिशत, 1960s -> उन्नीस सौ साठ के दशक).
+  Write numbers and symbols as spoken words, the modern way (90% -> नब्बे परसेंट, 1960s -> उन्नीस सौ साठ के आसपास);
+  never प्रतिशत or other formal Hindi words (see the style rules above).
   Keep it flowing: one smooth sentence per line, very few commas (every comma makes the voice pause),
   never "..."; no brackets, emojis, symbols or hyphens.
-  Use only EASY, common words the voice says smoothly: everyday Hindi words, and only the very common
-  English words listed above. Avoid long or rare English words (say "bahut purana" not "ancient",
+  Use only EASY words the voice says smoothly: everyday spoken Hindi plus the common English words young
+  Indians actually use (see above). Avoid long or rare English words nobody uses in Hindi (say "bahut purana" not "ancient",
   "gulabi" not "pink-coloured"). Write big numbers simply ("करीब पचास हज़ार साल", not exact digits).
   Place names: short and in their common Hindi form (लोनार झील, भारत), skip extra region names.
 - "outro" (only if the source has one): the viewer question in Hinglish, then ask them to comment, like and
@@ -52,7 +59,9 @@ Return JSON only.
   Spoken version in DEVANAGARI like the other lines.
 - "hook_roman", "body_roman", "cta_roman", "outro_roman": the SAME lines word for word in Roman letters, written the way
   Indians type on WhatsApp, English words in normal English spelling
-  (e.g. "Humein lagta hai aankh malna normal hai, but science ise kuch aur hi bolti hai.").
+  (e.g. "Humein lagta hai aankh malna normal hai, but science ise kuch aur hi bolti hai."),
+  EXCEPT every number: write it in DIGITS the way people type it ("90 percent", "50,000 saal", "3.5 km", "1960s"),
+  because these lines are the on-screen captions and viewers must see real numbers, not words.
   Same number of lines as the Devanagari ones.
 - "facts": the small on-screen fact boxes in short Roman Hinglish, keep the numbers ("" stays "").
 - "title", "caption", "question", "thumb", "labels": in Hindi written in Roman letters (labels and
