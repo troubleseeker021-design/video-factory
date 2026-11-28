@@ -1,47 +1,6 @@
 {
   "offset": 41248576,
   "pending": {
-    "cec527f789": {
-      "vid": "20261127-222333-classic-wombat-cubes-hi",
-      "post": {
-        "title": "Cube Poop Karne Wala Wombat",
-        "created": "2026-11-27T22:27:02",
-        "source": "bank",
-        "theme": "animals",
-        "hook": "Hamari dharti par ek aisa jaanwar hai jo bilkul perfect cube shape mein potty karta hai",
-        "series": "Anokhe Jaanwar #12",
-        "question": "Aapko sabse ajeeb kya laga?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "standard",
-        "hook_style": "",
-        "youtube": {
-          "title": "Cube Poop Karne Wala Wombat | Anokhe Jaanwar #12 #shorts",
-          "description": "Nature ka sabse ajeeb cube shape secret\n\n👇 Aapko sabse ajeeb kya laga?\n\n#wombat #sciencefacts #ajeebgajab #shorts #hindi #naturefacts #shorts",
-          "tags": [
-            "wombat",
-            "sciencefacts",
-            "ajeebgajab",
-            "shorts",
-            "hindi",
-            "naturefacts",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "Nature ka sabse ajeeb cube shape secret #wombat #sciencefacts #ajeebgajab #shorts #hindi #naturefacts #fyp #facts",
-        "instagram": "Cube Poop Karne Wala Wombat\n\nNature ka sabse ajeeb cube shape secret\n\n👇 Aapko sabse ajeeb kya laga?\n\n#wombat #sciencefacts #facts",
-        "facebook": "Anokhe Jaanwar #12 🔎 Nature ka sabse ajeeb cube shape secret\n\n👇 Aapko sabse ajeeb kya laga?\n\n#wombat #sciencefacts #ajeebgajab #shorts #hindi #naturefacts",
-        "script": "Hamari dharti par ek aisa jaanwar hai jo bilkul perfect cube shape mein potty karta hai Yeh hai Australia ka wombat jo zameen khodkar rehne wala ek chhota sa jaanwar hai Scientists ne dekha ki yeh cubes iski aanton mein bante hain jahan kuch hisse stretchy aur kuch tight hote hain Wombat apna ilaka mark karne ke liye ek raat mein kareeb 100 cubes chhodte hain Aur inki flat sides ki wajah se yeh ludhak kar door nahi bhaagte Yeh ajeeb fact aaj apne kisi dost ke saath share zaroor karo Aapko sabse ajeeb kya laga comment mein batao aur follow karo",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAICf2sKA_bCeA2evAABHWUXcbIWuWCRugAC9QwAAgoNUUQpWI6dp40wyT0E",
-      "channel": "hi",
-      "message_id": 639,
-      "created": "2026-11-27T22:28:07.586197",
-      "scheduled": true
-    },
     "548e8e524b": {
       "vid": "20261128-011922-the-planet-where-it-rains-glass-sideways-hi",
       "post": {
@@ -3170,7 +3129,7 @@
   "comments_day": "2026-11-27",
   "compile_week": "2026-W46",
   "report_week": "2026-W47",
-  "last_hi_slot": "2026-11-28 08:00",
+  "last_hi_slot": "2026-11-28 13:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -5701,6 +5660,37 @@
         ]
       },
       "instagram": "Oxford University Is Older Than the Aztec Empire\n\nHistory timelines are wild 📚\n\n👇 What should we cover next?\n\n#historyfacts #oxford #facts",
+      "channel": "hi"
+    },
+    {
+      "title": "Cube Poop Karne Wala Wombat",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/TmE3j4JB2Gw",
+        "Facebook": "https://www.facebook.com/reel/1136594719277021",
+        "Instagram": "https://www.instagram.com/reel/DgRuUxJv--R/"
+      },
+      "created": "2026-11-27T22:27:02",
+      "theme": "animals",
+      "hook": "Hamari dharti par ek aisa jaanwar hai jo bilkul perfect cube shape mein potty karta hai",
+      "series": "Anokhe Jaanwar #12",
+      "hook_style": "",
+      "file_id": "BAACAgEAAxkDAAICf2sKA_bCeA2evAABHWUXcbIWuWCRugAC9QwAAgoNUUQpWI6dp40wyT0E",
+      "youtube": {
+        "title": "Cube Poop Karne Wala Wombat | Anokhe Jaanwar #12 #shorts",
+        "description": "Nature ka sabse ajeeb cube shape secret\n\n👇 Aapko sabse ajeeb kya laga?\n\n#wombat #sciencefacts #ajeebgajab #shorts #hindi #naturefacts #shorts",
+        "tags": [
+          "wombat",
+          "sciencefacts",
+          "ajeebgajab",
+          "shorts",
+          "hindi",
+          "naturefacts",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Cube Poop Karne Wala Wombat\n\nNature ka sabse ajeeb cube shape secret\n\n👇 Aapko sabse ajeeb kya laga?\n\n#wombat #sciencefacts #facts",
       "channel": "hi"
     }
   ],
