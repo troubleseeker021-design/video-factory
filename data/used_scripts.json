@@ -602,5 +602,14 @@
     "hook_style": "spec_paradox",
     "hook": "Planet HD 189733b has Mach seven winds and rains glass sideways.",
     "date": "2026-11-28"
+  },
+  {
+    "id": "the-flowers-that-mimic-dead-meat",
+    "title": "The Flowers That Mimic Dead Meat",
+    "theme": "nature",
+    "format": "standard",
+    "hook_style": "secret",
+    "hook": "Corpse flowers smell like rotting meat to trick flies.",
+    "date": "2026-11-28"
   }
 ]

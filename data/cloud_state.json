@@ -1,6 +1,48 @@
 {
   "offset": 41248576,
-  "pending": {},
+  "pending": {
+    "3541eb31fb": {
+      "vid": "20261128-172237-the-flowers-that-mimic-dead-meat-hi",
+      "post": {
+        "title": "The Flowers That Mimic Dead Meat",
+        "created": "2026-11-28T17:34:24",
+        "source": "gemini:gemini-flash-lite-latest",
+        "theme": "nature",
+        "hook": "Ye corpse flower sade huye maas jaisi smell failakar makkhiyon ko bewakoof banata hai",
+        "series": "Kudrat Ke Raaz #7",
+        "question": "Would you smell this flower, yes or no?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "secret",
+        "youtube": {
+          "title": "The Flowers That Mimic Dead Meat | Kudrat Ke Raaz #7 #shorts",
+          "description": "This giant flower smells like rotting meat for a very specific reason. 🌸\n\n👇 Would you smell this flower, yes or no?\n\n#nature #flowers #plants #biology #science #wildlife #shorts",
+          "tags": [
+            "nature",
+            "flowers",
+            "plants",
+            "biology",
+            "science",
+            "wildlife",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "This giant flower smells like rotting meat for a very specific reason. 🌸 #nature #flowers #plants #biology #science #wildlife #fyp #facts",
+        "instagram": "The Flowers That Mimic Dead Meat\n\nThis giant flower smells like rotting meat for a very specific reason. 🌸\n\n👇 Would you smell this flower, yes or no?\n\n#nature #flowers #facts",
+        "facebook": "Kudrat Ke Raaz #7 🔎 This giant flower smells like rotting meat for a very specific reason. 🌸\n\n👇 Would you smell this flower, yes or no?\n\n#nature #flowers #plants #biology #science #wildlife",
+        "script": "Ye corpse flower sade huye maas jaisi smell failakar makkhiyon ko bewakoof banata hai Ye apne phoolon ka temperature khud badakar insani body jaisa garam kar leta hai To insects ko lagta hai ki andar koi mara hua khana rakha hai aur wo andar ghus jaate hain Aur jab plant inhe chhodta hai to ye udkar seedhe doosre phool ke paas chale jaate hain Is tarah se ek phool keede-makodon se apna sara kaam karwa leta hai Sach-sach batana, is phool ko soonghoge ya nahi? Comment mein likho aur follow karo",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAICj2sLEPz4SFHozxNzXyc0j_TTmw8HAAKjEgACCg1ZRPPA48lM9L_6PQQ",
+      "channel": "hi",
+      "message_id": 655,
+      "created": "2026-11-28T17:35:57.638495",
+      "scheduled": true
+    }
+  },
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -3121,9 +3163,40 @@
         }
       },
       "stats_at": "2026-11-28T11:00:35"
+    },
+    {
+      "title": "The Flowers That Mimic Dead Meat",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/zAat5a_kdAE",
+        "Facebook": "https://www.facebook.com/reel/3197236397131480",
+        "Instagram": "https://www.instagram.com/reel/DgSzeAJJoee/"
+      },
+      "created": "2026-11-28T17:23:43",
+      "theme": "nature",
+      "hook": "Corpse flowers smell like rotting meat to trick flies.",
+      "series": "Nature's Weirdest #7",
+      "hook_style": "secret",
+      "file_id": "BAACAgEAAxkDAAICjGsLEKN5wdOB-2zyT__poaKMDbtcAAKaEgACCg1ZRJfXxoGhtWLTPQQ",
+      "youtube": {
+        "title": "The Flowers That Mimic Dead Meat | Nature's Weirdest #7 #shorts",
+        "description": "This giant flower smells like rotting meat for a very specific reason. 🌸\n\n👇 Would you smell this flower, yes or no?\n\n#nature #flowers #plants #biology #science #wildlife #shorts",
+        "tags": [
+          "nature",
+          "flowers",
+          "plants",
+          "biology",
+          "science",
+          "wildlife",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "The Flowers That Mimic Dead Meat\n\nThis giant flower smells like rotting meat for a very specific reason. 🌸\n\n👇 Would you smell this flower, yes or no?\n\n#nature #flowers #facts",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-27 19:15",
+  "last_slot": "2026-11-28 11:15",
   "stats_day": "2026-11-28",
   "stats_problems": {},
   "followers": {
