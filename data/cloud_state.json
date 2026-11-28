@@ -1,48 +1,6 @@
 {
   "offset": 41248576,
-  "pending": {
-    "548e8e524b": {
-      "vid": "20261128-011922-the-planet-where-it-rains-glass-sideways-hi",
-      "post": {
-        "title": "Planet HD 189733b Par Kanch Ki Baarish",
-        "created": "2026-11-28T01:22:20",
-        "source": "gemini:gemini-3.6-flash",
-        "theme": "space",
-        "hook": "Is planet par hawa ki speed sound se 7 guna tez hai aur yahan kaanch ki tirchhi baarish hoti hai.",
-        "series": "Antariksh Ke Raaz #2",
-        "question": "Kya aap is planet par jaana chaahoge?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "standard",
-        "hook_style": "spec_paradox",
-        "youtube": {
-          "title": "Planet HD 189733b Par Kanch Ki Baarish | Antariksh Ke Raaz #2 #shorts",
-          "description": "Dikhne mein Earth jaisa neela planet, lekin yahan hawa sound se 7 guna tez chalti hai aur kaanch ki baarish hoti hai! 🪐\n\n👇 Kya aap is planet par jaana chaahoge?\n\n#spacefacts #scienceinhindi #universe #space #astronomy #shorts #shorts",
-          "tags": [
-            "spacefacts",
-            "scienceinhindi",
-            "universe",
-            "space",
-            "astronomy",
-            "shorts",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "Dikhne mein Earth jaisa neela planet, lekin yahan hawa sound se 7 guna tez chalti hai aur kaanch ki baarish hoti hai! 🪐 #spacefacts #scienceinhindi #universe #space #astronomy #shorts #fyp #facts",
-        "instagram": "Planet HD 189733b Par Kanch Ki Baarish\n\nDikhne mein Earth jaisa neela planet, lekin yahan hawa sound se 7 guna tez chalti hai aur kaanch ki baarish hoti hai! 🪐\n\n👇 Kya aap is planet par jaana chaahoge?\n\n#spacefacts #scienceinhindi #facts",
-        "facebook": "Antariksh Ke Raaz #2 🔎 Dikhne mein Earth jaisa neela planet, lekin yahan hawa sound se 7 guna tez chalti hai aur kaanch ki baarish hoti hai! 🪐\n\n👇 Kya aap is planet par jaana chaahoge?\n\n#spacefacts #scienceinhindi #universe #space #astronomy #shorts",
-        "script": "Is planet par hawa ki speed sound se 7 guna tez hai aur yahan kaanch ki tirchhi baarish hoti hai. Yeh gahra neela planet apne star ke bahut zyada paas chakkar lagata hai. Ab dekho hota kya hai temperature badalte hi yahan bahut hi khatarnaak hawayen chalti hain. Aur yahi hawayen pighle hue kaanch ko poore planet par sideways udaati hain. Yeh Earth jaisa dikhta hai lekin actually yeh ek jaanleva trap hai. Sach-sach batana, kya aap yahan jaana chaahoge? Comment mein likho aur follow karo.",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAICg2sKLQ2v5Yj5e7Ee35VlEi6dau4lAAIfDQACCg1RRO85CUgx2TSLPQQ",
-      "channel": "hi",
-      "message_id": 643,
-      "created": "2026-11-28T01:23:26.620115",
-      "scheduled": true
-    }
-  },
+  "pending": {},
   "history": [
     {
       "title": "The Animal That Survived Outer Space",
@@ -3177,7 +3135,7 @@
   "comments_day": "2026-11-27",
   "compile_week": "2026-W46",
   "report_week": "2026-W47",
-  "last_hi_slot": "2026-11-28 13:00",
+  "last_hi_slot": "2026-11-28 20:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -5784,6 +5742,38 @@
         }
       },
       "stats_at": "2026-11-28T11:01:04"
+    },
+    {
+      "title": "Planet HD 189733b Par Kanch Ki Baarish",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/oAvK_49hXt0",
+        "Facebook": "https://www.facebook.com/reel/1020560064425906",
+        "Instagram": "FAILED: Instagram processing failed: Error: Media upload has failed with error code 2207076"
+      },
+      "created": "2026-11-28T01:22:20",
+      "theme": "space",
+      "hook": "Is planet par hawa ki speed sound se 7 guna tez hai aur yahan kaanch ki tirchhi baarish hoti hai.",
+      "series": "Antariksh Ke Raaz #2",
+      "hook_style": "spec_paradox",
+      "file_id": "BAACAgEAAxkDAAICg2sKLQ2v5Yj5e7Ee35VlEi6dau4lAAIfDQACCg1RRO85CUgx2TSLPQQ",
+      "youtube": {
+        "title": "Planet HD 189733b Par Kanch Ki Baarish | Antariksh Ke Raaz #2 #shorts",
+        "description": "Dikhne mein Earth jaisa neela planet, lekin yahan hawa sound se 7 guna tez chalti hai aur kaanch ki baarish hoti hai! 🪐\n\n👇 Kya aap is planet par jaana chaahoge?\n\n#spacefacts #scienceinhindi #universe #space #astronomy #shorts #shorts",
+        "tags": [
+          "spacefacts",
+          "scienceinhindi",
+          "universe",
+          "space",
+          "astronomy",
+          "shorts",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Planet HD 189733b Par Kanch Ki Baarish\n\nDikhne mein Earth jaisa neela planet, lekin yahan hawa sound se 7 guna tez chalti hai aur kaanch ki baarish hoti hai! 🪐\n\n👇 Kya aap is planet par jaana chaahoge?\n\n#spacefacts #scienceinhindi #facts",
+      "channel": "hi",
+      "ig_manual": true
     }
   ],
   "stats_day_hi": "2026-11-28",
