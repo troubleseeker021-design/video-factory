@@ -1,47 +1,6 @@
 {
   "offset": 41248576,
   "pending": {
-    "7190fc41a6": {
-      "vid": "20261127-171626-classic-oxford-aztec-hi",
-      "post": {
-        "title": "Oxford University Is Older Than the Aztec Empire",
-        "created": "2026-11-27T17:18:32",
-        "source": "bank",
-        "theme": "history",
-        "hook": "Oxford University Aztec Empire se bhi purani hai.",
-        "series": "Itihaas Ke Sach #4",
-        "question": "What should we cover next?",
-        "needs_check": false,
-        "doubts": [],
-        "format": "standard",
-        "hook_style": "",
-        "youtube": {
-          "title": "Oxford University Is Older Than the Aztec Empire | Itihaas Ke Sach #4 #shorts",
-          "description": "History timelines are wild 📚\n\n👇 What should we cover next?\n\n#historyfacts #oxford #aztec #history #didyouknow #shorts #shorts\n\nImage credits:\nPhoto: Annie Spratt · Unsplash\nPhoto: Johnny Briggs · Unsplash\nPhoto: Klim Musalimov · Unsplash\nPhoto: valentina filippin · Unsplash\nVideo: Pixabay",
-          "tags": [
-            "historyfacts",
-            "oxford",
-            "aztec",
-            "history",
-            "didyouknow",
-            "shorts",
-            "shorts",
-            "facts"
-          ]
-        },
-        "tiktok": "History timelines are wild 📚 #historyfacts #oxford #aztec #history #didyouknow #shorts #fyp #facts",
-        "instagram": "Oxford University Is Older Than the Aztec Empire\n\nHistory timelines are wild 📚\n\n👇 What should we cover next?\n\n#historyfacts #oxford #facts",
-        "facebook": "Itihaas Ke Sach #4 🔎 History timelines are wild 📚\n\n👇 What should we cover next?\n\n#historyfacts #oxford #aztec #history #didyouknow #shorts",
-        "script": "Oxford University Aztec Empire se bhi purani hai. Oxford mein padhai 11th century yaani 1096 se shuru ho gayi thi. Aztec ki rajdhani Tenochtitlan 1325 mein bani thi. Matlab ye 200 saal se bhi zyada ka gap hai. Jab Aztec Empire shuru bhi nahi hua tha tab bachche Oxford mein padhai kar rahe the. Aise hi dimaag hila dene wale facts ke liye follow karo. Agla topic kya hona chahiye? Comment mein likho aur follow karo.",
-        "status": "review",
-        "channel": "hi"
-      },
-      "file_id": "BAACAgEAAxkDAAICe2sJu7CvjTPlQaBCTGH0RCbIpBRcAAKVDAACCg1RRJzykTgYT7ffPQQ",
-      "channel": "hi",
-      "message_id": 635,
-      "created": "2026-11-27T17:19:44.895608",
-      "scheduled": true
-    },
     "cec527f789": {
       "vid": "20261127-222333-classic-wombat-cubes-hi",
       "post": {
@@ -3211,7 +3170,7 @@
   "comments_day": "2026-11-27",
   "compile_week": "2026-W46",
   "report_week": "2026-W47",
-  "last_hi_slot": "2026-11-27 20:00",
+  "last_hi_slot": "2026-11-28 08:00",
   "history_hi": [
     {
       "title": "Samundar Ki Maut Ki Ungli",
@@ -5712,6 +5671,37 @@
       "instagram": "Samundar Ke Rahasya #8 🔎 Samandar ke andhere mein zombie worms acid se poori whale ki haddiyan pighla dete hain. Dekhiye yeh ajeeb creature kaise khate hain.\n\n👇 Darawna laga ya kamaal ka?\n.\n.\n#samandar #sciencefacts #oceanlife #shorts #hindi #weirdnature #reels #facts #didyouknow",
       "channel": "hi",
       "ig_manual": true
+    },
+    {
+      "title": "Oxford University Is Older Than the Aztec Empire",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/SR1pCndan3I",
+        "Facebook": "https://www.facebook.com/reel/3130756467255335",
+        "Instagram": "https://www.instagram.com/reel/DgRL-6OMc7B/"
+      },
+      "created": "2026-11-27T17:18:32",
+      "theme": "history",
+      "hook": "Oxford University Aztec Empire se bhi purani hai.",
+      "series": "Itihaas Ke Sach #4",
+      "hook_style": "",
+      "file_id": "BAACAgEAAxkDAAICe2sJu7CvjTPlQaBCTGH0RCbIpBRcAAKVDAACCg1RRJzykTgYT7ffPQQ",
+      "youtube": {
+        "title": "Oxford University Is Older Than the Aztec Empire | Itihaas Ke Sach #4 #shorts",
+        "description": "History timelines are wild 📚\n\n👇 What should we cover next?\n\n#historyfacts #oxford #aztec #history #didyouknow #shorts #shorts\n\nImage credits:\nPhoto: Annie Spratt · Unsplash\nPhoto: Johnny Briggs · Unsplash\nPhoto: Klim Musalimov · Unsplash\nPhoto: valentina filippin · Unsplash\nVideo: Pixabay",
+        "tags": [
+          "historyfacts",
+          "oxford",
+          "aztec",
+          "history",
+          "didyouknow",
+          "shorts",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "Oxford University Is Older Than the Aztec Empire\n\nHistory timelines are wild 📚\n\n👇 What should we cover next?\n\n#historyfacts #oxford #facts",
+      "channel": "hi"
     }
   ],
   "stats_day_hi": "2026-11-27",
