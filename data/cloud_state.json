@@ -82,6 +82,47 @@
       "message_id": 639,
       "created": "2026-11-27T22:28:07.586197",
       "scheduled": true
+    },
+    "548e8e524b": {
+      "vid": "20261128-011922-the-planet-where-it-rains-glass-sideways-hi",
+      "post": {
+        "title": "Planet HD 189733b Par Kanch Ki Baarish",
+        "created": "2026-11-28T01:22:20",
+        "source": "gemini:gemini-3.6-flash",
+        "theme": "space",
+        "hook": "Is planet par hawa ki speed sound se 7 guna tez hai aur yahan kaanch ki tirchhi baarish hoti hai.",
+        "series": "Antariksh Ke Raaz #2",
+        "question": "Kya aap is planet par jaana chaahoge?",
+        "needs_check": false,
+        "doubts": [],
+        "format": "standard",
+        "hook_style": "spec_paradox",
+        "youtube": {
+          "title": "Planet HD 189733b Par Kanch Ki Baarish | Antariksh Ke Raaz #2 #shorts",
+          "description": "Dikhne mein Earth jaisa neela planet, lekin yahan hawa sound se 7 guna tez chalti hai aur kaanch ki baarish hoti hai! 🪐\n\n👇 Kya aap is planet par jaana chaahoge?\n\n#spacefacts #scienceinhindi #universe #space #astronomy #shorts #shorts",
+          "tags": [
+            "spacefacts",
+            "scienceinhindi",
+            "universe",
+            "space",
+            "astronomy",
+            "shorts",
+            "shorts",
+            "facts"
+          ]
+        },
+        "tiktok": "Dikhne mein Earth jaisa neela planet, lekin yahan hawa sound se 7 guna tez chalti hai aur kaanch ki baarish hoti hai! 🪐 #spacefacts #scienceinhindi #universe #space #astronomy #shorts #fyp #facts",
+        "instagram": "Planet HD 189733b Par Kanch Ki Baarish\n\nDikhne mein Earth jaisa neela planet, lekin yahan hawa sound se 7 guna tez chalti hai aur kaanch ki baarish hoti hai! 🪐\n\n👇 Kya aap is planet par jaana chaahoge?\n\n#spacefacts #scienceinhindi #facts",
+        "facebook": "Antariksh Ke Raaz #2 🔎 Dikhne mein Earth jaisa neela planet, lekin yahan hawa sound se 7 guna tez chalti hai aur kaanch ki baarish hoti hai! 🪐\n\n👇 Kya aap is planet par jaana chaahoge?\n\n#spacefacts #scienceinhindi #universe #space #astronomy #shorts",
+        "script": "Is planet par hawa ki speed sound se 7 guna tez hai aur yahan kaanch ki tirchhi baarish hoti hai. Yeh gahra neela planet apne star ke bahut zyada paas chakkar lagata hai. Ab dekho hota kya hai temperature badalte hi yahan bahut hi khatarnaak hawayen chalti hain. Aur yahi hawayen pighle hue kaanch ko poore planet par sideways udaati hain. Yeh Earth jaisa dikhta hai lekin actually yeh ek jaanleva trap hai. Sach-sach batana, kya aap yahan jaana chaahoge? Comment mein likho aur follow karo.",
+        "status": "review",
+        "channel": "hi"
+      },
+      "file_id": "BAACAgEAAxkDAAICg2sKLQ2v5Yj5e7Ee35VlEi6dau4lAAIfDQACCg1RRO85CUgx2TSLPQQ",
+      "channel": "hi",
+      "message_id": 643,
+      "created": "2026-11-28T01:23:26.620115",
+      "scheduled": true
     }
   },
   "history": [
@@ -3125,9 +3166,40 @@
       },
       "instagram": "Wombats Poop Cubes\n\nNature really said ⬛ 💩\n\n👇 Which part surprised you most?\n\n#wombat #animalfacts #facts",
       "channel": "en"
+    },
+    {
+      "title": "The Planet Where It Rains Glass Sideways",
+      "status": "auto-posted",
+      "links": {
+        "YouTube": "https://youtube.com/shorts/Nm0NNAdInHA",
+        "Facebook": "https://www.facebook.com/reel/29162826220043633",
+        "Instagram": "https://www.instagram.com/reel/DgRELP-BxoM/"
+      },
+      "created": "2026-11-28T01:20:55",
+      "theme": "space",
+      "hook": "Planet HD 189733b has Mach seven winds and rains glass sideways.",
+      "series": "Space Secrets #2",
+      "hook_style": "spec_paradox",
+      "file_id": "BAACAgEAAxkDAAICgGsKLM76yAVJ1CV57Ivy2llkfAhvAAIeDQACCg1RREJkUs6_47aAPQQ",
+      "youtube": {
+        "title": "The Planet Where It Rains Glass Sideways | Space Secrets #2 #shorts",
+        "description": "This deep-space world looks peaceful like Earth, but its weather is pure nightmare fuel. 🪐\n\n👇 Would you visit this planet, yes or no?\n\n#space #astronomy #science #exoplanets #universe #physics #shorts",
+        "tags": [
+          "space",
+          "astronomy",
+          "science",
+          "exoplanets",
+          "universe",
+          "physics",
+          "shorts",
+          "facts"
+        ]
+      },
+      "instagram": "The Planet Where It Rains Glass Sideways\n\nThis deep-space world looks peaceful like Earth, but its weather is pure nightmare fuel. 🪐\n\n👇 Would you visit this planet, yes or no?\n\n#space #astronomy #facts",
+      "channel": "en"
     }
   ],
-  "last_slot": "2026-11-27 16:15",
+  "last_slot": "2026-11-27 19:15",
   "stats_day": "2026-11-27",
   "stats_problems": {},
   "followers": {

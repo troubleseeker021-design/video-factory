@@ -593,5 +593,14 @@
     "hook_style": "",
     "hook": "There's an animal on Earth that poops perfect cubes.",
     "date": "2026-11-27"
+  },
+  {
+    "id": "the-planet-where-it-rains-glass-sideways",
+    "title": "The Planet Where It Rains Glass Sideways",
+    "theme": "space",
+    "format": "standard",
+    "hook_style": "spec_paradox",
+    "hook": "Planet HD 189733b has Mach seven winds and rains glass sideways.",
+    "date": "2026-11-28"
   }
 ]
